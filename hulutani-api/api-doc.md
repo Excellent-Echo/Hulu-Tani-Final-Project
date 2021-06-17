@@ -1075,3 +1075,712 @@ _Response (500 - Internal Server Error)_
 ```
 
 ---
+
+## RESTful endpoints Cart
+
+### GET /cart/:cart_id
+
+> Get cart by cart_id
+
+_Request Header_
+
+```
+{
+   "Authorization": "<your Authorization>"
+}
+```
+
+_Request Body_
+
+```
+not needed
+```
+
+_Response (200)_
+
+```
+{
+  "id" : 1
+  "id_product" : 1,
+  "id_user" : 1,
+  "cart_code" : "KB0012012"
+}
+
+```
+
+_Response (400 - error bad request)_
+
+```
+{
+  "code" : 400,
+  "message" : "error"
+}
+```
+
+_Response (500 - Internal Server Error)_
+
+```
+{
+  "code" : 500,
+  "message" : "error"
+}
+```
+
+---
+
+### GET /cart/:cart_code
+
+> Get cart by cart code
+
+_Request Header_
+
+```
+{
+   "Authorization": "<your Authorization>"
+}
+```
+
+_Request Body_
+
+```
+not needed
+```
+
+_Response (200)_
+
+```
+{
+  "id" : 1
+  "id_product" : 1,
+  "id_user" : 1,
+  "cart_code" : "KB0012012"
+}
+```
+
+_Response (400 - Bad Request)_
+
+```
+{
+  "code" : 400,
+  "message" : "error"
+}
+```
+
+_Response (500 - Internal Server Error)_
+
+```
+{
+  "code" : 500,
+  "message" : "error"
+}
+```
+
+---
+
+### GET /cart/:product_id
+
+> Get cart by product ID
+
+_Request Header_
+
+```
+{
+   "Authorization": "<your Authorization>"
+}
+```
+
+_Request Body_
+
+```
+not needed
+```
+
+_Response (200)_
+
+```
+{
+  "code" : 200,
+  "count" : <given by sistem>
+}
+```
+
+_Response (400 - Bad Request)_
+
+```
+{
+  "code" : 400,
+  "message" : "error"
+}
+```
+
+_Response (500 - Internal Server Error)_
+
+```
+{
+  "code" : 500,
+  "message" : "error"
+}
+```
+
+### POST /cart
+
+> Create new cart
+
+_Request Header_
+
+```
+{
+    "Authorization" : "<your Authorization>"
+}
+```
+
+_Request Body_
+
+```
+{
+  "id_product" : "<id_product to get insert into>",
+}
+```
+
+_Response (201)_
+
+```
+{
+  "id" : "<given by sistem>"
+  "id_product" : "<id_product to get insert into>",
+  "id_user" : "<id_user use current user>"
+  "cart_code" : "<given by sistem>"
+}
+```
+
+_Response (400 - Bad Request)_
+
+```
+{
+  "code" : 400,
+  "message" : "error"
+}
+```
+
+_Response (500 - Internal Server Error)_
+
+```
+{
+  "code" : 500,
+  "message" : "error"
+}
+```
+
+---
+
+### DELETE /cart/:cart_id
+
+> Delete category by category ID
+
+_Request Header_
+
+```
+{
+   "Authorization": "<your Authorization>"
+}
+```
+
+_Request Body_
+
+```
+not needed
+```
+
+_Response (200)_
+
+```
+{
+  "code" : 200,
+  "message" : "success delete cart"
+}
+```
+
+_Response (400 - Bad Request)_
+
+```
+{
+  "code" : 400,
+  "message" : "error"
+}
+```
+
+_Response (500 - Internal Server Error)_
+
+```
+{
+  "code" : 500,
+  "message" : "error"
+}
+```
+
+## RESTful endpoints Cart
+
+### GET /cart/:cart_id
+
+> Get cart by cart_id
+
+_Request Header_
+
+```
+{
+   "Authorization": "<your Authorization>"
+}
+```
+
+_Request Body_
+
+```
+not needed
+```
+
+_Response (200)_
+
+```
+{
+  "id" : 1
+  "id_product" : 1,
+  "id_user" : 1,
+  "cart_code" : "KB0012012"
+}
+
+```
+
+_Response (400 - error bad request)_
+
+```
+{
+  "code" : 400,
+  "message" : "error"
+}
+```
+
+_Response (500 - Internal Server Error)_
+
+```
+{
+  "code" : 500,
+  "message" : "error"
+}
+```
+
+---
+
+### GET /cart/:cart_code
+
+> Get cart by cart code
+
+_Request Header_
+
+```
+{
+   "Authorization": "<your Authorization>"
+}
+```
+
+_Request Body_
+
+```
+not needed
+```
+
+_Response (200)_
+
+```
+{
+  "id" : 1
+  "id_product" : 1,
+  "id_user" : 1,
+  "cart_code" : "KB0012012"
+}
+```
+
+_Response (400 - Bad Request)_
+
+```
+{
+  "code" : 400,
+  "message" : "error"
+}
+```
+
+_Response (500 - Internal Server Error)_
+
+```
+{
+  "code" : 500,
+  "message" : "error"
+}
+```
+
+---
+
+### GET /cart/:product_id
+
+> Get cart by product ID
+
+_Request Header_
+
+```
+{
+   "Authorization": "<your Authorization>"
+}
+```
+
+_Request Body_
+
+```
+not needed
+```
+
+_Response (200)_
+
+```
+{
+  "code" : 200,
+  "count" : <given by sistem>
+}
+```
+
+_Response (400 - Bad Request)_
+
+```
+{
+  "code" : 400,
+  "message" : "error"
+}
+```
+
+_Response (500 - Internal Server Error)_
+
+```
+{
+  "code" : 500,
+  "message" : "error"
+}
+```
+
+### POST /cart
+
+> Create new cart
+
+_Request Header_
+
+```
+{
+    "Authorization" : "<your Authorization>"
+}
+```
+
+_Request Body_
+
+```
+{
+  "id_product" : "<id_product to get insert into>",
+}
+```
+
+_Response (201)_
+
+```
+{
+  "id" : "<given by sistem>"
+  "id_product" : "<id_product to get insert into>",
+  "id_user" : "<id_user use current user>"
+  "cart_code" : "<given by sistem>"
+}
+```
+
+_Response (400 - Bad Request)_
+
+```
+{
+  "code" : 400,
+  "message" : "error"
+}
+```
+
+_Response (500 - Internal Server Error)_
+
+```
+{
+  "code" : 500,
+  "message" : "error"
+}
+```
+
+---
+
+### DELETE /cart/:cart_id
+
+> Delete category by category ID
+
+_Request Header_
+
+```
+{
+   "Authorization": "<your Authorization>"
+}
+```
+
+_Request Body_
+
+```
+not needed
+```
+
+_Response (200)_
+
+```
+{
+  "code" : 200,
+  "message" : "success delete cart"
+}
+```
+
+_Response (400 - Bad Request)_
+
+```
+{
+  "code" : 400,
+  "message" : "error"
+}
+```
+
+_Response (500 - Internal Server Error)_
+
+```
+{
+  "code" : 500,
+  "message" : "error"
+}
+```
+
+## RESTful endpoints Transaction
+
+### GET /transaction/:code_transaction
+
+> Get transaction by code_transaction
+
+_Request Header_
+
+```
+{
+   "Authorization": "<your Authorization>"
+}
+```
+
+_Request Body_
+
+```
+not needed
+```
+
+_Response (200)_
+
+```
+{
+  "code_transaction" : 1
+  "status" : "menunggu pembayaran",
+  "metode_pembayaran" : "transfer",
+  "total_pembayaran" : 120000,
+  "tanggal_transaksi" : "2019-01-01",
+  "kode_keranjang" : 1,
+  "id_pelanggan" : 1
+}
+
+```
+
+_Response (400 - error bad request)_
+
+```
+{
+  "code" : 400,
+  "message" : "error"
+}
+```
+
+_Response (500 - Internal Server Error)_
+
+```
+{
+  "code" : 500,
+  "message" : "error"
+}
+```
+
+---
+
+### GET /transaction/:date_transaction
+
+> Get transaction by cart date_transaction
+
+_Request Header_
+
+```
+{
+   "Authorization": "<your Authorization>"
+}
+```
+
+_Request Body_
+
+```
+not needed
+```
+
+_Response (200)_
+
+```
+{
+  "code_transaction" : 1
+  "status" : "menunggu pembayaran",
+  "metode_pembayaran" : "transfer",
+  "total_pembayaran" : 120000,
+  "tanggal_transaksi" : "2019-01-01",
+  "kode_keranjang" : 1,
+  "id_pelanggan" : 1
+}
+```
+
+_Response (400 - Bad Request)_
+
+```
+{
+  "code" : 400,
+  "message" : "error"
+}
+```
+
+_Response (500 - Internal Server Error)_
+
+```
+{
+  "code" : 500,
+  "message" : "error"
+}
+```
+
+### POST /transaction
+
+> Create new cart
+
+_Request Header_
+
+```
+{
+    "Authorization" : "<your Authorization>"
+}
+```
+
+_Request Body_
+
+```
+{
+  "status" : "<status to get insert into>",
+  "metode_pembayaran" : "<metode_pembayaran to get insert into>",
+  "total_pembayaran" : <total_pembayaran to get insert into>,
+  "tanggal_transaksi" : "<tanggal_transaksi to get insert into>",
+}
+```
+
+_Response (201)_
+
+```
+{
+  "code_transaction" : <given by system>
+  "status" : "<status to get insert into>",
+  "metode_pembayaran" : "<metode_pembayaran to get insert into>",
+  "total_pembayaran" : <total_pembayaran to get insert into>,
+  "tanggal_transaksi" : "<tanggal_transaksi to get insert into>",
+  "kode_keranjang" : <given by system>,
+  "id_pelanggan" : <given by system>
+}
+```
+
+_Response (400 - Bad Request)_
+
+```
+{
+  "code" : 400,
+  "message" : "error"
+}
+```
+
+_Response (500 - Internal Server Error)_
+
+```
+{
+  "code" : 500,
+  "message" : "error"
+}
+```
+
+---
+
+### PUT /transaction/:code_transaction
+
+> Update transaction by code_transaction
+
+_Request Header_
+
+```
+{
+   "Authorization": "<your Authorization>"
+}
+```
+
+_Request Body_
+
+```
+{
+   "status" : "<status to get insert into>"
+}
+```
+
+_Response (200)_
+
+```
+{
+  "code_transaction" : <given by system>
+  "status" : "<status to get insert into>",
+  "metode_pembayaran" : "<metode_pembayaran to get insert into>",
+  "total_pembayaran" : <total_pembayaran to get insert into>,
+  "tanggal_transaksi" : "<tanggal_transaksi to get insert into>",
+  "kode_keranjang" : <given by system>,
+  "id_pelanggan" : <given by system>
+}
+```
+
+_Response (400 - Bad Request)_
+
+```
+{
+  "code" : 400,
+  "message" : "error"
+}
+```
+
+_Response (401 - Unauthorized)_
+
+```
+{
+  "code" : 401,
+  "message" : "error"
+}
+```
+
+_Response (500 - Internal Server Error)_
+
+```
+{
+  "code" : 500,
+  "message" : "error"
+}
+```
+
+---

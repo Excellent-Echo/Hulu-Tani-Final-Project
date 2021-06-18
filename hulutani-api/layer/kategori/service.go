@@ -48,8 +48,7 @@ func (s *service) GetKategoriByID(ID string) (entity.Kategori, error) {
 func (s *service) SaveNewKategori(input entity.KategoriInput) (entity.Kategori, error) {
 
 	var kategori = entity.Kategori{
-		Nama:      input.Nama,
-		Deskripsi: input.Deskripsi,
+		Nama: input.Nama,
 	}
 
 	createJob, err := s.repo.Create(kategori)
@@ -75,9 +74,6 @@ func (s *service) UpdateKategoriByID(id string, dataInput entity.KategoriInput) 
 
 	if dataInput.Nama != "" || len(dataInput.Nama) != 0 {
 		dataUpdate["nama"] = dataInput.Nama
-	}
-	if dataInput.Deskripsi != "" || len(dataInput.Deskripsi) != 0 {
-		dataUpdate["deskripsi"] = dataInput.Deskripsi
 	}
 
 	kategoriUpdated, err := s.repo.UpdateByID(id, dataUpdate)

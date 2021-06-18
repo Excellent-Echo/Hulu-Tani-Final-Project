@@ -41,10 +41,9 @@ type Kontak struct {
 }
 
 type Kategori struct {
-	ID        int      `gorm:"Primarykey" json:"id"`
-	Nama      string   `json:"nama"`
-	Deskripsi string   `json:"deskripsi"`
-	Produk    []Produk `gorm:"foreignkey:IdKategori"`
+	ID     int      `gorm:"Primarykey" json:"id"`
+	Nama   string   `json:"nama"`
+	Produk []Produk `gorm:"foreignkey:IdKategori"`
 }
 
 type Produk struct {

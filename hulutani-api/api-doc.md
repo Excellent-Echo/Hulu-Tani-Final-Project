@@ -1,2392 +1,3557 @@
-# HuluTani API Documentation
+**# HuluTani API Documentation**
 
-## List of available endpoints
+**## List of available endpoints**
 
-### Admin
+**### Admin**
 
-- `POST /admin/login`
+\- `POST /admin/login`
 
-### Customers
+**### Customers**
 
-- `GET /user/:user_id`
-- `POST/user/register`
-- `POST /user/login`
+\- `GET /user/:user_id`
 
-### Contact
+\- `POST/user/register`
 
-- `GET /contact`
-- `POST/contact`
+\- `POST /user/login`
 
-### Product
+**### Contact**
 
-- `GET /products/`
-- `GET /product/:product_id`
-- `GET /product/:category`
-- `GET /product/:harga` \*url query atau 1 1
-- `GET /product/:product_name`
-- `POST /product/`
-- `PUT /product/:product_id`
-- `DELETE /product/:product_id`
+\- `GET /contact`
 
-### Category
+\- `POST/contact`
 
-- `GET /category/`
-- `GET /category/:category_id`
-- `POST /category/`
-- `PUT /category/:category_id`
-- `DELETE /category/:category_id`
+**### Product**
 
-### Cart
+\- `GET /products/`
 
-- `GET /cart/:cart_id`
-- `GET /cart/:cart_code`
-- `GET /cart/:product_id`
-- `POST /cart/`
-- `DELETE /cart/:cart_id`
+\- `GET /product/:product_id`
 
-### Expedition
+\- `GET /product/:category`
 
-- `GET /province`
-- `GET /city`
-- `POST /cost/`
+\- `GET /product/:harga` \*url query atau 1 1
 
-### Address
+\- `GET /product/:product_name`
 
-- `GET /address/:cust_id`
-- `GET /address/:address_id`
-- `POST /address/`
-- `PUT/address/:address_id`
-- `DELETE /address/:address_id`
+\- `POST /product/`
 
-### Transaction
+\- `PUT /product/:product_id`
 
-- `GET /transaction/:code_transaction`
-- `GET /transaction/:date_transaction`
-- `POST /transaction/`
-- `PUT/transaction/:code_transaction`
+\- `DELETE /product/:product_id`
 
-### Detail Transaction
+**### Category**
 
-- `GET /detail_transaction/:code_transaction`
-- `POST /detail_transaction/`
+\- `GET /category/`
 
+\- `GET /category/:category_id`
 
-## RESTful endpoints admin
+\- `POST /category/`
 
-### POST/admin/login
+\- `PUT /category/:category_id`
 
-> POST admin
+\- `DELETE /category/:category_id`
 
-_Request Header_
+**### Cart**
 
-```
+\- `GET /cart/:cart_id`
+
+\- `GET /cart/:cart_code`
+
+\- `GET /cart/:product_id`
+
+\- `POST /cart/`
+
+\- `DELETE /cart/:cart_id`
+
+**### Expedition**
+
+\- `GET /province`
+
+\- `GET /city`
+
+\- `POST /cost/`
+
+**### Address**
+
+\- `GET /address/:cust_id`
+
+\- `GET /address/:address_id`
+
+\- `POST /address/`
+
+\- `PUT/address/:address_id`
+
+\- `DELETE /address/:address_id`
+
+**### Transaction**
+
+\- `GET /transaction/:code_transaction`
+
+\- `GET /transaction/:date_transaction`
+
+\- `POST /transaction/`
+
+\- `PUT/transaction/:code_transaction`
+
+**### Detail Transaction**
+
+\- `GET /detail_transaction/:code_transaction`
+
+\- `POST /detail_transaction/`
+
+**## RESTful endpoints admin**
+
+**### POST/admin/login**
+
+\> POST admin
+
+_*Request Header*_
+
+\```
+
 not needed
-```
 
-_Request Body_
+\```
 
-```
+_*Request Body*_
+
+\```
+
 {
-  "email": "<email to get insert into>",
-  "password": "<password to get insert into>"
+
+"email": "<email to get insert into>",
+
+"password": "<password to get insert into>"
+
 }
-```
 
-_Response (200)_
+\```
 
-```
+_*Response (200)*_
+
+\```
+
 {
-	"code" : 200,
-	"message" : berhasil,
-	"data : {
-		"authorization" : "aklsdjsal;dkjads"
-	}"
+
+"code" : 200,
+
+"message" : berhasil,
+
+"data : {
+
+"authorization" : "aklsdjsal;dkjads"
+
+}"
+
 }
-```
 
-_Response (400- Bad Request)_
+\```
 
-```
+_*Response (400- Bad Request)*_
+
+\```
+
 {
-  "code" : 400,
-  "message" : "error"
+
+"code" : 400,
+
+"message" : "error"
+
 }
-```
 
-_Response (500 - Internal Server Error)_
+\```
 
-```
+_*Response (500 - Internal Server Error)*_
+
+\```
+
 {
-  "code" : 500,
-  "message" : "error"
+
+"code" : 500,
+
+"message" : "error"
+
 }
-```
 
----
+\```
 
-## RESTful endpoints user
+\---
 
-### POST /user/register
+**## RESTful endpoints user**
 
-> Create new user
+**### POST /user/register**
 
-_Request Header_
+\> Create new user
 
-```
+_*Request Header*_
+
+\```
+
 not needed
-```
 
-_Request Body_
+\```
 
-```
+_*Request Body*_
+
+\```
+
 {
-  "name" : "<name to get insert into>",
-  "date_birth" : "<date_birth to get insert into>",
-  "handphone_number" : "<handphone_number to get insert into>",
-  "Gender" : "<Gender to get insert into>",
-  "email": "<email to get insert into>",
-  "password": "<password to get insert into>"
+
+"nama" : "<namato get insert into>",
+
+"tanggal_lahir" : "<tanggal_lahirto get insert into>",
+
+"nomor_handphone" : "<nomor_handphoneto get insert into>",
+
+"jenis_kelamin" : "<jenis_kelaminto get insert into>",
+
+"profil": "<profil to get insert into>",
+
+"email": "<email to get insert into>"
+
+"password": "<password to get insert into>"
+
 }
-```
 
-_Response (201)_
+\```
 
-```
+_*Response (201)*_
+
+\```
+
 {
-  "id" : "<given id by system>",
-  "name" : "<name to get insert into>",
-  "date_birth" : "<date_birth to get insert into>",
-  "handphone_number" : "<handphone_number to get insert into>",
-  "Gender" : "<Gender to get insert into>",
-  "email": "<email to get insert into>"
+
+"code": 201,
+
+"message": "success create new User",
+
+"data": {
+
+"id": 3,
+
+​ "nama": "helmi",
+
+​ "tanggal_lahir": "1999 juni 10",
+
+"nomor_handphone": "082229333",
+
+"jenis_kelamin": "laki-laki",
+
+"profil": "profil.jpg",
+
+"email": "helmi123@mail.com"
+
 }
-```
 
-_Response (400 - Bad Request)_
+}
 
-```
+\```
+
+_*Response (400 - Bad Request)*_
+
+\```
+
 {
-  "code" : 400,
-  "message" : "error"
+
+"errors": "email sudah terdaftar!"
+
 }
-```
 
-_Response (500 - Internal Server Error)_
+\```
 
-```
+\```
+
 {
-  "code" : 500,
-  "message" : "error"
+
+"code": 400,
+
+"message": "input data required",
+
+"error": {
+
+"errors": "error"
+
 }
-```
 
----
+}
 
-### POST /user/login
+\```
 
-> Compare data login on database with data inputed
+_*Response (500 - Internal Server Error)*_
 
-_Request Header_
+\```
 
-```
+{
+
+"code": 500,
+
+"message": "error in internal server",
+
+"error": {
+
+​ "errors": "error"
+
+}
+
+}
+
+\```
+
+\---
+
+**### POST /user/login**
+
+\> Compare data login on database with data inputed
+
+_*Request Header*_
+
+\```
+
 not needed
-```
 
-_Request Body_
+\```
 
-```
+_*Request Body*_
+
+\```
+
 {
-  "email": "<email to get compare>",
-  "password": "<password to get compare>"
+
+"email": "<email to get compare>",
+
+"password": "<password to get compare>"
+
 }
-```
 
-_Response (200)_
+\```
 
-```
+_*Response (200)*_
+
+\```
+
 {
-	"code" : 200,
-	"message" : success,
-	"data : {
-		"authorization" : "aklsdjsal;dkjads"
-	}"
+
+"code": 200,
+
+"message": "success login user",
+
+"data": {
+
+"Authorization": "token"
+
 }
-```
 
-_Response (400 - Bad Request)_
+}
 
-```
+\```
+
+_*Response (400 - Bad Request)*_
+
+\```
+
 {
-  "code" : 400,
-  "message" : "bad request"
+
+"code": 400,
+
+"message": "input data required",
+
+"error": {
+
+"errors": "error"
+
 }
-```
 
-_Response (401 - Unauthorized)_
+}
 
-```
+\```
+
+_*Response (500 - Internal Server Error)*_
+
+\```
+
 {
-  "code" : 400,
-  "message" : "unauthorize"
+
+"code": 500,
+
+"message": "error in internal server",
+
+"error": {
+
+​ "errors": "error"
+
 }
-```
 
-_Response (500 - Internal Server Error)_
+}
 
-```
+\```
+
+\---
+
+**### GET /user**
+
+\> Get user
+
+_*Request Header*_
+
+\```
+
 {
-  "code" : 500,
-  "message" : "error"
+
+"Authorization": "<your Authorization>"
+
 }
-```
 
----
+\```
 
-### GET /user/:user_id
+_*Request Body*_
 
-> Get user by user ID
+\```
 
-_Request Header_
-
-```
-{
-   "Authorization": "<your Authorization>"
-}
-```
-
-_Request Body_
-
-```
 not needed
-```
 
-_Response (200)_
+\```
 
-```
+_*Response (200)*_
+
+\```
+
 {
-  "id" : "<given id by system>",
-  "name" : "<name to get insert into>",
-  "date_birth" : "<date_birth to get insert into>",
-  "handphone_number" : "<handphone_number to get insert into>",
-  "Gender" : "<Gender to get insert into>",
-  "email": "<email to get insert into>"
+
+"code": 200,
+
+"message": "success get user by ID",
+
+"data": {
+
+"id": 3,
+
+"nama": "helmi",
+
+"tanggal_lahir": "1999 juni 10",
+
+"nomor_handphone": "082229333",
+
+"jenis_kelamin": "laki-laki",
+
+"profil": "profil.jpg",
+
+"email": "helmi123@mail.com"
+
 }
-```
 
-_Response (400 - Bad Request)_
+}
 
-```
+\```
+
+_*Response (500 - Internal Server Error)*_
+
+\```
+
 {
-  "code" : 400,
-  "message" : "error"
+
+"code": 500,
+
+"message": "error in internal server",
+
+"error": {
+
+    	"errors": "error"
+
 }
-```
 
-_Response (500 - Internal Server Error)_
+}
 
-```
+\```
+
+\---
+
+**## RESTful endpoints contact**
+
+**### GET /kontak**
+
+\> Get all contact
+
+_*Request Header*_
+
+\```
+
 {
-  "code" : 500,
-  "message" : "error"
+
+"Authorization": "<your Authorization>"
+
 }
-```
 
----
+\```
 
-## RESTful endpoints contact
+_*Request Body*_
 
-### GET /contact
+\```
 
-> Get all contact
-
-_Request Header_
-
-```
-{
-   "Authorization": "<your Authorization>"
-}
-```
-
-_Request Body_
-
-```
 not needed
-```
 
-_Response (200)_
+\```
 
-```
+_*Response (200)*_
+
+\```
+
 {
-  "id" : "<given id by system>",
-  "name" : "<name to get insert into>",
-  "date_birth" : "<date_birth to get insert into>",
-  "handphone_number" : "<handphone_number to get insert into>",
-  "Gender" : "<Gender to get insert into>",
-  "address": "<address to get insert into>"
+
+"id" : "<given id by system>",
+
+"name" : "<name to get insert into>",
+
+"date_birth" : "<date_birth to get insert into>",
+
+"handphone_number" : "<handphone_number to get insert into>",
+
+"Gender" : "<Gender to get insert into>",
+
+"address": "<address to get insert into>"
+
 }
-```
 
-_Response (400 - Bad Request)_
+\```
 
-```
+_*Response (500 - Internal Server Error)*_
+
+\```
+
 {
-  "code" : 400,
-  "message" : "error"
+
+"code": 500,
+
+"message": "error in internal server",
+
+"error": {
+
+    "errors": "error"
+
 }
-```
 
-_Response (500 - Internal Server Error)_
+}
 
-```
+\```
+
+**### POST /kontak**
+
+\> Create new contact
+
+_*Request Header*_
+
+\```
+
 {
-  "code" : 500,
-  "message" : "error"
+
+"Authorization": "<your Authorization>"
+
 }
-```
 
-### POST /contact
+\```
 
-> Create new contact
+_*Request Body*_
 
-_Request Header_
+\```
 
-```
 {
-   "Authorization": "<your Authorization>"
+
+"name" : "<name to get insert into>",
+
+"date_birth" : "<date_birth to get insert into>",
+
+"handphone_number" : "<handphone_number to get insert into>",
+
+"Gender" : "<Gender to get insert into>"
+
+"address": "<address to get insert into>"
+
 }
-```
 
-_Request Body_
+\```
 
-```
+_*Response (201)*_
+
+\```
+
 {
-  "name" : "<name to get insert into>",
-  "date_birth" : "<date_birth to get insert into>",
-  "handphone_number" : "<handphone_number to get insert into>",
-  "Gender" : "<Gender to get insert into>"
-  "address": "<address to get insert into>"
+
+"code" : 201,
+
+"message" : "success create new kontak",
+
+"data" : [
+
+​ "id" : "<given id by system>",
+
+​ "nama" : "<namato get insert into>",
+
+"tanggal_lahir" : "<tanggal_lahir to get insert into>",
+
+​ "nomor_handphone" : "<nomor_handphone to get insert into>",
+
+"jenis_kelamin" : "<jenis_kelamin to get insert into>"
+
+​ "alamat": "<alamat to get insert into>"
+
+​ ]
+
 }
-```
 
-_Response (201)_
+\```
 
-```
+_*Response (400 - Bad Request)*_
+
+\```
+
 {
-  "id" : "<given id by system>",
-  "name" : "<name to get insert into>",
-  "date_birth" : "<date_birth to get insert into>",
-  "handphone_number" : "<handphone_number to get insert into>",
-  "Gender" : "<Gender to get insert into>"
-  "address": "<address to get insert into>"
+
+"code": 400,
+
+"message": "input data required",
+
+"error": {
+
+"errors": "error"
+
 }
-```
 
-_Response (400 - Bad Request)_
+}
 
-```
+\```
+
+_*Response (500 - Internal Server Error)*_
+
+\```
+
 {
-  "code" : 400,
-  "message" : "error"
+
+"code": 500,
+
+"message": "error in internal server",
+
+"error": {
+
+    "errors": "error"
+
 }
-```
 
-_Response (500 - Internal Server Error)_
-
-```
-{
-  "code" : 500,
-  "message" : "error"
 }
-```
 
-## RESTful endpoints product
+\```
 
-### GET /product
+**## RESTful endpoints product**
 
-> Get all products
+**### GET /produk**
 
-_Request Header_
+\> Get all products
 
-```
+_*Request Header*_
+
+\```
+
 not needed
-```
 
-_Request Body_
+\```
 
-```
+_*Request Body*_
+
+\```
+
 not needed
-```
 
-_Response (200)_
+\```
 
-```
+_*Response (200)*_
+
+\```
+
 {
-  "id" : "<given id by system>",
-  "name" : "<name to get insert into>",
-  "description" : "<description to get insert into>",
-  "takaran" : "<takaran to get insert into>",
-  "price" : "<price to get insert into>",
-  "discount" : "<discount to get insert into>",
-  "stock": "<stock to get insert into>",
-  "image": "<image to get insert into>",
-  "id_category": "<id_category to get insert into>"
+
+"code": 200,
+
+"message": "success get all produk data",
+
+"data": [
+
+​ {
+
+​ "id": 2,
+
+​ "nama": "mangga",
+
+​ "deskripsi": "jeruk bali",
+
+​ "gambar": "gambar-jeruk.jpg",
+
+​ "takaran": "1kg",
+
+​ "harga": 25000,
+
+​ "promo": "beli 20kg gratis ongkir",
+
+​ "stok": 50,
+
+​ "id_kategori": 1
+
+​ },
+
+​ {
+
+​ "id": 3,
+
+​ "nama": "mangga",
+
+​ "deskripsi": "jeruk bali",
+
+​ "gambar": "gambar-jeruk.jpg",
+
+​ "takaran": "1kg",
+
+​ "harga": 50000,
+
+​ "promo": "beli 20kg gratis ongkir",
+
+​ "stok": 50,
+
+​ "id_kategori": 1
+
 }
-```
 
-_Response (400 - Bad Request)_
+​ ]
 
-```
+}
+
+\```
+
+_*Response (500 - Internal Server Error)*_
+
+\```
+
 {
-  "code" : 400,
-  "message" : "error"
+
+"code": 500,
+
+"message": "error in internal server",
+
+"error": {
+
+    "errors": "error"
+
 }
-```
 
-_Response (500 - Internal Server Error)_
+}
 
-```
+\```
+
+**### GET /produk/:produk_id**
+
+\> Get product by product ID
+
+_*Request Header*_
+
+\```
+
 {
-  "code" : 500,
-  "message" : "error"
+
+"Authorization": "<your Authorization>"
+
 }
-```
 
-### GET /product/:product_id
+\```
 
-> Get product by product ID
+_*Request Body*_
 
-_Request Header_
+\```
 
-```
-{
-   "Authorization": "<your Authorization>"
-}
-```
-
-_Request Body_
-
-```
 not needed
-```
 
-_Response (200)_
+\```
 
-```
+_*Response (200)*_
+
+\```
+
 {
-  "id" : "<given id by system>",
-  "name" : "<name to get insert into>",
-  "description" : "<description to get insert into>",
-  "takaran" : "<takaran to get insert into>",
-  "price" : "<price to get insert into>",
-  "discount" : "<discount to get insert into>",
-  "stock": "<stock to get insert into>",
-  "image": "<image to get insert into>",
-  "id_category": "<id_category to get insert into>"
+
+"code": 200,
+
+"message": "success get produk",
+
+"data": {
+
+​ "id": 4,
+
+​ "nama": "mangga",
+
+​ "deskripsi": "jeruk bali",
+
+​ "gambar": "gambar-jeruk.jpg",
+
+​ "takaran": "1kg",
+
+​ "harga": 100000,
+
+​ "promo": "beli 20kg gratis ongkir",
+
+​ "stok": 50,
+
+​ "id_kategori": 1
+
 }
-```
 
-_Response (400 - Bad Request)_
+}
 
-```
+\```
+
+_*Response (400 - Bad Request)*_
+
+\```
+
 {
-  "code" : 400,
-  "message" : "error"
+
+"code": 400,
+
+"message": "input data required",
+
+"error": {
+
+"errors": "error"
+
 }
-```
 
-_Response (500 - Internal Server Error)_
+}
 
-```
+\```
+
+_*Response (500 - Internal Server Error)*_
+
+\```
+
 {
-  "code" : 500,
-  "message" : "error"
+
+"code": 500,
+
+"message": "error in internal server",
+
+"error": {
+
+    "errors": "error"
+
 }
-```
 
-### GET /product/:product_category
-
-> Get product by product category
-
-_Request Header_
-
-```
-{
-   "Authorization": "<your Authorization>"
 }
-```
 
-_Request Body_
+\```
 
-```
+**### GET /produk/nama/:product_nama**
+
+\> Get product by product category
+
+_*Request Header*_
+
+\```
+
 not needed
-```
 
-_Response (200)_
+\```
 
-```
-{
-  "id" : "<given id by system>",
-  "name" : "<name to get insert into>",
-  "description" : "<description to get insert into>",
-  "takaran" : "<takaran to get insert into>",
-  "price" : "<price to get insert into>",
-  "discount" : "<discount to get insert into>",
-  "stock": "<stock to get insert into>",
-  "image": "<image to get insert into>",
-  "id_category": "<id_category to get insert into>"
-}
-```
+_*Request Body*_
 
-_Response (400 - Bad Request)_
+\```
 
-```
-{
-  "code" : 400,
-  "message" : "error"
-}
-```
-
-_Response (500 - Internal Server Error)_
-
-```
-{
-  "code" : 500,
-  "message" : "error"
-}
-```
-
-### GET /product/:price
-
-> Get product by price
-
-_Request Header_
-
-```
-{
-   "Authorization": "<your Authorization>"
-}
-```
-
-_Request Body_
-
-```
 not needed
-```
 
-_Response (200)_
+\```
 
-```
+_*Response (200)*_
+
+\```
+
 {
-  "id" : "<given id by system>",
-  "name" : "<name to get insert into>",
-  "description" : "<description to get insert into>",
-  "takaran" : "<takaran to get insert into>",
-  "price" : "<price to get insert into>",
-  "discount" : "<discount to get insert into>",
-  "stock": "<stock to get insert into>",
-  "image": "<image to get insert into>",
-  "id_category": "<id_category to get insert into>"
+
+"code": 200,
+
+"message": "success get produk",
+
+"data": {
+
+​ "id": 2,
+
+​ "nama": "mangga",
+
+​ "deskripsi": "jeruk bali",
+
+​ "gambar": "gambar-jeruk.jpg",
+
+​ "takaran": "1kg",
+
+​ "harga": 25000,
+
+​ "promo": "beli 20kg gratis ongkir",
+
+​ "stok": 50,
+
+​ "id_kategori": 1
+
 }
-```
 
-_Response (400 - Bad Request)_
+}
 
-```
+\```
+
+_*Response (400 - Bad Request)*_
+
+\```
+
 {
-  "code" : 400,
-  "message" : "error"
+
+"code": 400,
+
+"message": "input data required",
+
+"error": {
+
+"errors": "error"
+
 }
-```
 
-_Response (500 - Internal Server Error)_
+}
 
-```
+\```
+
+_*Response (500 - Internal Server Error)*_
+
+\```
+
 {
-  "code" : 500,
-  "message" : "error"
+
+"code": 500,
+
+"message": "error in internal server",
+
+"error": {
+
+    "errors": "error"
+
 }
-```
 
-### GET /product/:product_name
-
-> Get product by product name
-
-_Request Header_
-
-```
-{
-   "Authorization": "<your Authorization>"
 }
-```
 
-_Request Body_
+\```
 
-```
+**### GET /product/harga**
+
+\> Get product by price
+
+_*Request Header*_
+
+\```
+
 not needed
-```
 
-_Response (200)_
+\```
 
-```
+_*Request Body*_
+
+\```
+
+form-data
+
+key: dari -> value: int
+
+key: sampai -> int
+
+\```
+
+_*Response (200)*_
+
+\```
+
 {
-  "id" : "<given id by system>",
-  "name" : "<name to get insert into>",
-  "description" : "<description to get insert into>",
-  "takaran" : "<takaran to get insert into>",
-  "price" : "<price to get insert into>",
-  "discount" : "<discount to get insert into>",
-  "stock": "<stock to get insert into>",
-  "image": "<image to get insert into>",
-  "id_category": "<id_category to get insert into>"
-}
-```
 
-_Response (400 - Bad Request)_
+"code": 200,
 
-```
-{
-  "code" : 400,
-  "message" : "error"
-}
-```
+"message": "success get produk",
 
-_Response (500 - Internal Server Error)_
+"data": [
 
-```
-{
-  "code" : 500,
-  "message" : "error"
-}
-```
+​ {
 
-### POST /product
+​ "id": 2,
 
-> Create new product
+​ "nama": "mangga",
 
-_Request Header_
+​ "deskripsi": "jeruk bali",
 
-```
-{
-   "Authorization": "<your Authorization>"
-}
-```
+​ "gambar": "gambar-jeruk.jpg",
 
-_Request Body_
+​ "takaran": "1kg",
 
-```
-{
-  "name" : "<name to get insert into>",
-  "description" : "<description to get insert into>",
-  "takaran" : "<takaran to get insert into>",
-  "price" : "<price to get insert into>",
-  "discount" : "<discount to get insert into>",
-  "stock": "<stock to get insert into>",
-  "image": "<image to get insert into>",
-  "id_category": "<id_category to get insert into>"
-}
-```
+​ "harga": 25000,
 
-_Response (201)_
+​ "promo": "beli 20kg gratis ongkir",
 
-```
-{
-  "id" : "<given id by system>",
-  "name" : "<name to get insert into>",
-  "description" : "<description to get insert into>",
-  "takaran" : "<takaran to get insert into>",
-  "price" : "<price to get insert into>",
-  "discount" : "<discount to get insert into>",
-  "stock": "<stock to get insert into>",
-  "image": "<image to get insert into>",
-  "id_category": "<id_category to get insert into>"
-}
-```
+​ "stok": 50,
 
-_Response (400 - Bad Request)_
+​ "id_kategori": 1
 
-```
-{
-  "code" : 400,
-  "message" : "error"
-}
-```
+​ },
 
-_Response (500 - Internal Server Error)_
+​ {
 
-```
-{
-  "code" : 500,
-  "message" : "error"
-}
-```
+​ "id": 3,
 
-### PUT /product/:product_id
+​ "nama": "mangga",
 
-> Update product by product ID
+​ "deskripsi": "jeruk bali",
 
-_Request Header_
+​ "gambar": "gambar-jeruk.jpg",
 
-```
-{
-   "Authorization": "<your Authorization>"
-}
-```
+​ "takaran": "1kg",
 
-_Request Body_
+​ "harga": 50000,
 
-```
-{
-  "name" : "<name to get insert into>",
-  "description" : "<description to get insert into>",
-  "takaran" : "<takaran to get insert into>",
-  "price" : "<price to get insert into>",
-  "discount" : "<discount to get insert into>",
-  "stock": "<stock to get insert into>",
-  "image": "<image to get insert into>",
-  "id_category": "<id_category to get insert into>"
-}
-```
+​ "promo": "beli 20kg gratis ongkir",
 
-_Response (200)_
+​ "stok": 50,
 
-```
-{
-  "id" : "<posted id>",
-  "name" : "<name to get insert into>",
-  "description" : "<description to get insert into>",
-  "takaran" : "<takaran to get insert into>",
-  "price" : "<price to get insert into>",
-  "discount" : "<discount to get insert into>",
-  "stock": "<stock to get insert into>",
-  "image": "<image to get insert into>",
-  "id_category": "<id_category to get insert into>"
-}
-```
+​ "id_kategori": 1
 
-_Response (400 - Bad Request)_
+​ }
 
-```
-{
-  "code" : 400,
-  "message" : "error"
-}
-```
-
-_Response (500 - Internal Server Error)_
-
-```
-{
-  "code" : 500,
-  "message" : "error"
-}
-```
-
----
-
-### DELETE /product/:product_id
-
-> Delete product by ID
-
-_Request Header_
-
-```
-{
-   "Authorization": "<your Authorization>"
-}
-```
-
-_Request Body_
-
-```
-not needed
-```
-
-_Response (200)_
-
-```
-{
-  "code" : 200,
-  "message" : "success delete product"
-}
-```
-
-_Response (500 - Internal Server Error)_
-
-```
-{
-  "error" : ""
-}
-```
-
----
-
-## RESTful endpoints Category
-
-### GET /category
-
-> Get All category
-
-_Request Header_
-
-```
-not needed
-```
-
-_Request Body_
-
-```
-not needed
-```
-
-_Response (200)_
-
-```
-[
-  {
-  "id" : 1
-  "name" : "jeruk",
-  "description" : "buah jeruk",
-  "takaran" : "1 kg",
-  "price" : "25000",
-  "discount" : "beli 20 kg discount 10%",
-  "stock": "100 ton",
-  "image": "/img/product/gambar-jeruk.jpg",
-  "id_category": 1
-},{
-  "id" : 2
-  "name" : "jeruk",
-  "description" : "buah jeruk",
-  "takaran" : "1 kg",
-  "price" : "25000",
-  "discount" : "beli 20 kg discount 10%",
-  "stock": "100 ton",
-  "image": "/img/product/gambar-jeruk.jpg",
-  "id_category": 1
-  }
 ]
-```
 
-_Response (500 - Internal Server Error)_
-
-```
-{
-  "error" : "<posted error>"
 }
-```
 
----
+\```
 
-### GET /category/:category_id
+_*Response (400 - Bad Request)*_
 
-> Get category by category ID
+\```
 
-_Request Header_
+{
 
-```
+"code": 400,
+
+"message": "input data required",
+
+"error": {
+
+"errors": "error"
+
+}
+
+}
+
+\```
+
+_*Response (500 - Internal Server Error)*_
+
+\```
+
+{
+
+"code": 500,
+
+"message": "error in internal server",
+
+"error": {
+
+    "errors": "error"
+
+}
+
+}
+
+\```
+
+**### POST /produk**
+
+\> Create new product
+
+_*Request Header*_
+
+\```
+
+{
+
+"Authorization": "<your Authorization>"
+
+}
+
+\```
+
+_*Request Body*_
+
+\```
+
+{
+
+"nama" : "<name to get insert into>",
+
+"deskripsi" : "<description to get insert into>",
+
+"takaran" : "<takaran to get insert into>",
+
+"harga" : "<price to get insert into>",
+
+"promo" : "<discount to get insert into>",
+
+"stok": "<stock to get insert into>",
+
+"gambar": "<image to get insert into>",
+
+"id_kategori": "<id_category to get insert into>"
+
+}
+
+\```
+
+_*Response (201)*_
+
+\```
+
+{
+
+"code": 201,
+
+"message": "success create new produk",
+
+"data": {
+
+​ "id": 9,
+
+​ "nama": "mangga",
+
+​ "deskripsi": "jeruk bali",
+
+​ "gambar": "gambar-jeruk.jpg",
+
+​ "takaran": "1kg",
+
+​ "harga": 25000,
+
+​ "promo": "beli 20kg gratis ongkir",
+
+​ "stok": 50,
+
+​ "id_kategori": 1
+
+}
+
+}
+
+\```
+
+_*Response (400 - Bad Request)*_
+
+\```
+
+{
+
+"code": 400,
+
+"message": "input data required",
+
+"error": {
+
+"errors": "error"
+
+}
+
+}
+
+\```
+
+_*Response (500 - Internal Server Error)*_
+
+\```
+
+{
+
+"code": 500,
+
+"message": "error in internal server",
+
+"error": {
+
+    "errors": "error"
+
+}
+
+}
+
+\```
+
+**### PUT /produk/:produk_id**
+
+\> Update produk by produkID
+
+_*Request Header*_
+
+\```
+
+{
+
+"Authorization": "<your Authorization>"
+
+}
+
+\```
+
+_*Request Body*_
+
+\```
+
+{
+
+"nama" : "<name to get insert into>",
+
+"deskripsi" : "<description to get insert into>",
+
+"takaran" : "<takaran to get insert into>",
+
+"harga" : "<price to get insert into>",
+
+"promo" : "<discount to get insert into>",
+
+"stok": "<stock to get insert into>",
+
+"gambar": "<image to get insert into>",
+
+"id_kategori": "<id_category to get insert into>"
+
+}
+
+\```
+
+_*Response (200)*_
+
+\```
+
+{
+
+"code": 200,
+
+"message": "success update produk",
+
+"data": {
+
+​ "id": 9,
+
+​ "nama": "manggaaaaa",
+
+​ "deskripsi": "jeruk bali",
+
+​ "gambar": "gambar-jeruk.jpg",
+
+​ "takaran": "1kg",
+
+​ "harga": 25000,
+
+​ "promo": "beli 20kg gratis ongkir",
+
+​ "stok": 50,
+
+​ "id_kategori": 1
+
+}
+
+}
+
+\```
+
+_*Response (400 - Bad Request)*_
+
+\```
+
+{
+
+"code": 400,
+
+"message": "input data required",
+
+"error": {
+
+"errors": "error"
+
+}
+
+}
+
+\```
+
+_*Response (500 - Internal Server Error)*_
+
+\```
+
+{
+
+"code": 500,
+
+"message": "error in internal server",
+
+"error": {
+
+    "errors": "error"
+
+}
+
+}
+
+\```
+
+\---
+
+**### DELETE /product/:product_id**
+
+\> Delete product by ID
+
+_*Request Header*_
+
+\```
+
+{
+
+"Authorization": "<your Authorization>"
+
+}
+
+\```
+
+_*Request Body*_
+
+\```
+
 not needed
-```
 
-_Request Body_
+\```
 
-```
+_*Response (200)*_
+
+\```
+
+{
+
+"code" : 200,
+
+"message" : "success delete produk"
+
+}
+
+\```
+
+_*Response (500 - Internal Server Error)*_
+
+\```
+
+{
+
+"code": 500,
+
+"message": "error in internal server",
+
+"error": {
+
+    "errors": "error"
+
+}
+
+}
+
+\```
+
+\---
+
+**## RESTful endpoints Category**
+
+**### GET /kategori**
+
+\> Get All kategori
+
+_*Request Header*_
+
+\```
+
 not needed
-```
 
-_Response (200)_
+\```
 
-```
-{
-  "id" : 1
-  "name" : "jeruk",
-  "description" : "buah jeruk",
-  "takaran" : "1 kg",
-  "price" : "25000",
-  "discount" : "beli 20 kg discount 10%",
-  "stock": "100 ton",
-  "image": "/img/product/gambar-jeruk.jpg",
-  "id_category": 1
-}
-```
+_*Request Body*_
 
-_Response (500 - Internal Server Error)_
+\```
 
-```
-{
-  "error" : "<posted error>"
-}
-```
-
-### POST /category
-
-> Create new category
-
-_Request Header_
-
-```
-{
-    "Authorization" : "<your Authorization>"
-}
-```
-
-_Request Body_
-
-```
-{
-  "name" : "<name to get insert into>",
-}
-```
-
-_Response (201)_
-
-```
-{
-  "id" : "<given id by system>",
-  "name" : ""<name to get insert into>"
-}
-```
-
-_Response (400 - Bad Request)_
-
-```
-{
-  "code" : 400,
-  "message" : "error"
-}
-```
-
-_Response (500 - Internal Server Error)_
-
-```
-{
-  "code" : 500,
-  "message" : "error"
-}
-```
-
----
-
-### PUT /category/:category_id
-
-> Update category by category ID
-
-_Request Header_
-
-```
-{
-   "Authorization": "<your Authorization>"
-}
-```
-
-_Request Body_
-
-```
-{
-   "name" : "<name to get insert into>"
-}
-```
-
-_Response (200)_
-
-```
-{
-  "id" : "<given id by system>",
-  "name" : ""<name to get insert into>"
-}
-```
-
-_Response (400 - Bad Request)_
-
-```
-{
-  "code" : 400,
-  "message" : "error"
-}
-```
-
-_Response (401 - Unauthorized)_
-
-```
-{
-  "code" : 401,
-  "message" : "error"
-}
-```
-
-_Response (500 - Internal Server Error)_
-
-```
-{
-  "code" : 500,
-  "message" : "error"
-}
-```
-
----
-
-### DELETE /category/:category_id
-
-> Delete category by category ID
-
-_Request Header_
-
-```
-{
-   "Authorization": "<your Authorization>"
-}
-```
-
-_Request Body_
-
-```
 not needed
-```
 
-_Response (200)_
+\```
 
-```
+_*Response (200)*_
+
+\```
+
 {
-  "code" : 200,
-  "message" : "success delete category"
-}
-```
 
-_Response (400 - Bad Request)_
+"code": 200,
 
-```
-{
-  "code" : 400,
-  "message" : "error"
-}
-```
+"message": "success get all kategori data",
 
-_Response (500 - Internal Server Error)_
+"data": [
 
-```
-{
-  "code" : 500,
-  "message" : "error"
-}
-```
+​ {
 
----
+​ "id": 1,
 
-## RESTful endpoints Cart
+​ "nama": "buah"
 
-### GET /cart/:cart_id
+​ }
 
-> Get cart by cart_id
-
-_Request Header_
-
-```
-{
-   "Authorization": "<your Authorization>"
-}
-```
-
-_Request Body_
-
-```
-not needed
-```
-
-_Response (200)_
-
-```
-{
-  "id" : 1
-  "id_product" : 1,
-  "id_user" : 1,
-  "cart_code" : "KB0012012"
-}
-
-```
-
-_Response (400 - error bad request)_
-
-```
-{
-  "code" : 400,
-  "message" : "error"
-}
-```
-
-_Response (500 - Internal Server Error)_
-
-```
-{
-  "code" : 500,
-  "message" : "error"
-}
-```
-
----
-
-### GET /cart/:cart_code
-
-> Get cart by cart code
-
-_Request Header_
-
-```
-{
-   "Authorization": "<your Authorization>"
-}
-```
-
-_Request Body_
-
-```
-not needed
-```
-
-_Response (200)_
-
-```
-{
-  "id" : 1
-  "id_product" : 1,
-  "id_user" : 1,
-  "cart_code" : "KB0012012"
-}
-```
-
-_Response (400 - Bad Request)_
-
-```
-{
-  "code" : 400,
-  "message" : "error"
-}
-```
-
-_Response (500 - Internal Server Error)_
-
-```
-{
-  "code" : 500,
-  "message" : "error"
-}
-```
-
----
-
-### GET /cart/:product_id
-
-> Get cart by product ID
-
-_Request Header_
-
-```
-{
-   "Authorization": "<your Authorization>"
-}
-```
-
-_Request Body_
-
-```
-not needed
-```
-
-_Response (200)_
-
-```
-{
-  "code" : 200,
-  "count" : <given by sistem>
-}
-```
-
-_Response (400 - Bad Request)_
-
-```
-{
-  "code" : 400,
-  "message" : "error"
-}
-```
-
-_Response (500 - Internal Server Error)_
-
-```
-{
-  "code" : 500,
-  "message" : "error"
-}
-```
-
-### POST /cart
-
-> Create new cart
-
-_Request Header_
-
-```
-{
-    "Authorization" : "<your Authorization>"
-}
-```
-
-_Request Body_
-
-```
-{
-  "id_product" : "<id_product to get insert into>",
-}
-```
-
-_Response (201)_
-
-```
-{
-  "id" : "<given by sistem>"
-  "id_product" : "<id_product to get insert into>",
-  "id_user" : "<id_user use current user>"
-  "cart_code" : "<given by sistem>"
-}
-```
-
-_Response (400 - Bad Request)_
-
-```
-{
-  "code" : 400,
-  "message" : "error"
-}
-```
-
-_Response (500 - Internal Server Error)_
-
-```
-{
-  "code" : 500,
-  "message" : "error"
-}
-```
-
----
-
-### DELETE /cart/:cart_id
-
-> Delete category by category ID
-
-_Request Header_
-
-```
-{
-   "Authorization": "<your Authorization>"
-}
-```
-
-_Request Body_
-
-```
-not needed
-```
-
-_Response (200)_
-
-```
-{
-  "code" : 200,
-  "message" : "success delete cart"
-}
-```
-
-_Response (400 - Bad Request)_
-
-```
-{
-  "code" : 400,
-  "message" : "error"
-}
-```
-
-_Response (500 - Internal Server Error)_
-
-```
-{
-  "code" : 500,
-  "message" : "error"
-}
-```
-
-## RESTful endpoints Cart
-
-### GET /cart/:cart_id
-
-> Get cart by cart_id
-
-_Request Header_
-
-```
-{
-   "Authorization": "<your Authorization>"
-}
-```
-
-_Request Body_
-
-```
-not needed
-```
-
-_Response (200)_
-
-```
-{
-  "id" : 1
-  "id_product" : 1,
-  "id_user" : 1,
-  "cart_code" : "KB0012012"
-}
-
-```
-
-_Response (400 - error bad request)_
-
-```
-{
-  "code" : 400,
-  "message" : "error"
-}
-```
-
-_Response (500 - Internal Server Error)_
-
-```
-{
-  "code" : 500,
-  "message" : "error"
-}
-```
-
----
-
-### GET /cart/:cart_code
-
-> Get cart by cart code
-
-_Request Header_
-
-```
-{
-   "Authorization": "<your Authorization>"
-}
-```
-
-_Request Body_
-
-```
-not needed
-```
-
-_Response (200)_
-
-```
-{
-  "id" : 1
-  "id_product" : 1,
-  "id_user" : 1,
-  "cart_code" : "KB0012012"
-}
-```
-
-_Response (400 - Bad Request)_
-
-```
-{
-  "code" : 400,
-  "message" : "error"
-}
-```
-
-_Response (500 - Internal Server Error)_
-
-```
-{
-  "code" : 500,
-  "message" : "error"
-}
-```
-
----
-
-### GET /cart/:product_id
-
-> Get cart by product ID
-
-_Request Header_
-
-```
-{
-   "Authorization": "<your Authorization>"
-}
-```
-
-_Request Body_
-
-```
-not needed
-```
-
-_Response (200)_
-
-```
-{
-  "code" : 200,
-  "count" : <given by sistem>
-}
-```
-
-_Response (400 - Bad Request)_
-
-```
-{
-  "code" : 400,
-  "message" : "error"
-}
-```
-
-_Response (500 - Internal Server Error)_
-
-```
-{
-  "code" : 500,
-  "message" : "error"
-}
-```
-
-### POST /cart
-
-> Create new cart
-
-_Request Header_
-
-```
-{
-    "Authorization" : "<your Authorization>"
-}
-```
-
-_Request Body_
-
-```
-{
-  "id_product" : "<id_product to get insert into>",
-}
-```
-
-_Response (201)_
-
-```
-{
-  "id" : "<given by sistem>"
-  "id_product" : "<id_product to get insert into>",
-  "id_user" : "<id_user use current user>"
-  "cart_code" : "<given by sistem>"
-}
-```
-
-_Response (400 - Bad Request)_
-
-```
-{
-  "code" : 400,
-  "message" : "error"
-}
-```
-
-_Response (500 - Internal Server Error)_
-
-```
-{
-  "code" : 500,
-  "message" : "error"
-}
-```
-
----
-
-### DELETE /cart/:cart_id
-
-> Delete cart by cart ID
-
-_Request Header_
-
-```
-{
-   "Authorization": "<your Authorization>"
-}
-```
-
-_Request Body_
-
-```
-not needed
-```
-
-_Response (200)_
-
-```
-{
-  "code" : 200,
-  "message" : "success delete cart"
-}
-```
-
-_Response (400 - Bad Request)_
-
-```
-{
-  "code" : 400,
-  "message" : "error"
-}
-```
-
-_Response (500 - Internal Server Error)_
-
-```
-{
-  "code" : 500,
-  "message" : "error"
-}
-```
----
-
-## RESTful endpoints expedition
-
-### GET /province
-> Get All Province
-
- _Request Header_
-
-```
-not needed
-```
-
-_Request Body_
-
-```
-not needed
-```
-
-_Response (200)_
-
-```
-[
-  {
-  "province_id": "12",
-  "province": "Kalimantan Barat"
-  },
-  {
-  "province_id": "13",
-  "province": "Kalimantan Timur"
-  }
-  ...
 ]
-```
 
-_Response (500 - Internal Server Error)_
-
-```
-{
-  "error" : "<posted error>"
 }
-```
 
----
-### GET /city
-> Get All city
+\```
 
- _Request Header_
+_*Response (500 - Internal Server Error)*_
 
-```
+\```
+
+{
+
+"code": 500,
+
+"message": "error in internal server",
+
+"error": {
+
+    "errors": "error"
+
+}
+
+}
+
+\```
+
+\---
+
+**### GET /kategori/:kategori_id**
+
+\> Get category by category ID
+
+_*Request Header*_
+
+\```
+
 not needed
-```
 
-_Request Body_
+\```
 
-```
+_*Request Body*_
+
+\```
+
 not needed
-```
 
-_Response (200)_
+\```
 
-```
+_*Response (200)*_
+
+\```
+
+{
+
+{
+
+"code": 200,
+
+"message": "success get kategori",
+
+"data": {
+
+​ "id": 1,
+
+​ "nama": "buah"
+
+}
+
+}
+
+\```
+
+_*Response (500 - Internal Server Error)*_
+
+\```
+
+{
+
+"code": 500,
+
+"message": "error in internal server",
+
+"error": {
+
+    "errors": "error"
+
+}
+
+}
+
+\```
+
+**### POST /category**
+
+\> Create new category
+
+_*Request Header*_
+
+\```
+
+{
+
+"Authorization" : "<your Authorization>"
+
+}
+
+\```
+
+_*Request Body*_
+
+\```
+
+{
+
+"name" : "<name to get insert into>",
+
+}
+
+\```
+
+_*Response (201)*_
+
+\```
+
+{
+
+"code": 201,
+
+"message": "success create new kategori",
+
+"data": {
+
+​ "id": 1,
+
+​ "nama": "buah"
+
+}
+
+}
+
+\```
+
+_*Response (400 - Bad Request)*_
+
+\```
+
+{
+
+"code": 400,
+
+"message": "input data required",
+
+"error": {
+
+"errors": "error"
+
+}
+
+}
+
+\```
+
+_*Response (500 - Internal Server Error)*_
+
+\```
+
+{
+
+"code": 500,
+
+"message": "error in internal server",
+
+"error": {
+
+    "errors": "error"
+
+}
+
+}
+
+\```
+
+\---
+
+**### PUT /category/:category_id**
+
+\> Update category by category ID
+
+_*Request Header*_
+
+\```
+
+{
+
+"Authorization": "<your Authorization>"
+
+}
+
+\```
+
+_*Request Body*_
+
+\```
+
+{
+
+"name" : "<name to get insert into>"
+
+}
+
+\```
+
+_*Response (200)*_
+
+\```
+
+{
+
+"code": 200,
+
+"message": "success update kategori",
+
+"data": {
+
+​ "id": 1,
+
+​ "nama": "buahaaa"
+
+}
+
+}
+
+\```
+
+_*Response (400 - Bad Request)*_
+
+\```
+
+{
+
+"code": 400,
+
+"message": "input data required",
+
+"error": {
+
+"errors": "error"
+
+}
+
+}
+
+\```
+
+_*Response (401 - Unauthorized)*_
+
+\```
+
+{
+
+"code": 401,
+
+"message": "unauthorize",
+
+"error": {
+
+"errors": "error"
+
+}
+
+}
+
+\```
+
+_*Response (500 - Internal Server Error)*_
+
+\```
+
+{
+
+"code": 500,
+
+"message": "error in internal server",
+
+"error": {
+
+    "errors": "error"
+
+}
+
+}
+
+\```
+
+\---
+
+**### DELETE /category/:category_id**
+
+\> Delete category by category ID
+
+_*Request Header*_
+
+\```
+
+{
+
+"Authorization": "<your Authorization>"
+
+}
+
+\```
+
+_*Request Body*_
+
+\```
+
+not needed
+
+\```
+
+_*Response (200)*_
+
+\```
+
+{
+
+"code": 200,
+
+"message": "success delete kategori"
+
+}
+
+\```
+
+_*Response (400 - Bad Request)*_
+
+\```
+
+{
+
+"code": 400,
+
+"message": "input data required",
+
+"error": {
+
+"errors": "error"
+
+}
+
+}
+
+\```
+
+_*Response (500 - Internal Server Error)*_
+
+\```
+
+{
+
+"code": 500,
+
+"message": "error in internal server",
+
+"error": {
+
+    "errors": "error"
+
+}
+
+}
+
+\```
+
+\---
+
+**## RESTful endpoints Keranjang**
+
+**### GET /Keranjang/:keranjang_id**
+
+\> Get cart by cart_id
+
+_*Request Header*_
+
+\```
+
+{
+
+"Authorization": "<your Authorization>"
+
+}
+
+\```
+
+_*Request Body*_
+
+\```
+
+not needed
+
+\```
+
+_*Response (200)*_
+
+\```
+
+{
+
+"code" : 200,
+
+"message" : "success get data keranjang",
+
+"data" : [
+
+​ "id" : 1
+
+​ "id_product" : 1,
+
+"id_user" : 1,
+
+"cart_code" : "KB0012012"
+
+​ ]
+
+}
+
+\```
+
+_*Response (400 - error bad request)*_
+
+\```
+
+{
+
+"code": 400,
+
+"message": "input data required",
+
+"error": {
+
+"errors": "error"
+
+}
+
+}
+
+\```
+
+_*Response (500 - Internal Server Error)*_
+
+\```
+
+{
+
+"code": 500,
+
+"message": "error in internal server",
+
+"error": {
+
+    "errors": "error"
+
+}
+
+}
+
+\```
+
+\---
+
+**### GET /keranjang/:kode_keranjang**
+
+\> Get cart by cart code
+
+_*Request Header*_
+
+\```
+
+{
+
+"Authorization": "<your Authorization>"
+
+}
+
+\```
+
+_*Request Body*_
+
+\```
+
+not needed
+
+\```
+
+_*Response (200)*_
+
+\```
+
+{
+
+"code" : 200,
+
+"message" : "success get data keranjang",
+
+"data" : [
+
+​ "id" : 1
+
+​ "id_product" : 1,
+
+"id_user" : 1,
+
+"cart_code" : "KB0012012"
+
+​ ]
+
+}
+
+\```
+
+_*Response (400 - Bad Request)*_
+
+\```
+
+{
+
+"code": 400,
+
+"message": "input data required",
+
+"error": {
+
+"errors": "error"
+
+}
+
+}
+
+\```
+
+_*Response (500 - Internal Server Error)*_
+
+\```
+
+{
+
+"code": 500,
+
+"message": "error in internal server",
+
+"error": {
+
+    "errors": "error"
+
+}
+
+}
+
+\```
+
+\---
+
+**### GET /keranjang/:produk_id**
+
+\> Get cart by produk ID
+
+_*Request Header*_
+
+\```
+
+{
+
+"Authorization": "<your Authorization>"
+
+}
+
+\```
+
+_*Request Body*_
+
+\```
+
+not needed
+
+\```
+
+_*Response (200)*_
+
+\```
+
+{
+
+"code" : 200,
+
+"message" : "success get produk produk in keranjang"
+
+"data" : [
+
+​ "count" : 2
+
+​ ]
+
+}
+
+\```
+
+_*Response (400 - Bad Request)*_
+
+\```
+
+{
+
+"code": 400,
+
+"message": "input data required",
+
+"error": {
+
+"errors": "error"
+
+}
+
+}
+
+\```
+
+_*Response (500 - Internal Server Error)*_
+
+\```
+
+{
+
+"code": 500,
+
+"message": "error in internal server",
+
+"error": {
+
+    "errors": "error"
+
+}
+
+}
+
+\```
+
+**### POST /keranjang**
+
+\> Create new cart
+
+_*Request Header*_
+
+\```
+
+{
+
+"Authorization" : "<your Authorization>"
+
+}
+
+\```
+
+_*Request Body*_
+
+\```
+
+{
+
+"produk_id" : "<produk_idt o get insert into>",
+
+}
+
+\```
+
+_*Response (201)*_
+
+\```
+
+{
+
+"code" : 201,
+
+"message" : "success create new keranjang",
+
+"data" : [
+
+​ "id" : "<given by sistem>"
+
+"id_product" : "<id_product to get insert into>",
+
+​ "id_user" : "<id_user use current user>"
+
+​ "cart_code" : "<given by sistem>"
+
+​ ]
+
+}
+
+\```
+
+_*Response (400 - Bad Request)*_
+
+\```
+
+{
+
+"code": 400,
+
+"message": "input data required",
+
+"error": {
+
+"errors": "error"
+
+}
+
+}
+
+\```
+
+_*Response (500 - Internal Server Error)*_
+
+\```
+
+{
+
+"code": 500,
+
+"message": "error in internal server",
+
+"error": {
+
+    "errors": "error"
+
+}
+
+}
+
+\```
+
+\---
+
+**### DELETE /keranjang/:keranjang_id**
+
+\> Delete keranjangby keranjang ID
+
+_*Request Header*_
+
+\```
+
+{
+
+"Authorization": "<your Authorization>"
+
+}
+
+\```
+
+_*Request Body*_
+
+\```
+
+not needed
+
+\```
+
+_*Response (200)*_
+
+\```
+
+{
+
+"code" : 200,
+
+"message" : "success delete keranjang"
+
+}
+
+\```
+
+_*Response (400 - Bad Request)*_
+
+\```
+
+{
+
+"code": 400,
+
+"message": "input data required",
+
+"error": {
+
+"errors": "error"
+
+}
+
+}
+
+\```
+
+_*Response (500 - Internal Server Error)*_
+
+\```
+
+{
+
+"code": 500,
+
+"message": "error in internal server",
+
+"error": {
+
+    "errors": "error"
+
+}
+
+}
+
+\```
+
+**## RESTful endpoints expedition**
+
+**### GET /provinsi**
+
+\> Get All Province
+
+_*Request Header*_
+
+\```
+
+not needed
+
+\```
+
+_*Request Body*_
+
+\```
+
+not needed
+
+\```
+
+_*Response (200)*_
+
+\```
+
+{
+
+"code" : 200,
+
+"message" "success get all provinsi",
+
+"data" :
+
 [
-  {
-  "city_id": "39",
-  "province_id": "5",
-  "province": "DI Yogyakarta",
-  "type": "Kabupaten",
-  "city_name": "Bantul",
-  "postal_code": "55700"
-  },
-  {
-  "city_id": "40",
-  "province_id": "5",
-  "province": "DI Yogyakarta",
-  "type": "Kabupaten",
-  "city_name": "Others",
-  "postal_code": "55800"
-  }
-  ...
+
+{
+
+"province_id": "12",
+
+"province": "Kalimantan Barat"
+
+},
+
+{
+
+"province_id": "13",
+
+"province": "Kalimantan Timur"
+
+}
+
+...
+
 ]
-```
 
-_Response (500 - Internal Server Error)_
-
-```
-{
-  "error" : "<posted error>"
 }
-```
 
----
+\```
 
-## POST /cost/
+_*Response (500 - Internal Server Error)*_
 
-> Post expedition info to get COST information 
+\```
 
-_Request Header_
-
-```
 {
-    "Authorization" : "<your Authorization>"
+
+"code": 500,
+
+"message": "error in internal server",
+
+"error": {
+
+    "errors": "error"
+
 }
-```
 
-_Request Body_
-
-```
-{
-  "origin": <given by system>,
-  "destination": <city id to get insert into>,
-  "weigth": <product weight to get insert into>,
-  "courir": "<courier kode to get insert into>",
 }
-```
 
-_Response (201)_
+\```
 
-```
-{
-   "rajaongkir":{
-      "query":{
-         "origin":"501",
-         "destination":"114",
-         "weight":1700,
-         "courier":"jne"
-      },
-      "status":{
-         "code":200,
-         "description":"OK"
-      },
-      "origin_details":{
-         "city_id":"501",
-         "province_id":"5",
-         "province":"DI Yogyakarta",
-         "type":"Kota",
-         "city_name":"Yogyakarta",
-         "postal_code":"55000"
-      },
-      "destination_details":{
-         "city_id":"114",
-         "province_id":"1",
-         "province":"Bali",
-         "type":"Kota",
-         "city_name":"Denpasar",
-         "postal_code":"80000"
-      },
-      "results":[
-         {
-            "code":"jne",
-            "name":"Jalur Nugraha Ekakurir (JNE)",
-            "costs":[
-               {
-                  "service":"OKE",
-                  "description":"Ongkos Kirim Ekonomis",
-                  "cost":[
-                     {
-                        "value":38000,
-                        "etd":"4-5",
-                        "note":""
-                     }
-                  ]
-               },
-               {
-                  "service":"REG",
-                  "description":"Layanan Reguler",
-                  "cost":[
-                     {
-                        "value":44000,
-                        "etd":"2-3",
-                        "note":""
-                     }
-                  ]
-               },
-               {
-                  "service":"SPS",
-                  "description":"Super Speed",
-                  "cost":[
-                     {
-                        "value":349000,
-                        "etd":"",
-                        "note":""
-                     }
-                  ]
-               },
-               {
-                  "service":"YES",
-                  "description":"Yakin Esok Sampai",
-                  "cost":[
-                     {
-                        "value":98000,
-                        "etd":"1-1",
-                        "note":""
-                     }
-                  ]
-               }
-            ]
-         }
-      ]
-   }
-}
-```
+\---
 
-_Response (400 - Bad Request)_
+**### GET /city**
 
-```
-{
-  "code" : 400,
-  "message" : "error"
-}
-```
+\> Get All city
 
-_Response (500 - Internal Server Error)_
+_*Request Header*_
 
-```
-{
-  "code" : 500,
-  "message" : "error"
-}
-```
+\```
 
----
-
-## RESTful endpoints Address
-
-### GET /address/:cust_id
-
-> Get Address by customer id
-
-_Request Header_
-
-```
 not needed
-```
 
-_Request Body_
+\```
 
-```
+_*Request Body*_
+
+\```
+
 not needed
-```
 
-_Response (200)_
+\```
 
-```
+_*Response (200)*_
+
+\```
+
 [
-  {
-  "id" : 1
-  "customer_id" : 1,
-  "name" : "Radika yudhistira",
-  "province" : "banten",
-  "city" : "tangerang",
-  "detail_address" : "batu ceper jalan utama",
-  "phone_number":"081383322222"
-  },
-  {
-  "id" : 2,
-  "customer_id" : 1,
-  "name" : "Radika yudhistira",
-  "province" : "banten",
-  "city" : "tangerang selatan",
-  "detail_address" : "alam sutra",
-  "phone_number":"081383322222"
-  },
-  ...
+
+{
+
+"city_id": "39",
+
+"province_id": "5",
+
+"province": "DI Yogyakarta",
+
+"type": "Kabupaten",
+
+"city_name": "Bantul",
+
+"postal_code": "55700"
+
+},
+
+{
+
+"city_id": "40",
+
+"province_id": "5",
+
+"province": "DI Yogyakarta",
+
+"type": "Kabupaten",
+
+"city_name": "Others",
+
+"postal_code": "55800"
+
+}
+
+...
+
 ]
-```
 
-_Response (500 - Internal Server Error)_
+\```
 
-```
+_*Response (500 - Internal Server Error)*_
+
+\```
+
 {
-  "error" : "<posted error>"
+
+"error" : "<posted error>"
+
 }
-```
 
----
+\```
 
-### GET /address/:address_id
+\---
 
-> Get address by address ID
+**## POST /cost/**
 
-_Request Header_
+\> Post expedition info to get COST information
 
-```
+_*Request Header*_
+
+\```
+
+{
+
+"Authorization" : "<your Authorization>"
+
+}
+
+\```
+
+_*Request Body*_
+
+\```
+
+{
+
+"origin": <given by system>,
+
+"destination": <city id to get insert into>,
+
+"weigth": <product weight to get insert into>,
+
+"courir": "<courier kode to get insert into>",
+
+}
+
+\```
+
+_*Response (201)*_
+
+\```
+
+{
+
+"rajaongkir":{
+
+"query":{
+
+​ "origin":"501",
+
+​ "destination":"114",
+
+​ "weight":1700,
+
+​ "courier":"jne"
+
+},
+
+"status":{
+
+​ "code":200,
+
+​ "description":"OK"
+
+},
+
+"origin_details":{
+
+​ "city_id":"501",
+
+​ "province_id":"5",
+
+​ "province":"DI Yogyakarta",
+
+​ "type":"Kota",
+
+​ "city_name":"Yogyakarta",
+
+​ "postal_code":"55000"
+
+},
+
+"destination_details":{
+
+​ "city_id":"114",
+
+​ "province_id":"1",
+
+​ "province":"Bali",
+
+​ "type":"Kota",
+
+​ "city_name":"Denpasar",
+
+​ "postal_code":"80000"
+
+},
+
+"results":[
+
+​ {
+
+​ "code":"jne",
+
+​ "name":"Jalur Nugraha Ekakurir (JNE)",
+
+​ "costs":[
+
+​ {
+
+​ "service":"OKE",
+
+​ "description":"Ongkos Kirim Ekonomis",
+
+​ "cost":[
+
+​ {
+
+​ "value":38000,
+
+​ "etd":"4-5",
+
+​ "note":""
+
+​ }
+
+​ ]
+
+​ },
+
+​ {
+
+​ "service":"REG",
+
+​ "description":"Layanan Reguler",
+
+​ "cost":[
+
+​ {
+
+​ "value":44000,
+
+​ "etd":"2-3",
+
+​ "note":""
+
+​ }
+
+​ ]
+
+​ },
+
+​ {
+
+​ "service":"SPS",
+
+​ "description":"Super Speed",
+
+​ "cost":[
+
+​ {
+
+​ "value":349000,
+
+​ "etd":"",
+
+​ "note":""
+
+​ }
+
+​ ]
+
+​ },
+
+​ {
+
+​ "service":"YES",
+
+​ "description":"Yakin Esok Sampai",
+
+​ "cost":[
+
+​ {
+
+​ "value":98000,
+
+​ "etd":"1-1",
+
+​ "note":""
+
+​ }
+
+​ ]
+
+​ }
+
+​ ]
+
+​ }
+
+]
+
+}
+
+}
+
+\```
+
+_*Response (400 - Bad Request)*_
+
+\```
+
+{
+
+"code" : 400,
+
+"message" : "error"
+
+}
+
+\```
+
+_*Response (500 - Internal Server Error)*_
+
+\```
+
+{
+
+"code" : 500,
+
+"message" : "error"
+
+}
+
+\```
+
+\---
+
+**## RESTful endpoints Address**
+
+**### GET /address/:cust_id**
+
+\> Get Address by customer id
+
+_*Request Header*_
+
+\```
+
 not needed
-```
 
-_Request Body_
+\```
 
-```
+_*Request Body*_
+
+\```
+
 not needed
-```
 
-_Response (200)_
+\```
 
-```
+_*Response (200)*_
+
+\```
+
+[
+
 {
-  "id" : 2,
-  "customer_id" : 1,
-  "name" : "Radika yudhistira",
-  "province" : "banten",
-  "city" : "tangerang selatan",
-  "detail_address" : "alam sutra",
-  "phone_number":"081383322222"
-}
-```
 
-_Response (500 - Internal Server Error)_
+"id" : 1
 
-```
+"customer_id" : 1,
+
+"name" : "Radika yudhistira",
+
+"province" : "banten",
+
+"city" : "tangerang",
+
+"detail_address" : "batu ceper jalan utama",
+
+"phone_number":"081383322222"
+
+},
+
 {
-  "error" : "<posted error>"
-}
-```
 
-### POST /address
+"id" : 2,
 
-> Create new address
+"customer_id" : 1,
 
-_Request Header_
+"name" : "Radika yudhistira",
 
-```
+"province" : "banten",
+
+"city" : "tangerang selatan",
+
+"detail_address" : "alam sutra",
+
+"phone_number":"081383322222"
+
+},
+
+...
+
+]
+
+\```
+
+_*Response (500 - Internal Server Error)*_
+
+\```
+
 {
-    "Authorization" : "<your Authorization>"
+
+"error" : "<posted error>"
+
 }
-```
 
-_Request Body_
+\```
 
-```
-{
-  "id" : <given by system>,
-  "customer_id" : <customer id to get insert into>,
-  "name" : "<name to get insert into>",
-  "province" : "<province to get insert into>",
-  "city" : "<city to get insert into>",
-  "detail_address" : "<detail address to get insert into>",
-  "phone_number":"<phone number to get insert into>"
-}
-```
+\---
 
-_Response (201)_
+**### GET /address/:address_id**
 
-```
-{
-  "id" : <given by system>,
-  "customer_id" : <customer id to get insert into>,
-  "name" : "<name to get insert into>",
-  "province" : "<province to get insert into>",
-  "city" : "<city to get insert into>",
-  "detail_address" : "<detail address to get insert into>",
-  "phone_number":"<phone number to get insert into>"
-}
-```
+\> Get address by address ID
 
-_Response (400 - Bad Request)_
+_*Request Header*_
 
-```
-{
-  "code" : 400,
-  "message" : "error"
-}
-```
+\```
 
-_Response (500 - Internal Server Error)_
-
-```
-{
-  "code" : 500,
-  "message" : "error"
-}
-```
-
----
-
-### PUT /address/:address_id
-
-> Update address by address ID
-
-_Request Header_
-
-```
-{
-   "Authorization": "<your Authorization>"
-}
-```
-
-_Request Body_
-
-```
-{
-  "name" : "<name to get insert into>",
-  "province" : "<province to get insert into>",
-  "city" : "<city to get insert into>",
-  "detail_address" : "<detail address to get insert into>",
-  "phone_number":"<phone number to get insert into>"
-}
-```
-
-_Response (200)_
-
-```
-{
-  "id" : <given by system>,
-  "customer_id" : <customer id to get insert into>,
-  "name" : "<name to get insert into>",
-  "province" : "<province to get insert into>",
-  "city" : "<city to get insert into>",
-  "detail_address" : "<detail address to get insert into>",
-  "phone_number":"<phone number to get insert into>"
-}
-```
-
-_Response (400 - Bad Request)_
-
-```
-{
-  "code" : 400,
-  "message" : "error"
-}
-```
-
-_Response (401 - Unauthorized)_
-
-```
-{
-  "code" : 401,
-  "message" : "error"
-}
-```
-
-_Response (500 - Internal Server Error)_
-
-```
-{
-  "code" : 500,
-  "message" : "error"
-}
-```
-
----
-
-### DELETE /address/:address_id
-
-> Delete address by address ID
-
-_Request Header_
-
-```
-{
-   "Authorization": "<your Authorization>"
-}
-```
-
-_Request Body_
-
-```
 not needed
-```
 
-_Response (200)_
+\```
 
-```
-{
-  "code" : 200,
-  "message" : "success delete address"
-}
-```
+_*Request Body*_
 
-_Response (400 - Bad Request)_
+\```
 
-```
-{
-  "code" : 400,
-  "message" : "error"
-}
-```
-
-_Response (500 - Internal Server Error)_
-
-```
-{
-  "code" : 500,
-  "message" : "error"
-}
-```
-
----
-
-
-## RESTful endpoints Transaction
-
-### GET /transaction/:code_transaction
-
-> Get transaction by code_transaction
-
-_Request Header_
-
-```
-{
-   "Authorization": "<your Authorization>"
-}
-```
-
-_Request Body_
-
-```
 not needed
-```
 
-_Response (200)_
+\```
 
-```
+_*Response (200)*_
+
+\```
+
 {
-  "code_transaction" : 1
-  "status" : "menunggu pembayaran",
-  "payment_account" : "transfer",
-  "payment_total" : 120000,
-  "transaction_date" : "2019-01-01",
-  "cart_code" : 1,
-  "customer_id" : 1
+
+"id" : 2,
+
+"customer_id" : 1,
+
+"name" : "Radika yudhistira",
+
+"province" : "banten",
+
+"city" : "tangerang selatan",
+
+"detail_address" : "alam sutra",
+
+"phone_number":"081383322222"
+
 }
 
-```
+\```
 
-_Response (400 - error bad request)_
+_*Response (500 - Internal Server Error)*_
 
-```
+\```
+
 {
-  "code" : 400,
-  "message" : "error"
+
+"error" : "<posted error>"
+
 }
-```
 
-_Response (500 - Internal Server Error)_
+\```
 
-```
+**### POST /address**
+
+\> Create new address
+
+_*Request Header*_
+
+\```
+
 {
-  "code" : 500,
-  "message" : "error"
+
+"Authorization" : "<your Authorization>"
+
 }
-```
 
----
+\```
 
-### GET /transaction/:date_transaction
+_*Request Body*_
 
-> Get transaction by date_transaction
+\```
 
-_Request Header_
-
-```
 {
-   "Authorization": "<your Authorization>"
+
+"id" : <given by system>,
+
+"customer_id" : <customer id to get insert into>,
+
+"name" : "<name to get insert into>",
+
+"province" : "<province to get insert into>",
+
+"city" : "<city to get insert into>",
+
+"detail_address" : "<detail address to get insert into>",
+
+"phone_number":"<phone number to get insert into>"
+
 }
-```
 
-_Request Body_
+\```
 
-```
+_*Response (201)*_
+
+\```
+
+{
+
+"id" : <given by system>,
+
+"customer_id" : <customer id to get insert into>,
+
+"name" : "<name to get insert into>",
+
+"province" : "<province to get insert into>",
+
+"city" : "<city to get insert into>",
+
+"detail_address" : "<detail address to get insert into>",
+
+"phone_number":"<phone number to get insert into>"
+
+}
+
+\```
+
+_*Response (400 - Bad Request)*_
+
+\```
+
+{
+
+"code" : 400,
+
+"message" : "error"
+
+}
+
+\```
+
+_*Response (500 - Internal Server Error)*_
+
+\```
+
+{
+
+"code" : 500,
+
+"message" : "error"
+
+}
+
+\```
+
+\---
+
+**### PUT /address/:address_id**
+
+\> Update address by address ID
+
+_*Request Header*_
+
+\```
+
+{
+
+"Authorization": "<your Authorization>"
+
+}
+
+\```
+
+_*Request Body*_
+
+\```
+
+{
+
+"name" : "<name to get insert into>",
+
+"province" : "<province to get insert into>",
+
+"city" : "<city to get insert into>",
+
+"detail_address" : "<detail address to get insert into>",
+
+"phone_number":"<phone number to get insert into>"
+
+}
+
+\```
+
+_*Response (200)*_
+
+\```
+
+{
+
+"id" : <given by system>,
+
+"customer_id" : <customer id to get insert into>,
+
+"name" : "<name to get insert into>",
+
+"province" : "<province to get insert into>",
+
+"city" : "<city to get insert into>",
+
+"detail_address" : "<detail address to get insert into>",
+
+"phone_number":"<phone number to get insert into>"
+
+}
+
+\```
+
+_*Response (400 - Bad Request)*_
+
+\```
+
+{
+
+"code" : 400,
+
+"message" : "error"
+
+}
+
+\```
+
+_*Response (401 - Unauthorized)*_
+
+\```
+
+{
+
+"code" : 401,
+
+"message" : "error"
+
+}
+
+\```
+
+_*Response (500 - Internal Server Error)*_
+
+\```
+
+{
+
+"code" : 500,
+
+"message" : "error"
+
+}
+
+\```
+
+\---
+
+**### DELETE /address/:address_id**
+
+\> Delete address by address ID
+
+_*Request Header*_
+
+\```
+
+{
+
+"Authorization": "<your Authorization>"
+
+}
+
+\```
+
+_*Request Body*_
+
+\```
+
 not needed
-```
 
-_Response (200)_
+\```
 
-```
+_*Response (200)*_
+
+\```
+
 {
-  "code_transaction" : 1
-  "status" : "menunggu pembayaran",
-  "payment_account" : "transfer",
-  "payment_total" : 120000,
-  "transaction_date" : "2019-01-01",
-  "cart_code" : 1,
-  "customer_id" : 1
+
+"code" : 200,
+
+"message" : "success delete address"
+
 }
-```
 
-_Response (400 - Bad Request)_
+\```
 
-```
+_*Response (400 - Bad Request)*_
+
+\```
+
 {
-  "code" : 400,
-  "message" : "error"
+
+"code" : 400,
+
+"message" : "error"
+
 }
-```
 
-_Response (500 - Internal Server Error)_
+\```
 
-```
+_*Response (500 - Internal Server Error)*_
+
+\```
+
 {
-  "code" : 500,
-  "message" : "error"
+
+"code" : 500,
+
+"message" : "error"
+
 }
-```
 
-### POST /transaction
+\```
 
-> Create new transaction
+\---
 
-_Request Header_
+**## RESTful endpoints Transaction**
 
-```
+**### GET /transaction/:code_transaction**
+
+\> Get transaction by code_transaction
+
+_*Request Header*_
+
+\```
+
 {
-    "Authorization" : "<your Authorization>"
+
+"Authorization": "<your Authorization>"
+
 }
-```
 
-_Request Body_
+\```
 
-```
-{
-  "status" : "<status to get insert into>",
-  "payment_account" : "<payment_account to get insert into>",
-  "payment_total" : <payment_total to get insert into>,
-  "transaction_date" : "<transaction_date to get insert into>",
-}
-```
+_*Request Body*_
 
-_Response (201)_
+\```
 
-```
-{
-  "code_transaction" : <given by system>
-  "status" : "<status to get insert into>",
-  "payment_account" : "<payment_account to get insert into>",
-  "payment_total" : <payment_total to get insert into>,
-  "transaction_date" : "<transaction_date to get insert into>",
-  "cart_code" : <given by system>,
-  "customer_id" : <given by system>
-}
-```
-
-_Response (400 - Bad Request)_
-
-```
-{
-  "code" : 400,
-  "message" : "error"
-}
-```
-
-_Response (500 - Internal Server Error)_
-
-```
-{
-  "code" : 500,
-  "message" : "error"
-}
-```
-
----
-
-### PUT /transaction/:code_transaction
-
-> Update transaction by code_transaction
-
-_Request Header_
-
-```
-{
-   "Authorization": "<your Authorization>"
-}
-```
-
-_Request Body_
-
-```
-{
-   "status" : "<status to get insert into>"
-}
-```
-
-_Response (200)_
-
-```
-{
-  "code_transaction" : <given by system>
-  "status" : "<status to get insert into>",
-  "payment_account" : "<payment_account to get insert into>",
-  "payment_total" : <payment_total to get insert into>,
-  "transaction_date" : "<transaction_date to get insert into>",
-  "cart_code" : <given by system>,
-  "customer_id" : <given by system>
-}
-```
-
-_Response (400 - Bad Request)_
-
-```
-{
-  "code" : 400,
-  "message" : "error"
-}
-```
-
-_Response (401 - Unauthorized)_
-
-```
-{
-  "code" : 401,
-  "message" : "error"
-}
-```
-
-_Response (500 - Internal Server Error)_
-
-```
-{
-  "code" : 500,
-  "message" : "error"
-}
-```
-
----
-
-## RESTful endpoints Detail Transaction
-
-### GET /detail_transaction/:code_transaction
-
-> GET detail transaction by code transaction
-
-_Request Header_
-
-```
-{
-   "Authorization": "<your Authorization>"
-}
-```
-
-_Request Body_
-
-```
 not needed
-```
 
-_Response (200)_
+\```
 
-```
+_*Response (200)*_
+
+\```
+
 {
-  "code_detail_transaction": 1,
-  "transaction":{
-    "code_transaction" : <given by system>
-    "status" : "<status to get insert into>",
-    "payment_account" : "<payment_account to get insert into>",
-    "payment_total" : <payment_total to get insert into>,
-    "transaction_date" : "<transaction_date to get insert into>",
-    "cart_code" : <given by system>,
-    "customer_id" : <given by system>
-  },
-  "address" : {
-    "id" : 2,
-    "customer_id" : 1,
-    "name" : "Radika yudhistira",
-    "province" : "banten",
-    "city" : "tangerang selatan",
-    "detail_address" : "alam sutra",
-    "phone_number":"081383322222"
-  },
-  "courier": "jne" ,
-  "cost": 20000,
+
+"code_transaction" : 1
+
+"status" : "menunggu pembayaran",
+
+"payment_account" : "transfer",
+
+"payment_total" : 120000,
+
+"transaction_date" : "2019-01-01",
+
+"cart_code" : 1,
+
+"customer_id" : 1
+
 }
-```
 
-_Response (400 - Bad Request)_
+\```
 
-```
+_*Response (400 - error bad request)*_
+
+\```
+
 {
-  "code" : 400,
-  "message" : "error"
+
+"code" : 400,
+
+"message" : "error"
+
 }
-```
 
-_Response (500 - Internal Server Error)_
+\```
 
-```
+_*Response (500 - Internal Server Error)*_
+
+\```
+
 {
-  "code" : 500,
-  "message" : "error"
+
+"code" : 500,
+
+"message" : "error"
+
 }
-```
 
----
+\```
 
-## POST /detail_transaction/
+\---
 
-> POST detail transaction
+**### GET /transaction/:date_transaction**
 
-_Request Header_
+\> Get transaction by date_transaction
 
-```
+_*Request Header*_
+
+\```
+
 {
-    "Authorization" : "<your Authorization>"
+
+"Authorization": "<your Authorization>"
+
 }
-```
 
-_Request Body_
+\```
 
-```
+_*Request Body*_
+
+\```
+
+not needed
+
+\```
+
+_*Response (200)*_
+
+\```
+
 {
-  "code_transaction" : <code transaction to get insert into>,
-  "address_id":<address id to get insert into>,
-  "courier":"<courier to get insert>",
-  "cost": "<cost to get insert>"
+
+"code_transaction" : 1
+
+"status" : "menunggu pembayaran",
+
+"payment_account" : "transfer",
+
+"payment_total" : 120000,
+
+"transaction_date" : "2019-01-01",
+
+"cart_code" : 1,
+
+"customer_id" : 1
+
 }
-```
 
-_Response (201)_
+\```
 
-```
+_*Response (400 - Bad Request)*_
+
+\```
+
 {
-  "code_detail_transaction": <given by system>,
-  "code_transaction" : <code transaction to get insert into>,
-  "address_id":<address id to get insert into>,
-  "courier":"<courier to get insert>",
-  "cost": "<cost to get insert>"
+
+"code" : 400,
+
+"message" : "error"
+
 }
-```
 
-_Response (400 - Bad Request)_
+\```
 
-```
+_*Response (500 - Internal Server Error)*_
+
+\```
+
 {
-  "code" : 400,
-  "message" : "error"
+
+"code" : 500,
+
+"message" : "error"
+
 }
-```
 
-_Response (500 - Internal Server Error)_
+\```
 
-```
+**### POST /transaction**
+
+\> Create new transaction
+
+_*Request Header*_
+
+\```
+
 {
-  "code" : 500,
-  "message" : "error"
-}
-```
 
----
+"Authorization" : "<your Authorization>"
+
+}
+
+\```
+
+_*Request Body*_
+
+\```
+
+{
+
+"status" : "<status to get insert into>",
+
+"payment_account" : "<payment_account to get insert into>",
+
+"payment_total" : <payment_total to get insert into>,
+
+"transaction_date" : "<transaction_date to get insert into>",
+
+}
+
+\```
+
+_*Response (201)*_
+
+\```
+
+{
+
+"code_transaction" : <given by system>
+
+"status" : "<status to get insert into>",
+
+"payment_account" : "<payment_account to get insert into>",
+
+"payment_total" : <payment_total to get insert into>,
+
+"transaction_date" : "<transaction_date to get insert into>",
+
+"cart_code" : <given by system>,
+
+"customer_id" : <given by system>
+
+}
+
+\```
+
+_*Response (400 - Bad Request)*_
+
+\```
+
+{
+
+"code" : 400,
+
+"message" : "error"
+
+}
+
+\```
+
+_*Response (500 - Internal Server Error)*_
+
+\```
+
+{
+
+"code" : 500,
+
+"message" : "error"
+
+}
+
+\```
+
+\---
+
+**### PUT /transaction/:code_transaction**
+
+\> Update transaction by code_transaction
+
+_*Request Header*_
+
+\```
+
+{
+
+"Authorization": "<your Authorization>"
+
+}
+
+\```
+
+_*Request Body*_
+
+\```
+
+{
+
+"status" : "<status to get insert into>"
+
+}
+
+\```
+
+_*Response (200)*_
+
+\```
+
+{
+
+"code_transaction" : <given by system>
+
+"status" : "<status to get insert into>",
+
+"payment_account" : "<payment_account to get insert into>",
+
+"payment_total" : <payment_total to get insert into>,
+
+"transaction_date" : "<transaction_date to get insert into>",
+
+"cart_code" : <given by system>,
+
+"customer_id" : <given by system>
+
+}
+
+\```
+
+_*Response (400 - Bad Request)*_
+
+\```
+
+{
+
+"code" : 400,
+
+"message" : "error"
+
+}
+
+\```
+
+_*Response (401 - Unauthorized)*_
+
+\```
+
+{
+
+"code" : 401,
+
+"message" : "error"
+
+}
+
+\```
+
+_*Response (500 - Internal Server Error)*_
+
+\```
+
+{
+
+"code" : 500,
+
+"message" : "error"
+
+}
+
+\```
+
+\---
+
+**## RESTful endpoints Detail Transaction**
+
+**### GET /detail_transaction/:code_transaction**
+
+\> GET detail transaction by code transaction
+
+_*Request Header*_
+
+\```
+
+{
+
+"Authorization": "<your Authorization>"
+
+}
+
+\```
+
+_*Request Body*_
+
+\```
+
+not needed
+
+\```
+
+_*Response (200)*_
+
+\```
+
+{
+
+"code_detail_transaction": 1,
+
+"transaction":{
+
+"code_transaction" : <given by system>
+
+"status" : "<status to get insert into>",
+
+"payment_account" : "<payment_account to get insert into>",
+
+"payment_total" : <payment_total to get insert into>,
+
+"transaction_date" : "<transaction_date to get insert into>",
+
+"cart_code" : <given by system>,
+
+"customer_id" : <given by system>
+
+},
+
+"address" : {
+
+"id" : 2,
+
+"customer_id" : 1,
+
+"name" : "Radika yudhistira",
+
+"province" : "banten",
+
+"city" : "tangerang selatan",
+
+"detail_address" : "alam sutra",
+
+"phone_number":"081383322222"
+
+},
+
+"courier": "jne" ,
+
+"cost": 20000,
+
+}
+
+\```
+
+_*Response (400 - Bad Request)*_
+
+\```
+
+{
+
+"code" : 400,
+
+"message" : "error"
+
+}
+
+\```
+
+_*Response (500 - Internal Server Error)*_
+
+\```
+
+{
+
+"code" : 500,
+
+"message" : "error"
+
+}
+
+\```
+
+\---
+
+**## POST /detail_transaction/**
+
+\> POST detail transaction
+
+_*Request Header*_
+
+\```
+
+{
+
+"Authorization" : "<your Authorization>"
+
+}
+
+\```
+
+_*Request Body*_
+
+\```
+
+{
+
+"code_transaction" : <code transaction to get insert into>,
+
+"address_id":<address id to get insert into>,
+
+"courier":"<courier to get insert>",
+
+"cost": "<cost to get insert>"
+
+}
+
+\```
+
+_*Response (201)*_
+
+\```
+
+{
+
+"code_detail_transaction": <given by system>,
+
+"code_transaction" : <code transaction to get insert into>,
+
+"address_id":<address id to get insert into>,
+
+"courier":"<courier to get insert>",
+
+"cost": "<cost to get insert>"
+
+}
+
+\```
+
+_*Response (400 - Bad Request)*_
+
+\```
+
+{
+
+"code" : 400,
+
+"message" : "error"
+
+}
+
+\```
+
+_*Response (500 - Internal Server Error)*_
+
+\```
+
+{
+
+"code" : 500,
+
+"message" : "error"
+
+}
+
+\```
+
+\---

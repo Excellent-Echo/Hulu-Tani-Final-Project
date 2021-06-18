@@ -9,8 +9,14 @@ type Response struct {
 }
 
 type Failure struct {
-	Code  int    `json:"code"`
-	Error string `json:"error"`
+	Code    int         `json:"code"`
+	Message string      `json:"message"`
+	Error   interface{} `json:"error"`
+}
+
+type Delete struct {
+	Code    int         `json:"code"`
+	Message interface{} `json:"message"`
 }
 
 func APIResponse(code int, message string, data interface{}) Response {
@@ -22,12 +28,21 @@ func APIResponse(code int, message string, data interface{}) Response {
 	return response
 }
 
-func APIFailure(code int, error string) Failure {
+func APIFailure(code int, message string, err interface{}) Failure {
 	var failure = Failure{
-		Code:  code,
-		Error: error,
+		Code:    code,
+		Message: message,
+		Error:   err,
 	}
 	return failure
+}
+
+func FormatDelete(code int, message interface{}) Delete {
+	var formatDelete = Delete{
+		Code:    code,
+		Message: message,
+	}
+	return formatDelete
 }
 
 func SplitErrorInformation(err error) []string {

@@ -10,6 +10,7 @@ func main() {
 	r := gin.Default()
 
 	routes.PelangganRoute(r)
+	routes.KategoriRoute(r)
 
 	r.Run(":5555")
 }

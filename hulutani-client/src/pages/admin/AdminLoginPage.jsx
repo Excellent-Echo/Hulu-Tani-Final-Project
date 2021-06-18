@@ -1,5 +1,5 @@
 import React from "react";
-import LoginImg from "../images/Secure login-bro.png";
+import LoginImg from "../../assets/images/login-img.svg";
 
 const AdminLoginPage = () => {
   return (

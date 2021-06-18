@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react'
 import { useSelector, useDispatch } from "react-redux";
-import userLoginAction from '../redux/user/login/userLoginAction';
+import userLoginAction from '../../redux/user/login/userLoginAction';
 
 import '../../assets/css/auth.css'
 
@@ -36,7 +36,7 @@ function Login() {
                                 </h1>
                             </div>
                             <div className="row">
-                            <form onSubmit={loginSubmitHandler}>
+                            <form>
                                 <div className="mb-3">
                                     <label for="exampleInputEmail1" className="form-label">Email</label>
                                     <input 

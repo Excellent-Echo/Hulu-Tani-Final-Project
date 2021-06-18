@@ -25,7 +25,7 @@ func (h *kategoriHandler) ShowAllKategorisHandler(c *gin.Context) {
 		return
 	}
 
-	response := helper.APIResponse(200, "success get all jobs data", kategori)
+	response := helper.APIResponse(200, "success get all kategori data", kategori)
 
 	c.JSON(200, response)
 }
@@ -40,11 +40,11 @@ func (h *kategoriHandler) ShowKategoriByIDHandler(c *gin.Context) {
 		c.JSON(500, responseErr)
 		return
 	}
-	response := helper.APIResponse(200, "success get job by ID", kategori)
+	response := helper.APIResponse(200, "success get kategori", kategori)
 	c.JSON(200, response)
 }
 
-func (h *kategoriHandler) CreateJobHandler(c *gin.Context) {
+func (h *kategoriHandler) CreateKategoriHandler(c *gin.Context) {
 
 	var inputKategori entity.KategoriInput
 

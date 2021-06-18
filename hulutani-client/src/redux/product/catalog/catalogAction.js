@@ -60,7 +60,9 @@ const getAllProducts = () => async dispatch =>{
 
         dispatch({
             type: CATALOG_SET_ALL_PRODUCT,
-            payload: res.data
+            payload: {
+                allProducts: res.data
+            }
         })
 
         dispatch(stopLoading())
@@ -82,7 +84,9 @@ const getFilterdProducts = (category) => async dispatch => {
 
         dispatch({
             type: CATALOG_SET_FILTERED_PRODUCTS,
-            payload: res.data
+            payload: {
+                filteredProduct: res.data
+            }
         })
 
         dispatch(stopLoading())
@@ -104,7 +108,9 @@ const getSearchedProducts = (searchKey) => async dispatch =>{
 
         dispatch({
             type: CATALOG_SET_SEARCHED_PRODUCTS,
-            payload: res.data
+            payload: {
+                searchedProduct: res.data
+            }
         })
 
         dispatch(stopLoading())

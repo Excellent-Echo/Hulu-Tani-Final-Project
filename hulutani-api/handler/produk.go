@@ -4,6 +4,7 @@ import (
 	"hulutani-api/entity"
 	"hulutani-api/helper"
 	"hulutani-api/layer/produk"
+	"strconv"
 
 	"github.com/gin-gonic/gin"
 )
@@ -30,10 +31,44 @@ func (h *produkHandler) ShowAllProduksHandler(c *gin.Context) {
 	c.JSON(200, response)
 }
 
-func (h *produkHandler) ShowProdukByIDHandler(c *gin.Context) {
+func (h *produkHandler) ShowProdukByNameHandler(c *gin.Context) {
 	nama := c.Param("nama_produk")
 
 	produk, err := h.service.GetProdukByName(nama)
+	if err != nil {
+		responseErr := helper.APIResponse(500, "internal server error", gin.H{"error": err.Error()})
+
+		c.JSON(500, responseErr)
+		return
+	}
+	response := helper.APIResponse(200, "success get produk", produk)
+	c.JSON(200, response)
+}
+
+func (h *produkHandler) ShowProdukByIdHandler(c *gin.Context) {
+	id := c.Param("produk_id")
+
+	produk, err := h.service.GetProdukById(id)
+	if err != nil {
+		responseErr := helper.APIResponse(500, "internal server error", gin.H{"error": err.Error()})
+
+		c.JSON(500, responseErr)
+		return
+	}
+	response := helper.APIResponse(200, "success get produk", produk)
+	c.JSON(200, response)
+}
+
+func (h *produkHandler) ShowProdukByHargaHandler(c *gin.Context) {
+	dari, _ := strconv.Atoi(c.PostForm("dari"))
+	sampai, _ := strconv.Atoi(c.PostForm("sampai"))
+
+	var harga = entity.Harga{
+		Dari:   dari,
+		Sampai: sampai,
+	}
+
+	produk, err := h.service.GetProdukByHarga(harga)
 	if err != nil {
 		responseErr := helper.APIResponse(500, "internal server error", gin.H{"error": err.Error()})
 

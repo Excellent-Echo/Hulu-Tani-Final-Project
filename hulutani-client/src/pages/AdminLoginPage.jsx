@@ -1,7 +1,7 @@
 import React from "react";
 import LoginImg from "../images/Secure login-bro.png";
 
-const Login = () => {
+const AdminLoginPage = () => {
   return (
     <div className="vh-100 d-flex">
       <div className="w-50 d-flex justify-content-center align-items-center p-5 row">

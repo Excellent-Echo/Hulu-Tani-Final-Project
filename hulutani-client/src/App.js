@@ -1,19 +1,34 @@
-import logo from './logo.svg';
 import './App.css';
-
-import LandingPage from './pages/landing';
-import Login from './pages/login';
-import Register from './pages/register';
-import UserEdit from './pages/useredit';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import LandingPage from './pages/user/landing';
+import Login from './pages/user/login';
+import Register from './pages/user/register';
+import UserEdit from './pages/user/useredit';
+import AdminLogin from './pages/admin/AdminLoginPage';
 
 function App() {
   return (
-    <>
-      {/* <LandingPage/> */}
-      {/* <Login/> */}
-      {/* <Register/> */}
-      <UserEdit />
-    </>
+      <Router>
+        <Switch>
+          {/* User Routes */}
+          <Route path="/login">
+            <Login/>
+          </Route>
+          <Route path="/register">
+            <Register/>
+          </Route>
+          <Route path="/user-detail">
+            <UserEdit />
+          </Route>
+          {/* Admin Routes */}
+          <Route path="/tpanel">
+            <AdminLogin/>
+          </Route>
+          <Route path="/">
+            <LandingPage/>
+          </Route>
+        </Switch>
+      </Router>
   );
 }
 

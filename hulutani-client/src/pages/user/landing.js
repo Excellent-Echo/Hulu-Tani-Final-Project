@@ -1,7 +1,7 @@
 import React from 'react'
 
 import GroceryShopping from '../../assets/images/landing-title.svg'
-import '../../assets/css/user/landing.css'
+import '../../assets/css/landing.css'
 
 function LandingPage() {
     return (

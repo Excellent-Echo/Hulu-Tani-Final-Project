@@ -10,6 +10,8 @@ import (
 type Service interface {
 	GetAllProduk() ([]entity.Produk, error)
 	GetProdukByName(nama string) (entity.Produk, error)
+	GetProdukById(id string) (entity.Produk, error)
+	GetProdukByHarga(harga entity.Harga) ([]entity.Produk, error)
 	SaveNewProduk(input entity.ProdukInput) (entity.Produk, error)
 	UpdateProdukByID(id string, dataInput entity.ProdukInput) (entity.Produk, error)
 	DeleteProdukByID(id string) (interface{}, error)
@@ -34,6 +36,20 @@ func (s *service) GetAllProduk() ([]entity.Produk, error) {
 
 func (s *service) GetProdukByName(nama string) (entity.Produk, error) {
 	produk, err := s.repo.FindByName(nama)
+
+	if err != nil {
+		return entity.Produk{}, err
+	}
+
+	if produk.ID == 0 {
+		return entity.Produk{}, errors.New("produk not found")
+	}
+
+	return produk, nil
+}
+
+func (s *service) GetProdukById(id string) (entity.Produk, error) {
+	produk, err := s.repo.FindByID(id)
 
 	if err != nil {
 		return entity.Produk{}, err
@@ -135,4 +151,14 @@ func (s *service) DeleteProdukByID(id string) (interface{}, error) {
 	msg := fmt.Sprintf("success delete produk")
 
 	return msg, nil
+}
+
+func (s *service) GetProdukByHarga(harga entity.Harga) ([]entity.Produk, error) {
+	produk, err := s.repo.FindByHarga(harga)
+
+	if err != nil {
+		return []entity.Produk{}, err
+	}
+
+	return produk, nil
 }

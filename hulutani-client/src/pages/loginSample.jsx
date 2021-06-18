@@ -10,7 +10,7 @@ const RegisterSample = () => {
         dispatch(userLoginAction.resetForm());
     }, [])
 
-    const registerSubmitHandler = e =>{
+    const loginSubmitHandler = e =>{
         e.preventDefault();
         dispatch(userLoginAction.loginUser(
             userLoginData.email,
@@ -21,7 +21,7 @@ const RegisterSample = () => {
     return (
         <div>
             <h1>Login sample</h1>
-            <form onSubmit={registerSubmitHandler}>
+            <form onSubmit={loginSubmitHandler}>
                 <div>
                     <label htmlFor="">email</label>
                     <input type="email" 

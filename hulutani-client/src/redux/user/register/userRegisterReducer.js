@@ -12,7 +12,7 @@ import {
     USER_REGISTER_STOP_LOADING 
 } from "../actionType"
 
-const initalState = {
+const initialState = {
     name:"",
     dateBirth:"",
     handphoneNumber:"",
@@ -24,11 +24,11 @@ const initalState = {
     isLoading:false
 }
 
-const userRegisterReducer = (state = initalState, action) => {
+const userRegisterReducer = (state = initialState, action) => {
     switch (action.type){
         case USER_REGISTER_RESET_FORM:
             return {
-                ...initalState,
+                ...initialState,
             };
         case USER_REGISTER_SET_NAME:
             return {

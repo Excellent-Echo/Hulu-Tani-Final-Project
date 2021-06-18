@@ -1,9 +1,9 @@
-import Login from "./pages/Login";
+import AdminLoginPage from "./pages/AdminLoginPage";
 
 function App() {
   return (
     <>
-      <Login />
+      <AdminLoginPage />
     </>
   );
 }

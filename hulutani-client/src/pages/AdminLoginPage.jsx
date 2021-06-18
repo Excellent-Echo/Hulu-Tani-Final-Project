@@ -47,4 +47,4 @@ const AdminLoginPage = () => {
   );
 };
 
-export default Login;
+export default AdminLoginPage;

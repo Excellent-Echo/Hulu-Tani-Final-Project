@@ -1,0 +1,73 @@
+body {
+    background-color: #EEFBF9;
+}
+
+.breadcrumbs-container {
+    margin-bottom: 25px;
+}
+
+.user-sidebar-container {
+
+}
+
+.user-content-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.user-sidebar {
+    position: fixed;
+}
+
+.user-sidebar-title {
+    margin-bottom: 25px;
+}
+
+button.user-sidebar-button .user-sidebar-icon.transaksi::before {
+    font-family: "Font Awesome 5 Free"; 
+    font-weight: 900; 
+    content: "\f53c";
+    margin-right: 15px;
+}
+
+button.user-sidebar-button .user-sidebar-icon.alamat::before {
+    font-family: "Font Awesome 5 Free"; 
+    font-weight: 900; 
+    content: "\f3c5";
+    margin-right: 15px;
+}
+
+button.user-sidebar-button .user-sidebar-icon.edit::before {
+    font-family: "Font Awesome 5 Free"; 
+    font-weight: 900; 
+    content: "\f4fe";
+    margin-right: 15px;
+}
+
+.user-sidebar-button.current span.sidebar-button,
+.user-sidebar-button.current span.sidebar-button .user-sidebar-icon {
+    font-weight: 700 !important;
+    font-size: 1.5rem !important;
+    color: #25A18E !important;
+    background-color: transparent !important;
+}
+
+.user-content-container {
+    min-height: 100vh;
+}
+
+.user-content {
+    /* min-width: 100%; */
+    /* min-height: 100%; */
+    background-color: white;
+    border-radius: 15px;
+    padding: 2.5vw;
+}
+
+.content-button {
+
+}
+
+.content-button .status-filter {
+    margin-right: 10px;
+}

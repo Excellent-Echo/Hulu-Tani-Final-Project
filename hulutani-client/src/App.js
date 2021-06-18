@@ -1,9 +1,18 @@
-import AdminLoginPage from "./pages/AdminLoginPage";
+import logo from './logo.svg';
+import './App.css';
+
+import LandingPage from './pages/landing';
+import Login from './pages/login';
+import Register from './pages/register';
+import UserEdit from './pages/useredit';
 
 function App() {
   return (
     <>
-      <AdminLoginPage />
+      {/* <LandingPage/> */}
+      {/* <Login/> */}
+      {/* <Register/> */}
+      <UserEdit />
     </>
   );
 }

@@ -11,6 +11,7 @@ func main() {
 
 	routes.PelangganRoute(r)
 	routes.KategoriRoute(r)
+	routes.ProdukRoute(r)
 
-	r.Run(":5555")
+	r.Run(":4444")
 }

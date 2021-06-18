@@ -20,6 +20,7 @@ func Connection() *gorm.DB {
 	db.AutoMigrate(&migration.Pelanggan{})
 	db.AutoMigrate(&migration.Admin{})
 	db.AutoMigrate(&migration.Produk{})
+	db.AutoMigrate(&migration.Kontak{})
 	db.AutoMigrate(&migration.KeranjangBelanja{})
 	db.AutoMigrate(&migration.Transaksi{})
 	db.AutoMigrate(&migration.DetailTransaksi{})

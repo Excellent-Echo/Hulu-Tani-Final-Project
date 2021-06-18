@@ -1,9 +1,15 @@
 package main
 
 import (
-	"hulutani-api/config"
+	"hulutani-api/routes"
+
+	"github.com/gin-gonic/gin"
 )
 
 func main() {
-	config.Connection()
+	r := gin.Default()
+
+	routes.PelangganRoute(r)
+
+	r.Run(":5555")
 }

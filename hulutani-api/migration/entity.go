@@ -4,9 +4,10 @@ type Pelanggan struct {
 	ID               int              `gorm:"Primarykey" json:"id"`
 	Nama             string           `json:"name"`
 	TanggalLahir     string           `json:"tanggal_lahir"`
-	NomorHandphone   int              `json:"nomor_handphone"`
+	NomorHandphone   string           `json:"nomor_handphone"`
 	JenisKelamin     string           `json:"jenis_kelamin"`
-	Email            string           `gorm:"unique, email" json:"email"`
+	Profil           string           `json:"profil"`
+	Email            string           `gorm:"unique" json:"email"`
 	Password         string           `gorm:"password" json:"password"`
 	KeranjangBelanja KeranjangBelanja `gorm:"foreignkey:IdPelanggan"`
 	Alamat           []Alamat         `gorm:"foreignkey:IdPelanggan"`
@@ -26,8 +27,17 @@ type Alamat struct {
 	Provinsi               string `json:"provinsi"`
 	Kota                   string `json:"kota"`
 	AlamatDetail           string `json:"alamat_detail"`
-	NomorHandphonePenerima int    `json:"nomor_handphone_penerima"`
+	NomorHandphonePenerima string `json:"nomor_handphone_penerima"`
 	IdPelanggan            int    `json:"id_pelanggan"`
+}
+
+type Kontak struct {
+	ID             int    `gorm:"primarykey" json:"id"`
+	Nama           string `json:"nama"`
+	Alamat         string `json:"alamat"`
+	JenisKelamin   string `json:"jenis_kelamin"`
+	TanggalLahir   string `json:"tanggal_lahir"`
+	NomorHandphone string `json:"nomor_handphone"`
 }
 
 type Kategori struct {
@@ -41,6 +51,7 @@ type Produk struct {
 	ID         int    `gorm:"Primarykey" json:"id"`
 	Nama       string `json:"nama"`
 	Deskripsi  string `json:"deskripsi"`
+	Gambar     string `json:"gambar"`
 	Takaran    string `json:"takaran"`
 	Harga      int    `json:"harga"`
 	Promo      string `json:"promo"`

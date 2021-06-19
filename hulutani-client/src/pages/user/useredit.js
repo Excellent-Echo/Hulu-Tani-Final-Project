@@ -2,36 +2,38 @@ import React from 'react'
 
 import '../../assets/css/userpage.css'
 
+import BlankUser from '../assets/images/blank-user.png'
+
 function UserEdit() {
     return (
         <>
             <div className="container-fluid nav-container">
-                <nav class="navbar navbar-expand-lg bg-light">
-                    <div class="container">
-                        <a class="navbar-brand title accent-text" href="#">HuluTani</a>
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
+                <nav className="navbar navbar-expand-lg bg-light">
+                    <div className="container">
+                        <a className="navbar-brand title accent-text" href="#">HuluTani</a>
+                        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span className="navbar-toggler-icon"></span>
                         </button>
-                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                            <ul class="navbar-nav mx-4 mb-lg-0">
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul className="navbar-nav mx-4 mb-lg-0">
+                                <li className="nav-item dropdown">
+                                    <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         Kategori
                                     </a>
-                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <li><a class="dropdown-item" href="#">Action</a></li>
-                                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                                    <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <li><a className="dropdown-item" href="#">Action</a></li>
+                                        <li><a className="dropdown-item" href="#">Another action</a></li>
                                     </ul>
                                 </li>
                             </ul>
-                            <form class="ms-4 me-auto">
-                                <input class="form-control nav-search" type="search" placeholder="Cari 'wortel'" aria-label="Search"/>
+                            <form className="ms-4 me-auto">
+                                <input className="form-control nav-search" type="search" placeholder="Cari 'wortel'" aria-label="Search"/>
                             </form>
-                            <div class="navbar-nav ms-2">
-                                    <a class="nav-link active" aria-current="page" href="#">Home</a>
-                                    <a class="nav-link" href="#">Features</a>
-                                    <a class="nav-link" href="#">Pricing</a>
-                                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                            <div className="navbar-nav ms-2">
+                                    <a className="nav-link active" aria-current="page" href="#">Home</a>
+                                    <a className="nav-link" href="#">Features</a>
+                                    <a className="nav-link" href="#">Pricing</a>
+                                    <a className="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
                             </div>
                         </div>
                     </div>
@@ -44,7 +46,7 @@ function UserEdit() {
                             <ol className="breadcrumb">
                                 <li className="breadcrumb-item"><a href="#">Home</a></li>
                                 <li className="breadcrumb-item"><a href="#">Profil Saya</a></li>
-                                <li className="breadcrumb-item active" aria-current="page">Transaksi</li>
+                                <li className="breadcrumb-item active" aria-current="page">Edit Profil</li>
                             </ol>
                         </nav>
                     </div>
@@ -55,7 +57,7 @@ function UserEdit() {
                             </div>
                             <div className="row user-sidebar-content">
                                 <div className="list-group">
-                                    <button className="list-group-item list-group-item-action user-sidebar-button current">
+                                    <button className="list-group-item list-group-item-action user-sidebar-button">
                                         <span className="sidebar-button">
                                             <span className="user-sidebar-icon transaksi"></span>
                                             Transaksi
@@ -67,7 +69,7 @@ function UserEdit() {
                                             Alamat Saya
                                         </span>
                                     </button>
-                                    <button className="list-group-item list-group-item-action user-sidebar-button">
+                                    <button className="list-group-item list-group-item-action user-sidebar-button current">
                                         <span className="sidebar-button">
                                             <span className="user-sidebar-icon edit"></span>
                                             Edit Profil
@@ -80,26 +82,99 @@ function UserEdit() {
                     <div className="row user-content-container">
                         <div className="col-sm-9 user-content">
                             <div className="row content-title">
-                                <h1 className="accent-title accent-text">
-                                    Daftar Transaksi
-                                </h1>
-                            </div>
-                            <div className="row content-button">
                                 <div className="col-sm">
-                                    <div className="btn-group status-filter">
-                                        <button type="button" className="btn-sm small outline-primary hover-no-scale dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                            Semua Status
-                                        </button>
-                                        <ul className="dropdown-menu">
-                                            <li><a className="dropdown-item" href="#">Menunggu Pembayaran</a></li>
-                                            <li><a className="dropdown-item" href="#">Diproses</a></li>
-                                            <li><a className="dropdown-item" href="#">Dikirim</a></li>
-                                            <li><a className="dropdown-item" href="#">Selesai</a></li>
-                                            <li><hr className="dropdown-divider"/></li>
-                                            <li><a className="dropdown-item" href="#">Dibatalkan</a></li>
-                                        </ul>
+                                    <h1 className="accent-title accent-text">
+                                        Profil Saya
+                                    </h1>
+                                </div>
+                                <div className="col-sm">
+
+                                </div>
+                            </div>
+                            <br />
+                            <div className="row content-edit">
+                                <div className="col-sm-5">
+                                    <div className="row">
+                                        <h4 className="accent-title">
+                                           Informasi Pribadi
+                                       </h4>
+                                       <div className="row">
+                                           <p className="subtitle">
+                                                Mari lebih saling mengenal dengan tidak
+                                                memasukkan informasi palsu.
+                                           </p>
+                                       </div>
+                                       <div className="row user-avatar-container">
+                                            <img src={ BlankUser } alt="" className="img-fluid user-avatar" />
+                                       </div>
                                     </div>
-                                    <input type="date" className="small outline-primary hover-no-scale dropdown-toggle"/>   
+                                </div>
+                                <div className="col-sm">
+                                    <form className="row g-3">
+                                        <div className="col-sm-12">
+                                            <label for="namaLengkap" className="form-label accent-title">Nama Lengkap</label>
+                                            <input type="name" className="form-control" id="namaLengkap"/>
+                                        </div>
+                                        <div className="col-sm-6">
+                                            <label for="tglLahir" className="form-label accent-title">Tanggal Lahir</label>
+                                            <input type="date" className="form-control" id="tglLahir" placeholder="1234 Main St"/>
+                                        </div>
+                                        <div className="col-sm-6">
+                                            <label for="jnsKelamin" className="form-label accent-title">Jenis Kelamin</label>
+                                            <select id="jnsKelamin" className="form-select">
+                                                <option selected>Pilih salah satu</option>
+                                                <option>Laki-laki</option>
+                                                <option>Perempuan</option>
+                                            </select>                                        
+                                        </div>
+                                        <div className="col-sm-6">
+                                            <label for="email" className="form-label accent-title">Email</label>
+                                            <input type="email" className="form-control" id="email"/>
+                                        </div>
+                                        <div className="col-sm-6">
+                                            <label for="noTelp" className="form-label accent-title">No. Telepon</label>
+                                            <input type="text" className="form-control" id="notelp"/>
+                                        </div>
+                                        <div className="col-12">
+                                            <br />
+                                            <button type="submit" className="button primary long">Simpan Perubahan</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div className="row content-edit">
+                                <div className="col-sm-5">
+                                    <div className="row">
+                                        <h4 className="accent-title">
+                                           Password
+                                       </h4>
+                                       <div className="row">
+                                           <p className="subtitle">
+                                                Merasa <i>password</i>mu tidak aman?
+                                                Ganti dengan yang lebih baik.
+                                           </p>
+                                       </div>
+                                    </div>
+                                </div>
+                                <div className="col-sm">
+                                    <form className="row g-3">
+                                        <div className="col-sm-12">
+                                            <label for="passwordLama" className="form-label accent-title">Password Saat Ini</label>
+                                            <input type="password" className="form-control" id="passwordLama"/>
+                                        </div>
+                                        <div className="col-sm-6">
+                                            <label for="passwordBaru" className="form-label accent-title">Password Baru</label>
+                                            <input type="password" className="form-control" id="passwordBaru"/>
+                                        </div>
+                                        <div className="col-sm-6">
+                                            <label for="noTelp" className="form-label accent-title">Ulangi Password Baru</label>
+                                            <input type="password" className="form-control" id="passwordBaruUlang"/>
+                                        </div>
+                                        <div className="col-12">
+                                            <br />
+                                            <button type="submit" className="button primary long">Ubah Password</button>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>

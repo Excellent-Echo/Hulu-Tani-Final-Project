@@ -71,3 +71,25 @@ button.user-sidebar-button .user-sidebar-icon.edit::before {
 .content-button .status-filter {
     margin-right: 10px;
 }
+
+/* USER PAGE */
+
+.user-avatar-container {
+    /* object-fit: contain; */
+    display: flex;
+}
+
+.content-edit {
+    margin-bottom: 15vh;
+}
+
+.user-avatar {
+    max-width: 175px;
+    /* border-radius: 100px; */
+    border: solid 3px #25A18E;
+    padding: .5vw;
+    margin: auto;
+    border-radius: 50vw;
+}
+
+/* END OF USER PAGE */

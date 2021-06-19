@@ -1,9 +1,9 @@
 import React from 'react'
 
-import '../../assets/css/auth.css'
+import '../assets/css/auth.css'
 
-import AuthShape from '../../assets/images/auth-bg-shape.svg'
-import RegisterIllustration from '../../assets/images/register-img.svg'
+import AuthShape from '../assets/images/auth-bg-shape.svg'
+import RegisterIllustration from '../assets/images/register-img.svg'
 
 function Register() {
     return (

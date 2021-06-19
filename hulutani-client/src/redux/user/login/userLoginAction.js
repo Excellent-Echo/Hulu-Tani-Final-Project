@@ -79,7 +79,7 @@ const userLogin = (email, password) => async dispatch =>{
 
     } catch (error) {
         console.log(error.response)
-        dispatch(setErrorMessage(Error.response));
+        dispatch(setErrorMessage(error.response));
         dispatch(stopLoading())
     }
 }

@@ -10,6 +10,7 @@ type Repository interface {
 	FindAll() ([]entity.Produk, error)
 	FindByName(nama string) (entity.Produk, error)
 	FindByID(id string) (entity.Produk, error)
+	FindByHarga(harga entity.Harga) ([]entity.Produk, error)
 	Create(produk entity.Produk) (entity.Produk, error)
 	UpdateByID(id string, dataUpdate map[string]interface{}) (entity.Produk, error)
 	DeleteByID(id string) (interface{}, error)
@@ -51,6 +52,17 @@ func (r *repository) FindByID(id string) (entity.Produk, error) {
 
 	return produk, nil
 }
+
+func (r *repository) FindByHarga(harga entity.Harga) ([]entity.Produk, error) {
+	var produks []entity.Produk
+
+	if err := r.db.Raw("select * from produks where harga between ? and ?", harga.Dari, harga.Sampai).Find(&produks); err != nil {
+		return produks, nil
+	}
+
+	return produks, nil
+}
+
 func (r *repository) Create(produk entity.Produk) (entity.Produk, error) {
 	if err := r.db.Create(&produk).Error; err != nil {
 		return produk, err

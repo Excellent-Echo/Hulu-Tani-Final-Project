@@ -135,7 +135,7 @@ const registerUser = (name, dateBirth, handphoneNumber, gender, email, password)
 
     } catch (error) {
         console.error(error.response);
-        dispatch(setErrorMessage(Error.response));
+        dispatch(setErrorMessage(error.response));
         dispatch(stopLoading())
     }
 }

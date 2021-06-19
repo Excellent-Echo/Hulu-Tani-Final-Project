@@ -22,3 +22,8 @@ type ProdukInput struct {
 	Stok       int    `json:"stok"`
 	IdKategori int    `json:"id_kategori"`
 }
+
+type Harga struct {
+	Dari   int `form:"dari"`
+	Sampai int `form:"sampai"`
+}

@@ -33,7 +33,7 @@ function App() {
 
         {/* Admin Routes */}
         <Route exact={true} path="/admin/login" component={AdminLogin} />
-        <Route exact={true} path="/admin/dash/home" component={AdminHome} />
+        <Route exact={true} path="/admin/dash" component={AdminHome} />
         <Route
           exact={true}
           path="/admin/dash/product"

@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const navs = [
-    { to: "/admin/dash/home", icon: "fas fa-home", name: "home" },
+    { to: "/admin/dash", icon: "fas fa-home", name: "home" },
     {
       to: "/admin/dash/product",
       icon: "fas fa-shopping-basket",

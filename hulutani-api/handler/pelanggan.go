@@ -25,7 +25,7 @@ func (h *pelangganHandler) GetPelangganByIDHandler(c *gin.Context) {
 
 	user, err := h.service.GetPelangganById(idPelanggan)
 	if err != nil {
-		responseError := helper.APIResponse(401, "status unauthorize", gin.H{"error": err.Error()})
+		responseError := helper.APIFailure(401, "status unauthorize", gin.H{"error": err.Error()})
 
 		c.JSON(400, responseError)
 		return
@@ -40,7 +40,7 @@ func (h *pelangganHandler) CreatePelangganHandler(c *gin.Context) {
 
 	if err := c.ShouldBindJSON(&pelangganInput); err != nil {
 		splitError := helper.SplitErrorInformation(err)
-		responseError := helper.APIResponse(400, "input data required", gin.H{"errors": splitError})
+		responseError := helper.APIFailure(400, "input data required", gin.H{"errors": splitError})
 
 		c.JSON(400, responseError)
 		return
@@ -49,7 +49,7 @@ func (h *pelangganHandler) CreatePelangganHandler(c *gin.Context) {
 	newPelanggan, err := h.service.SaveNewPelanggan(pelangganInput)
 
 	if err != nil {
-		responseError := helper.APIResponse(500, "internal server error", gin.H{"error": err.Error()})
+		responseError := helper.APIFailure(500, "internal server error", gin.H{"error": err.Error()})
 
 		c.JSON(500, responseError)
 		return
@@ -70,7 +70,7 @@ func (h *pelangganHandler) LoginPelangganHandler(c *gin.Context) {
 
 	if err := c.ShouldBindJSON(&inputLoginPelanggan); err != nil {
 		splitError := helper.SplitErrorInformation(err)
-		responseError := helper.APIResponse(400, "input data required", gin.H{"errors": splitError})
+		responseError := helper.APIFailure(400, "input data required", gin.H{"errors": splitError})
 
 		c.JSON(400, responseError)
 		return
@@ -79,7 +79,7 @@ func (h *pelangganHandler) LoginPelangganHandler(c *gin.Context) {
 	pelanggan, err := h.service.LoginPelanggan(inputLoginPelanggan)
 
 	if err != nil {
-		responseError := helper.APIResponse(401, "input data error", gin.H{"errors": err})
+		responseError := helper.APIFailure(401, "input data error", gin.H{"errors": err})
 
 		c.JSON(401, responseError)
 		return
@@ -87,7 +87,7 @@ func (h *pelangganHandler) LoginPelangganHandler(c *gin.Context) {
 
 	token, err := h.authService.GenerateToken(pelanggan.ID)
 	if err != nil {
-		responseError := helper.APIResponse(500, "internal server error", gin.H{"errors": err})
+		responseError := helper.APIFailure(500, "internal server error", gin.H{"errors": err})
 
 		c.JSON(401, responseError)
 		return

@@ -19,6 +19,18 @@ func NewHandler(service pelanggan.Service, authService auth.Service) *pelangganH
 	return &pelangganHandler{service, authService}
 }
 
+// GetPelangganById godoc
+// @Security Auth
+// @Summary Get Pelanggan by ID
+// @Description Get a pelanggan by pelanggan ID
+// @Tags pelanggan
+// @Accept json
+// @Produce json
+// @success 200 {object} helper.Response
+// @Failure 400 {object} helper.Failure
+// @Failure 401 {object} helper.Failure
+// @Failure 500 {object} helper.Failure
+// @Router /user [get]
 func (h *pelangganHandler) GetPelangganByIDHandler(c *gin.Context) {
 	id := int(c.MustGet("currentUser").(int))
 	idPelanggan := strconv.Itoa(id)
@@ -35,6 +47,17 @@ func (h *pelangganHandler) GetPelangganByIDHandler(c *gin.Context) {
 	c.JSON(200, response)
 }
 
+// CreatePelanggan godoc
+// @Summary Create new pelanggan account
+// @Description Create new pelanggan account
+// @Tags pelanggan
+// @Accept json
+// @Produce json
+// @Param pelanggan body entity.PelangganInput true "create pelanggan"
+// @Success 201 {object} helper.Response
+// @Failure 400 {object} helper.Failure
+// @Failure 500 {object} helper.Failure
+// @Router /user/register [post]
 func (h *pelangganHandler) CreatePelangganHandler(c *gin.Context) {
 	var pelangganInput entity.PelangganInput
 
@@ -65,6 +88,19 @@ func (h *pelangganHandler) CreatePelangganHandler(c *gin.Context) {
 	c.JSON(201, response)
 }
 
+// LoginPelanggan godoc
+// @Summary Login for pelanggan
+// @Description Login for pelanggan
+// @Tags pelanggan
+// @ID Authentication
+// @Consume json
+// @Produce json
+// @Param user body entity.PelangganLogin true "Login pelanggan"
+// @Success 200 {object} helper.Response
+// @Failure 401 {object} helper.Failure
+// @Failure 400 {object} helper.Failure
+// @Failure 500 {object} helper.Failure
+// @Router /user/login [post]
 func (h *pelangganHandler) LoginPelangganHandler(c *gin.Context) {
 	var inputLoginPelanggan entity.PelangganLogin
 

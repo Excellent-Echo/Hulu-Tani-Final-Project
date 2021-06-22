@@ -50,6 +50,19 @@ func (r *repository) Create(alamat entity.Alamat) (entity.Alamat, error) {
 	return alamat, nil
 }
 
+func (r *repository) UpdateByID(id string, dataUpdate map[string]interface{}) (entity.Alamat, error) {
+	var alamat entity.Alamat
+
+	if err := r.db.Where("id = ?", id).Find(&alamat).Error; err != nil {
+		return alamat, err
+	}
+
+	if err := r.db.Model(&alamat).Where("id = ?", id).Updates(dataUpdate).Error; err != nil {
+		return alamat, err
+	}
+
+	return alamat, nil
+}
 
 func (r *repository) DeleteByID(id string) (interface{}, error) {
 	if err := r.db.Where("id = ?", id).Delete(&entity.Alamat{}).Error; err != nil {

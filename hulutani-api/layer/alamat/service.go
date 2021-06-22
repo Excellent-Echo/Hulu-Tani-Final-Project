@@ -11,6 +11,7 @@ type Service interface {
 	GetAlamatByPelangganId(id_pelanggan string) ([]entity.Alamat, error)
 	GetAlamatByAlamatId(id string) (entity.Alamat, error)
 	SaveNewAlamat(input entity.AlamatInput) (entity.Alamat, error)
+	UpdateAlamatByAlamatId(id string, dataInput entity.AlamatInput) (entity.Alamat, error)
 	DeleteAlamatByAlamatId(id string) (entity.Alamat, error)
 }
 
@@ -23,19 +24,13 @@ func NewService(repo Repository) *service {
 }
 
 func (s *service) GetAlamatByPelangganId(id_pelanggan string) ([]entity.Alamat, error) {
-	alamat, err := s.repo.FindAlamatByPelangganId(id_pelanggan)
+	alamats, err := s.repo.FindAlamatByPelangganId(id_pelanggan)
 
 	if err != nil {
 		return []entity.Alamat{}, err
 	}
-	
-	/*if alamat.IdPelanggan == 0 {
-		newError := fmt.Sprintf("pelanggan id %s not found", id_pelanggan)
-		return []entity.Alamat{}, errors.New(newError)
-	}*/
 
-	return alamat, nil
-
+	return alamats, nil
 }
 
 func (s *service) GetAlamatByAlamatId(id string) (entity.Alamat, error) {
@@ -70,6 +65,44 @@ func (s *service) SaveNewAlamat(input entity.AlamatInput) (entity.Alamat, error)
 		return createAlamat, err
 	}
 	return createAlamat, nil
+}
+
+func (s *service) UpdateAlamatByAlamatId(id string, dataInputUpdate entity.AlamatInput) (entity.Alamat, error) {
+	var dataUpdate = map[string]interface{}{}
+
+	alamat, err := s.repo.FindAlamatByAlamatId(id)
+
+	if err != nil {
+		return entity.Alamat{}, nil
+	}
+
+	if alamat.ID == 0 {
+		return entity.Alamat{}, errors.New("address id not found")
+	}
+
+	if dataInputUpdate.NamaPenerima != "" || len(dataInputUpdate.NamaPenerima) <= 0 {
+		dataUpdate["provinsi"] = dataInputUpdate.Provinsi
+	}
+
+	if dataInputUpdate.NamaPenerima != "" || len(dataInputUpdate.NamaPenerima) <= 0 {
+		dataUpdate["nama_penerima"] = dataInputUpdate.Kota
+	}
+
+	if dataInputUpdate.NamaPenerima != "" || len(dataInputUpdate.NamaPenerima) <= 0 {
+		dataUpdate["nama_penerima"] = dataInputUpdate.AlamatDetail
+	}
+
+	if dataInputUpdate.NamaPenerima != "" || len(dataInputUpdate.NamaPenerima) <= 0 {
+		dataUpdate["nama_penerima"] = dataInputUpdate.NomorHandphonePenerima
+	}
+
+	alamatUpdated, err := s.repo.UpdateByID(id, dataUpdate)
+
+	if err != nil {
+		return entity.Alamat{}, err
+	}
+
+	return alamatUpdated, nil
 }
 
 func (s *service) DeleteAlamatByAlamatId(id string) (interface{}, error) {

@@ -12,8 +12,8 @@ import AdminEditProduct from "./pages/admin/product/adminEditProductDashPage";
 import AdminCategory from "./pages/admin/category/AdminCategoryDashPage";
 import AdminAddCategory from "./pages/admin/category/AdminAddCategoryDashPage";
 import AdminEditCategory from "./pages/admin/category/AdminEditCategoryDashPage";
-import AdminTransaction from "./pages/admin/Transaction/AdminTransactionDashPage";
-import AdminTransactionDetail from "./pages/admin/Transaction/AdminTransactionDetailDashPage";
+import AdminTransaction from "./pages/admin/transaction/AdminTransactionDashPage";
+import AdminTransactionDetail from "./pages/admin/transaction/AdminTransactionDetailDashPage";
 import AdminContact from "./pages/admin/contact/AdminContactDashPage";
 
 function App() {
@@ -32,53 +32,41 @@ function App() {
         </Route>
 
         {/* Admin Routes */}
-        <Route exact={true} path="/admin/login" component={AdminLogin} />
-        <Route exact={true} path="/admin/dash" component={AdminHome} />
+        <Route component={AdminLogin} exact path="/admin/login" />
+        <Route component={AdminHome} exact path="/admin/dash" />
+        <Route component={AdminProduct} exact path="/admin/dash/product" />
         <Route
-          exact={true}
-          path="/admin/dash/product"
-          component={AdminProduct}
-        />
-        <Route
-          exact={true}
-          path="/admin/dash/product/add"
           component={AdminAddProduct}
+          exact
+          path="/admin/dash/product/add"
         />
         <Route
-          exact={true}
-          path="/admin/dash/product/edit"
           component={AdminEditProduct}
+          exact
+          path="/admin/dash/product/edit"
         />
+        <Route component={AdminCategory} exact path="/admin/dash/category" />
         <Route
-          exact={true}
-          path="/admin/dash/category"
-          component={AdminCategory}
-        />
-        <Route
-          exact={true}
-          path="/admin/dash/category/add"
           component={AdminAddCategory}
+          exact
+          path="/admin/dash/category/add"
         />
         <Route
-          exact={true}
-          path="/admin/dash/category/edit"
           component={AdminEditCategory}
+          exact
+          path="/admin/dash/category/edit"
         />
         <Route
-          exact={true}
-          path="/admin/dash/transaction"
           component={AdminTransaction}
+          exact
+          path="/admin/dash/transaction"
         />
         <Route
-          exact={true}
-          path="/admin/dash/transaction/detail"
           component={AdminTransactionDetail}
+          exact
+          path="/admin/dash/transaction/detail"
         />
-        <Route
-          exact={true}
-          path="/admin/dash/contact"
-          component={AdminContact}
-        />
+        <Route component={AdminContact} exact path="/admin/dash/contact" />
         {/* Admin Routes */}
 
         <Route path="/">

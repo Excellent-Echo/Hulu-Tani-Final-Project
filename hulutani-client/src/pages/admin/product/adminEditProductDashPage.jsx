@@ -1,6 +1,6 @@
 import React from "react";
-import SideNavBar from "../../../components/Admin/SideNavBar";
-import HeaderAdmin from "../HeaderAdmin";
+import SideNavBar from "../../../components/organisms/admin/SideNavBar/SideAdminNavBar";
+import HeaderAdmin from "../../../components/organisms/admin/HeaderAdmin/HeaderAdmin";
 import { Link } from "react-router-dom";
 
 const AdminEditProductDashPage = () => {

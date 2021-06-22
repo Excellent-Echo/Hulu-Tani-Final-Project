@@ -1,4 +1,5 @@
 import React from "react";
+
 const THs = [
     { scope: "col", name: "Kode Transaksi" },
     { scope: "col", name: "Jumlah" },

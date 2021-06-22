@@ -12,7 +12,7 @@ type Service interface {
 	GetAlamatByAlamatId(id string) (entity.Alamat, error)
 	SaveNewAlamat(input entity.AlamatInput) (entity.Alamat, error)
 	UpdateAlamatByAlamatId(id string, dataInput entity.AlamatInput) (entity.Alamat, error)
-	DeleteAlamatByAlamatId(id string) (entity.Alamat, error)
+	DeleteAlamatByAlamatId(id string) (interface{}, error)
 }
 
 type service struct {

@@ -1,6 +1,6 @@
 package routes
 
-/*import (
+import (
 	"hulutani-api/handler"
 	"hulutani-api/layer/alamat"
 
@@ -15,6 +15,8 @@ var (
 
 func AlamatRoute(r *gin.Engine) {
 	r.GET("/alamat/:alamat_id", alamatHandler.ShowAlamatByAlamatId)
+	r.GET("/alamat/:pelanggan_id", alamatHandler.ShowAlamatByPelangganId)
 	r.POST("/alamat", handler.Middleware(authService), alamatHandler.CreateAlamatHandler)
+	r.PUT("/alamat/:alamat_id", handler.Middleware(authService), alamatHandler.UpdateAlamatByIdHandler)
+	r.DELETE("/alamat/:alamat_id", handler.Middleware(authService), alamatHandler.DeleteAlamatByIdHandler)
 }
-*/

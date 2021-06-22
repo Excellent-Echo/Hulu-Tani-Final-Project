@@ -2,7 +2,6 @@ import React from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import adminAddCategoryAction from "../../../redux/admin/category/add/adminAddCategoryAction";
-import adminShowCategoryAction from "../../../redux/admin/category/show/adminShowCategoryAction";
 
 import HeaderAdmin from "../../../components/organisms/admin/HeaderAdmin/HeaderAdmin";
 import SideAdminNavBar from "../../../components/organisms/admin/SideNavBar/SideAdminNavBar";
@@ -15,7 +14,6 @@ const AdminAddCategoryDashPage = () => {
   const addCategoryHandler = (e) => {
     e.preventDefault();
     dispatch(adminAddCategoryAction.addCategory(categoryData.categoryName));
-    dispatch(adminShowCategoryAction.getCategories());
     history.push("/admin/dash");
   };
 

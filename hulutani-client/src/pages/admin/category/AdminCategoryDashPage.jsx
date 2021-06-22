@@ -2,6 +2,7 @@ import React,{useEffect} from "react";
 import { Link } from "react-router-dom";
 import { useSelector,useDispatch } from "react-redux";
 import adminShowCategoryAction from "../../../redux/admin/category/show/adminShowCategoryAction"
+import adminDeleteCategoryAction from "../../../redux/admin/category/delete/adminDeleteCategoryAction";
 
 import "../styles.css";
 import HeaderAdmin from "../../../components/organisms/admin/HeaderAdmin/HeaderAdmin";
@@ -18,10 +19,9 @@ const THs = [
 
     useEffect(() => {
       dispatch(adminShowCategoryAction.getCategories())
-      //console.log(adminShowCategory)
     }, [])
 
-    const handleClickDelete = () => {
+    const handleClickDelete = (id) => {
       Swal.fire({
         title: "Are you sure?",
         text: "You won't be able to revert this!",
@@ -32,7 +32,9 @@ const THs = [
         confirmButtonText: "Yes, delete it!",
       }).then((result) => {
         if (result.isConfirmed) {
+          dispatch(adminDeleteCategoryAction.deleteCategory(id))
           Swal.fire("Deleted!", "Your file has been deleted.", "success");
+          dispatch(adminShowCategoryAction.getCategories())
         }
       });
     };
@@ -73,7 +75,8 @@ const THs = [
                             Ubah
                           </button>
                         </Link>
-                        <button type="button" className="btn btn-danger" onClick={handleClickDelete}>
+                        <button type="button" className="btn btn-danger" 
+                        onClick={() => {handleClickDelete(data.id)}}>
                           Hapus
                         </button>
                     </td>

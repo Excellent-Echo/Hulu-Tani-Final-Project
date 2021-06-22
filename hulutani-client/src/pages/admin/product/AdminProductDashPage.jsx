@@ -1,18 +1,29 @@
-import React from "react";
+import React, {useEffect} from "react";
 import Swal from "sweetalert2";
-// import withReactContent from "sweetalert2-react-content";
 import HeaderAdmin from "../../../components/organisms/admin/HeaderAdmin/HeaderAdmin";
 import { Link } from "react-router-dom";
 import SideAdminNavBar from "../../../components/organisms/admin/SideNavBar/SideAdminNavBar";
 
+import { useSelector, useDispatch } from "react-redux";
+import adminShowProductAction from "../../../redux/admin/product/show/adminShowProductAction";
+
 const THs = [
     { scope: "col", name: "Nama " },
-    { scope: "col", name: "Kategori" },
+    { scope: "col", name: "Kategori ID" },
     { scope: "col", name: "Jumlah" },
     { scope: "col", name: "Harga" },
     { scope: "col", name: "Aksi" },
   ],
   AdminProductDashPage = () => {
+    const adminProductsData = useSelector(state => state.adminShowProducts.products)
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+      dispatch(adminShowProductAction.getProducts())
+    }, [])
+
+
+    //modal
     const handleClickDelete = () => {
       Swal.fire({
         title: "Are you sure?",
@@ -53,29 +64,33 @@ const THs = [
                   </tr>
                 </thead>
                 <tbody>
-                  <tr className="">
-                    <td>
-                      <i className="fas fa-shopping-basket"></i> [Nama Produk]
-                    </td>
-                    <td>[Kategori]</td>
-                    <td>[Jumlah]</td>
-                    <td>[Harga]</td>
-                    <td className="d-flex">
-                      <Link to="/admin/dash/product/edit">
-                        <button type="button" className="btn btn-primary">
-                          Ubah
-                        </button>
-                      </Link>
+                  {adminProductsData.map((data,index) => {
+                    return(
+                      <tr key={index}>
+                        <td>
+                          <i className="fas fa-shopping-basket"></i> {data.nama}
+                        </td>
+                        <td>{data.id_kategori}</td>
+                        <td>{data.stok}</td>
+                        <td>{data.harga}</td>
+                        <td className="d-flex">
+                          <Link to="/admin/dash/product/edit">
+                            <button type="button" className="btn btn-primary">
+                              Ubah
+                            </button>
+                          </Link>
 
-                      <button
-                        type="button"
-                        className="btn btn-danger"
-                        onClick={handleClickDelete}
-                      >
-                        Hapus
-                      </button>
-                    </td>
-                  </tr>
+                          <button
+                            type="button"
+                            className="btn btn-danger"
+                            onClick={handleClickDelete}
+                          >
+                            Hapus
+                          </button>
+                        </td>
+                      </tr>
+                  )
+                  })}
                 </tbody>
               </table>
             </div>

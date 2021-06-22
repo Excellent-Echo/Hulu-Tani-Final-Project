@@ -16,6 +16,9 @@ import AdminTransaction from "./pages/admin/transaction/AdminTransactionDashPage
 import AdminTransactionDetail from "./pages/admin/transaction/AdminTransactionDetailDashPage";
 import AdminContact from "./pages/admin/contact/AdminContactDashPage";
 
+//test
+import ImageUploadTest from "./pages/ImageUploadTest"
+
 function App() {
   return (
     <Router>
@@ -54,7 +57,7 @@ function App() {
         <Route
           component={AdminEditCategory}
           exact
-          path="/admin/dash/category/edit"
+          path="/admin/dash/category/edit/:id"
         />
         <Route
           component={AdminTransaction}
@@ -68,6 +71,10 @@ function App() {
         />
         <Route component={AdminContact} exact path="/admin/dash/contact" />
         {/* Admin Routes */}
+
+        <Route path="/test">
+          <ImageUploadTest />
+        </Route>
 
         <Route path="/">
           <LandingPage />

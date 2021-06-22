@@ -1,6 +1,6 @@
 package routes
 
-import (
+/*import (
 	"hulutani-api/handler"
 	"hulutani-api/layer/alamat"
 
@@ -17,3 +17,4 @@ func AlamatRoute(r *gin.Engine) {
 	r.GET("/alamat/:alamat_id", alamatHandler.ShowAlamatByAlamatId)
 	r.POST("/alamat", handler.Middleware(authService), alamatHandler.CreateAlamatHandler)
 }
+*/

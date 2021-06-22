@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useEffect, useCallback } from "react";
 import HeaderAdmin from "../../../components/organisms/admin/HeaderAdmin/HeaderAdmin";
 import SideAdminNavBar from "../../../components/organisms/admin/SideNavBar/SideAdminNavBar";
 
@@ -11,6 +11,12 @@ const personals = [
     { title: "Kode Transaksi", value: "[Kode Transaksi]" },
     { title: "Kode Transaksi", value: "[Metode Pembayaran]" },
     { title: "Kode Transaksi", value: "[Alamat Pengiriman]" },
+  ],
+  cartTHs = [
+    { scope: "col", name: "Nama Produk" },
+    { scope: "col", name: "Kategori" },
+    { scope: "col", name: "Jumlah" },
+    { scope: "col", name: "Harga" },
   ],
   AdminTransactionDetailDashPage = () => {
     return (
@@ -50,12 +56,80 @@ const personals = [
                 ))}
               </div>
               {/* transaction information */}
+
               {/* shopping information */}
-              <div></div>
+              <div className="h-75 ahdp_recent">
+                <h3 className="h-25 d-flex align-items-center">
+                  Kantong Belanja
+                </h3>
+
+                <table className="table table-hover mb-5">
+                  <thead>
+                    <tr>
+                      {cartTHs.map((cartTH) => (
+                        <th scope={cartTH.scope}>{cartTH.name}</th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td scope="row">
+                        <i className="fas fa-money-check"></i> [Kode Transaksi]
+                      </td>
+                      <td>[Jumlah Transaksi]</td>
+                      <td>[Status Transaksi]</td>
+                      <td>[Tanggal Transaksi]</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
               {/* shopping information */}
+
               {/* proof transaction */}
-              <div></div>
+              <div className="h-75 ahdp_recent">
+                <h3 className="h-25 d-flex align-items-center">
+                  Jasa Pengiriman
+                </h3>
+
+                <table className="table table-hover mb-5">
+                  <thead>
+                    <tr>
+                      {cartTHs.map((cartTH) => (
+                        <th scope={cartTH.scope}>{cartTH.name}</th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td scope="row">
+                        <i className="fas fa-money-check"></i> [Kode Transaksi]
+                      </td>
+                      <td>[Jumlah Transaksi]</td>
+                      <td>[Status Transaksi]</td>
+                      <td>[Tanggal Transaksi]</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
               {/* proof transaction */}
+
+              {/* total */}
+              <div className="border-bottom d-flex justify-content-between">
+                <div className="d-flex">Total</div>
+                <div className="d-flex">[Rp 8937482935]</div>
+              </div>
+              {/* total */}
+
+              {/* bukti transakti */}
+              <div className="d-flex justify-content-center">
+                <div className="my-5 h-25">
+                  <img
+                    src="https://images.unsplash.com/photo-1475778057357-d35f37fa89dd?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
+                    alt=""
+                  />
+                </div>
+              </div>
+              {/* bukti transakti */}
             </div>
           </div>
         </div>

@@ -16,6 +16,7 @@ const AdminEditCategoryDashPage = () => {
   }, [])
 
   const updateCategoryHadler = (e) =>{
+    e.preventDefault()
     dispatch(adminEditCategoryAction.editCategory(
       id,
       adminEditCategory.categoryName

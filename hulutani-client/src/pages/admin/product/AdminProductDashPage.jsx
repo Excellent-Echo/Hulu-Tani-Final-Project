@@ -77,7 +77,7 @@ const THs = [
                         <td>{data.stok}</td>
                         <td>{data.harga}</td>
                         <td className="d-flex">
-                          <Link to="/admin/dash/product/edit">
+                          <Link to={`/admin/dash/product/edit/${data.id}`}>
                             <button type="button" className="btn btn-primary">
                               Ubah
                             </button>

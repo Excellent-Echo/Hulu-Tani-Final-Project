@@ -46,7 +46,7 @@ function App() {
         <Route
           component={AdminEditProduct}
           exact
-          path="/admin/dash/product/edit"
+          path="/admin/dash/product/edit/:id"
         />
         <Route component={AdminCategory} exact path="/admin/dash/category" />
         <Route

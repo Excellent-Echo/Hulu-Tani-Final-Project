@@ -102,6 +102,30 @@ const updateProduct = (id,nama,description,price,promo,stock,measure,image,categ
     }
 }
 
+const getProduct = (id) => async dispatch =>{
+    try {
+        console.log("updating Product..")
+
+        const res = await hulutaniClient({
+            method: "GET",
+            url: `/produk/${id}`,
+        })
+
+        dispatch(setName(res.data.data.nama))
+        dispatch(setPrice(res.data.data.harga))
+        dispatch(setStock(res.data.data.stok))
+        dispatch(setPromo(res.data.data.promo))
+        dispatch(setDesctription(res.data.data.deskripsi))
+        dispatch(setMeasure(res.data.data.takaran))
+        dispatch(setImage(res.data.data.gambar))
+        dispatch(setCategoryId(res.data.data.id_kategori))
+        
+        console.log("update product success")
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 const adminEditProductAction = {
     setName,
     setPrice,
@@ -111,6 +135,8 @@ const adminEditProductAction = {
     setMeasure,
     setImage,
     setCategoryId,
+    updateProduct,
+    getProduct
 }
 
 export default adminEditProductAction;

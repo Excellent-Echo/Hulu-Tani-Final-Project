@@ -1,9 +1,36 @@
-import React from "react";
+import React,{useEffect} from "react";
 import HeaderAdmin from "../../../components/organisms/admin/HeaderAdmin/HeaderAdmin";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 import SideAdminNavBar from "../../../components/organisms/admin/SideNavBar/SideAdminNavBar";
+import adminEditProductAction from "../../../redux/admin/product/edit/adminEditProductAction";
+import adminShowCategoryAction from "../../../redux/admin/category/show/adminShowCategoryAction";
 
 const AdminEditProductDashPage = () => {
+  const adminEditProducts = useSelector(state => state.adminEditProducts)
+  const adminShowCategory = useSelector((state) => state.adminShowCategory.categories);
+  const dispatch = useDispatch()
+  const { id } = useParams()
+
+  useEffect(() => {
+    dispatch(adminEditProductAction.getProduct(id))
+    dispatch(adminShowCategoryAction.getCategories());
+  }, [])
+
+  const updateProductHandler= (e) => {
+    e.preventDefault()
+    dispatch(adminEditProductAction.updateProduct(
+      id,
+      adminEditProducts.name,
+      adminEditProducts.description,
+      adminEditProducts.price,
+      adminEditProducts.promo,
+      adminEditProducts.stock,
+      adminEditProducts.measure,
+      adminEditProducts.image,
+      adminEditProducts.categoriId
+    ))
+  }
   return (
     <div className="user-select-none">
       <HeaderAdmin />
@@ -13,7 +40,7 @@ const AdminEditProductDashPage = () => {
         <div className="h-75 ahdp_recent">
           <h3 className="h-25 d-flex align-items-center">Produk &gt; Ubah</h3>
 
-          <form className="bg-white p-3 rounded-3">
+          <form className="bg-white p-3 rounded-3" onSubmit={updateProductHandler}>
             {/* product name */}
             <div className="mb-3 row">
               <label
@@ -28,7 +55,8 @@ const AdminEditProductDashPage = () => {
                   className="form-control"
                   id="inputProductName"
                   placeholder="Enter product name"
-                  value="[Nama Produk]"
+                  value={adminEditProducts.name}
+                  onChange={e=> dispatch(adminEditProductAction.setName(e.target.value))}
                 />
               </div>
             </div>
@@ -43,8 +71,15 @@ const AdminEditProductDashPage = () => {
                 Kategori
               </label>
               <div className="col-sm-10">
-                <select id="inputProductCategory" className="form-select">
-                  <option value="">Select product category</option>
+                <select 
+                id="inputProductCategory" 
+                className="form-select"
+                onChange={(e) => dispatch(adminEditProductAction.setCategoryId(e.target.value))}
+                >
+                <option value={adminEditProducts.categoriId}>Select product category</option>
+                  {adminShowCategory.map((data, index) => {
+                    return <option value={data.id}>{data.nama}{data.id}</option>;
+                  })}
                 </select>
               </div>
             </div>
@@ -64,7 +99,8 @@ const AdminEditProductDashPage = () => {
                   id="inputProductDescription"
                   rows="3"
                   placeholder="Enter product description"
-                  value="[Deskripsi Produk]"
+                  value={adminEditProducts.description}
+                  onChange={e=> dispatch(adminEditProductAction.setDesctription(e.target.value))}
                 />
               </div>
             </div>
@@ -84,7 +120,8 @@ const AdminEditProductDashPage = () => {
                   type="text"
                   className="form-control"
                   placeholder="Enter amount product"
-                  value="[Jumlah Produk]"
+                  value={adminEditProducts.stock}
+                  onChange={e=> dispatch(adminEditProductAction.setStock(e.target.value))}
                 />
                 <span className="input-group-text" id="inputAmountProduct">
                   PCS
@@ -110,7 +147,8 @@ const AdminEditProductDashPage = () => {
                   type="text"
                   className="form-control"
                   placeholder="Enter product price"
-                  value="[Harga Produk]"
+                  value={adminEditProducts.price}
+                  onChange={e=> dispatch(adminEditProductAction.setPrice(e.target.value))}
                 />
               </div>
             </div>

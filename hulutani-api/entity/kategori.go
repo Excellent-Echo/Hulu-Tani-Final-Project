@@ -8,3 +8,9 @@ type Kategori struct {
 type KategoriInput struct {
 	Nama string `json:"nama"`
 }
+
+type KategoriDetail struct {
+	ID      int      `json:"id"`
+	Nama    string   `json:"nama"`
+	Produks []Produk `json:"produks"`
+}

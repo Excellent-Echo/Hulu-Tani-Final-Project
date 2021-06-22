@@ -49,7 +49,7 @@ function ImageUploadTest() {
             />
             <button>upload to firebase</button>
         </form>
-        <img src={imageAsUrl.imgUrl} alt="image tag" />
+        <img src={imageAsUrl.imgUrl} alt="tag" />
         </div>
     );
 }

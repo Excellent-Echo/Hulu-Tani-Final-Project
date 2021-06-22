@@ -1,9 +1,10 @@
 import React,{useEffect} from "react";
-import SideNavBar from "../../../components/Admin/SideNavBar";
-import HeaderAdmin from "../HeaderAdmin";
 import { Link, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import adminEditCategoryAction from "../../../redux/admin/category/edit/adminEditCategoryAction"
+
+import HeaderAdmin from "../../../components/organisms/admin/HeaderAdmin/HeaderAdmin";
+import SideAdminNavBar from "../../../components/organisms/admin/SideNavBar/SideAdminNavBar";
 
 const AdminEditCategoryDashPage = () => {
   const adminEditCategory = useSelector(state => state.adminEditCategory)
@@ -22,11 +23,9 @@ const AdminEditCategoryDashPage = () => {
   }
 
   return (
-    <div className="d-flex user-select-none">
-      <SideNavBar />
-
-      <div className="d-flex flex-column vh-100 vw-100">
-        <HeaderAdmin />
+    <div className="user-select-none">
+      <HeaderAdmin />
+      <SideAdminNavBar />
 
         <div className="h-100 w-100 px-4">
           <div className="h-75 ahdp_recent">
@@ -52,7 +51,7 @@ const AdminEditCategoryDashPage = () => {
                   />
                 </div>
               </div>
-              {/* category name */}
+            {/* category name */}
 
               <Link to="/admin/dash/category">
                 <button type="button" className="btn btn-outline-danger">
@@ -62,8 +61,7 @@ const AdminEditCategoryDashPage = () => {
               <button type="submit" className="btn btn-primary">
                 Simpan
               </button>
-            </form>
-          </div>
+          </form>
         </div>
       </div>
     </div>

@@ -1,10 +1,11 @@
 import React from "react";
-import SideNavBar from "../../../components/Admin/SideNavBar";
-import HeaderAdmin from "../HeaderAdmin";
 import { Link, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import adminAddCategoryAction from "../../../redux/admin/category/add/adminAddCategoryAction"
 import adminShowCategoryAction from "../../../redux/admin/category/show/adminShowCategoryAction"
+
+import HeaderAdmin from "../../../components/organisms/admin/HeaderAdmin/HeaderAdmin";
+import SideAdminNavBar from "../../../components/organisms/admin/SideNavBar/SideAdminNavBar";
 
 const AdminAddCategoryDashPage = () => {
   const categoryData = useSelector(state => state.adminAddCategory)
@@ -21,12 +22,9 @@ const AdminAddCategoryDashPage = () => {
   }
 
   return (
-    <div className="d-flex user-select-none">
-      <SideNavBar />
-
-      <div className="d-flex flex-column vh-100 vw-100">
-        <HeaderAdmin />
-
+    <div className="user-select-none">
+      <HeaderAdmin />
+      <SideAdminNavBar />
         <div className="h-100 w-100 px-4">
           <div className="h-75 ahdp_recent">
             <h3 className="h-25 d-flex align-items-center">
@@ -53,18 +51,17 @@ const AdminAddCategoryDashPage = () => {
                   />
                 </div>
               </div>
-              {/* category name */}
+            {/* category name */}
 
-              <Link to="/admin/dash/category">
-                <button type="button" className="btn btn-outline-danger">
-                  Batal
-                </button>
-              </Link>
-              <button type="submit" className="btn btn-primary">
-                Simpan
+            <Link to="/admin/dash/category">
+              <button type="button" className="btn btn-outline-danger">
+                Batal
               </button>
-            </form>
-          </div>
+            </Link>
+            <button type="button" className="btn btn-primary">
+              Simpan
+            </button>
+          </form>
         </div>
       </div>
     </div>

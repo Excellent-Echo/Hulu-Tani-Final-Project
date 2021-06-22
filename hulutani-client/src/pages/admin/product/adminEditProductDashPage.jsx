@@ -1,5 +1,4 @@
 import React from "react";
-import SideNavBar from "../../../components/organisms/admin/SideNavBar/SideAdminNavBar";
 import HeaderAdmin from "../../../components/organisms/admin/HeaderAdmin/HeaderAdmin";
 import { Link } from "react-router-dom";
 import SideAdminNavBar from "../../../components/organisms/admin/SideNavBar/SideAdminNavBar";
@@ -12,7 +11,7 @@ const AdminEditProductDashPage = () => {
 
       <div className="admin-content-container">
         <div className="h-75 ahdp_recent">
-          <h3 className="h-25 d-flex align-items-center">Produk > Ubah</h3>
+          <h3 className="h-25 d-flex align-items-center">Produk &gt; Ubah</h3>
 
           <form className="bg-white p-3 rounded-3">
             {/* product name */}

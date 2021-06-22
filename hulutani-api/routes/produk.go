@@ -19,6 +19,6 @@ func ProdukRoute(r *gin.Engine) {
 	r.GET("/produk/:produk_id", produkHandler.ShowProdukByIdHandler)
 	r.POST("/produk/harga", produkHandler.ShowProdukByHargaHandler)
 	r.POST("/produk", produkHandler.CreateProdukHandler)
-	r.PUT("/produk/:produk_id", handler.Middleware(authService), produkHandler.UpdateProdukByIDHandler)
-	r.DELETE("/produk/:produk_id", handler.Middleware(authService), produkHandler.DeleteProdukByIDHandler)
+	r.PUT("/produk/:produk_id", produkHandler.UpdateProdukByIDHandler)
+	r.DELETE("/produk/:produk_id", produkHandler.DeleteProdukByIDHandler)
 }

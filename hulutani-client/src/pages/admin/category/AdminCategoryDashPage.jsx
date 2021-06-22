@@ -34,7 +34,7 @@ const THs = [
         if (result.isConfirmed) {
           dispatch(adminDeleteCategoryAction.deleteCategory(id))
           Swal.fire("Deleted!", "Your file has been deleted.", "success");
-          dispatch(adminShowCategoryAction.getCategories())
+          window.location.reload()
         }
       });
     };

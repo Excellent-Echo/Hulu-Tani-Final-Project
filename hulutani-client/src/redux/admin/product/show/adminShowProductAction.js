@@ -10,7 +10,7 @@ const getProducts = () => async dispatch => {
             url: "/produk"
         })
 
-        console.log(res)
+        //console.log(res)
 
         dispatch({
             type: ADMIN_SHOW_SET_PRODUCTS,

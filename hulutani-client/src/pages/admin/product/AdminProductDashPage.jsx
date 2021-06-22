@@ -6,6 +6,7 @@ import SideAdminNavBar from "../../../components/organisms/admin/SideNavBar/Side
 
 import { useSelector, useDispatch } from "react-redux";
 import adminShowProductAction from "../../../redux/admin/product/show/adminShowProductAction";
+import adminDeleteProductAction from "../../../redux/admin/product/delete/adminDeleteProductAction"
 
 const THs = [
     { scope: "col", name: "Nama " },
@@ -24,7 +25,7 @@ const THs = [
 
 
     //modal
-    const handleClickDelete = () => {
+    const handleClickDelete = (id) => {
       Swal.fire({
         title: "Are you sure?",
         text: "You won't be able to revert this!",
@@ -35,7 +36,9 @@ const THs = [
         confirmButtonText: "Yes, delete it!",
       }).then((result) => {
         if (result.isConfirmed) {
+          dispatch(adminDeleteProductAction.deleteProduct(id));
           Swal.fire("Deleted!", "Your file has been deleted.", "success");
+          window.location.reload()
         }
       });
     };
@@ -83,7 +86,7 @@ const THs = [
                           <button
                             type="button"
                             className="btn btn-danger"
-                            onClick={handleClickDelete}
+                            onClick={() => handleClickDelete(data.id)}
                           >
                             Hapus
                           </button>

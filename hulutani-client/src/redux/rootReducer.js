@@ -12,7 +12,8 @@ import addCategoryReducer from "./admin/category/add/adminAddCategoryReducer";
 import showCategoryReducer from "./admin/category/show/adminShowCategoryReducer";
 import editCategoryReducer from "./admin/category/edit/adminEditCategoryReducer";
 import addProductReducer from  "./admin/product/add/adminAddProductReducer";
-import showProductReducer from "./admin/product/show/adminShowProductReducer"
+import showProductReducer from "./admin/product/show/adminShowProductReducer";
+import editProductReducer from "./admin/product/edit/adminEditProductReducer"
 
 const rootReducer = combineReducers({
     userRegister: userRegisterReducer,
@@ -25,7 +26,8 @@ const rootReducer = combineReducers({
     adminShowCategory: showCategoryReducer,
     adminEditCategory: editCategoryReducer,
     adminAddProducts: addProductReducer,
-    adminShowProducts: showProductReducer
+    adminShowProducts: showProductReducer,
+    adminEditProducts: editProductReducer
 })
 
 export default rootReducer;

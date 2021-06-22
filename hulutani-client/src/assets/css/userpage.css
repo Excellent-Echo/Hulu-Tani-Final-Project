@@ -90,6 +90,46 @@ button.user-sidebar-button .user-sidebar-icon.edit::before {
     padding: .5vw;
     margin: auto;
     border-radius: 50vw;
+    cursor: pointer;
+
+    transition: all .2s ease-in-out;
+}
+
+.user-avatar:hover {
+    background-color: rgba(37, 161, 142, .5);
 }
 
 /* END OF USER PAGE */
+
+/* USER TRANSACTION */
+
+.transaction-list {
+    background-color: white;
+    border: 2px solid #25A18E;
+    border-radius: 10px;
+    padding: 1.2vw;
+    margin-top: 20px;
+
+    transition: all .1s ease-in-out;
+}
+
+.transaction-list:hover {
+    transform: scale(1.01);
+}
+
+/* .list-product-image {
+    border: #25A18E 1px solid;
+    max-width: 50px;
+    max-height: 50px;
+} */
+
+
+
+.transaction-status-badge {
+    /* max-width: 5vw; */
+    /* display: flex; */
+    justify-self: flex-end;
+    padding: 2vh;
+}
+
+/* END OF USER TRANSACTION */

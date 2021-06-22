@@ -1,0 +1,31 @@
+/* PRODUK LIST */
+
+.promo-banner {
+    border: 3px solid #25a18e;
+    height: 20vh;
+    border-radius: 10px;
+}
+
+.banner-1 {
+    /* width: 35vw; */
+    margin-right: 25px;
+}
+
+.banner-2 {
+    /* width: 20vw; */
+}
+
+.product-card-container {
+    margin-top: 25px;
+}
+
+.product-img {
+    width: 100% !important;
+    height: 15vh;
+}
+
+/* END OF PRODUK LIST */
+
+/* PRODUK DETAIL */
+
+/* END OF PRODUK DETAIL */

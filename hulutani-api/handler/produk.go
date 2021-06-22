@@ -17,6 +17,15 @@ func NewProdukHandler(service produk.Service) *produkHandler {
 	return &produkHandler{service}
 }
 
+// GetAllProduk godoc
+// @Summary Get all produk
+// @Description Get All produk
+// @Tags produk
+// @Accept json
+// @Produce json
+// @Success 200 {object} helper.Response
+// @Failure 500 {object} helper.Failure
+// @Router /produk [get]
 func (h *produkHandler) ShowAllProduksHandler(c *gin.Context) {
 	produk, err := h.service.GetAllProduk()
 
@@ -31,6 +40,17 @@ func (h *produkHandler) ShowAllProduksHandler(c *gin.Context) {
 	c.JSON(200, response)
 }
 
+// GetProdukByName godoc
+// @Summary Get produk by name
+// @Description Get produk by name
+// @Tags produk
+// @Accept json
+// @Produce json
+// @Param nama_produk path string true "nama_produk"
+// @Success 200 {object} helper.Response
+// @Failure 400 {object} helper.Failure
+// @Failure 500 {object} helper.Failure
+// @Router /produk/nama/{nama_produk} [get]
 func (h *produkHandler) ShowProdukByNameHandler(c *gin.Context) {
 	nama := c.Param("nama_produk")
 
@@ -45,6 +65,17 @@ func (h *produkHandler) ShowProdukByNameHandler(c *gin.Context) {
 	c.JSON(200, response)
 }
 
+// GetProdukById godoc
+// @Summary Get produk by id
+// @Description Get produk by id
+// @Tags produk
+// @Accept json
+// @Produce json
+// @Param produk_id path string true "produk_id"
+// @Success 200 {object} helper.Response
+// @Failure 400 {object} helper.Failure
+// @Failure 500 {object} helper.Failure
+// @Router /produk/{produk_id} [get]
 func (h *produkHandler) ShowProdukByIdHandler(c *gin.Context) {
 	id := c.Param("produk_id")
 
@@ -59,6 +90,17 @@ func (h *produkHandler) ShowProdukByIdHandler(c *gin.Context) {
 	c.JSON(200, response)
 }
 
+// GetProdukByHarga godoc
+// @Summary Get produk by harga
+// @Description Get produk by harga
+// @Tags produk
+// @Accept multipart/form-data
+// @Produce json
+// @Param harga formData entity.Harga true "filter harga"
+// @Success 200 {object} helper.Response
+// @Failure 400 {object} helper.Failure
+// @Failure 500 {object} helper.Failure
+// @Router /produk/harga [post]
 func (h *produkHandler) ShowProdukByHargaHandler(c *gin.Context) {
 	dari, _ := strconv.Atoi(c.PostForm("dari"))
 	sampai, _ := strconv.Atoi(c.PostForm("sampai"))
@@ -79,6 +121,19 @@ func (h *produkHandler) ShowProdukByHargaHandler(c *gin.Context) {
 	c.JSON(200, response)
 }
 
+// CreateProduk godoc
+// @Security Auth
+// @Summary create new produk
+// @Description create new produk
+// @Tags produk
+// @Accept json
+// @Produce json
+// @Param produk body entity.ProdukInput true "data produk"
+// @Success 201 {object} helper.Response
+// @Failure 400 {object} helper.Failure
+// @Failure 401 {object} helper.Failure
+// @Failure 500 {object} helper.Failure
+// @Router /produk [post]
 func (h *produkHandler) CreateProdukHandler(c *gin.Context) {
 
 	var inpotProduk entity.ProdukInput
@@ -101,6 +156,20 @@ func (h *produkHandler) CreateProdukHandler(c *gin.Context) {
 	c.JSON(201, response)
 }
 
+// UpdateProduk godoc
+// @Security Auth
+// @Summary update produk
+// @Description update produk
+// @Tags produk
+// @Accept json
+// @Produce json
+// @Param produk_id path string true "produk id"
+// @Param produk body entity.ProdukInput true "data produk"
+// @Success 200 {object} helper.Response
+// @Failure 400 {object} helper.Failure
+// @Failure 401 {object} helper.Failure
+// @Failure 500 {object} helper.Failure
+// @Router /produk/{produk_id} [put]
 func (h *produkHandler) UpdateProdukByIDHandler(c *gin.Context) {
 	id := c.Param("produk_id")
 
@@ -127,6 +196,18 @@ func (h *produkHandler) UpdateProdukByIDHandler(c *gin.Context) {
 	c.JSON(200, response)
 }
 
+// DeleteProduk godoc
+// @Security Auth
+// @Summary Delete produk by id
+// @Description Delete produk by id
+// @Tags produk
+// @Accept json
+// @Produce json
+// @Param produk_id path string true "produk id"
+// @Success 200 {object} helper.Delete
+// @Failure 400 {object} helper.Failure
+// @Failure 401 {object} helper.Failure
+// @Router /produk/{produk_id} [delete]
 func (h *produkHandler) DeleteProdukByIDHandler(c *gin.Context) {
 	id := c.Param("produk_id")
 

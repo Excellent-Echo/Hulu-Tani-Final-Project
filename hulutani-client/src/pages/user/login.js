@@ -1,9 +1,9 @@
 import React from 'react'
 
-import '../assets/css/auth.css'
+import '../../assets/css/auth.css'
 
-import AuthShape from '../assets/images/auth-bg-shape.svg'
-import LoginIllustration from '../assets/images/login-img.svg'
+import AuthShape from '../../assets/images/auth-bg-shape.svg'
+import LoginIllustration from '../../assets/images/login-img.svg'
 
 function Login() {
     return (

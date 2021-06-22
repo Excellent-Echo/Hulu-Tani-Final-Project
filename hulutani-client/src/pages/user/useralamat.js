@@ -1,3 +1,4 @@
+
 import React from 'react'
 
 import '../../assets/css/userpage.css'
@@ -80,27 +81,98 @@ function UserAlamat() {
                     <div className="row user-content-container">
                         <div className="col-sm-9 user-content">
                             <div className="row content-title">
-                                <h1 className="accent-title accent-text">
-                                    Daftar Transaksi
-                                </h1>
-                            </div>
-                            <div className="row content-button">
                                 <div className="col-sm">
-                                    <div className="btn-group status-filter">
-                                        <button type="button" className="btn-sm small outline-primary hover-no-scale dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                            Semua Status
-                                        </button>
-                                        <ul className="dropdown-menu">
-                                            <li><a className="dropdown-item" href="#">Menunggu Pembayaran</a></li>
-                                            <li><a className="dropdown-item" href="#">Diproses</a></li>
-                                            <li><a className="dropdown-item" href="#">Dikirim</a></li>
-                                            <li><a className="dropdown-item" href="#">Selesai</a></li>
-                                            <li><hr className="dropdown-divider"/></li>
-                                            <li><a className="dropdown-item" href="#">Dibatalkan</a></li>
-                                        </ul>
-                                    </div>
-                                    <input type="date" className="small outline-primary hover-no-scale dropdown-toggle"/>   
+                                    <h1 className="accent-title accent-text">
+                                        Alamat Saya
+                                    </h1>
                                 </div>
+                                <div className="col-sm d-flex justify-items-end">
+                                    <button className="primary btn-add">
+                                    </button>
+                                </div>
+                            </div>
+                            <br />
+                            <br />
+                            <div className="row content-content">
+                                {/* CARD ALAMAT */}
+                                <div className="col-sm card-container">
+                                    <div className="card product-card card-outline-primary h-100" style={{ width: "15rem" }}>
+                                        <div className="card-body">
+                                            <div className="row badge-container align-items-start">
+                                                <div className="col-sm">
+                                                    <span class="status-badge b-primary">Utama</span>
+                                                </div>
+                                                <div className="col-sm d-flex justify-content-end">
+                                                    <button class="status-badge small b-danger btn-trash me-2"></button>
+                                                    <button class="status-badge small b-info btn-edit"></button>
+                                                </div>
+                                            </div>
+                                            <br />
+                                            <br />
+                                            <div className="row align-items-end">
+                                                <h5 className="card-title accent-title">[Nama Penerima]</h5>
+                                                <span className="small-text">[No Telp]</span>
+                                                <span className="">
+                                                    [Alamat]
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {/* END OF CARD ALAMAT */}
+                                {/* CARD ALAMAT */}
+                                <div className="col-sm card-container">
+                                    <div className="card product-card card-outline-primary h-100" style={{ width: "15rem" }}>
+                                        <div className="card-body">
+                                            <div className="row badge-container align-items-start">
+                                                <div className="col-sm">
+                                                    <span class="status-badge b-primary">Utama</span>
+                                                </div>
+                                                <div className="col-sm d-flex justify-content-end">
+                                                    <button class="status-badge small b-danger btn-trash me-2"></button>
+                                                    <button class="status-badge small b-info btn-edit"></button>
+                                                </div>
+                                            </div>
+                                            <br />
+                                            <br />
+                                            <div className="row align-items-end">
+                                                <h5 className="card-title accent-title">[Nama Penerima]</h5>
+                                                <span className="small-text">[No Telp]</span>
+                                                <span className="">
+                                                    [Alamat]
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {/* END OF CARD ALAMAT */}
+                                {/* CARD ALAMAT */}
+                                <div className="col-sm card-container">
+                                    <div className="card product-card card-outline-primary h-100" style={{ width: "15rem" }}>
+                                        <div className="card-body">
+                                            <div className="row badge-container align-items-start">
+                                                <div className="col-sm">
+                                                    <span class="status-badge b-primary">Utama</span>
+                                                </div>
+                                                <div className="col-sm d-flex justify-content-end">
+                                                    <button class="status-badge small b-danger btn-trash me-2"></button>
+                                                    <button class="status-badge small b-info btn-edit"></button>
+                                                </div>
+                                            </div>
+                                            <br />
+                                            <br />
+                                            <div className="row align-items-end">
+                                                <h5 className="card-title accent-title">[Nama Penerima]</h5>
+                                                <span className="small-text">[No Telp]</span>
+                                                <span className="">
+                                                    [Alamat]
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {/* END OF CARD ALAMAT */}
+                                
                             </div>
                         </div>
                     </div>

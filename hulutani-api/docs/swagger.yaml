@@ -1,0 +1,545 @@
+definitions:
+  entity.KategoriInput:
+    properties:
+      nama:
+        type: string
+    type: object
+  entity.PelangganInput:
+    properties:
+      email:
+        type: string
+      jenis_kelamin:
+        type: string
+      nama:
+        type: string
+      nomor_handphone:
+        type: string
+      password:
+        type: string
+      tanggal_lahir:
+        type: string
+    required:
+    - email
+    - jenis_kelamin
+    - nama
+    - nomor_handphone
+    - password
+    - tanggal_lahir
+    type: object
+  entity.PelangganLogin:
+    properties:
+      email:
+        type: string
+      password:
+        type: string
+    type: object
+  entity.ProdukInput:
+    properties:
+      deskripsi:
+        type: string
+      gambar:
+        type: string
+      harga:
+        type: integer
+      id_kategori:
+        type: integer
+      nama:
+        type: string
+      promo:
+        type: string
+      stok:
+        type: integer
+      takaran:
+        type: string
+    type: object
+  helper.Delete:
+    properties:
+      code:
+        type: integer
+      message:
+        type: object
+    type: object
+  helper.Failure:
+    properties:
+      code:
+        type: integer
+      error:
+        type: object
+      message:
+        type: string
+    type: object
+  helper.Response:
+    properties:
+      code:
+        type: integer
+      data:
+        type: object
+      message:
+        type: string
+    type: object
+info:
+  contact: {}
+paths:
+  /kategori:
+    get:
+      consumes:
+      - application/json
+      description: Get All kategori
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/helper.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/helper.Failure'
+      summary: Get all kategori
+      tags:
+      - kategori
+    post:
+      consumes:
+      - application/json
+      description: create new kategori
+      parameters:
+      - description: data kategori
+        in: body
+        name: kategori
+        required: true
+        schema:
+          $ref: '#/definitions/entity.KategoriInput'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/helper.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/helper.Failure'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/helper.Failure'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/helper.Failure'
+      security:
+      - Auth: []
+      summary: create new kategori
+      tags:
+      - kategori
+  /kategori/{kategori_id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete kategori by id
+      parameters:
+      - description: kategori id
+        in: path
+        name: kategori_id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/helper.Delete'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/helper.Failure'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/helper.Failure'
+      security:
+      - Auth: []
+      summary: Delete kategori by id
+      tags:
+      - kategori
+    get:
+      consumes:
+      - application/json
+      description: Get Kategori By ID
+      parameters:
+      - description: id kategori
+        in: path
+        name: kategori_id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/helper.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/helper.Failure'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/helper.Failure'
+      summary: Get Kategori by id
+      tags:
+      - kategori
+    put:
+      consumes:
+      - application/json
+      description: update kategori
+      parameters:
+      - description: kategori id
+        in: path
+        name: kategori_id
+        required: true
+        type: string
+      - description: data kategori
+        in: body
+        name: kategori
+        required: true
+        schema:
+          $ref: '#/definitions/entity.KategoriInput'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/helper.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/helper.Failure'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/helper.Failure'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/helper.Failure'
+      security:
+      - Auth: []
+      summary: update kategori
+      tags:
+      - kategori
+  /produk:
+    get:
+      consumes:
+      - application/json
+      description: Get All produk
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/helper.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/helper.Failure'
+      summary: Get all produk
+      tags:
+      - produk
+    post:
+      consumes:
+      - application/json
+      description: create new produk
+      parameters:
+      - description: data produk
+        in: body
+        name: produk
+        required: true
+        schema:
+          $ref: '#/definitions/entity.ProdukInput'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/helper.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/helper.Failure'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/helper.Failure'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/helper.Failure'
+      security:
+      - Auth: []
+      summary: create new produk
+      tags:
+      - produk
+  /produk/{produk_id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete produk by id
+      parameters:
+      - description: produk id
+        in: path
+        name: produk_id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/helper.Delete'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/helper.Failure'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/helper.Failure'
+      security:
+      - Auth: []
+      summary: Delete produk by id
+      tags:
+      - produk
+    get:
+      consumes:
+      - application/json
+      description: Get produk by id
+      parameters:
+      - description: produk_id
+        in: path
+        name: produk_id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/helper.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/helper.Failure'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/helper.Failure'
+      summary: Get produk by id
+      tags:
+      - produk
+    put:
+      consumes:
+      - application/json
+      description: update produk
+      parameters:
+      - description: produk id
+        in: path
+        name: produk_id
+        required: true
+        type: string
+      - description: data produk
+        in: body
+        name: produk
+        required: true
+        schema:
+          $ref: '#/definitions/entity.ProdukInput'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/helper.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/helper.Failure'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/helper.Failure'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/helper.Failure'
+      security:
+      - Auth: []
+      summary: update produk
+      tags:
+      - produk
+  /produk/harga:
+    post:
+      consumes:
+      - multipart/form-data
+      description: Get produk by harga
+      parameters:
+      - in: formData
+        name: dari
+        type: integer
+      - in: formData
+        name: sampai
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/helper.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/helper.Failure'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/helper.Failure'
+      summary: Get produk by harga
+      tags:
+      - produk
+  /produk/nama/{nama_produk}:
+    get:
+      consumes:
+      - application/json
+      description: Get produk by name
+      parameters:
+      - description: nama_produk
+        in: path
+        name: nama_produk
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/helper.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/helper.Failure'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/helper.Failure'
+      summary: Get produk by name
+      tags:
+      - produk
+  /user:
+    get:
+      consumes:
+      - application/json
+      description: Get a pelanggan by pelanggan ID
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/helper.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/helper.Failure'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/helper.Failure'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/helper.Failure'
+      security:
+      - Auth: []
+      summary: Get Pelanggan by ID
+      tags:
+      - pelanggan
+  /user/login:
+    post:
+      description: Login for pelanggan
+      operationId: Authentication
+      parameters:
+      - description: Login pelanggan
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/entity.PelangganLogin'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/helper.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/helper.Failure'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/helper.Failure'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/helper.Failure'
+      summary: Login for pelanggan
+      tags:
+      - pelanggan
+  /user/register:
+    post:
+      consumes:
+      - application/json
+      description: Create new pelanggan account
+      parameters:
+      - description: create pelanggan
+        in: body
+        name: pelanggan
+        required: true
+        schema:
+          $ref: '#/definitions/entity.PelangganInput'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/helper.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/helper.Failure'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/helper.Failure'
+      summary: Create new pelanggan account
+      tags:
+      - pelanggan
+securityDefinitions:
+  Auth:
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"

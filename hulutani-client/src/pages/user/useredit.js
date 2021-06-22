@@ -2,7 +2,7 @@ import React from 'react'
 
 import '../../assets/css/userpage.css'
 
-import BlankUser from '../assets/images/blank-user.png'
+import BlankUser from '../../assets/images/blank-user.png'
 
 function UserEdit() {
     return (

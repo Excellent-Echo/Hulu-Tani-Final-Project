@@ -1,12 +1,12 @@
 import React from 'react'
 
-import GroceryShopping from '../assets/images/landing-title.svg'
-import '../assets/css/landing.css'
+import GroceryShopping from '../../assets/images/landing-title.svg'
+import '../../assets/css/landing.css'
 
 function LandingPage() {
     return (
         <>
-            <div className="container-fluid landing-title-container">
+            <div className="container-fluid fluid-page landing-title-container">
                 <div className="container">
                     <div className="row align-items-center">
                         <div className="col-sm-7 title-text-container">
@@ -27,7 +27,7 @@ function LandingPage() {
                     </div>
                 </div>  
             </div>
-            <div className="container-fluid landing-section1-container">
+            <div className="container-fluid fluid-page landing-section1-container">
                 <div className="container">
                     <div className="row justify-content-center section1-row1">
                         <h1 className="title text-center">
@@ -90,7 +90,7 @@ function LandingPage() {
                     </div>
                 </div>
             </div>
-            <div className="container-fluid landing-section2-container">
+            <div className="container-fluid fluid-page landing-section2-container">
                 <div className="container">
                     <div className="row justify-content-center section2-row1">
                         <h1 className="title text-center">
@@ -157,7 +157,7 @@ function LandingPage() {
                     </div>
                 </div>
             </div>
-            <div className="container-fluid landing-section3-container">
+            <div className="container-fluid fluid-page landing-section3-container">
                 <div className="container">
                     <div className="row justify-content-center section3-row1">
                         <h1 className="title text-center accent-text">

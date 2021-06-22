@@ -1,0 +1,10 @@
+header {
+  height: 3rem;
+  z-index: 100;
+  transition: 0.5s;
+  color: #263238;
+}
+
+.ha-header-toggle {
+  cursor: pointer;
+}

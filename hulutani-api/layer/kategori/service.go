@@ -4,22 +4,24 @@ import (
 	"errors"
 	"fmt"
 	"hulutani-api/entity"
+	"hulutani-api/layer/produk"
 )
 
 type Service interface {
 	GetAllKategori() ([]entity.Kategori, error)
-	GetKategoriByID(ID string) (entity.Kategori, error)
+	GetKategoriByID(ID string) (entity.KategoriDetail, error)
 	SaveNewKategori(input entity.KategoriInput) (entity.Kategori, error)
 	UpdateKategoriByID(id string, dataInput entity.KategoriInput) (entity.Kategori, error)
 	DeleteKategoriByID(id string) (interface{}, error)
 }
 
 type service struct {
-	repo Repository
+	repo       Repository
+	produkRepo produk.Repository
 }
 
-func NewService(repo Repository) *service {
-	return &service{repo}
+func NewService(repo Repository, produkRepo produk.Repository) *service {
+	return &service{repo, produkRepo}
 }
 
 func (s *service) GetAllKategori() ([]entity.Kategori, error) {
@@ -31,18 +33,25 @@ func (s *service) GetAllKategori() ([]entity.Kategori, error) {
 	return kategori, nil
 }
 
-func (s *service) GetKategoriByID(ID string) (entity.Kategori, error) {
+func (s *service) GetKategoriByID(ID string) (entity.KategoriDetail, error) {
 	kategori, err := s.repo.FindByID(ID)
+	produk, err := s.produkRepo.FindByIDKategori(ID)
 
 	if err != nil {
-		return entity.Kategori{}, err
+		return entity.KategoriDetail{}, err
+	}
+
+	var kategoriDetail = entity.KategoriDetail{
+		ID:      kategori.ID,
+		Nama:    kategori.Nama,
+		Produks: produk,
 	}
 
 	if kategori.ID == 0 {
-		return entity.Kategori{}, errors.New("kategori id not found")
+		return entity.KategoriDetail{}, errors.New("kategori id not found")
 	}
 
-	return kategori, nil
+	return kategoriDetail, nil
 }
 
 func (s *service) SaveNewKategori(input entity.KategoriInput) (entity.Kategori, error) {

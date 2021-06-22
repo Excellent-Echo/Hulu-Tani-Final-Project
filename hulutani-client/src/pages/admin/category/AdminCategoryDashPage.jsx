@@ -1,7 +1,10 @@
-import React from "react";
+import React,{useEffect} from "react";
+import { Link } from "react-router-dom";
+import { useSelector,useDispatch } from "react-redux";
+import adminShowCategoryAction from "../../../redux/admin/category/show/adminShowCategoryAction"
+
 import "../styles.css";
 import HeaderAdmin from "../../../components/organisms/admin/HeaderAdmin/HeaderAdmin";
-import { Link } from "react-router-dom";
 import SideAdminNavBar from "../../../components/organisms/admin/SideNavBar/SideAdminNavBar";
 import Swal from "sweetalert2";
 
@@ -10,6 +13,14 @@ const THs = [
     { scope: "col", name: "Aksi" },
   ],
   AdminCategoryDashPage = () => {
+    const adminShowCategory = useSelector(state => state.adminShowCategory.categories)
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+      dispatch(adminShowCategoryAction.getCategories())
+      //console.log(adminShowCategory)
+    }, [])
+
     const handleClickDelete = () => {
       Swal.fire({
         title: "Are you sure?",
@@ -49,28 +60,30 @@ const THs = [
                 </tr>
               </thead>
               <tbody>
-                <tr className="">
-                  <td>
-                    <i className="fas fa-list"></i> [Nama Kategori]
-                  </td>
-                  <td className="d-flex">
-                    <Link to="/admin/dash/category/edit">
-                      <button type="button" className="btn btn-primary">
-                        Ubah
-                      </button>
-                    </Link>
-                    <button
-                      type="button"
-                      className="btn btn-danger"
-                      onClick={handleClickDelete}
-                    >
-                      Hapus
-                    </button>
-                  </td>
-                </tr>
+
+                {adminShowCategory.map((data,index) =>{
+                  return(
+                  <tr key={index}>
+                    <td>
+                      <i className="fas fa-list"></i> {data.nama}
+                    </td>
+                    <td className="d-flex">
+                      <Link to={`/admin/dash/category/edit/${data.id}`}>
+                        <button type="button" className="btn btn-primary">
+                            Ubah
+                          </button>
+                        </Link>
+                        <button type="button" className="btn btn-danger" onClick={handleClickDelete}>
+                          Hapus
+                        </button>
+                    </td>
+                  </tr>
+                  )
+                })}
+                  
               </tbody>
             </table>
-          </div>
+            </div>
         </div>
       </div>
     );

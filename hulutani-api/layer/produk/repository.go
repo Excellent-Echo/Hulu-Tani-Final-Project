@@ -10,6 +10,7 @@ type Repository interface {
 	FindAll() ([]entity.Produk, error)
 	FindByName(nama string) (entity.Produk, error)
 	FindByID(id string) (entity.Produk, error)
+	FindByIDKategori(id string) ([]entity.Produk, error)
 	FindByHarga(harga entity.Harga) ([]entity.Produk, error)
 	Create(produk entity.Produk) (entity.Produk, error)
 	UpdateByID(id string, dataUpdate map[string]interface{}) (entity.Produk, error)
@@ -47,6 +48,16 @@ func (r *repository) FindByID(id string) (entity.Produk, error) {
 	var produk entity.Produk
 
 	if err := r.db.Where("id = ?", id).Find(&produk).Error; err != nil {
+		return produk, err
+	}
+
+	return produk, nil
+}
+
+func (r *repository) FindByIDKategori(id string) ([]entity.Produk, error) {
+	var produk []entity.Produk
+
+	if err := r.db.Where("id_kategori = ?", id).Find(&produk).Error; err != nil {
 		return produk, err
 	}
 

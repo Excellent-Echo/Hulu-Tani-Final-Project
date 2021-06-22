@@ -1,22 +1,12 @@
-/*----- side navbar -----*/
-.ahdp_navbar {
-  background-color: #25a18e;
+.admin-content-container {
+  position: relative;
+  margin-top: 3rem;
+  padding: 0 2rem 0 15rem;
+  /*font-family: var(--body-font);*/
+  /*font-size: var(--normal-font-size);*/
+  transition: 0.5s;
+  height: 100vh;
 }
-
-.ahdp_brand {
-  font-family: "Merriweather", serif;
-}
-
-.ahdp_nav {
-  font-family: "Poppins", sans-serif;
-}
-
-.ahdp_nav_hover:hover {
-  font-weight: bold;
-  border-radius: 5px;
-  background-color: #fff;
-}
-/*----- side navbar -----*/
 
 /*----- overview -----*/
 .ahdp_overview_card {

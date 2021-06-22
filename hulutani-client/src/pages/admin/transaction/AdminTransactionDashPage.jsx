@@ -5,13 +5,11 @@ import { Link } from "react-router-dom";
 import SideAdminNavBar from "../../../components/organisms/admin/SideNavBar/SideAdminNavBar";
 
 const THs = [
-    { scope: "col", name: "Nama" },
-    { scope: "col", name: "Surel" },
-    { scope: "col", name: "Telepon" },
-    { scope: "col", name: "Jenis Kelamin" },
-    { scope: "col", name: "Tanggal Lahir" },
+    { scope: "col", name: "Kode Transaksi" },
+    { scope: "col", name: "Status" },
+    { scope: "col", name: "Aksi" },
   ],
-  AdminContactDashPage = () => {
+  AdminTransactionDashPage = () => {
     return (
       <div className="user-select-none">
         <HeaderAdmin />
@@ -19,7 +17,7 @@ const THs = [
 
         <div className="admin-content-container">
           <div className="h-75 ahdp_recent">
-            <h3 className="h-25 d-flex align-items-center">Kontak</h3>
+            <h3 className="h-25 d-flex align-items-center">Transaksi</h3>
 
             <table className="table table-hover mb-5">
               <thead>
@@ -32,12 +30,14 @@ const THs = [
               <tbody>
                 <tr className="">
                   <td>
-                    <i className="fas fa-address-book"></i> [Nama Kontak]
+                    <i className="fas fa-money-check"></i> [Kode Transaksi]
                   </td>
-                  <td>[Surel]</td>
-                  <td>[Telepon]</td>
-                  <td>[Jenis Kelamin]</td>
-                  <td>[Tanggal Lahir]</td>
+                  <td>[Status]</td>
+                  <td className="d-flex">
+                    <Link to="/admin/dash/transaction/detail">
+                      Lihat detail
+                    </Link>
+                  </td>
                 </tr>
               </tbody>
             </table>
@@ -47,4 +47,4 @@ const THs = [
     );
   };
 
-export default AdminContactDashPage;
+export default AdminTransactionDashPage;

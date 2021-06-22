@@ -9,7 +9,7 @@ import (
 
 var (
 	kategoriRepository = kategori.NewRepository(DB)
-	kategoriService    = kategori.NewService(kategoriRepository)
+	kategoriService    = kategori.NewService(kategoriRepository, produkRepo)
 	kategoriHandler    = handler.NewKategoriHandler(kategoriService)
 )
 

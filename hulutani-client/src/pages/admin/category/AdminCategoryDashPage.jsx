@@ -1,7 +1,8 @@
-import React,{useEffect} from "react";
+import React, {useEffect} from "react";
 import { Link } from "react-router-dom";
 import { useSelector,useDispatch } from "react-redux";
 import adminShowCategoryAction from "../../../redux/admin/category/show/adminShowCategoryAction"
+import adminDeleteCategoryAction from "../../../redux/admin/category/delete/adminDeleteCategoryAction";
 
 import "../styles.css";
 import HeaderAdmin from "../../../components/organisms/admin/HeaderAdmin/HeaderAdmin";
@@ -18,10 +19,9 @@ const THs = [
 
     useEffect(() => {
       dispatch(adminShowCategoryAction.getCategories())
-      //console.log(adminShowCategory)
     }, [])
 
-    const handleClickDelete = () => {
+    const handleClickDelete = (id) => {
       Swal.fire({
         title: "Are you sure?",
         text: "You won't be able to revert this!",
@@ -32,58 +32,62 @@ const THs = [
         confirmButtonText: "Yes, delete it!",
       }).then((result) => {
         if (result.isConfirmed) {
+          dispatch(adminDeleteCategoryAction.deleteCategory(id))
           Swal.fire("Deleted!", "Your file has been deleted.", "success");
+          window.location.reload()
         }
       });
     };
 
     return (
-      <div className="user-select-none">
-        <HeaderAdmin />
+      <div className="d-flex user-select-none">
         <SideAdminNavBar />
 
-        <div className="admin-content-container">
-          <div className="h-75 ahdp_recent">
-            <div className="d-flex justify-content-between my-3">
-              <h3 className="h-25 d-flex align-items-center">Kategori</h3>
-              <Link to="/admin/dash/category/add">
-                <button className="btn btn-primary text-white">Tambah</button>
-              </Link>
-            </div>
+        <div className="d-flex flex-column vh-100 vw-100">
+          <HeaderAdmin />
 
-            <table className="table table-hover mb-5">
-              <thead>
-                <tr>
-                  {THs.map((TH) => (
-                    <th scope={TH.scope}>{TH.name}</th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
+          <div className="h-100 w-100 px-4">
+            <div className="h-75 ahdp_recent">
+              <div className="d-flex justify-content-between my-3">
+                <h3 className="h-25 d-flex align-items-center">Kategori</h3>
+                <Link to="/admin/dash/category/add">
+                  <button className="btn btn-primary text-white">Tambah</button>
+                </Link>
+              </div>
 
-                {adminShowCategory.map((data,index) =>{
-                  return(
-                  <tr key={index}>
+              <table className="table table-hover mb-5">
+                <thead>
+                  <tr>
+                    {THs.map((TH) => (
+                      <th scope={TH.scope}>{TH.name}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                {adminShowCategory.map((data,index) => {
+                    return(
+                  <tr className="">
                     <td>
-                      <i className="fas fa-list"></i> {data.nama}
+                      <i className="fas fa-list"></i> data.nama
                     </td>
                     <td className="d-flex">
                       <Link to={`/admin/dash/category/edit/${data.id}`}>
                         <button type="button" className="btn btn-primary">
                             Ubah
                           </button>
-                        </Link>
-                        <button type="button" className="btn btn-danger" onClick={handleClickDelete}>
+                      </Link>
+                      <button type="button" className="btn btn-danger" 
+                      onClick={() => {handleClickDelete(data.id)}}>
                           Hapus
-                        </button>
+                      </button>
                     </td>
                   </tr>
                   )
                 })}
-                  
-              </tbody>
-            </table>
+                </tbody>
+              </table>
             </div>
+          </div>
         </div>
       </div>
     );

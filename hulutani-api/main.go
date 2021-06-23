@@ -40,6 +40,7 @@ func main() {
 
 	// handler.StoreProvinsiDB()
 	// handler.StoreKotaDB()
+	routes.AlamatRoute(r)
 
 	r.Run(":4444")
 }

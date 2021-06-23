@@ -54,14 +54,9 @@ const getCategory = (id, categoryName) => async dispatch => {
         console.log("updating category..")
         dispatch(startLoading())
 
-        const updateData = {
-            nama: categoryName
-        }
-
         const res = await hulutaniClient({
             method: "GET",
             url: `/kategori/${id}`,
-            data: updateData
         })
 
         dispatch(setCategory(res.data.data.nama))

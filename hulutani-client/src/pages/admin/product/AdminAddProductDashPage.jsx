@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React,{useEffect, useState} from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import adminShowCategoryAction from "../../../redux/admin/category/show/adminShowCategoryAction";
+import adminAddProductAction from "../../../redux/admin/product/add/adminAddProductAction"
 import { storage } from "../../../firebase/firebase";
 
 import HeaderAdmin from "../../../components/organisms/admin/HeaderAdmin/HeaderAdmin";
 import SideAdminNavBar from "../../../components/organisms/admin/SideNavBar/SideAdminNavBar";
 
 const AdminAddProductDashPage = () => {
-  const adminShowCategory = useSelector(
-    (state) => state.adminShowCategory.categories
-  );
+  const adminShowCategory = useSelector((state) => state.adminShowCategory.categories);
+  const addProductData = useSelector(state => state.adminAddProducts)
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -21,6 +21,7 @@ const AdminAddProductDashPage = () => {
   const allInputs = { imgUrl: "" };
   const [imageAsFile, setImageAsFile] = useState("");
   const [imageAsUrl, setImageAsUrl] = useState(allInputs);
+  const [categoryId, setCategoryId] = useState(0)
 
   console.log(imageAsFile);
 
@@ -29,7 +30,7 @@ const AdminAddProductDashPage = () => {
     setImageAsFile((imageFile) => image);
   };
 
-  const handleFireBaseUpload = (e) => {
+  const handleImageUpload = (e) => {
     e.preventDefault();
 
     console.log("start of upload");
@@ -59,7 +60,6 @@ const AdminAddProductDashPage = () => {
           .child(imageAsFile.name)
           .getDownloadURL()
           .then((fireBaseUrl) => {
-            //dispatch()
             setImageAsUrl((prevObject) => ({
               ...prevObject,
               imgUrl: fireBaseUrl,
@@ -68,6 +68,20 @@ const AdminAddProductDashPage = () => {
       }
     );
   };
+
+  const addProductHandler = (e) => {
+    e.preventDefault()
+    dispatch(adminAddProductAction.addProduct(
+      addProductData.name,
+      addProductData.description,
+      addProductData.price,
+      addProductData.promo,
+      addProductData.stock,
+      addProductData.measure,
+      imageAsUrl.imgUrl,
+      categoryId
+    ))
+  }
 
   return (
     <div className="user-select-none">
@@ -78,7 +92,7 @@ const AdminAddProductDashPage = () => {
         <div className="h-75 ahdp_recent">
           <h3 className="h-25 d-flex align-items-center">Produk &gt; Tambah</h3>
 
-          <form className="bg-white p-3 rounded-3">
+          <form className="bg-white p-3 rounded-3" onSubmit={addProductHandler}>
             {/* product name */}
             <div className="mb-3 row">
               <label
@@ -93,10 +107,12 @@ const AdminAddProductDashPage = () => {
                   className="form-control"
                   id="inputProductName"
                   placeholder="Enter product name"
+                  value={addProductData.name}
+                  onChange={e=> dispatch(adminAddProductAction.setName(e.target.value))}
                 />
               </div>
             </div>
-            {/* product name */}
+              {/* product name */}
 
             {/* product category */}
             <div className="mb-3 row">
@@ -110,16 +126,17 @@ const AdminAddProductDashPage = () => {
                 <select
                   id="inputProductCategory"
                   className="form-select"
-                  onChange={(e) => dispatch()}
+                  // onChange={(e) => dispatch(adminAddProductAction.setCategoryId(e.target.value))}
+                  onChange={(e)=> setCategoryId(e.target.value)}
                 >
                   <option value="0">Select product category</option>
                   {adminShowCategory.map((data, index) => {
-                    return <option value={data.id}>{data.nama}</option>;
+                    return <option value={data.id}>{data.nama}{data.id}</option>;
                   })}
                 </select>
               </div>
             </div>
-            {/* product category */}
+              {/* product category */}
 
             {/* product description */}
             <div className="mb-3 row">
@@ -135,10 +152,12 @@ const AdminAddProductDashPage = () => {
                   id="inputProductDescription"
                   rows="3"
                   placeholder="Enter product description"
+                  value={addProductData.description}
+                  onChange={e=> dispatch(adminAddProductAction.setDesctription(e.target.value))}
                 />
               </div>
             </div>
-            {/* product description */}
+              {/* product description */}
 
             {/* amount product */}
             <div className="mb-3 d-flex">
@@ -151,16 +170,18 @@ const AdminAddProductDashPage = () => {
               <div className="input-group mb-3">
                 <input
                   id="inputAmountProduct"
-                  type="text"
+                  type="number"
                   className="form-control"
                   placeholder="Enter amount product"
+                  value={addProductData.stock}
+                  onChange={e=> dispatch(adminAddProductAction.setStock(e.target.value))}
                 />
                 <span className="input-group-text" id="inputAmountProduct">
                   PCS
                 </span>
               </div>
             </div>
-            {/* amount product */}
+              {/* amount product */}
 
             {/* product price */}
             <div className="mb-3 d-flex">
@@ -176,31 +197,35 @@ const AdminAddProductDashPage = () => {
                 </span>
                 <input
                   id="inputProductPrice"
-                  type="text"
+                  type="number"
                   className="form-control"
                   placeholder="Enter product price"
+                  value={addProductData.price}
+                  onChange={e=> dispatch(adminAddProductAction.setPrice(e.target.value))}
                 />
               </div>
             </div>
-            {/* product price */}
+              {/* product price */}
 
-            {/* product image */}
-            <div className="mb-3 d-flex">
-              <label
-                htmlFor="inputPassword"
-                className="col-sm-2 col-form-label"
-              >
-                Gambar
-              </label>
-              <div className="input-group mb-3">
-                <input
-                  type="file"
-                  className="form-control"
-                  id="inputGroupFile01"
-                  onChange={handleImageAsFile}
-                />
+              {/* product image */}
+              <div className="mb-3 d-flex">
+                <label
+                  htmlFor="inputPassword"
+                  className="col-sm-2 col-form-label"
+                >
+                  Gambar
+                </label>
+                <div className="input-group mb-3">
+                  <input
+                    type="file"
+                    className="form-control"
+                    id="inputGroupFile01"
+                  />
+                </div>
               </div>
-            </div>
+              <button type="button" className="btn btn-success" onClick={handleImageUpload}>
+              Simpan Gambar
+              </button>
             {/* product image */}
 
             <Link to="/admin/dash/product">
@@ -208,8 +233,8 @@ const AdminAddProductDashPage = () => {
                 Batal
               </button>
             </Link>
-            <button type="button" className="btn btn-primary">
-              Simpan
+            <button type="submit" className="btn btn-primary">
+              Tambah
             </button>
           </form>
         </div>

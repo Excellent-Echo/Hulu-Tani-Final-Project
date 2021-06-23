@@ -1,19 +1,51 @@
-import React from "react";
-import SideNavBar from "../../../components/Admin/SideNavBar";
-import HeaderAdmin from "../HeaderAdmin";
+import React, {useEffect} from "react";
+import Swal from "sweetalert2";
+import HeaderAdmin from "../../../components/organisms/admin/HeaderAdmin/HeaderAdmin";
+import SideAdminNavBar from "../../../components/organisms/admin/SideNavBar/SideAdminNavBar";
 import { Link } from "react-router-dom";
+
+import { useSelector, useDispatch } from "react-redux";
+import adminShowProductAction from "../../../redux/admin/product/show/adminShowProductAction";
+import adminDeleteProductAction from "../../../redux/admin/product/delete/adminDeleteProductAction"
 
 const THs = [
     { scope: "col", name: "Nama " },
-    { scope: "col", name: "Kategori" },
+    { scope: "col", name: "Kategori ID" },
     { scope: "col", name: "Jumlah" },
     { scope: "col", name: "Harga" },
     { scope: "col", name: "Aksi" },
   ],
   AdminProductDashPage = () => {
+    const adminProductsData = useSelector(state => state.adminShowProducts.products)
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+      dispatch(adminShowProductAction.getProducts())
+    }, [])
+
+
+    //modal
+    const handleClickDelete = (id) => {
+      Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          dispatch(adminDeleteProductAction.deleteProduct(id));
+          Swal.fire("Deleted!", "Your file has been deleted.", "success");
+          window.location.reload()
+        }
+      });
+    };
+
     return (
       <div className="d-flex user-select-none">
-        <SideNavBar />
+        <SideAdminNavBar />
 
         <div className="d-flex flex-column vh-100 vw-100">
           <HeaderAdmin />
@@ -36,24 +68,33 @@ const THs = [
                   </tr>
                 </thead>
                 <tbody>
-                  <tr className="">
-                    <td>
-                      <i className="fas fa-shopping-basket"></i> [Nama Produk]
-                    </td>
-                    <td>[Kategori]</td>
-                    <td>[Jumlah]</td>
-                    <td>[Harga]</td>
-                    <td className="d-flex">
-                      <Link to="/admin/dash/product/edit">
-                        <button type="button" className="btn btn-primary">
-                          Ubah
-                        </button>
-                      </Link>
-                      <button type="button" className="btn btn-danger">
-                        Hapus
-                      </button>
-                    </td>
-                  </tr>
+                  {adminProductsData.map((data,index) => {
+                    return(
+                      <tr key={index}>
+                        <td>
+                          <i className="fas fa-shopping-basket"></i> {data.nama}
+                        </td>
+                        <td>{data.id_kategori}</td>
+                        <td>{data.stok}</td>
+                        <td>{data.harga}</td>
+                        <td className="d-flex">
+                          <Link to={`/admin/dash/product/edit/${data.id}`}>
+                            <button type="button" className="btn btn-primary">
+                              Ubah
+                            </button>
+                          </Link>
+
+                          <button
+                            type="button"
+                            className="btn btn-danger"
+                            onClick={() => handleClickDelete(data.id)}
+                          >
+                            Hapus
+                          </button>
+                        </td>
+                      </tr>
+                  )
+                  })}
                 </tbody>
               </table>
             </div>

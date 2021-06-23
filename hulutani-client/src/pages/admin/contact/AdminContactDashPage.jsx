@@ -1,7 +1,6 @@
 import React from "react";
-import SideNavBar from "../../../components/Admin/SideNavBar";
-import HeaderAdmin from "../HeaderAdmin";
-import { Link } from "react-router-dom";
+import HeaderAdmin from "../../../components/organisms/admin/HeaderAdmin/HeaderAdmin";
+import SideAdminNavBar from "../../../components/organisms/admin/SideNavBar/SideAdminNavBar";
 
 const THs = [
     { scope: "col", name: "Nama" },
@@ -13,7 +12,7 @@ const THs = [
   AdminContactDashPage = () => {
     return (
       <div className="d-flex user-select-none">
-        <SideNavBar />
+        <SideAdminNavBar />
 
         <div className="d-flex flex-column vh-100 vw-100">
           <HeaderAdmin />

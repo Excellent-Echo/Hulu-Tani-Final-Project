@@ -1,7 +1,7 @@
 import React from "react";
 import "../style.css";
-import SideNavBar from "../../../components/Admin/SideNavBar";
-import Overview from "../../../components/Admin/Home/Overview";
+import SideNavBar from "../../../components/organisms/admin/SideNavBar/SideAdminNavBar";
+import Overview from "../../../components/organisms/admin/Home/Overview";
 import HeaderAdmin from "../HeaderAdmin";
 
 const THs = [

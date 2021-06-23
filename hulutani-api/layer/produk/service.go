@@ -63,16 +63,19 @@ func (s *service) GetProdukById(id string) (entity.Produk, error) {
 }
 
 func (s *service) SaveNewProduk(input entity.ProdukInput) (entity.Produk, error) {
+	harga, _ := strconv.Atoi(input.Harga)
+	stok, _ := strconv.Atoi(input.Stok)
+	idKategori, _ := strconv.Atoi(input.IdKategori)
 
 	var produk = entity.Produk{
 		Nama:       input.Nama,
 		Deskripsi:  input.Deskripsi,
 		Gambar:     input.Gambar,
 		Takaran:    input.Takaran,
-		Harga:      input.Harga,
+		Harga:      harga,
 		Promo:      input.Promo,
-		Stok:       input.Stok,
-		IdKategori: input.IdKategori,
+		Stok:       stok,
+		IdKategori: idKategori,
 	}
 
 	createProduk, err := s.repo.Create(produk)
@@ -87,6 +90,10 @@ func (s *service) UpdateProdukByID(id string, dataInput entity.ProdukInput) (ent
 	var dataUpdate = map[string]interface{}{}
 
 	produk, err := s.repo.FindByID(id)
+
+	harga, _ := strconv.Atoi(dataInput.Harga)
+	stok, _ := strconv.Atoi(dataInput.Stok)
+	idKategori, _ := strconv.Atoi(dataInput.IdKategori)
 
 	if err != nil {
 		return entity.Produk{}, err
@@ -108,17 +115,17 @@ func (s *service) UpdateProdukByID(id string, dataInput entity.ProdukInput) (ent
 	if dataInput.Takaran != "" || len(dataInput.Takaran) != 0 {
 		dataUpdate["takaran"] = dataInput.Takaran
 	}
-	if strconv.Itoa(dataInput.Harga) != "" || len(strconv.Itoa(dataInput.Harga)) != 0 {
-		dataUpdate["harga"] = dataInput.Harga
+	if dataInput.Harga != "" || len(dataInput.Harga) != 0 {
+		dataUpdate["harga"] = harga
 	}
 	if dataInput.Promo != "" || len(dataInput.Promo) != 0 {
 		dataUpdate["promo"] = dataInput.Promo
 	}
-	if strconv.Itoa(dataInput.Stok) != "" || len(strconv.Itoa(dataInput.Stok)) != 0 {
-		dataUpdate["stok"] = dataInput.Stok
+	if dataInput.Stok != "" || len(dataInput.Stok) != 0 {
+		dataUpdate["stok"] = stok
 	}
-	if strconv.Itoa(dataInput.IdKategori) != "" || len(strconv.Itoa(dataInput.IdKategori)) != 0 {
-		dataUpdate["id_kategori"] = dataInput.IdKategori
+	if dataInput.IdKategori != "" || len(dataInput.IdKategori) != 0 {
+		dataUpdate["id_kategori"] = idKategori
 	}
 
 	produkUpdated, err := s.repo.UpdateByID(id, dataUpdate)

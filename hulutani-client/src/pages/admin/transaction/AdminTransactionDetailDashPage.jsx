@@ -1,6 +1,6 @@
 import React from "react";
-import SideNavBar from "../../../components/Admin/SideNavBar";
-import HeaderAdmin from "../HeaderAdmin";
+import HeaderAdmin from "../../../components/organisms/admin/HeaderAdmin/HeaderAdmin";
+import SideAdminNavBar from "../../../components/organisms/admin/SideNavBar/SideAdminNavBar";
 
 const personals = [
     { title: "Nama", value: "[Nama Pembeli]" },
@@ -15,7 +15,7 @@ const personals = [
   AdminTransactionDetailDashPage = () => {
     return (
       <div className="d-flex user-select-none">
-        <SideNavBar />
+        <SideAdminNavBar />
 
         <div className="d-flex flex-column vh-100 vw-100">
           <HeaderAdmin />

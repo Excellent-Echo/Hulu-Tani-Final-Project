@@ -1,19 +1,38 @@
-import React from "react";
-import SideNavBar from "../../../components/Admin/SideNavBar";
-import HeaderAdmin from "../HeaderAdmin";
-import { Link } from "react-router-dom";
+import React,{useEffect} from "react";
+import HeaderAdmin from "../../../components/organisms/admin/HeaderAdmin/HeaderAdmin";
+import SideAdminNavBar from "../../../components/organisms/admin/SideNavBar/SideAdminNavBar";
+import { Link, useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+
+import adminEditCategoryAction from "../../../redux/admin/category/edit/adminEditCategoryAction"
 
 const AdminEditCategoryDashPage = () => {
+  const adminEditCategory = useSelector(state => state.adminEditCategory)
+  const dispatch = useDispatch()
+  const { id } = useParams()
+
+  useEffect(() => {
+    dispatch(adminEditCategoryAction.getCategory(id))
+  }, [])
+
+  const updateCategoryHadler = (e) =>{
+    e.preventDefault()
+    dispatch(adminEditCategoryAction.editCategory(
+      id,
+      adminEditCategory.categoryName
+    ))
+  }
+
   return (
     <div className="d-flex user-select-none">
-      <SideNavBar />
+      <SideAdminNavBar />
 
       <div className="d-flex flex-column vh-100 vw-100">
         <HeaderAdmin />
 
       <div className="admin-content-container">
           <div className="h-75 ahdp_recent">
-            <h3 className="h-25 d-flex align-items-center">Kategori > Ubah</h3>
+            <h3 className="h-25 d-flex align-items-center">Kategori &gt; Ubah</h3>
 
             <form className="bg-white p-3 rounded-3">
               {/* category name */}
@@ -30,7 +49,8 @@ const AdminEditCategoryDashPage = () => {
                     className="form-control"
                     id="inputCategoryName"
                     placeholder="Enter product name"
-                    value="[Nama Kategori]"
+                    value={adminEditCategory.categoryName}
+                    onChange={e=> dispatch(adminEditCategoryAction.setName(e.target.value))}
                   />
                 </div>
               </div>

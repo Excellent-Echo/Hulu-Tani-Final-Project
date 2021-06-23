@@ -1,16 +1,47 @@
-import React from "react";
-import SideNavBar from "../../../components/Admin/SideNavBar";
-import HeaderAdmin from "../HeaderAdmin";
+import React, {useEffect} from "react";
 import { Link } from "react-router-dom";
+import { useSelector,useDispatch } from "react-redux";
+import adminShowCategoryAction from "../../../redux/admin/category/show/adminShowCategoryAction"
+import adminDeleteCategoryAction from "../../../redux/admin/category/delete/adminDeleteCategoryAction";
+
+import "../styles.css";
+import HeaderAdmin from "../../../components/organisms/admin/HeaderAdmin/HeaderAdmin";
+import SideAdminNavBar from "../../../components/organisms/admin/SideNavBar/SideAdminNavBar";
+import Swal from "sweetalert2";
 
 const THs = [
     { scope: "col", name: "Nama Kategori" },
     { scope: "col", name: "Aksi" },
   ],
   AdminCategoryDashPage = () => {
+    const adminShowCategory = useSelector(state => state.adminShowCategory.categories)
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+      dispatch(adminShowCategoryAction.getCategories())
+    }, [])
+
+    const handleClickDelete = (id) => {
+      Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          dispatch(adminDeleteCategoryAction.deleteCategory(id))
+          Swal.fire("Deleted!", "Your file has been deleted.", "success");
+          window.location.reload()
+        }
+      });
+    };
+
     return (
       <div className="d-flex user-select-none">
-        <SideNavBar />
+        <SideAdminNavBar />
 
         <div className="d-flex flex-column vh-100 vw-100">
           <HeaderAdmin />
@@ -33,21 +64,26 @@ const THs = [
                   </tr>
                 </thead>
                 <tbody>
+                {adminShowCategory.map((data,index) => {
+                    return(
                   <tr className="">
                     <td>
-                      <i className="fas fa-list"></i> [Nama Kategori]
+                      <i className="fas fa-list"></i> data.nama
                     </td>
                     <td className="d-flex">
-                      <Link to="/admin/dash/category/edit">
+                      <Link to={`/admin/dash/category/edit/${data.id}`}>
                         <button type="button" className="btn btn-primary">
-                          Ubah
-                        </button>
+                            Ubah
+                          </button>
                       </Link>
-                      <button type="button" className="btn btn-danger">
-                        Hapus
+                      <button type="button" className="btn btn-danger" 
+                      onClick={() => {handleClickDelete(data.id)}}>
+                          Hapus
                       </button>
                     </td>
                   </tr>
+                  )
+                })}
                 </tbody>
               </table>
             </div>

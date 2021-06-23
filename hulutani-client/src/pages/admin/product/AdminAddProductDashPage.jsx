@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React,{useEffect, useState} from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import adminShowCategoryAction from "../../../redux/admin/category/show/adminShowCategoryAction";
@@ -112,7 +112,7 @@ const AdminAddProductDashPage = () => {
                 />
               </div>
             </div>
-            {/* product name */}
+              {/* product name */}
 
             {/* product category */}
             <div className="mb-3 row">
@@ -136,7 +136,7 @@ const AdminAddProductDashPage = () => {
                 </select>
               </div>
             </div>
-            {/* product category */}
+              {/* product category */}
 
             {/* product description */}
             <div className="mb-3 row">
@@ -157,7 +157,7 @@ const AdminAddProductDashPage = () => {
                 />
               </div>
             </div>
-            {/* product description */}
+              {/* product description */}
 
             {/* amount product */}
             <div className="mb-3 d-flex">
@@ -181,7 +181,7 @@ const AdminAddProductDashPage = () => {
                 </span>
               </div>
             </div>
-            {/* amount product */}
+              {/* amount product */}
 
             {/* product price */}
             <div className="mb-3 d-flex">
@@ -205,28 +205,27 @@ const AdminAddProductDashPage = () => {
                 />
               </div>
             </div>
-            {/* product price */}
+              {/* product price */}
 
-            {/* product image */}
-            <div className="mb-3 d-flex">
-              <label
-                htmlFor="inputPassword"
-                className="col-sm-2 col-form-label"
-              >
-                Gambar
-              </label>
-              <div className="input-group mb-3">
-                <input
-                  type="file"
-                  className="form-control"
-                  id="inputGroupFile01"
-                  onChange={handleImageAsFile}
-                />
+              {/* product image */}
+              <div className="mb-3 d-flex">
+                <label
+                  htmlFor="inputPassword"
+                  className="col-sm-2 col-form-label"
+                >
+                  Gambar
+                </label>
+                <div className="input-group mb-3">
+                  <input
+                    type="file"
+                    className="form-control"
+                    id="inputGroupFile01"
+                  />
+                </div>
               </div>
               <button type="button" className="btn btn-success" onClick={handleImageUpload}>
               Simpan Gambar
-            </button>
-            </div>
+              </button>
             {/* product image */}
 
             <Link to="/admin/dash/product">

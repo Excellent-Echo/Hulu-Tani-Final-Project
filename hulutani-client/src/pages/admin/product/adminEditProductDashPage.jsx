@@ -32,9 +32,9 @@ const AdminEditProductDashPage = () => {
     ))
   }
   return (
-    <div className="user-select-none">
-      <HeaderAdmin />
-      <SideAdminNavBar />
+    <div className="d-flex user-select-none">
+      <HeaderAdmin/>
+      <SideAdminNavBar/>
 
       <div className="admin-content-container">
         <div className="h-75 ahdp_recent">
@@ -60,7 +60,7 @@ const AdminEditProductDashPage = () => {
                 />
               </div>
             </div>
-            {/* product name */}
+              {/* product name */}
 
             {/* product category */}
             <div className="mb-3 row">
@@ -83,7 +83,7 @@ const AdminEditProductDashPage = () => {
                 </select>
               </div>
             </div>
-            {/* product category */}
+              {/* product category */}
 
             {/* product description */}
             <div className="mb-3 row">
@@ -104,7 +104,7 @@ const AdminEditProductDashPage = () => {
                 />
               </div>
             </div>
-            {/* product description */}
+              {/* product description */}
 
             {/* amount product */}
             <div className="mb-3 d-flex">
@@ -128,7 +128,7 @@ const AdminEditProductDashPage = () => {
                 </span>
               </div>
             </div>
-            {/* amount product */}
+              {/* amount product */}
 
             {/* product price */}
             <div className="mb-3 d-flex">
@@ -136,7 +136,7 @@ const AdminEditProductDashPage = () => {
                 htmlFor="inputProductPrice"
                 className="col-sm-2 col-form-label"
               >
-                Harga
+              Harga
               </label>
               <div className="input-group mb-3">
                 <span className="input-group-text" id="inputProductPrice">
@@ -180,6 +180,7 @@ const AdminEditProductDashPage = () => {
             <button type="button" className="btn btn-primary">
               Simpan
             </button>
+            
           </form>
         </div>
       </div>

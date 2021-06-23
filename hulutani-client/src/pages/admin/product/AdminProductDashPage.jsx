@@ -1,8 +1,8 @@
 import React, {useEffect} from "react";
 import Swal from "sweetalert2";
 import HeaderAdmin from "../../../components/organisms/admin/HeaderAdmin/HeaderAdmin";
-import { Link } from "react-router-dom";
 import SideAdminNavBar from "../../../components/organisms/admin/SideNavBar/SideAdminNavBar";
+import { Link } from "react-router-dom";
 
 import { useSelector, useDispatch } from "react-redux";
 import adminShowProductAction from "../../../redux/admin/product/show/adminShowProductAction";
@@ -44,11 +44,12 @@ const THs = [
     };
 
     return (
-      <div className="user-select-none">
-        <HeaderAdmin />
+      <div className="d-flex user-select-none">
         <SideAdminNavBar />
 
-        <div className="admin-content-container">
+        <div className="d-flex flex-column vh-100 vw-100">
+          <HeaderAdmin />
+
           <div className="h-100 w-100 px-4">
             <div className="h-75 ahdp_recent">
               <div className="d-flex justify-content-between my-3">

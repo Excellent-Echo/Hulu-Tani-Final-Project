@@ -1,9 +1,18 @@
 import "./App.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
+//Public
 import LandingPage from "./pages/user/landing";
+import ProdukList from "./pages/user/produklist";
+
+//User
 import Login from "./pages/user/login";
 import Register from "./pages/user/register";
 import UserEdit from "./pages/user/useredit";
+import UserTransaksi from "./pages/user/usertransaksi";
+import UserAlamat from "./pages/user/useralamat";
+
+//Admin
 import AdminLogin from "./pages/admin/AdminLoginPage";
 import AdminHome from "./pages/admin/home/AdminHomeDashPage";
 import AdminProduct from "./pages/admin/product/AdminProductDashPage";
@@ -23,6 +32,7 @@ function App() {
   return (
     <Router>
       <Switch>
+
         {/* User Routes */}
         <Route path="/login">
           <Login />
@@ -30,9 +40,19 @@ function App() {
         <Route path="/register">
           <Register />
         </Route>
-        <Route path="/user-detail">
+        <Route path="/user-edit">
           <UserEdit />
         </Route>
+        <Route path="/user-transaction">
+          <UserTransaksi />
+        </Route>
+        <Route path="/user-address">
+          <UserAlamat />
+        </Route>
+        <Route path="/products">
+          <ProdukList />
+        </Route>
+        {/* User Routes */}
 
         {/* Admin Routes */}
         <Route component={AdminLogin} exact path="/admin/login" />

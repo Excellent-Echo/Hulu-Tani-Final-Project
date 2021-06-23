@@ -11,7 +11,7 @@ const AdminEditCategoryDashPage = () => {
       <div className="d-flex flex-column vh-100 vw-100">
         <HeaderAdmin />
 
-        <div className="h-100 w-100 px-4">
+      <div className="admin-content-container">
           <div className="h-75 ahdp_recent">
             <h3 className="h-25 d-flex align-items-center">Kategori > Ubah</h3>
 

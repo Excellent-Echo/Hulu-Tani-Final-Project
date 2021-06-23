@@ -125,7 +125,7 @@ button.outline-primary.hover-no-scale:hover {
   transform: scale(1) !important;
 }
 
-input {
+input, select {
   border: 1px solid #263238 !important;
   border-radius: 7px !important;
 }

@@ -1,9 +1,7 @@
 import React from "react";
-import Swal from "sweetalert2";
-// import withReactContent from "sweetalert2-react-content";
-import HeaderAdmin from "../../../components/organisms/admin/HeaderAdmin/HeaderAdmin";
+import SideNavBar from "../../../components/Admin/SideNavBar";
+import HeaderAdmin from "../HeaderAdmin";
 import { Link } from "react-router-dom";
-import SideAdminNavBar from "../../../components/organisms/admin/SideNavBar/SideAdminNavBar";
 
 const THs = [
     { scope: "col", name: "Nama " },
@@ -13,28 +11,13 @@ const THs = [
     { scope: "col", name: "Aksi" },
   ],
   AdminProductDashPage = () => {
-    const handleClickDelete = () => {
-      Swal.fire({
-        title: "Are you sure?",
-        text: "You won't be able to revert this!",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, delete it!",
-      }).then((result) => {
-        if (result.isConfirmed) {
-          Swal.fire("Deleted!", "Your file has been deleted.", "success");
-        }
-      });
-    };
-
     return (
-      <div className="user-select-none">
-        <HeaderAdmin />
-        <SideAdminNavBar />
+      <div className="d-flex user-select-none">
+        <SideNavBar />
 
-        <div className="admin-content-container">
+        <div className="d-flex flex-column vh-100 vw-100">
+          <HeaderAdmin />
+
           <div className="h-100 w-100 px-4">
             <div className="h-75 ahdp_recent">
               <div className="d-flex justify-content-between my-3">
@@ -66,12 +49,7 @@ const THs = [
                           Ubah
                         </button>
                       </Link>
-
-                      <button
-                        type="button"
-                        className="btn btn-danger"
-                        onClick={handleClickDelete}
-                      >
+                      <button type="button" className="btn btn-danger">
                         Hapus
                       </button>
                     </td>

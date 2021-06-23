@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 import '../../assets/css/auth.css'
 
@@ -33,13 +34,17 @@ function Register() {
                                 </div>
                                 <br />
                                 <br />
+                                <Link to={`/register-2`}>
                                 <button type="submit" className="primary long">Daftar</button>
+                                </Link>
                             </form>
                                 <p className="small text-center">
-                                    Udah punya akun?&nbsp;
+                                    Sudah memiliki akun?&nbsp;
+                                    <Link to="/login">
                                     <b className="form-helper-text">
                                         Masuk
                                     </b>
+                                    </Link>
                                 </p>
                             </div>
                         </div>

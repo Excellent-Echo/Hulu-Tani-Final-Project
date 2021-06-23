@@ -4,10 +4,11 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 //Public
 import LandingPage from "./pages/user/landing";
 import ProdukList from "./pages/user/produklist";
-
-//User
 import Login from "./pages/user/login";
 import Register from "./pages/user/register";
+import RegisterNext from "./pages/user/registernext"
+
+//User
 import UserEdit from "./pages/user/useredit";
 import UserTransaksi from "./pages/user/usertransaksi";
 import UserAlamat from "./pages/user/useralamat";
@@ -39,6 +40,9 @@ function App() {
         </Route>
         <Route path="/register">
           <Register />
+        </Route>
+        <Route path="/register-2">
+          <RegisterNext />
         </Route>
         <Route path="/user-edit">
           <UserEdit />

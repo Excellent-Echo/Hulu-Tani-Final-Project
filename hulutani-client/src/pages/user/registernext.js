@@ -1,5 +1,5 @@
 import React from 'react'
-
+import { Link } from 'react-router-dom'
 import '../../assets/css/auth.css'
 
 import AuthShape from '../../assets/images/auth-bg-shape.svg'
@@ -49,10 +49,12 @@ function RegisterNext() {
                                     </div>
                                 </form>
                                 <p className="small text-center">
-                                    Udah punya akun?&nbsp;
+                                    Sudah memiliki akun?&nbsp;
+                                    <Link to="/login">
                                     <b className="form-helper-text">
                                         Masuk
                                     </b>
+                                    </Link>
                                 </p>
                             </div>
                         </div>

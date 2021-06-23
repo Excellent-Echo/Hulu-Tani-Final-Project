@@ -33,6 +33,7 @@ func main() {
 	routes.PelangganRoute(r)
 	routes.KategoriRoute(r)
 	routes.ProdukRoute(r)
+	routes.AlamatRoute(r)
 
 	r.Run(":4444")
 }

@@ -34,6 +34,7 @@ func main() {
 	routes.KategoriRoute(r)
 	routes.ProdukRoute(r)
 	routes.AlamatRoute(r)
+	routes.KontakRoute(r)
 
 	r.Run(":4444")
 }

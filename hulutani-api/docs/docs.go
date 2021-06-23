@@ -261,6 +261,79 @@ var doc = `{
                 }
             }
         },
+        "/kota": {
+            "get": {
+                "description": "Get all Kota data",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Kota"
+                ],
+                "summary": "Get all Kota data",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Failure"
+                        }
+                    }
+                }
+            }
+        },
+        "/kota/{city_id}": {
+            "get": {
+                "description": "Get Kota By ID",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Kota"
+                ],
+                "summary": "Get Kota by id",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "id kota",
+                        "name": "city_id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Failure"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Failure"
+                        }
+                    }
+                }
+            }
+        },
         "/produk": {
             "get": {
                 "description": "Get All produk",
@@ -589,6 +662,79 @@ var doc = `{
                 }
             }
         },
+        "/provinsi": {
+            "get": {
+                "description": "Get all provinsi data",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Provinsi"
+                ],
+                "summary": "Get all Provinsi data",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Failure"
+                        }
+                    }
+                }
+            }
+        },
+        "/provinsi/{province_id}": {
+            "get": {
+                "description": "Get provinsi By ID",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Provinsi"
+                ],
+                "summary": "Get provinsi by id",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "id provinsi",
+                        "name": "province_id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Failure"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Failure"
+                        }
+                    }
+                }
+            }
+        },
         "/user": {
             "get": {
                 "security": [
@@ -793,10 +939,10 @@ var doc = `{
                     "type": "string"
                 },
                 "harga": {
-                    "type": "integer"
+                    "type": "string"
                 },
                 "id_kategori": {
-                    "type": "integer"
+                    "type": "string"
                 },
                 "nama": {
                     "type": "string"
@@ -805,7 +951,7 @@ var doc = `{
                     "type": "string"
                 },
                 "stok": {
-                    "type": "integer"
+                    "type": "string"
                 },
                 "takaran": {
                     "type": "string"

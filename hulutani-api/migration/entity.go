@@ -90,7 +90,7 @@ type Provinsi struct {
 	Province   string `json:"province"`
 }
 
-type City struct {
+type Kota struct {
 	CityId     string `json:"city_id"`
 	ProvinceId string `json:"province_id"`
 	Province   string `json:"province"`

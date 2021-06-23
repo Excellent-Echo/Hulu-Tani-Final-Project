@@ -17,10 +17,10 @@ type ProdukInput struct {
 	Deskripsi  string `json:"deskripsi"`
 	Gambar     string `json:"gambar"`
 	Takaran    string `json:"takaran"`
-	Harga      int    `json:"harga"`
+	Harga      string `json:"harga"`
 	Promo      string `json:"promo"`
-	Stok       int    `json:"stok"`
-	IdKategori int    `json:"id_kategori"`
+	Stok       string `json:"stok"`
+	IdKategori string `json:"id_kategori"`
 }
 
 type Harga struct {

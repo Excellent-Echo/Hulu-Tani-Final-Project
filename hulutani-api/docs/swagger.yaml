@@ -40,15 +40,15 @@ definitions:
       gambar:
         type: string
       harga:
-        type: integer
+        type: string
       id_kategori:
-        type: integer
+        type: string
       nama:
         type: string
       promo:
         type: string
       stok:
-        type: integer
+        type: string
       takaran:
         type: string
     type: object
@@ -233,6 +233,54 @@ paths:
       summary: update kategori
       tags:
       - kategori
+  /kota:
+    get:
+      consumes:
+      - application/json
+      description: Get all Kota data
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/helper.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/helper.Failure'
+      summary: Get all Kota data
+      tags:
+      - Kota
+  /kota/{city_id}:
+    get:
+      consumes:
+      - application/json
+      description: Get Kota By ID
+      parameters:
+      - description: id kota
+        in: path
+        name: city_id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/helper.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/helper.Failure'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/helper.Failure'
+      summary: Get Kota by id
+      tags:
+      - Kota
   /produk:
     get:
       consumes:
@@ -445,6 +493,54 @@ paths:
       summary: Get produk by name
       tags:
       - produk
+  /provinsi:
+    get:
+      consumes:
+      - application/json
+      description: Get all provinsi data
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/helper.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/helper.Failure'
+      summary: Get all Provinsi data
+      tags:
+      - Provinsi
+  /provinsi/{province_id}:
+    get:
+      consumes:
+      - application/json
+      description: Get provinsi By ID
+      parameters:
+      - description: id provinsi
+        in: path
+        name: province_id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/helper.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/helper.Failure'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/helper.Failure'
+      summary: Get provinsi by id
+      tags:
+      - Provinsi
   /user:
     get:
       consumes:

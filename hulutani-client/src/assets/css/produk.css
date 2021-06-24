@@ -68,7 +68,11 @@
 .product-detail-container {
     background-color: white;
     display: flex;
-    align-items: center !important;
+    align-items: flex-start !important;
+}
+
+.product-content {
+    padding-left: 5vw;
 }
 
 .product-name-container {
@@ -84,6 +88,7 @@ button.btn-love {
 
   transition: all 0.2s ease-in-out;
 }
+
 button.btn-love:hover {
   color: white;
   background-color: #CE2D4F;
@@ -91,15 +96,16 @@ button.btn-love:hover {
 }
 
 .product-desc {
-    margin-top: 25px;
+    padding-top: 5vh;
 }
 
 .product-img-container {
-    padding: 2vw !important;
+    /* padding: 2vw !important; */
+    /* width: 35vh; */
 }
 
 .product-img-container .row {
-    height: 75vh;
+    height: 50vh;
 }
 
 /* END OF PRODUK DETAIL */

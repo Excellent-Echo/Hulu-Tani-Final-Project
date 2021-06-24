@@ -3,7 +3,7 @@ body {
 }
 
 .breadcrumbs-container {
-    margin-bottom: 25px;
+    margin-top: 15px;
 }
 
 .user-sidebar-container {
@@ -109,6 +109,7 @@ button.user-sidebar-button .user-sidebar-icon.edit::before {
     border-radius: 10px;
     padding: 1.2vw;
     margin-top: 20px;
+    cursor: pointer;
 
     transition: all .1s ease-in-out;
 }
@@ -123,7 +124,10 @@ button.user-sidebar-button .user-sidebar-icon.edit::before {
     max-height: 50px;
 } */
 
-
+.transaction-list .img-container {
+    width: 100px;
+    height: 100px;
+}
 
 .transaction-status-badge {
     /* max-width: 5vw; */
@@ -133,3 +137,9 @@ button.user-sidebar-button .user-sidebar-icon.edit::before {
 }
 
 /* END OF USER TRANSACTION */
+
+/* USER ADDRESSES */
+.address-head {
+    /* padding-right: 2vw; */
+}
+/* END OF USER ADDRESSES */

@@ -33,7 +33,15 @@ func main() {
 	routes.PelangganRoute(r)
 	routes.KategoriRoute(r)
 	routes.ProdukRoute(r)
+	routes.ProvinsiRoute(r)
+	routes.RouteKota(r)
 	routes.AlamatRoute(r)
+	routes.KontakRoute(r)
+
+	// kalo udah running sekali jangan lupa di comment ya, masih belom nemu untuk handle validasi nya
+
+	// handler.StoreProvinsiDB()
+	// handler.StoreKotaDB()
 
 	r.Run(":4444")
 }

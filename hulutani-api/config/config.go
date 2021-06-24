@@ -9,7 +9,7 @@ import (
 
 func Connection() *gorm.DB {
 
-	dsn := "admin:Radika90*@tcp(localhost)/hulutani"
+	dsn := "root:@tcp(localhost)/hulutani"
 
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
 
@@ -27,7 +27,7 @@ func Connection() *gorm.DB {
 	db.AutoMigrate(&migration.Alamat{})
 	db.AutoMigrate(&migration.Kategori{})
 	db.AutoMigrate(&migration.Provinsi{})
-	db.AutoMigrate(&migration.City{})
+	db.AutoMigrate(&migration.Kota{})
 
 	return db
 }

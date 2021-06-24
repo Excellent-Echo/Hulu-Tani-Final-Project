@@ -136,8 +136,8 @@ function UserAlamat() {
                                                     <span class="status-badge b-primary px-2">Utama</span>
                                                 </div>
                                                 <div className="col-sm d-flex justify-content-end">
-                                                    <button className="b-danger xsmall btn-trash me-2"></button>
-                                                    <button className="b-info xsmall btn-edit"></button>
+                                                    <button className="b-danger btn-trash me-2"></button>
+                                                    <button className="b-info btn-edit"></button>
                                                 </div>
                                             </div>
                                             <br />

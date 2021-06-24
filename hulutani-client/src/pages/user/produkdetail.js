@@ -1,6 +1,17 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import {useSelector, useDispatch} from "react-redux"
+import { useParams } from 'react-router'
+
+import detailProductAction from "../../redux/public/detailProduct/detailProductAction"
 
 function ProdukDetail() {
+    const detailProduct = useSelector(state => state.detailProduct.productDetail)
+    const dispatch = useDispatch()
+    const {id} = useParams()
+
+    useEffect(()=>{
+        dispatch(detailProductAction.getDetailProduct(id))
+    },[])
     return (
         <>
             <div className="container-fluid">
@@ -20,8 +31,8 @@ function ProdukDetail() {
                 <div className="container">
                     <div className="row content-container align-items-center justify-content-center">
                         <div className="col-sm product-img-container justify-content-start">
-                            <div className="row bg-pattern">
-                                <img src="" alt="" className="img-fluid" />
+                            <div className="row">
+                                <img src={detailProduct.gambar} alt="" className="img-fluid" />
                             </div>
                         </div>
                         <div className="col-sm product-content">
@@ -30,12 +41,12 @@ function ProdukDetail() {
                                     [Kategori]
                                 </h3>
                                 <h1 className="title">
-                                    [Nama Produk]
+                                    {detailProduct.nama}
                                 </h1>
                             </div>
                             <div className="row">
                                 <h1 className="accent-title accent-text">
-                                    Rp. 33.000
+                                    Rp. {detailProduct.harga}
                                 </h1>
                                 <div className="col-sm-3 stock-range mb-3">
                                     <label for="jumlah" className="form-label">Jumlah</label>
@@ -54,7 +65,7 @@ function ProdukDetail() {
                                         Informasi Produk
                                     </h5>
                                     <p className="subtitle">
-                                        Massa mattis elementum metus purus a, venenatis lorem. Sagittis elit consequat in odio faucibus elementum.
+                                        {detailProduct.deskripsi}
                                     </p>
                                 </div>
                             </div>

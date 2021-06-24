@@ -1,4 +1,4 @@
-import dummyClient from "../../../APIs/dummy";
+import hulutaniClient from "../../../APIs/hulutaniClient";
 import { DETAIL_PRODUCT_SET_DETAIL_PRODUCT, DETAIL_PRODUCT_SET_ERROR_MESSAGE, DETAIL_PRODUCT_START_LOADING, DETAIL_PRODUCT_STOP_LOADING } from "../actionType";
 
 const startLoading = () => {
@@ -26,16 +26,14 @@ const getDetailProduct = (id) => async dispatch => {
     try {
         dispatch(startLoading())
 
-        const res = await dummyClient({
+        const res = await hulutaniClient({
             method: "GET",
-            url:`/products/${id}`
+            url:`/produk/${id}`
         })
 
         dispatch({
             type: DETAIL_PRODUCT_SET_DETAIL_PRODUCT,
-            payload: {
-                productDetail: res.data
-            }
+            payload: res.data.data
         })
 
         dispatch(stopLoading())

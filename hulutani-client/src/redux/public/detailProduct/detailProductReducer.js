@@ -11,7 +11,7 @@ const detailProductReducer = (state = initialState, action) => {
         case DETAIL_PRODUCT_SET_DETAIL_PRODUCT:
             return {
                 ...state,
-                productDetail: action.payload.productDetail
+                productDetail: action.payload
             }
         case DETAIL_PRODUCT_SET_ERROR_MESSAGE:
             return {

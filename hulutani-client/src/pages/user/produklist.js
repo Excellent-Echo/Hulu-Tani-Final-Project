@@ -2,6 +2,7 @@ import React, {useEffect} from 'react'
 import '../../assets/css/produk.css'
 import {useSelector, useDispatch} from  "react-redux"
 import catalogAction from '../../redux/public/catalog/catalogAction'
+import {Link} from "react-router-dom"
 
 function ProdukList() {
 	const catalogProduct = useSelector(state => state.catalogProduct)
@@ -33,6 +34,7 @@ function ProdukList() {
 										{catalogProduct.allProduct.map((data,index)=>{
 											return (
 											<div className="col-sm card-container" key={index}>
+												<Link to={`/product/${data.id}`}>
 												<div className="card product-card card-outline-primary h-100" style={{ width: "12rem" }}>
 													<span className="badge product-btn-wl b-transparent">
 														<i class="far fa-heart fa-2x"></i>
@@ -47,6 +49,7 @@ function ProdukList() {
 														</div>
 													</div>
 												</div>
+												</Link>
 											</div>
 											)
 										})}

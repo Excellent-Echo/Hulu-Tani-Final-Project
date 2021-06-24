@@ -9,9 +9,11 @@ import (
 	"hulutani-api/layer/provinsi"
 	"io/ioutil"
 	"net/http"
+	"os"
 
 	"github.com/gin-gonic/gin"
 	_ "github.com/go-sql-driver/mysql"
+	"github.com/joho/godotenv"
 )
 
 type provinsiHandler struct {
@@ -52,7 +54,14 @@ func FetchData() entity.RajaOngkir {
 }
 
 func connect() (*sql.DB, error) {
-	dsn := "root:@tcp(localhost)/hulutani"
+	err := godotenv.Load()
+
+	dbUser := os.Getenv("DB_USERNAME")
+	dbPass := os.Getenv("DB_PASSWORD")
+	dbHost := os.Getenv("DB_HOST")
+	dbName := os.Getenv("DB_NAME")
+
+	dsn := fmt.Sprintf("%s:%s@tcp(%s)/%s?charset=utf8mb4&parseTime=True&loc=Local", dbUser, dbPass, dbHost, dbName)
 
 	db, err := sql.Open("mysql", dsn)
 

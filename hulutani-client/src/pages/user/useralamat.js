@@ -96,15 +96,15 @@ function UserAlamat() {
                             <div className="row content-content">
                                 {/* CARD ALAMAT */}
                                 <div className="col-sm card-container">
-                                    <div className="card product-card card-outline-primary h-100" style={{ width: "15rem" }}>
+                                    <div className="card product-card card-outline-primary h-80" style={{ width: "15rem" }}>
                                         <div className="card-body">
                                             <div className="row badge-container align-items-start">
                                                 <div className="col-sm">
-                                                    <span class="status-badge b-primary">Utama</span>
+                                                    <span class="status-badge b-primary px-2">Utama</span>
                                                 </div>
                                                 <div className="col-sm d-flex justify-content-end">
-                                                    <button class="status-badge small b-danger btn-trash me-2"></button>
-                                                    <button class="status-badge small b-info btn-edit"></button>
+                                                    <button className="b-danger xsmall btn-trash me-2"></button>
+                                                    <button className="b-info xsmall btn-edit"></button>
                                                 </div>
                                             </div>
                                             <br />
@@ -122,15 +122,15 @@ function UserAlamat() {
                                 {/* END OF CARD ALAMAT */}
                                 {/* CARD ALAMAT */}
                                 <div className="col-sm card-container">
-                                    <div className="card product-card card-outline-primary h-100" style={{ width: "15rem" }}>
+                                    <div className="card product-card card-outline-primary h-80" style={{ width: "15rem" }}>
                                         <div className="card-body">
                                             <div className="row badge-container align-items-start">
                                                 <div className="col-sm">
-                                                    <span class="status-badge b-primary">Utama</span>
+                                                    <span class="status-badge b-primary px-2">Utama</span>
                                                 </div>
                                                 <div className="col-sm d-flex justify-content-end">
-                                                    <button class="status-badge small b-danger btn-trash me-2"></button>
-                                                    <button class="status-badge small b-info btn-edit"></button>
+                                                    <button className="b-danger xsmall btn-trash me-2"></button>
+                                                    <button className="b-info xsmall btn-edit"></button>
                                                 </div>
                                             </div>
                                             <br />
@@ -148,15 +148,15 @@ function UserAlamat() {
                                 {/* END OF CARD ALAMAT */}
                                 {/* CARD ALAMAT */}
                                 <div className="col-sm card-container">
-                                    <div className="card product-card card-outline-primary h-100" style={{ width: "15rem" }}>
+                                    <div className="card product-card card-outline-primary h-80" style={{ width: "15rem" }}>
                                         <div className="card-body">
                                             <div className="row badge-container align-items-start">
                                                 <div className="col-sm">
-                                                    <span class="status-badge b-primary">Utama</span>
+                                                    <span class="status-badge b-primary px-2">Utama</span>
                                                 </div>
                                                 <div className="col-sm d-flex justify-content-end">
-                                                    <button class="status-badge small b-danger btn-trash me-2"></button>
-                                                    <button class="status-badge small b-info btn-edit"></button>
+                                                    <button className="b-danger xsmall btn-trash me-2"></button>
+                                                    <button className="b-info xsmall btn-edit"></button>
                                                 </div>
                                             </div>
                                             <br />

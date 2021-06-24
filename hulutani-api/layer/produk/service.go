@@ -19,6 +19,7 @@ type Service interface {
 
 type service struct {
 	repo Repository
+	// kategoriRepo kategori.Repository
 }
 
 func NewService(repo Repository) *service {

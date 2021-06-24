@@ -1,5 +1,9 @@
 /* PRODUK LISTS */
 
+.produk-list-container {
+    padding-top: 0 !important;
+}
+
 .promo-banner {
     border: 3px solid #25a18e;
     height: 20vh;
@@ -27,14 +31,17 @@
 }
 
 .filter-sidebar-container {
-    padding: 2vw;
-    margin-right: 10px;
+    margin-top: 10vh;
+}
+
+.filter-sidebar {
+    border-radius: 10px;
+    border: 3px solid #25a18e;
+    /* padding: 2vw; */
     position: fixed;
-    padding-top: 10vh;
 }
 
 .sidebar-title {
-    margin-bottom: 15px;
     background-color: #25a18e;
     padding: 10px;
     display: flex;
@@ -43,6 +50,15 @@
 
 .sidebar-title h4 {
     color: white !important;
+}
+
+.sidebar-content-container {
+    background-color: white;
+    border-radius: 10px;    
+}
+
+.sidebar-content {
+    padding-left: 1.5vw;;
 }
 
 /* END OF PRODUK LIST */

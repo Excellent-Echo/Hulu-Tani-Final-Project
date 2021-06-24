@@ -1,5 +1,6 @@
 import hulutaniClient from "../../../../APIs/hulutaniClient";
 import { ADMIN_ADD_CATEGORY_RESET_FORM, ADMIN_ADD_CATEGORY_SET_CATEGORY, ADMIN_ADD_CATEGORY_SET_ERROR_MESSAGE, ADMIN_ADD_CATEGORY_SET_SUCCESS_MESSAGE, ADMIN_ADD_CATEGORY_START_LOADING, ADMIN_ADD_CATEGORY_STOP_LOADING } from "../../actionType"
+import adminShowCategoryAction from "../show/adminShowCategoryAction";
 
 const setCategory = categoryName => {
     return {
@@ -64,6 +65,7 @@ const addCategory = (categoryName) => async dispatch => {
         });
 
         dispatch(setSuccessMessage("add category success"));
+        dispatch(adminShowCategoryAction.getCategories())
         dispatch(stopLoading());
         console.log("add category success")
 

@@ -1,11 +1,33 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import '../../assets/css/auth.css'
-
 import AuthShape from '../../assets/images/auth-bg-shape.svg'
 import RegisterIllustration from '../../assets/images/register-img.svg'
 
+import {useSelector, useDispatch} from "react-redux"
+import userRegisterAction from "../../redux/user/register/userRegisteAction"
+
+
 function RegisterNext() {
+    const registerData = useSelector(state => state.userRegister)
+    const dispatch = useDispatch()
+    const history = useHistory()
+
+    const userRegisterHandler= (e)=> {
+        e.preventDefault()
+        //console.log(registerData)
+        dispatch(userRegisterAction.registerUser(
+            registerData.name,
+            registerData.dateBirth,
+            registerData.handphoneNumber,
+            registerData.gender,
+            registerData.email,
+            registerData.password
+        ))
+        history.push("/login")
+        dispatch(userRegisterAction.resetForm())
+    }
+
     return (
         <>
             <div className="container-fluid fluid-page auth-page-container">
@@ -22,26 +44,49 @@ function RegisterNext() {
                                 </h1>
                             </div>
                             <div className="row">
-                                <form className="row g-3">
+                                <form className="row g-3" onSubmit={userRegisterHandler}>
                                     <div className="col-sm-12">
                                         <label for="namaLengkap" className="form-label accent-title">Nama Lengkap</label>
-                                        <input type="name" className="form-control" id="namaLengkap" />
+                                        <input 
+                                        type="name" 
+                                        className="form-control" 
+                                        id="namaLengkap" 
+                                        value={registerData.name}
+                                        onChange={(e)=> dispatch(userRegisterAction.setName(e.target.value))}
+                                        />
                                     </div>
                                     <div className="col-sm-6">
                                         <label for="tglLahir" className="form-label accent-title">Tanggal Lahir</label>
-                                        <input type="date" className="form-control" id="tglLahir" placeholder="1234 Main St" />
+                                        <input 
+                                        type="date" 
+                                        className="form-control" 
+                                        id="tglLahir" 
+                                        placeholder="1234 Main St" 
+                                        value={registerData.dateBirth}
+                                        onChange={(e)=> dispatch(userRegisterAction.setDateBirth(e.target.value))}
+                                        />
                                     </div>
                                     <div className="col-sm-6">
                                         <label for="jnsKelamin" className="form-label accent-title">Jenis Kelamin</label>
-                                        <select id="jnsKelamin" className="form-select">
+                                        <select 
+                                        id="jnsKelamin" 
+                                        className="form-select"
+                                        onChange={(e)=> dispatch(userRegisterAction.setGender(e.target.value))}
+                                        >
                                             <option selected>Pilih salah satu</option>
-                                            <option>Laki-laki</option>
-                                            <option>Perempuan</option>
+                                            <option value="Laki-laki">Laki-laki</option>
+                                            <option value="Perempuan">Perempuan</option>
                                         </select>
                                     </div>
                                     <div className="col-sm">
                                         <label for="noTelp" className="form-label accent-title">No. Telepon</label>
-                                        <input type="text" className="form-control" id="notelp" />
+                                        <input 
+                                        type="text" 
+                                        className="form-control" 
+                                        id="notelp" 
+                                        value={registerData.handphoneNumber}
+                                        onChange={(e)=> dispatch(userRegisterAction.setHandphoneNumber(e.target.value))}
+                                        />
                                     </div>
                                     <div className="col-12">
                                         <br />

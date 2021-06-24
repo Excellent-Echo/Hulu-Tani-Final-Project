@@ -1,5 +1,6 @@
 import hulutaniClient from "../../../../APIs/hulutaniClient";
 import { ADMIN_DELETE_CATEGORY_SET_ID_CATEGORY } from "../../actionType";
+import adminShowCategoryAction from "../show/adminShowCategoryAction";
 
 const deleteCategory = (id) => async dispatch => {
     try {
@@ -10,6 +11,7 @@ const deleteCategory = (id) => async dispatch => {
             url: `/kategori/${id}`
         })
 
+        dispatch(adminShowCategoryAction.getCategories())
         console.log("Success Delete Category")
     } catch (error) {
         console.log(error)

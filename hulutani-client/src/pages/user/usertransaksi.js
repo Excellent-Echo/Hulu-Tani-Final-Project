@@ -1,8 +1,15 @@
 import React from 'react'
-
+import { useHistory } from "react-router-dom";
 import '../../assets/css/userpage.css'
 
 function UserTransaksi() {
+    const history = useHistory()
+
+    const logoutUser = () => {
+        localStorage.removeItem("accessToken");
+        history.push("/")
+    }
+
     return (
         <>
             <div className="container-fluid nav-container">
@@ -31,7 +38,11 @@ function UserTransaksi() {
                                 <a class="nav-link active" aria-current="page" href="#">Home</a>
                                 <a class="nav-link" href="#">Features</a>
                                 <a class="nav-link" href="#">Pricing</a>
-                                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                                <a 
+                                class="nav-link" 
+                                tabindex="-1"
+                                onClick={logoutUser}
+                                >Logout</a>
                             </div>
                         </div>
                     </div>

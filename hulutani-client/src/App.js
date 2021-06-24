@@ -1,5 +1,6 @@
 import "./App.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import PrivateRoute from "./components/route/PrivateRoute";
 
 //Public
 import LandingPage from "./pages/user/landing";
@@ -44,18 +45,16 @@ function App() {
         <Route path="/register-2">
           <RegisterNext />
         </Route>
-        <Route path="/user-edit">
-          <UserEdit />
-        </Route>
-        <Route path="/user-transaction">
-          <UserTransaksi />
-        </Route>
-        <Route path="/user-address">
-          <UserAlamat />
-        </Route>
         <Route path="/products">
           <ProdukList />
         </Route>
+
+        {/* Private */}
+        <PrivateRoute path="/user-edit" component={UserEdit}/>
+        <PrivateRoute path="/user-transaction" component={UserTransaksi}/>
+        <PrivateRoute path="/user-address" component={UserAlamat}/>
+        {/* Private */}
+
         {/* User Routes */}
 
         {/* Admin Routes */}

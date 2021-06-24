@@ -33,8 +33,9 @@ const THs = [
       }).then((result) => {
         if (result.isConfirmed) {
           dispatch(adminDeleteCategoryAction.deleteCategory(id))
+          // dispatch(adminShowCategoryAction.getCategories())
           Swal.fire("Deleted!", "Your file has been deleted.", "success");
-          window.location.reload()
+          // //window.location.reload()
         }
       });
     };

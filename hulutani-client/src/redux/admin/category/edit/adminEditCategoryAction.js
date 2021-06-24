@@ -1,5 +1,6 @@
 import hulutaniClient from "../../../../APIs/hulutaniClient"
 import { ADMIN_UPDATE_CATEGORY_SET_CATEGORY, ADMIN_UPDATE_CATEGORY_SET_ERROR_MESSAGE, ADMIN_UPDATE_CATEGORY_SET_ID_CATEGORY, ADMIN_UPDATE_CATEGORY_SET_SUCCESS_MESSAGE, ADMIN_UPDATE_CATEGORY_START_LOADING, ADMIN_UPDATE_CATEGORY_STOP_LOADING } from "../../actionType"
+import adminShowCategoryAction from "../show/adminShowCategoryAction"
 
 const setCategoryID = categoryID => {
     return {
@@ -60,7 +61,7 @@ const getCategory = (id, categoryName) => async dispatch => {
         })
 
         dispatch(setCategory(res.data.data.nama))
-
+        dispatch(adminShowCategoryAction.getCategories())
         dispatch(stopLoading())
         console.log("success updating data")
     } catch (error) {

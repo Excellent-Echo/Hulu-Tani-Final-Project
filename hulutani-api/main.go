@@ -39,6 +39,7 @@ func main() {
 	routes.KontakRoute(r)
 	routes.RouteCost(r)
 	routes.RoutesKeranjang(r)
+	routes.RouteTransaksi(r)
 
 	// kalo udah running sekali jangan lupa di comment ya, masih belom nemu untuk handle validasi nya
 

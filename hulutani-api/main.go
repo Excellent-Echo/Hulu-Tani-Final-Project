@@ -37,6 +37,7 @@ func main() {
 	routes.RouteKota(r)
 	routes.AlamatRoute(r)
 	routes.KontakRoute(r)
+	routes.RouteCost(r)
 
 	// kalo udah running sekali jangan lupa di comment ya, masih belom nemu untuk handle validasi nya
 

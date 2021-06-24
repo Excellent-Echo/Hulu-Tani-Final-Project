@@ -59,22 +59,23 @@ type Produk struct {
 }
 
 type KeranjangBelanja struct {
-	IdKeranjang   int       `gorm:"Primarykey"`
-	Produk        []Produk  `gorm:"many2many:ProdukKeranjang; association_foreignkey:ID; foreignkey:IdKeranjang"`
-	IdPelanggan   int       `json:"id_pelanggan"`
-	KodeKeranjang int       `gorm:"index"`
-	Transaksi     Transaksi `gorm:"foreignkey:KodeKeranjang"`
+	IdKeranjang   int `gorm:"Primarykey"`
+	IdProduk      int `json:"id_produk"`
+	Quantity      int `json:"quantity"`
+	IdPelanggan   int `json:"id_pelanggan"`
+	KodeKeranjang int `gorm:"index"`
 }
 
 type Transaksi struct {
-	KodeTransaksi    int             `gorm:"PrimaryKey" json:"kode_transaksi"`
-	Status           string          `json:"status"`
-	MetodePembayaran string          `json:"metode_pembayaran"`
-	TotalPembayaran  string          `json:"total_pembayaran"`
-	TanggalTransaksi string          `json:"tanggal_transaksi"`
-	KodeKeranjang    int             `json:"kode_keranjang"`
-	IdPelanggan      int             `json:"id_pelanggan"`
-	DetailTransaksi  DetailTransaksi `gorm:"foreignkey:KodeTransaksi"`
+	KodeTransaksi    int              `gorm:"PrimaryKey" json:"kode_transaksi"`
+	Status           string           `json:"status"`
+	MetodePembayaran string           `json:"metode_pembayaran"`
+	TotalPembayaran  string           `json:"total_pembayaran"`
+	TanggalTransaksi string           `json:"tanggal_transaksi"`
+	KodeKeranjang    int              `json:"kode_keranjang"`
+	IdPelanggan      int              `json:"id_pelanggan"`
+	Keranjang        KeranjangBelanja `gorm:"foreignkey:KodeKeranjang"`
+	DetailTransaksi  DetailTransaksi  `gorm:"foreignkey:KodeTransaksi"`
 }
 
 type DetailTransaksi struct {

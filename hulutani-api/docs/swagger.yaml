@@ -80,6 +80,35 @@ definitions:
 info:
   contact: {}
 paths:
+  /cost/{destination}:
+    get:
+      consumes:
+      - application/json
+      description: Get cost By ID
+      parameters:
+      - description: destination
+        in: path
+        name: destination
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/helper.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/helper.Failure'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/helper.Failure'
+      summary: Get cost by id
+      tags:
+      - Cost
   /kategori:
     get:
       consumes:

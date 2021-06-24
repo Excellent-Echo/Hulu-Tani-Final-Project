@@ -49,7 +49,7 @@ function ProdukList() {
 						<div className="container">
 							<div className="filter-sidebar-container">
 								<div className="col-sm-2 filter-sidebar">
-									<div className="container-fluid sidebar-title">
+									<div className="container-fluid sidebar-title d-flex justify-content-center">
 										<h4 className="title text-center">
 											FILTER PRODUK
 										</h4>

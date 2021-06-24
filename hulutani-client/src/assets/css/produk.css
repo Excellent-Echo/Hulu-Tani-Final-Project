@@ -28,4 +28,41 @@
 
 /* PRODUK DETAIL */
 
+.product-detail-container {
+    background-color: white;
+    display: flex;
+    align-items: center !important;
+}
+
+.product-name-container {
+    margin-bottom: 20px;
+}
+
+button.btn-love {
+  color: #25a18e;
+  background-color: transparent;
+  border-radius: 10px;
+  
+  border: 0 !important;
+
+  transition: all 0.2s ease-in-out;
+}
+button.btn-love:hover {
+  color: white;
+  background-color: #CE2D4F;
+  transform: scale(1.05) !important;
+}
+
+.product-desc {
+    margin-top: 25px;
+}
+
+.product-img-container {
+    padding: 2vw !important;
+}
+
+.product-img-container .row {
+    height: 75vh;
+}
+
 /* END OF PRODUK DETAIL */

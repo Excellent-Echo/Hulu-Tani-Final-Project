@@ -17,7 +17,7 @@ require (
 	github.com/leodido/go-urn v1.2.1 // indirect
 	github.com/mattn/go-isatty v0.0.13 // indirect
 	github.com/swaggo/gin-swagger v1.3.0
-	github.com/swaggo/swag v1.5.1
+	github.com/swaggo/swag v1.7.0
 	github.com/ugorji/go v1.2.6 // indirect
 	golang.org/x/crypto v0.0.0-20210616213533-5ff15b29337e
 	golang.org/x/sys v0.0.0-20210616094352-59db8d763f22 // indirect

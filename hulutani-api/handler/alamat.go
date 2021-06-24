@@ -4,10 +4,10 @@ import (
 	"hulutani-api/entity"
 	"hulutani-api/helper"
 	"hulutani-api/layer/alamat"
+	"strconv"
 
 	"github.com/gin-gonic/gin"
 )
-
 
 type alamatHandler struct {
 	alamatService alamat.Service
@@ -18,9 +18,10 @@ func NewAlamatHandler(alamatService alamat.Service) *alamatHandler {
 }
 
 func (h *alamatHandler) ShowAlamatByPelangganId(c *gin.Context) {
-	pelanggan_id := c.Param("pelanggan_id")
+	id := int(c.MustGet("currentUser").(int))
+	idPelanggan := strconv.Itoa(id)
 
-	alamat, err := h.alamatService.GetAlamatByPelangganId(pelanggan_id)
+	alamat, err := h.alamatService.GetAlamatByPelangganId(idPelanggan)
 
 	if err != nil {
 		responseErr := helper.APIResponse(500, "internal server error", gin.H{"error": err.Error()})
@@ -103,7 +104,7 @@ func (h *alamatHandler) DeleteAlamatByIdHandler(c *gin.Context) {
 
 	if err != nil {
 		responseErr := helper.APIFailure(500, "internal server error", gin.H{"error": err.Error()})
-		
+
 		c.JSON(500, responseErr)
 		return
 	}

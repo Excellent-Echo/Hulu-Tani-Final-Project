@@ -1,8 +1,16 @@
-import React from 'react'
-
+import React, {useEffect} from 'react'
 import '../../assets/css/produk.css'
+import {useSelector, useDispatch} from  "react-redux"
+import catalogAction from '../../redux/public/catalog/catalogAction'
 
 function ProdukList() {
+	const catalogProduct = useSelector(state => state.catalogProduct)
+	const dispatch = useDispatch()
+
+	useEffect(() => {	
+		dispatch(catalogAction.getAllProducts())
+	}, [])
+	
         return (
                 <>
 					<div className="container-fluid fluid-page produk-list-container">
@@ -22,102 +30,26 @@ function ProdukList() {
 										</div>
 									</div>
 									<div className="row product-card-container">
-										<div className="col-sm card-container">
-											<div className="card product-card card-outline-primary h-100" style={{ width: "12rem" }}>
-												<span className="badge product-btn-wl b-transparent">
-													<i class="far fa-heart fa-2x"></i>
-												</span>
-												<div className="img-container product-img bg-pattern">
-													<img src="" class="card-img-top img-fluid" alt="..." />
-												</div>
-												<div className="card-body">
-													<div className="row">
-														<h5 className="card-title price-tag title">[Harga]</h5>
-														<span className="subtitle name-tag small-text">[Nama Produk]</span>
+										{catalogProduct.allProduct.map((data,index)=>{
+											return (
+											<div className="col-sm card-container" key={index}>
+												<div className="card product-card card-outline-primary h-100" style={{ width: "12rem" }}>
+													<span className="badge product-btn-wl b-transparent">
+														<i class="far fa-heart fa-2x"></i>
+													</span>
+													<div className="img-container product-img bg-pattern">
+														<img src={data.gambar} class="card-img-top img-fluid" alt="..." />
+													</div>
+													<div className="card-body">
+														<div className="row">
+															<h5 className="card-title price-tag title">{data.harga}</h5>
+															<span className="subtitle name-tag small-text">{data.nama}</span>
+														</div>
 													</div>
 												</div>
 											</div>
-										</div>
-										<div className="col-sm card-container">
-											<div className="card product-card card-outline-primary h-100" style={{ width: "12rem" }}>
-												<span className="badge product-btn-wl b-transparent">
-													<i class="far fa-heart fa-2x"></i>
-												</span>
-												<div className="img-container product-img bg-pattern">
-													<img src="" class="card-img-top img-fluid" alt="..." />
-												</div>
-												<div className="card-body">
-													<div className="row">
-														<h5 className="card-title price-tag title">[Harga]</h5>
-														<span className="subtitle name-tag small-text">[Nama Produk]</span>
-													</div>
-												</div>
-											</div>
-										</div>
-										<div className="col-sm card-container">
-											<div className="card product-card card-outline-primary h-100" style={{ width: "12rem" }}>
-												<span className="badge product-btn-wl b-transparent">
-													<i class="far fa-heart fa-2x"></i>
-												</span>
-												<div className="img-container product-img bg-pattern">
-													<img src="" class="card-img-top img-fluid" alt="..." />
-												</div>
-												<div className="card-body">
-													<div className="row">
-														<h5 className="card-title price-tag title">[Harga]</h5>
-														<span className="subtitle name-tag small-text">[Nama Produk]</span>
-													</div>
-												</div>
-											</div>
-										</div>
-										<div className="col-sm card-container">
-											<div className="card product-card card-outline-primary h-100" style={{ width: "12rem" }}>
-												<span className="badge product-btn-wl b-transparent">
-													<i class="far fa-heart fa-2x"></i>
-												</span>
-												<div className="img-container product-img bg-pattern">
-													<img src="" class="card-img-top img-fluid" alt="..." />
-												</div>
-												<div className="card-body">
-													<div className="row">
-														<h5 className="card-title price-tag title">[Harga]</h5>
-														<span className="subtitle name-tag small-text">[Nama Produk]</span>
-													</div>
-												</div>
-											</div>
-										</div>
-										<div className="col-sm card-container">
-											<div className="card product-card card-outline-primary h-100" style={{ width: "12rem" }}>
-												<span className="badge product-btn-wl b-transparent">
-													<i class="far fa-heart fa-2x"></i>
-												</span>
-												<div className="img-container product-img bg-pattern">
-													<img src="" class="card-img-top img-fluid" alt="..." />
-												</div>
-												<div className="card-body">
-													<div className="row">
-														<h5 className="card-title price-tag title">[Harga]</h5>
-														<span className="subtitle name-tag small-text">[Nama Produk]</span>
-													</div>
-												</div>
-											</div>
-										</div>
-										<div className="col-sm card-container">
-											<div className="card product-card card-outline-primary h-100" style={{ width: "12rem" }}>
-												<span className="badge product-btn-wl b-transparent">
-													<i class="far fa-heart fa-2x"></i>
-												</span>
-												<div className="img-container product-img bg-pattern">
-													<img src="" class="card-img-top img-fluid" alt="..." />
-												</div>
-												<div className="card-body">
-													<div className="row">
-														<h5 className="card-title price-tag title">[Harga]</h5>
-														<span className="subtitle name-tag small-text">[Nama Produk]</span>
-													</div>
-												</div>
-											</div>
-										</div>
+											)
+										})}
 									</div>
 								</div>
 							</div>

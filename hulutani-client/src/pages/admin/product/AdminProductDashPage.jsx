@@ -38,7 +38,6 @@ const THs = [
         if (result.isConfirmed) {
           dispatch(adminDeleteProductAction.deleteProduct(id));
           Swal.fire("Deleted!", "Your file has been deleted.", "success");
-          window.location.reload()
         }
       });
     };

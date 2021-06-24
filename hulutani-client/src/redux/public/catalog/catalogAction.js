@@ -1,4 +1,4 @@
-import dummyClient from "../../../APIs/dummy"
+import hulutaniClient from "../../../APIs/hulutaniClient"
 import { CATALOG_SET_ALL_PRODUCT, CATALOG_SET_CATEGORY, CATALOG_SET_ERROR_MESSAGE, CATALOG_SET_FILTERED_PRODUCTS, CATALOG_SET_PRICE, CATALOG_SET_SEARCHED_PRODUCTS, CATALOG_SET_SEARCH_KEY, CATALOG_START_LOADING, CATALOG_STOP_LOADING } from "../actionType"
 
 const setCategory = (category) => {
@@ -53,16 +53,15 @@ const getAllProducts = () => async dispatch =>{
     try {
         dispatch(startLoading())
 
-        const res = await dummyClient({
+        const res = await hulutaniClient({
             method: "GET",
-            url:"/products"
+            url:"/produk"
         })
-
+        
+        console.log(res.data.data)
         dispatch({
             type: CATALOG_SET_ALL_PRODUCT,
-            payload: {
-                allProducts: res.data
-            }
+            payload: res.data.data
         })
 
         dispatch(stopLoading())
@@ -77,7 +76,7 @@ const getFilterdProducts = (category) => async dispatch => {
     try {
         dispatch(startLoading())
 
-        const res = await dummyClient({
+        const res = await hulutaniClient({
             method: "GET",
             url:`/products/:${category}`
         })
@@ -101,7 +100,7 @@ const getSearchedProducts = (searchKey) => async dispatch =>{
     try {
         dispatch(startLoading())
 
-        const res = await dummyClient({
+        const res = await hulutaniClient({
             method: "GET",
             url:`/products?search=${searchKey}`
         })

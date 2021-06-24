@@ -46,7 +46,7 @@ const AdminAddCategoryDashPage = () => {
                     id="inputCategoryName"
                     placeholder="Enter product name"
                     value={categoryData.categoryName}
-                    onChange={e=> dispatch(adminAddCategoryAction.setName(e.target.value))}
+                    onChange={e=> dispatch(adminAddCategoryAction.setCategory(e.target.value))}
                   />
                 </div>
               </div>

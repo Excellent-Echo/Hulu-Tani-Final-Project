@@ -258,6 +258,20 @@ function LandingPage() {
                                             </div>
                                         </div>
                                     </div>
+                                    <div className="col-sm card-container">
+                                        <div className="card product-card card-outline-primary h-100" style= {{ width: "12rem" }}>
+                                            <span className="badge product-btn-wl b-transparent">
+                                                <i class="far fa-heart fa-2x"></i>
+                                            </span>
+                                            <img src="..." class="card-img-top" alt="..."/>
+                                            <div className="card-body">
+                                                <div className="row">
+                                                    <h5 className="card-title price-tag title">[Harga]</h5>
+                                                    <span className="subtitle name-tag small-text">[Nama Produk]</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

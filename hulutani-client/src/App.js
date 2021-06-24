@@ -1,13 +1,16 @@
 import "./App.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import PrivateRoute from "./components/route/PrivateRoute";
 
 //Public
 import LandingPage from "./pages/user/landing";
 import ProdukList from "./pages/user/produklist";
-
-//User
+import ProdukDetail from "./pages/user/produkdetail"
 import Login from "./pages/user/login";
 import Register from "./pages/user/register";
+import RegisterNext from "./pages/user/registernext"
+
+//User
 import UserEdit from "./pages/user/useredit";
 import UserTransaksi from "./pages/user/usertransaksi";
 import UserAlamat from "./pages/user/useralamat";
@@ -40,18 +43,22 @@ function App() {
         <Route path="/register">
           <Register />
         </Route>
-        <Route path="/user-edit">
-          <UserEdit />
-        </Route>
-        <Route path="/user-transaction">
-          <UserTransaksi />
-        </Route>
-        <Route path="/user-address">
-          <UserAlamat />
+        <Route path="/register-2">
+          <RegisterNext />
         </Route>
         <Route path="/products">
           <ProdukList />
         </Route>
+        <Route path="/product/:id">
+          <ProdukDetail />
+        </Route>
+
+        {/* Private */}
+        <PrivateRoute path="/user-edit" component={UserEdit}/>
+        <PrivateRoute path="/user-transaction" component={UserTransaksi}/>
+        <PrivateRoute path="/user-address" component={UserAlamat}/>
+        {/* Private */}
+
         {/* User Routes */}
 
         {/* Admin Routes */}

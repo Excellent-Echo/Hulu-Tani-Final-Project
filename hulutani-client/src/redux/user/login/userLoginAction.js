@@ -1,5 +1,4 @@
 import hulutaniClient from "../../../APIs/hulutaniClient";
-import dummyClient from "../../../APIs/dummy";
 import { USER_LOGIN_RESET_FORM, USER_LOGIN_SET_ACCESS_TOKEN, USER_LOGIN_SET_EMAIL, USER_LOGIN_SET_ERROR_MESSAGE, USER_LOGIN_SET_PASSWORD, USER_LOGIN_START_LOADING, USER_LOGIN_STOP_LOADING } from "../actionType";
 
 const resetForm = () => {
@@ -56,26 +55,27 @@ const stopLoading = () => {
     };
 };
 
-const userLogin = (email, password) => async dispatch =>{
+const userLogin = (email, password, history) => async dispatch =>{
     try {
         console.log("login...")
         dispatch(startLoading());
         dispatch(setErrorMessage(""));
 
-        const submitData2 = {
+        const submitData = {
             email: email,
             password: password,
         };
-
-        const user = await dummyClient({
+        //console.log(submitData)
+        const user = await hulutaniClient({
             method: "POST",
-            url: "/users/login",
-            data: submitData2,
+            url: "/user/login",
+            data: submitData,
         });
-
-        console.log(user)
-        dispatch(setAccessToken(user.response.data.Authorization))
+        localStorage.setItem("accessToken", user.data.data.Authorization)
+        //console.log(user)
+        // dispatch(setAccessToken(user.response.data.Authorization))
         dispatch(stopLoading());
+        history.push("/user-transaction")
 
     } catch (error) {
         console.log(error.response)
@@ -84,11 +84,32 @@ const userLogin = (email, password) => async dispatch =>{
     }
 }
 
+const validateToken = (token) => async dispatch => {
+    try {
+        const user = await hulutaniClient({
+            method : "GET",
+            url: "/user"
+        })
+
+        const userToken = user.data.data.accessToken;
+        if (userToken === null){
+            localStorage.removeItem("accessToken");
+        } else {
+            dispatch(setAccessToken(token))
+        }
+    
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 const userLoginAction = {
     setEmail,
     setPassword,
     resetForm,
-    userLogin
+    userLogin,
+    setAccessToken,
+    validateToken
 }
 
 export default userLoginAction;

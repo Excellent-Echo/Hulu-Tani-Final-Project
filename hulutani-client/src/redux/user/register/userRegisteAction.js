@@ -26,11 +26,11 @@ const setDateBirth = dateBirth => {
     };
 };
 
-const setHandphoneNumber = handphoneNumer => {
+const setHandphoneNumber = handphoneNumber => {
     return {
         type: USER_REGISTER_SET_HANDPHONE_NUMBER,
         payload: {
-            handphoneNumer: handphoneNumer,
+            handphoneNumber: handphoneNumber,
         },
     };
 };
@@ -99,39 +99,32 @@ const registerUser = (name, dateBirth, handphoneNumber, gender, email, password)
         dispatch(setSuccessMessage(""));
         dispatch(setErrorMessage(""));
 
-        // const submitData = {
-        //     nama: name,
-        //     tanggal_lahir: dateBirth,
-        //     nomor_handphone: handphoneNumber,
-        //     jenis_kelamin: gender,
-        //     email: email,
-        //     password: password,
-        // };
-
-        const submitData2 = {
-            name: name,
-            date_birth: dateBirth,
-            handphone_number: handphoneNumber,
-            Gender: gender,
+        const submitData = {
+            nama: name,
+            tanggal_lahir: dateBirth,
+            nomor_handphone: handphoneNumber,
+            jenis_kelamin: gender,
             email: email,
             password: password,
         };
+        //console.log(submitData)
 
-        // const userRegister = await hulutaniClient({
-        //         method: "POST",
-        //         url: "/user/register",
-        //         data: submitData,
-        // });
-
-        const userRegister = await dummyClient({
-            method: "POST",
-            url: "/users",
-            data: submitData2,
+        const userRegister = await hulutaniClient({
+                method: "POST",
+                url: "/user/register",
+                data: submitData,
         });
-        console.log(userRegister)
+
+        // const userRegister = await dummyClient({
+        //     method: "POST",
+        //     url: "/users",
+        //     data: submitData2,
+        // });
+        // console.log(userRegister)
 
         dispatch(setSuccessMessage("Create user success"));
         dispatch(stopLoading());
+        console.log("create user success");
 
     } catch (error) {
         console.error(error.response);

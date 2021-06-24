@@ -5,6 +5,7 @@ import PrivateRoute from "./components/route/PrivateRoute";
 //Public
 import LandingPage from "./pages/user/landing";
 import ProdukList from "./pages/user/produklist";
+import ProdukDetail from "./pages/user/produkdetail"
 import Login from "./pages/user/login";
 import Register from "./pages/user/register";
 import RegisterNext from "./pages/user/registernext"
@@ -47,6 +48,9 @@ function App() {
         </Route>
         <Route path="/products">
           <ProdukList />
+        </Route>
+        <Route path="/product/:id">
+          <ProdukDetail />
         </Route>
 
         {/* Private */}

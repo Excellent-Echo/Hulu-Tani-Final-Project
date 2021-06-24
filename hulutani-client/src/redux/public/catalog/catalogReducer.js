@@ -1,9 +1,9 @@
 import { CATALOG_SET_ALL_PRODUCT, CATALOG_SET_CATEGORY, CATALOG_SET_ERROR_MESSAGE, CATALOG_SET_FILTERED_PRODUCTS, CATALOG_SET_SEARCHED_PRODUCTS, CATALOG_SET_SEARCH_KEY, CATALOG_START_LOADING, CATALOG_STOP_LOADING } from "../actionType"
 
 const initialState = {
-    allProduct: {},
-    filteredProduct: {},
-    searchedProduct: {},
+    allProduct: [],
+    filteredProduct: [],
+    searchedProduct: [],
     category:"",
     price:"",
     searchKey:"",
@@ -16,7 +16,7 @@ const catalogReducer = (state = initialState, action) => {
         case CATALOG_SET_ALL_PRODUCT:
             return {
                 ...state,
-                allProduct: action.payload.allProduct
+                allProduct: action.payload
             }
         case CATALOG_SET_FILTERED_PRODUCTS:
             return {

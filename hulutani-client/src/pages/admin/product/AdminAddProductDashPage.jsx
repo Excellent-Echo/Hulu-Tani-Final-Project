@@ -1,5 +1,5 @@
 import React,{useEffect, useState} from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import adminShowCategoryAction from "../../../redux/admin/category/show/adminShowCategoryAction";
 import adminAddProductAction from "../../../redux/admin/product/add/adminAddProductAction"
@@ -12,6 +12,7 @@ const AdminAddProductDashPage = () => {
   const adminShowCategory = useSelector((state) => state.adminShowCategory.categories);
   const addProductData = useSelector(state => state.adminAddProducts)
   const dispatch = useDispatch();
+  const history = useHistory()
 
   useEffect(() => {
     dispatch(adminShowCategoryAction.getCategories());
@@ -52,6 +53,7 @@ const AdminAddProductDashPage = () => {
       storage.ref('images').child(imageAsFile.name).getDownloadURL()
        .then(fireBaseUrl => {
          setImageAsUrl(prevObject => ({...prevObject, imgUrl: fireBaseUrl}))
+         window.alert("simpan gambar berhasil")
        })
     })
   };
@@ -68,6 +70,7 @@ const AdminAddProductDashPage = () => {
       imageAsUrl.imgUrl,
       categoryId
     ))
+    history.push("/admin/dash/product")
   }
 
   return (

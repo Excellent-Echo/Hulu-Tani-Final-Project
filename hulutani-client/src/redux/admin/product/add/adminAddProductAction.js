@@ -1,5 +1,6 @@
 import { ADMIN_ADD_PRODUCT_RESET_FORM, ADMIN_ADD_PRODUCT_SET_PRODUCT_CATEGORY_ID, ADMIN_ADD_PRODUCT_SET_PRODUCT_DESCRIPTION, ADMIN_ADD_PRODUCT_SET_PRODUCT_IMAGE, ADMIN_ADD_PRODUCT_SET_PRODUCT_NAME, ADMIN_ADD_PRODUCT_SET_PRODUCT_PRICE, ADMIN_ADD_PRODUCT_SET_PRODUCT_PROMO, ADMIN_ADD_PRODUCT_SET_PRODUCT_STOCK } from "../../actionType"
 import hulutaniClient from "../../../../APIs/hulutaniClient"
+import adminShowProductAction from "../show/adminShowProductAction";
 
 const setName = name => {
     return {
@@ -103,6 +104,7 @@ const addProduct = (nama,description,price,promo,stock,measure,image,categoryId)
         })
         
         console.log("add product success")
+        dispatch(adminShowProductAction.getProducts())
         dispatch(resetForm())
     } catch (error) {
         console.log(error)

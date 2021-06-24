@@ -2,6 +2,7 @@
 import React from 'react'
 
 import '../../assets/css/userpage.css'
+import { Link } from "react-router-dom";
 
 function UserAlamat() {
     return (
@@ -56,24 +57,30 @@ function UserAlamat() {
                             </div>
                             <div className="row user-sidebar-content">
                                 <div className="list-group">
-                                    <button className="list-group-item list-group-item-action user-sidebar-button">
+                                <Link to="user-transaction">
+                                    <button className="list-group-item list-group-item-action user-sidebar-button current">
                                         <span className="sidebar-button">
                                             <span className="user-sidebar-icon transaksi"></span>
                                             Transaksi
                                         </span>
                                     </button>
-                                    <button className="list-group-item list-group-item-action user-sidebar-button current">
+                                    </Link>
+                                    <Link to="user-address">
+                                    <button className="list-group-item list-group-item-action user-sidebar-button">
                                         <span className="sidebar-button">
                                             <span className="user-sidebar-icon alamat"></span>
                                             Alamat Saya
                                         </span>
                                     </button>
+                                    </Link>
+                                    <Link to="user-edit">
                                     <button className="list-group-item list-group-item-action user-sidebar-button">
                                         <span className="sidebar-button">
                                             <span className="user-sidebar-icon edit"></span>
                                             Edit Profil
                                         </span>
                                     </button>
+                                    </Link>
                                 </div>
                             </div>
                         </div>

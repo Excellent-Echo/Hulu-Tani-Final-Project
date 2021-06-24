@@ -25,7 +25,7 @@ func NewCostHandler(service cost.Service) *costHandler {
 // @Success 200 {object} helper.Response
 // @Failure 400 {object} helper.Failure
 // @Failure 500 {object} helper.Failure
-// @Router /cost/{destination} [get]
+// @Router /cost/{destination} [post]
 func (h *costHandler) GetCost(c *gin.Context) {
 	destination := c.Param("destination")
 

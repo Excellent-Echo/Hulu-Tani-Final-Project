@@ -13,5 +13,5 @@ var (
 )
 
 func RouteCost(r *gin.Engine) {
-	r.GET("/cost/:destination", costHandler.GetCost)
+	r.POST("/cost/:destination", costHandler.GetCost)
 }

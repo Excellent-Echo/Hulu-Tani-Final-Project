@@ -25,7 +25,7 @@ var doc = `{
     "basePath": "{{.BasePath}}",
     "paths": {
         "/cost/{destination}": {
-            "get": {
+            "post": {
                 "description": "Get cost By ID",
                 "consumes": [
                     "application/json"

@@ -81,7 +81,7 @@ info:
   contact: {}
 paths:
   /cost/{destination}:
-    get:
+    post:
       consumes:
       - application/json
       description: Get cost By ID

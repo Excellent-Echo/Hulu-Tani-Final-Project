@@ -36,6 +36,7 @@ func main() {
 	routes.ProvinsiRoute(r)
 	routes.RouteKota(r)
 	routes.AlamatRoute(r)
+	routes.KontakRoute(r)
 
 	// kalo udah running sekali jangan lupa di comment ya, masih belom nemu untuk handle validasi nya
 

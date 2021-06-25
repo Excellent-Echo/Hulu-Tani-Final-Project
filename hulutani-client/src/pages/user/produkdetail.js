@@ -3,12 +3,13 @@ import { useParams, Link, useHistory } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import NumberFormat from 'react-number-format'
 import detailProductAction from "../../redux/public/detailProduct/detailProductAction";
-import addCartAction from '../../redux/user/cart/addCartAction';
+import cartAction from '../../redux/user/cart/cartAction';
 
 function ProdukDetail() {
     const detailProduct = useSelector(state => state.detailProduct.productDetail)
     const token = localStorage.getItem("accessToken")
-    const cart = useSelector(state => state.addCart.quantity)
+    const qty = useSelector(state => state.addCart.quantity)
+    const cart = useSelector(state => state.addCart)
     const dispatch = useDispatch()
     const history = useHistory()
     const {id} = useParams()
@@ -17,18 +18,49 @@ function ProdukDetail() {
         dispatch(detailProductAction.getDetailProduct(id))
     },[])
 
-    const addCartHandler=(e)=>{
+    const addToCart = (e) => {
         e.preventDefault()
-        // if (token === null){ 
-        //     history.push("/login")
-        // } else {
-            dispatch(addCartAction.addCart(
-                String(detailProduct.id),
-                cart
-            ))
+        // let match = cart.cart.filter(item =>{
+        //     if(item.id === id)
+        //         return true;
+        // });
+        // if(match && match[0])
+        //     console.log(match[0])
+        // const idd = false
+        // if(id === cart.idproduct){
+        //     dispatch(cartAction.increaseCart(id,1,cart.cart))
+        // }else {
+            dispatch(cartAction.addCart(id,"BAYAM",1,10000,"INIGAMBAR"))
+            //console.log(cart)
+            dispatch(cartAction.syncCart(cart.cart,cart.key))
         // }
     }
 
+    const removeFromCart = (e) => {
+        e.preventDefault()
+        dispatch(cartAction.removeCart(1,cart.cart))
+        dispatch(cartAction.syncCart(cart.cart,cart.key))
+    }
+
+    const increaseQty = (e) => {
+        e.preventDefault()
+        dispatch(cartAction.increaseCart(1,1,cart.cart))
+        dispatch(cartAction.syncCart(cart.cart,cart.key))
+    }
+
+    const decreaseQty = (e) => {
+        e.preventDefault()
+        dispatch(cartAction.reduceCart(1,1,cart.cart))
+        dispatch(cartAction.syncCart(cart.cart,cart.key))
+    }
+
+    const resetCart = (e) => {
+        e.preventDefault()
+        dispatch(cartAction.resetCart())
+        dispatch(cartAction.syncCart(cart.cart,cart.key))
+    }
+
+    
     return (
         <>
             <div className="container-fluid">
@@ -65,21 +97,25 @@ function ProdukDetail() {
                                 <h1 className="accent-title accent-text">
                                 <NumberFormat value={detailProduct.harga} displayType={"text"} thousandSeparator={true} prefix={"Rp"}/>
                                 </h1>
-                                <form onSubmit={addCartHandler}>
+                                {/* <form onSubmit={addCartHandler}> */}
                                     <div className="col-sm-3 stock-range">
                                         <label for="jumlah" className="form-label">Jumlah</label>
                                         <input 
                                         type="number" 
                                         className="form-control" 
                                         id="jumlah" placeholder="1" 
-                                        value={cart} 
-                                        onChange={(e)=>dispatch(addCartAction.setQuantity(e.target.value))}
+                                        value={qty} 
+                                        onChange={(e)=>dispatch(cartAction.setQuantity(e.target.value))}
                                         />
                                     </div>
                                     <div className="col-sm-7 d-flex align-items-end">
-                                        <button type="submit" className="primary long">Beli Sekarang</button>
+                                        <button type="submit" className="primary long" onClick={e=>addToCart(e)}>Tambah ke Keranjang</button>
+                                        <button type="submit" className="primary long" onClick={e=>removeFromCart(e)}>Hapus dari Keranjang</button>
+                                        <button type="submit" className="primary long" onClick={e=>increaseQty(e)}>Tambah jumlah ke Keranjang</button>
+                                        <button type="submit" className="primary long" onClick={e=>decreaseQty(e)}>kurangi jumlah ke Keranjang</button>
+                                        <button type="submit" className="primary long" onClick={e=>resetCart(e)}>Reset Keranjang</button>
                                     </div>
-                                </form>
+                                {/* </form> */}
                                 <div className="row product-desc">
                                     <h5>
                                         Informasi Produk

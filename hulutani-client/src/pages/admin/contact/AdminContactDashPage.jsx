@@ -1,7 +1,9 @@
-import React from "react";
+import React,{useEffect} from "react";
 import HeaderAdmin from "../../../components/organisms/admin/HeaderAdmin/HeaderAdmin";
 import SideAdminNavBar from "../../../components/organisms/admin/SideNavBar/SideAdminNavBar";
 
+import { useSelector, useDispatch } from "react-redux";
+import adminShowContactAction from "../../../redux/admin/contact/show/adminShowContactAction";
 const THs = [
     { scope: "col", name: "Nama" },
     { scope: "col", name: "Surel" },
@@ -10,6 +12,14 @@ const THs = [
     { scope: "col", name: "Tanggal Lahir" },
   ],
   AdminContactDashPage = () => {
+    const contactData = useSelector(state => state.adminShowContacts.contacts)
+
+    const dispatch = useDispatch()
+    useEffect(()=>{
+      dispatch(adminShowContactAction.getContacts())
+    })
+    
+
     return (
       <div className="d-flex user-select-none">
         <SideAdminNavBar />
@@ -30,15 +40,19 @@ const THs = [
                   </tr>
                 </thead>
                 <tbody>
-                  <tr className="">
-                    <td>
-                      <i className="fas fa-address-book"></i> [Nama Kontak]
-                    </td>
-                    <td>[Surel]</td>
-                    <td>[Telepon]</td>
-                    <td>[Jenis Kelamin]</td>
-                    <td>[Tanggal Lahir]</td>
-                  </tr>
+                  {contactData.map((data,index)=>{
+                    return (
+                    <tr className="">
+                      <td>
+                        <i className="fas fa-address-book"></i> {data.nama}
+                      </td>
+                      <td>{data.email}</td>
+                      <td>{data.nomor_handphone}</td>
+                      <td>{data.jenis_kelamin}</td>
+                      <td>{data.tanggal_lahir}</td>
+                    </tr>
+                    )
+                  })}
                 </tbody>
               </table>
             </div>

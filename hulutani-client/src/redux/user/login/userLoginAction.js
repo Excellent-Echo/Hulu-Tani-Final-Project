@@ -55,7 +55,7 @@ const stopLoading = () => {
     };
 };
 
-const userLogin = (email, password, history) => async dispatch =>{
+const userLogin = (email, password) => async dispatch =>{
     try {
         console.log("login...")
         dispatch(startLoading());
@@ -73,9 +73,9 @@ const userLogin = (email, password, history) => async dispatch =>{
         });
         localStorage.setItem("accessToken", user.data.data.Authorization)
         //console.log(user)
-        // dispatch(setAccessToken(user.response.data.Authorization))
+        dispatch(setAccessToken(user.response.data.Authorization))
         dispatch(stopLoading());
-        history.push("/user-transaction")
+        
 
     } catch (error) {
         console.log(error.response)

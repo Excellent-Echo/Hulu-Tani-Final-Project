@@ -1,0 +1,42 @@
+{
+    "user":{
+      "nama":"nama",
+      "email":"emain",
+      "password":"password",
+      "addres": [
+           {
+                "address1": {
+                  "detailAddress": "asdsa"
+                }
+            },
+            {
+                "address1": {
+                    "detailAddress": "asdsa"
+                }
+            }
+      ], 
+      "transaksi":[
+           {
+               "transaksi1": "asdas",
+               "status":"succes",
+               "bukti bayar":"gambar",
+               "detailtransaksi": {
+                   "kode":1,
+                   "keranjang": [
+                       {
+                          "produk 1": {
+                              "nama":"bayam"
+                          }
+                        },
+                       {
+                          "produk 1": {
+                              "nama":"bayam"
+                          }
+                        }
+                   ]
+               }
+            }
+       ]
+      
+    }
+}

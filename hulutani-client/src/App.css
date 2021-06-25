@@ -57,6 +57,26 @@
   font-weight: 700 !important;
 }
 
+.t-primary {
+  color: #25a18e !important;
+}
+
+.t-warning {
+  color: #f96e46 !important;
+}
+
+.t-danger {
+  color: #CE2D4F !important;
+}
+
+.t-info {
+  color: #00A5CF !important;
+}
+
+.t-dark {
+  color: #004E64 !important;
+}
+
 .bg-light {
   background-color: white !important;
 }
@@ -173,8 +193,8 @@ button.primary:active {
 }
 
 button.small {
-  /* padding: 1vw 1.5vw; */
-  font-size: smaller !important;
+  padding: .7vw 1vw !important;
+  font-size: 90% !important;
   border-radius: 7px !important;
   border-width: 2px !important;
 }

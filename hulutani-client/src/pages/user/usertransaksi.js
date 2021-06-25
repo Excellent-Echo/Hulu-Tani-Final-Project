@@ -1,5 +1,5 @@
 import React from 'react'
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import '../../assets/css/userpage.css'
 
 function UserTransaksi() {
@@ -66,24 +66,30 @@ function UserTransaksi() {
                             </div>
                             <div className="row user-sidebar-content">
                                 <div className="list-group">
+                                    <Link to="user-transaction">
                                     <button className="list-group-item list-group-item-action user-sidebar-button current">
                                         <span className="sidebar-button">
                                             <span className="user-sidebar-icon transaksi"></span>
                                             Transaksi
                                         </span>
                                     </button>
+                                    </Link>
+                                    <Link to="user-address">
                                     <button className="list-group-item list-group-item-action user-sidebar-button">
                                         <span className="sidebar-button">
                                             <span className="user-sidebar-icon alamat"></span>
                                             Alamat Saya
                                         </span>
                                     </button>
+                                    </Link>
+                                    <Link to="user-edit">
                                     <button className="list-group-item list-group-item-action user-sidebar-button">
                                         <span className="sidebar-button">
                                             <span className="user-sidebar-icon edit"></span>
                                             Edit Profil
                                         </span>
                                     </button>
+                                    </Link>
                                 </div>
                             </div>
                         </div>
@@ -158,9 +164,9 @@ function UserTransaksi() {
                                     </div>
                                 </div>
                             </div>
+                            {/* END OF CARD TRANSAKSI */}
+                            
                         </div>
-                        {/* END OF CARD TRANSAKSI */}
-
                     </div>
                 </div>
             </div>

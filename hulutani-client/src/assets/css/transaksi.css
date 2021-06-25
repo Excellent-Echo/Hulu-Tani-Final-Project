@@ -1,0 +1,111 @@
+/* KANTONG BELANJA */
+
+.kabel-container {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+.kabel-content-container {
+    background-color: white;
+    border-radius: 15px;
+    height: 100vh;
+}
+
+.kabel {
+    min-height: 85vh;
+}
+
+.item-list {
+    background-color: white;
+    margin-top: 20px;
+}
+
+.item-list .img-container {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+}
+
+.btn-lanjut-belanja::before {
+    font-family: "Font Awesome 5 Free"; 
+    font-weight: 900; 
+    content: "\f053";
+    margin-right: 15px;
+}
+
+.btn-checkout::before {
+    font-family: "Font Awesome 5 Free"; 
+    font-size: larger;
+    font-weight: 900; 
+    content: "\f788";
+    margin-right: 15px;
+}
+
+.btn-checkout::after {
+    font-family: "Font Awesome 5 Free"; 
+    font-size: larger;
+    font-weight: 900; 
+    content: "\f054";
+}
+
+.kabel-footer {
+    padding-bottom: 0 !important;
+}
+
+/* END OF KANTONG BELANJA */
+
+/* CHECKOUT */
+
+.cekot-container {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+.cekot-content-container {
+    background-color: white;
+    height: 100vh;
+    padding: 3vw;
+}
+
+.cekot {
+    min-height: 75vh;
+}
+
+.cekot-kabel-container {
+    
+}
+
+.sm-img-container {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+/* END OF CHECKOUT */
+
+/* PAYMENT */
+.payment-page-container {
+    background-color: white !important;
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;  
+    padding: 2.5vw;
+}
+
+.payment-content-container {
+    align-items: center;
+}
+
+.img-payment-container {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.img-payment {
+    padding: 0;
+    align-self: center;
+    min-width: 125%;
+}
+/* END OF PAYMENT */

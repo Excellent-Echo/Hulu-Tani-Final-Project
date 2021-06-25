@@ -47,6 +47,6 @@ func (h *kontakHandler) CreateKontakHandler(c *gin.Context) {
 		return
 	}
 
-	response := helper.APIResponse(201, "success create new produk", newKontak)
+	response := helper.APIResponse(201, "success create new kontak", newKontak)
 	c.JSON(201, response)
 }

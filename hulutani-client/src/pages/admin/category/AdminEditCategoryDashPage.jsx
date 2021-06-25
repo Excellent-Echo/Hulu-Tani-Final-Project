@@ -34,7 +34,7 @@ const AdminEditCategoryDashPage = () => {
           <div className="h-75 ahdp_recent">
             <h3 className="h-25 d-flex align-items-center">Kategori &gt; Ubah</h3>
 
-            <form className="bg-white p-3 rounded-3">
+            <form className="bg-white p-3 rounded-3" onSubmit={updateCategoryHadler}>
               {/* category name */}
               <div className="mb-3 row">
                 <label
@@ -50,7 +50,7 @@ const AdminEditCategoryDashPage = () => {
                     id="inputCategoryName"
                     placeholder="Enter product name"
                     value={adminEditCategory.categoryName}
-                    onChange={e=> dispatch(adminEditCategoryAction.setName(e.target.value))}
+                    onChange={e=> dispatch(adminEditCategoryAction.setCategory(e.target.value))}
                   />
                 </div>
               </div>

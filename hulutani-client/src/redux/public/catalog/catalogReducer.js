@@ -21,7 +21,7 @@ const catalogReducer = (state = initialState, action) => {
         case CATALOG_SET_FILTERED_PRODUCTS:
             return {
                 ...state,
-                filteredProduct: action.payload.filteredProduct
+                allProduct: action.payload
             }
         case CATALOG_SET_SEARCHED_PRODUCTS:
             return {

@@ -14,6 +14,7 @@ import RegisterNext from "./pages/user/registernext"
 import UserEdit from "./pages/user/useredit";
 import UserTransaksi from "./pages/user/usertransaksi";
 import UserAlamat from "./pages/user/useralamat";
+import KantongBelanja from "./pages/user/kantongbelanja"
 
 //Admin
 import AdminLogin from "./pages/admin/AdminLoginPage";
@@ -52,11 +53,14 @@ function App() {
         <Route path="/product/:id">
           <ProdukDetail />
         </Route>
-
+        <Route path="/cart">
+          <KantongBelanja />
+        </Route>
         {/* Private */}
         <PrivateRoute path="/user-edit" component={UserEdit}/>
         <PrivateRoute path="/user-transaction" component={UserTransaksi}/>
         <PrivateRoute path="/user-address" component={UserAlamat}/>
+        <PrivateRoute path="/cart" component={KantongBelanja}/>
         {/* Private */}
 
         {/* User Routes */}

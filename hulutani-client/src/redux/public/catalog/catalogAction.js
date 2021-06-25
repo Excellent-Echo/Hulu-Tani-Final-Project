@@ -72,20 +72,42 @@ const getAllProducts = () => async dispatch =>{
     }
 }
 
-const getFilterdProducts = (category) => async dispatch => {
+const getFilterdProductsByCategory = (id) => async dispatch => {
     try {
         dispatch(startLoading())
 
         const res = await hulutaniClient({
             method: "GET",
-            url:`/products/:${category}`
+            url:`/kategori/${id}`
         })
 
         dispatch({
             type: CATALOG_SET_FILTERED_PRODUCTS,
-            payload: {
-                filteredProduct: res.data
-            }
+            payload:  res.data.data.produks
+        })
+
+        dispatch(stopLoading())
+    } catch (error) {
+        console.log(error)
+        dispatch(setErrorMessage(error.response));
+        dispatch(stopLoading())
+    }
+}
+
+const getFilterdProductsByPrice = (data) => async dispatch => {
+    try {
+        dispatch(startLoading())
+
+
+        const res = await hulutaniClient({
+            method: "POST",
+            url:`/produk/harga`,
+            data: data
+        })
+
+        dispatch({
+            type: CATALOG_SET_FILTERED_PRODUCTS,
+            payload:  res.data.data
         })
 
         dispatch(stopLoading())
@@ -125,7 +147,8 @@ const catalogAction = {
     setPrice,
     setSearchKey,
     getAllProducts,
-    getFilterdProducts,
+    getFilterdProductsByCategory,
+    getFilterdProductsByPrice,
     getSearchedProducts
 }
 

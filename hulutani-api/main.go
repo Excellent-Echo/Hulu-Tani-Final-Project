@@ -31,6 +31,7 @@ func main() {
 	// Endpoint Routes
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 	routes.PelangganRoute(r)
+	routes.AdminRoute(r)
 	routes.KategoriRoute(r)
 	routes.ProdukRoute(r)
 	routes.ProvinsiRoute(r)

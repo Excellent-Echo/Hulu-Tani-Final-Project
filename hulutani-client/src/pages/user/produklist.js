@@ -2,14 +2,41 @@ import React, {useEffect} from 'react'
 import '../../assets/css/produk.css'
 import {useSelector, useDispatch} from  "react-redux"
 import catalogAction from '../../redux/public/catalog/catalogAction'
+import categoryAction from "../../redux/admin/category/show/adminShowCategoryAction"
+import NumberFormat from 'react-number-format'
+import {Link} from "react-router-dom"
 
 function ProdukList() {
 	const catalogProduct = useSelector(state => state.catalogProduct)
+	const category = useSelector(state => state.adminShowCategory.categories)
 	const dispatch = useDispatch()
+	const harga1 = new FormData()
+	const harga2 = new FormData()
+	const harga3 = new FormData()
+	const harga4 = new FormData()
+
+	harga1.append("dari",0)
+	harga1.append("sampai",50000)
+	harga2.append("dari",50000)
+	harga2.append("sampai",10000000)
+	harga3.append("dari",0)
+	harga3.append("sampai",100000)
+	harga4.append("dari",100000)
+	harga4.append("sampai",10000000)
 
 	useEffect(() => {	
 		dispatch(catalogAction.getAllProducts())
+		dispatch(categoryAction.getCategories())
 	}, [])
+
+	const filterCategoryHandler =(id)=> {
+		//console.log(id)
+		dispatch(catalogAction.getFilterdProductsByCategory(id))
+	}
+
+	const filterHargaHandler = (start,end) => {
+		dispatch(catalogAction.getFilterdProductsByPrice(start,end))
+	}
 	
         return (
                 <>
@@ -29,8 +56,17 @@ function ProdukList() {
 														Kategori
 													</a>
 													<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-														<li><a class="dropdown-item" href="#">Action</a></li>
-														<li><a class="dropdown-item" href="#">Another action</a></li>
+														<li>
+															<div onClick={()=>{dispatch(catalogAction.getAllProducts())}} class="dropdown-item">All Product</div>
+														</li>
+														{category.map((data,index)=>{
+															return (
+															<li key={index}>
+																
+																<div onClick={()=>{filterCategoryHandler(data.id)}} class="dropdown-item">{data.nama}</div>
+															</li>
+															)
+														})}
 													</ul>
 												</li>
 											</ul>
@@ -62,18 +98,16 @@ function ProdukList() {
 													KATEGORI
 												</h6>
 												<ul className="list-unstyled">
-													<li>
-														<a href="">Sayuran</a>
-													</li>
-													<li>
-														<a href="">Buah</a>
-													</li>
-													<li>
-														<a href="">Olahan Pangan</a>
-													</li>
-													<li>
-														<a href="">Ikan</a>
-													</li>
+													<li><div onClick={()=>{dispatch(catalogAction.getAllProducts())}}>All Product</div></li>
+													{category.map((data,index)=>{
+														return (
+														<li key={index}>
+															
+															<div onClick={()=>{filterCategoryHandler(data.id)}}>{data.nama}</div>
+														</li>
+														)
+													})}
+												
 												</ul>
 											</div>
 											<div className="row filter">
@@ -82,16 +116,16 @@ function ProdukList() {
 												</h6>
 												<ul className="list-unstyled">
 													<li>
-														<a href="">dibawah Rp 50k</a>
+														<div onClick={()=> filterHargaHandler(harga1)}>dibawah Rp 50rb</div>
 													</li>
 													<li>
-														<a href="">diatas Rp 50k</a>
+														<div onClick={()=> filterHargaHandler(harga2)}>diatas Rp 50rb</div>
 													</li>
 													<li>
-														<a href="">dibawah Rp 100k</a>
+														<div onClick={()=> filterHargaHandler(harga3)}>dibawah Rp 100rb</div>
 													</li>
 													<li>
-														<a href="">diatas Rp 100k</a>
+														<div onClick={()=> filterHargaHandler(harga4)}>diatas Rp 100rb</div>
 													</li>
 												</ul>
 											</div>
@@ -118,9 +152,10 @@ function ProdukList() {
 										{catalogProduct.allProduct.map((data,index)=>{
 											return (
 											<div className="col-sm card-container" key={index}>
+												<Link to={`/product/${data.id}`}>
 												<div className="card product-card card-outline-primary h-100" style={{ width: "11.8rem" }}>
 													<span className="badge product-btn-wl b-transparent">
-														<i class="far fa-heart fa-2x"></i>
+														<i class="far fa-shopping-cart fa-2x"></i>
 													</span>
 													<div className="img-container product-img bg-pattern">
 														<img src={data.gambar} class="card-img-top img-fluid" alt="..." />
@@ -128,10 +163,13 @@ function ProdukList() {
 													<div className="card-body">
 														<div className="row">
 															<span className="name-tag small-text mb-2">{data.nama}</span>
-															<h4 className="card-title accent-title"><sup>Rp</sup>{data.harga}</h4>
+															<h4 className="card-title accent-title">
+																<NumberFormat value={data.harga} displayType={"text"} thousandSeparator={true} prefix={"Rp"}/>
+															</h4>
 														</div>
 													</div>
 												</div>
+												</Link>
 											</div>
 											)
 										})}

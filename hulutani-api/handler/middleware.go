@@ -44,6 +44,42 @@ func Middleware(authService auth.Service) gin.HandlerFunc {
 	}
 }
 
+func AdminMiddleware(authService auth.Service) gin.HandlerFunc {
+	return func(c *gin.Context) {
+		authHeader := c.GetHeader("Authorization")
+
+		if authHeader == "" || len(authHeader) == 0 {
+			errorResponse := helper.APIResponse(401, "Unauthorize", gin.H{"error": "unauthorize user"})
+
+			c.AbortWithStatusJSON(401, errorResponse)
+			return
+		}
+
+		token, err := authService.ValidateToken(authHeader)
+
+		if err != nil {
+			errorResponse := helper.APIResponse(401, "Unauthorize", gin.H{"error": err.Error()})
+
+			c.AbortWithStatusJSON(401, errorResponse)
+			return
+		}
+
+		claim, ok := token.Claims.(jwt.MapClaims)
+		print(claim)
+
+		if !ok {
+			errorResponse := helper.APIResponse(401, "Unauthorize", gin.H{"error": "unauthorize user"})
+
+			c.AbortWithStatusJSON(401, errorResponse)
+			return
+		}
+
+		ID := int(claim["user_id"].(float64))
+
+		c.Set("currentUser", ID)
+	}
+}
+
 func CORSMiddleware() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		c.Writer.Header().Set("Access-Control-Allow-Origin", "*")

@@ -7,13 +7,12 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-
 var (
-	AdminRepository    = admin.NewRepository(DB)
-	AdminService = admin.NewService(AdminRepository)
-	adminHandler = handler.NewAdminHandler(AdminService, authService)
+	AdminRepository = admin.NewRepository(DB)
+	AdminService    = admin.NewService(AdminRepository)
+	adminHandler    = handler.NewAdminHandler(AdminService, authService)
 )
 
 func AdminRoute(r *gin.Engine) {
-	r.POST("/user/login", handler.AdminMiddleware(authService), adminHandler.LoginAdminHandler)
+	r.POST("/admin/login", handler.AdminMiddleware(authService), adminHandler.LoginAdminHandler)
 }

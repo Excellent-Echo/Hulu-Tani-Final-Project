@@ -164,9 +164,9 @@ function UserTransaksi() {
                                     </div>
                                 </div>
                             </div>
+                            {/* END OF CARD TRANSAKSI */}
+                            
                         </div>
-                        {/* END OF CARD TRANSAKSI */}
-
                     </div>
                 </div>
             </div>

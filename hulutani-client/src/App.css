@@ -173,8 +173,8 @@ button.primary:active {
 }
 
 button.small {
-  /* padding: 1vw 1.5vw; */
-  font-size: smaller !important;
+  padding: .7vw 1vw !important;
+  font-size: 90% !important;
   border-radius: 7px !important;
   border-width: 2px !important;
 }

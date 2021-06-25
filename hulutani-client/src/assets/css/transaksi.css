@@ -1,0 +1,56 @@
+/* KANTONG BELANJA */
+
+.kabel-container {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+.kabel-content-container {
+    background-color: white;
+    border-radius: 15px;
+    height: 100vh;
+}
+
+.kabel {
+    min-height: 85vh;
+}
+
+.item-list {
+    background-color: white;
+    margin-top: 20px;
+}
+
+.item-list .img-container {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+}
+
+.btn-lanjut-belanja::before {
+    font-family: "Font Awesome 5 Free"; 
+    font-weight: 900; 
+    content: "\f053";
+    margin-right: 15px;
+}
+
+.btn-checkout::before {
+    font-family: "Font Awesome 5 Free"; 
+    font-size: larger;
+    font-weight: 900; 
+    content: "\f788";
+    margin-right: 15px;
+}
+
+.btn-checkout::after {
+    font-family: "Font Awesome 5 Free"; 
+    font-size: larger;
+    font-weight: 900; 
+    content: "\f054";
+}
+
+.kabel-footer {
+    padding-bottom: 0 !important;
+}
+
+/* END OF KANTONG BELANJA */

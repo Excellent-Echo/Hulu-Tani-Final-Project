@@ -31,6 +31,7 @@ func main() {
 	// Endpoint Routes
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 	routes.PelangganRoute(r)
+	routes.AdminRoute(r)
 	routes.KategoriRoute(r)
 	routes.ProdukRoute(r)
 	routes.ProvinsiRoute(r)
@@ -39,6 +40,7 @@ func main() {
 	routes.KontakRoute(r)
 	routes.RouteCost(r)
 	routes.RoutesKeranjang(r)
+	routes.RouteTransaksi(r)
 
 	// kalo udah running sekali jangan lupa di comment ya, masih belom nemu untuk handle validasi nya
 

@@ -54,3 +54,58 @@
 }
 
 /* END OF KANTONG BELANJA */
+
+/* CHECKOUT */
+
+.cekot-container {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+.cekot-content-container {
+    background-color: white;
+    height: 100vh;
+    padding: 3vw;
+}
+
+.cekot {
+    min-height: 75vh;
+}
+
+.cekot-kabel-container {
+    
+}
+
+.sm-img-container {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+/* END OF CHECKOUT */
+
+/* PAYMENT */
+.payment-page-container {
+    background-color: white !important;
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;  
+    padding: 2.5vw;
+}
+
+.payment-content-container {
+    align-items: center;
+}
+
+.img-payment-container {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.img-payment {
+    padding: 0;
+    align-self: center;
+    min-width: 125%;
+}
+/* END OF PAYMENT */

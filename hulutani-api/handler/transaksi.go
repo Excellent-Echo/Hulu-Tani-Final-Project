@@ -1,7 +1,6 @@
 package handler
 
 import (
-	"fmt"
 	"hulutani-api/entity"
 	"hulutani-api/helper"
 	"hulutani-api/layer/keranjang"
@@ -48,8 +47,8 @@ func (h *transaksiHandler) CreateTransaksiHandler(c *gin.Context) {
 		c.JSON(400, responseErr)
 		return
 	}
-	deleteKeranjang, err := h.keranjangService.DeleteKeranjang(fmt.Sprint(inputTransaksi.KodeKeranjang))
-	newTransaksi, _, err := h.service.SaveNewTransaksi(deleteKeranjang, id, inputTransaksi)
+
+	newTransaksi, err := h.service.SaveNewTransaksi(id, inputTransaksi)
 
 	if err != nil {
 		responseErr := helper.APIResponse(500, "internal server error", err.Error())

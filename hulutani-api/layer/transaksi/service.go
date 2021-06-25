@@ -2,14 +2,14 @@ package transaksi
 
 import (
 	"errors"
-	"fmt"
 	"hulutani-api/entity"
 	"hulutani-api/layer/keranjang"
+	"time"
 )
 
 type Service interface {
 	GetAllTransaksi(idPelanggan string) ([]entity.Transaksi, error)
-	SaveNewTransaksi(delete interface{}, idPelanggan int, input entity.TransaksiInput) (interface{}, entity.Transaksi, error)
+	SaveNewTransaksi(idPelanggan int, input entity.TransaksiInput) (entity.Transaksi, error)
 	GetTransaksiByKode(kodeTransaksi string) (entity.Transaksi, error)
 	UpdateKategoriByKode(kodeTransaksi string, dataInput entity.TransaksiInput) (entity.Transaksi, error)
 }
@@ -33,31 +33,37 @@ func (s *service) GetAllTransaksi(idPelanggan string) ([]entity.Transaksi, error
 	return transaksi, nil
 }
 
-func (s *service) SaveNewTransaksi(delete interface{}, idPelanggan int, input entity.TransaksiInput) (interface{}, entity.Transaksi, error) {
+func (s *service) SaveNewTransaksi(idPelanggan int, input entity.TransaksiInput) (entity.Transaksi, error) {
 
 	var transaksi = entity.Transaksi{
 		Status:           input.Status,
+		Tanggal:          time.Now(),
 		MetodePembayaran: input.MetodePembayaran,
-		TotalPembayaran:  input.TotalPembayaran,
-		TanggalTransaksi: input.TanggalTransaksi,
-		KodeKeranjang:    input.KodeKeranjang,
+		IdProduk:         input.IdProduk,
+		Produk:           input.Produk,
 		IdPelanggan:      idPelanggan,
+		Harga:            input.Harga,
+		Quantity:         input.Quantity,
+		KodeTransaksi:    input.KodeTransaksi,
 	}
 
-	createTransaksi, err := s.repo.Create(transaksi)
+	var produkTransaksi = entity.ProdukTransaksi{
+		IdTransaksi: transaksi.ID,
+		IdProduk:    transaksi.IdProduk,
+	}
 
-	deleteKeranjang, err := s.keranjangRepo.DeleteKeranjang(fmt.Sprint(transaksi.KodeKeranjang))
+	createTransaksi, err := s.repo.Create(produkTransaksi, transaksi)
 
 	if err != nil {
-		return deleteKeranjang, createTransaksi, err
+		return createTransaksi, err
 	}
-	return deleteKeranjang, createTransaksi, nil
+	return createTransaksi, nil
 }
 
 func (s *service) GetTransaksiByKode(kodeTransaksi string) (entity.Transaksi, error) {
 	transaksi, err := s.repo.FindByKode(kodeTransaksi)
 
-	if transaksi.KodeTransaksi == 0 {
+	if transaksi.KodeTransaksi == "" {
 		return transaksi, errors.New("transaksi not found")
 	}
 
@@ -71,15 +77,15 @@ func (s *service) GetTransaksiByKode(kodeTransaksi string) (entity.Transaksi, er
 func (s *service) UpdateKategoriByKode(kodeTransaksi string, dataInput entity.TransaksiInput) (entity.Transaksi, error) {
 	var dataUpdate = map[string]interface{}{}
 
-	transaksi, err := s.repo.FindByKode(kodeTransaksi)
+	// transaksi, err := s.repo.FindByKode(kodeTransaksi)
 
-	if err != nil {
-		return entity.Transaksi{}, err
-	}
+	// if err != nil {
+	// 	return entity.Transaksi{}, err
+	// }
 
-	if transaksi.KodeKeranjang == 0 {
-		return entity.Transaksi{}, errors.New("transaksi not found")
-	}
+	// if transaksi.KodeKeranjang == 0 {
+	// 	return entity.Transaksi{}, errors.New("transaksi not found")
+	// }
 
 	if dataInput.Status != "" || len(dataInput.Status) != 0 {
 		dataUpdate["status"] = dataInput.Status

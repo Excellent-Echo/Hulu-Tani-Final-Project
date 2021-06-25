@@ -30,7 +30,7 @@ func (h *produkHandler) ShowAllProduksHandler(c *gin.Context) {
 	produk, err := h.service.GetAllProduk()
 
 	if err != nil {
-		responseErr := helper.APIResponse(500, "internal server error", err.Error())
+		responseErr := helper.APIFailure(500, "internal server error", err.Error())
 		c.JSON(500, responseErr)
 		return
 	}

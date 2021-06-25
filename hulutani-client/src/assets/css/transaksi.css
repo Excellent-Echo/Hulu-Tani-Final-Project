@@ -54,3 +54,22 @@
 }
 
 /* END OF KANTONG BELANJA */
+
+/* CHECKOUT */
+
+.cekot-container {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+.cekot-content-container {
+    background-color: white;
+    height: 100vh;
+    padding: 3vw;
+}
+
+.cekot {
+    min-height: 70vh;
+}
+
+/* END OF CHECKOUT */

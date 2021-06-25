@@ -57,6 +57,26 @@
   font-weight: 700 !important;
 }
 
+.t-primary {
+  color: #25a18e !important;
+}
+
+.t-warning {
+  color: #f96e46 !important;
+}
+
+.t-danger {
+  color: #CE2D4F !important;
+}
+
+.t-info {
+  color: #00A5CF !important;
+}
+
+.t-dark {
+  color: #004E64 !important;
+}
+
 .bg-light {
   background-color: white !important;
 }

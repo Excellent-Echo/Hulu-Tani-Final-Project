@@ -2,10 +2,12 @@ import React, {useEffect} from 'react'
 import {useSelector, useDispatch} from  "react-redux"
 import catalogAction from '../../redux/public/catalog/catalogAction'
 
+import '../../assets/css/userglobal.css'
 import '../../assets/css/produk.css'
 import ProductFilter from '../../components/organisms/user/productfilter'
 import Navbar from '../../components/organisms/user/navbar'
 import Footer from '../../components/organisms/user/footer.jsx'
+import ModalTbAlamat from '../../components/organisms/user/modaltbalamat'
 
 function ProdukList() {
 	const catalogProduct = useSelector(state => state.catalogProduct)
@@ -33,8 +35,7 @@ function ProdukList() {
 					<ProductFilter />
 					<div className="container-fluid fluid-page produk-list-container">
 						<div className="container">
-							<div className="row product-list justify-content-end">
-
+							<div className="row product-list justify-content-end">								
 								<div className="col-sm content-container x">
 									<div className="row banner-container">
 										<div className="col-sm-8 promo-banner bg-pattern banner-1">

@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import NumberFormat from 'react-number-format'
 import detailProductAction from "../../redux/public/detailProduct/detailProductAction";
 
+import '../../assets/css/userglobal.css'
 import Navbar from '../../components/organisms/user/navbar'
 import Footer from '../../components/organisms/user/footer'
 

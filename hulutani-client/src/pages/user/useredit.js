@@ -1,47 +1,17 @@
 import React from 'react'
 import { Link } from "react-router-dom";
 
+import '../../assets/css/userglobal.css'
 import '../../assets/css/userpage.css'
 import BlankUser from '../../assets/images/blank-user.png'
 import Navbar from '../../components/organisms/user/navbar';
 import Footer from '../../components/organisms/user/footer'
+import ModalProfilePic from '../../components/organisms/user/modalprofilepic';
 
 function UserEdit() {
     return (
         <>
             <Navbar />
-            <div className="container-fluid nav-container">
-                <nav className="navbar navbar-expand-lg bg-light">
-                    <div className="container">
-                        <a className="navbar-brand title accent-text" href="#">HuluTani</a>
-                        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span className="navbar-toggler-icon"></span>
-                        </button>
-                        <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                            <ul className="navbar-nav mx-4 mb-lg-0">
-                                <li className="nav-item dropdown">
-                                    <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        Kategori
-                                    </a>
-                                    <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <li><a className="dropdown-item" href="#">Action</a></li>
-                                        <li><a className="dropdown-item" href="#">Another action</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                            <form className="ms-4 me-auto">
-                                <input className="form-control nav-search" type="search" placeholder="Cari 'wortel'" aria-label="Search"/>
-                            </form>
-                            <div className="navbar-nav ms-2">
-                                    <a className="nav-link active" aria-current="page" href="#">Home</a>
-                                    <a className="nav-link" href="#">Features</a>
-                                    <a className="nav-link" href="#">Pricing</a>
-                                    <a className="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-                            </div>
-                        </div>
-                    </div>
-                </nav>
-            </div>
             <div className="container-fluid fluid-page user-page-container">
                 <div className="container">
                     <div className="row breadcrumbs-container">
@@ -113,7 +83,7 @@ function UserEdit() {
                                                 memasukkan informasi palsu.
                                            </p>
                                        </div>
-                                       <div className="row user-avatar-container">
+                                       <div className="row user-avatar-container" data-bs-toggle="modal" data-bs-target="#modalProfilePic">
                                             <img src={ BlankUser } alt="" className="img-fluid user-avatar" />
                                        </div>
                                     </div>
@@ -191,6 +161,10 @@ function UserEdit() {
                 </div>
             </div>
             <Footer />
+
+            {/* MODALS */}
+            <ModalProfilePic />
+            {/* END OF MODALS */}
         </>
     )
 }

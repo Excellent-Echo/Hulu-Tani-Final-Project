@@ -1,97 +1,37 @@
-import React, {useEffect} from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import { useSelector,useDispatch } from "react-redux";
-import adminShowCategoryAction from "../../../redux/admin/category/show/adminShowCategoryAction"
-import adminDeleteCategoryAction from "../../../redux/admin/category/delete/adminDeleteCategoryAction";
+import AdminHeader from "../../../components/organisms/admin/AdminHeader";
+import AdminSideNavBar from "../../../components/organisms/admin/AdminSideNavBar";
+import CategoryTable from "../../../components/organisms/admin/category/CategoryTable";
 
-import "../styles.css";
-import HeaderAdmin from "../../../components/organisms/admin/HeaderAdmin/HeaderAdmin";
-import SideAdminNavBar from "../../../components/organisms/admin/SideNavBar/SideAdminNavBar";
-import Swal from "sweetalert2";
+const AdminCategoryDashPage = () => {
+  return (
+    <div className="user-select-none w-100 vh-100">
+      <AdminSideNavBar />
 
-const THs = [
-    { scope: "col", name: "Nama Kategori" },
-    { scope: "col", name: "Aksi" },
-  ],
-  AdminCategoryDashPage = () => {
-    const adminShowCategory = useSelector(state => state.adminShowCategory.categories)
-    const dispatch = useDispatch()
+      <AdminHeader />
 
-    useEffect(() => {
-      dispatch(adminShowCategoryAction.getCategories())
-    }, [])
+      <div className="w-75 h-100 float-end p-2">
+        <div className="d-flex justify-content-between mb-2">
+          <nav aria-label="breadcrumb">
+            <ol className="breadcrumb">
+              <li className="breadcrumb-item active" aria-current="page">
+                Kategori
+              </li>
+            </ol>
+          </nav>
 
-    const handleClickDelete = (id) => {
-      Swal.fire({
-        title: "Are you sure?",
-        text: "You won't be able to revert this!",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, delete it!",
-      }).then((result) => {
-        if (result.isConfirmed) {
-          dispatch(adminDeleteCategoryAction.deleteCategory(id))
-          // dispatch(adminShowCategoryAction.getCategories())
-          Swal.fire("Deleted!", "Your file has been deleted.", "success");
-          // //window.location.reload()
-        }
-      });
-    };
-
-    return (
-      <div className="d-flex user-select-none">
-        <SideAdminNavBar />
-
-        <div className="d-flex flex-column vh-100 vw-100">
-          <HeaderAdmin />
-
-          <div className="h-100 w-100 px-4">
-            <div className="h-75 ahdp_recent">
-              <div className="d-flex justify-content-between my-3">
-                <h3 className="h-25 d-flex align-items-center">Kategori</h3>
-                <Link to="/admin/dash/category/add">
-                  <button className="btn btn-primary text-white">Tambah</button>
-                </Link>
-              </div>
-
-              <table className="table table-hover mb-5">
-                <thead>
-                  <tr>
-                    {THs.map((TH) => (
-                      <th scope={TH.scope}>{TH.name}</th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                {adminShowCategory.map((data,index) => {
-                    return(
-                  <tr className="">
-                    <td>
-                      <i className="fas fa-list"></i> data.nama
-                    </td>
-                    <td className="d-flex">
-                      <Link to={`/admin/dash/category/edit/${data.id}`}>
-                        <button type="button" className="btn btn-primary">
-                            Ubah
-                          </button>
-                      </Link>
-                      <button type="button" className="btn btn-danger" 
-                      onClick={() => {handleClickDelete(data.id)}}>
-                          Hapus
-                      </button>
-                    </td>
-                  </tr>
-                  )
-                })}
-                </tbody>
-              </table>
-            </div>
-          </div>
+          <Link to="/admin/dash/category/add">
+            <button type="button" className="btn btn-primary">
+              Tambah
+            </button>
+          </Link>
         </div>
+
+        <CategoryTable />
       </div>
-    );
-  };
+    </div>
+  );
+};
 
 export default AdminCategoryDashPage;

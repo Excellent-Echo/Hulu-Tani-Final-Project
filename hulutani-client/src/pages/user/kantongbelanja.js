@@ -1,10 +1,12 @@
 import React from 'react'
 
 import '../../assets/css/transaksi.css'
+import Navbar from '../../components/organisms/user/navbar'
 
 function KantongBelanja() {
     return (
         <>
+            <Navbar />
             <div className="container-fluid">
                 <div className="container">
                     <div className="row breadcrumbs-container"> 

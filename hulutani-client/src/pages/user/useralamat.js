@@ -1,12 +1,14 @@
 
 import React from 'react'
+import { Link } from "react-router-dom";
 
 import '../../assets/css/userpage.css'
-import { Link } from "react-router-dom";
+import Navbar from '../../components/organisms/user/navbar';
 
 function UserAlamat() {
     return (
         <>
+            <Navbar />
             <div className="container-fluid nav-container">
                 <nav class="navbar navbar-expand-lg bg-light">
                     <div class="container">

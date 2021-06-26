@@ -1,11 +1,12 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router'
+
 import '../../assets/css/auth.css'
 import AuthShape from '../../assets/images/auth-bg-shape.svg'
 import LoginIllustration from '../../assets/images/login-img.svg'
-
 import userLoginAction from "../../redux/user/login/userLoginAction"
+import Navbar from '../../components/organisms/user/navbar'
 
 function Login() {
     const loginData = useSelector(state => state.userLogin)
@@ -23,6 +24,7 @@ function Login() {
     }
     return (
         <>
+            <Navbar />
             <div className="container-fluid fluid-page auth-page-container">
                 <img src={ AuthShape } alt="" className="img-fluid auth-bg-shape login" />
                 <div className="container">

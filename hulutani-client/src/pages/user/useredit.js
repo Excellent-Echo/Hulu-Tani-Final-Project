@@ -1,13 +1,14 @@
 import React from 'react'
+import { Link } from "react-router-dom";
 
 import '../../assets/css/userpage.css'
-
 import BlankUser from '../../assets/images/blank-user.png'
-import { Link } from "react-router-dom";
+import Navbar from '../../components/organisms/user/navbar';
 
 function UserEdit() {
     return (
         <>
+            <Navbar />
             <div className="container-fluid nav-container">
                 <nav className="navbar navbar-expand-lg bg-light">
                     <div className="container">

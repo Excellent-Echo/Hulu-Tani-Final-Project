@@ -1,8 +1,10 @@
 import React, {useEffect} from 'react'
-import '../../assets/css/produk.css'
 import {useSelector, useDispatch} from  "react-redux"
 import catalogAction from '../../redux/public/catalog/catalogAction'
+
+import '../../assets/css/produk.css'
 import ProductFilter from '../../components/organisms/user/productfilter'
+import Navbar from '../../components/organisms/user/navbar'
 
 function ProdukList() {
 	const catalogProduct = useSelector(state => state.catalogProduct)
@@ -14,37 +16,18 @@ function ProdukList() {
 	
         return (
                 <>
-					<div className="container-fluid nav-container">
-						<nav class="navbar navbar-expand-lg bg-light">
-							<div class="container">
-								<a class="navbar-brand title accent-text" href="#">HuluTani</a>
-								<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-								<span class="navbar-toggler-icon"></span>
-								</button>
-								<div class="container-fluid collapse navbar-collapse" id="navbarSupportedContent">
-									<div className="row justify-content-center">
-										<div className="col-sm-4 d-flex justify-self-end">
-											<ul class="navbar-nav">
-												<li class="nav-item dropdown">
-													<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-														Kategori
-													</a>
-													<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-														<li><a class="dropdown-item" href="#">Action</a></li>
-														<li><a class="dropdown-item" href="#">Another action</a></li>
-													</ul>
-												</li>
-											</ul>
-										</div>
-										<div className="col-sm-8">
-											<form class="">
-												<input class="form-control nav-search" type="search" placeholder="Cari 'wortel'" aria-label="Search"/>
-											</form>
-										</div>
-									</div>
-								</div>
+					<Navbar />	
+					<div className="container-fluid">
+						<div className="container">
+							<div className="row breadcrumbs-container">
+								<nav aria-label="breadcrumb">
+									<ol className="breadcrumb">
+										<li className="breadcrumb-item"><a href="#">Home</a></li>
+										<li className="breadcrumb-item active" aria-current="page">Produk</li>
+									</ol>
+								</nav>
 							</div>
-						</nav>
+						</div>
 					</div>
 					<ProductFilter />
 					<div className="container-fluid fluid-page produk-list-container">

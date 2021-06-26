@@ -1,13 +1,14 @@
 import React from 'react'
 
 import '../../assets/css/auth.css'
-
 import AuthShape from '../../assets/images/auth-bg-shape.svg'
 import RegisterIllustration from '../../assets/images/register-img.svg'
+import Navbar from '../../components/organisms/user/navbar'
 
 function RegisterNext() {
     return (
         <>
+            <Navbar />
             <div className="container-fluid fluid-page auth-page-container">
                 <img src={AuthShape} alt="" className="img-fluid auth-bg-shape register" />
                 <div className="container">

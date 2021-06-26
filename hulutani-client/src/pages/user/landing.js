@@ -2,10 +2,12 @@ import React from 'react'
 
 import GroceryShopping from '../../assets/images/landing-title.svg'
 import '../../assets/css/landing.css'
+import Navbar from '../../components/organisms/user/navbar'
 
 function LandingPage() {
     return (
         <>
+            <Navbar />
             <div className="container-fluid fluid-page landing-title-container">
                 <div className="container">
                     <div className="row align-items-center">

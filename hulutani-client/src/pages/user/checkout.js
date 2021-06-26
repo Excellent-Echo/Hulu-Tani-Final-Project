@@ -1,9 +1,11 @@
 import React from 'react'
 import '../../assets/css/transaksi.css'
+import Navbar from '../../components/organisms/user/navbar'
 
 function Checkout() {
     return (
         <>
+            <Navbar />
             <div className="container-fluid">
                 <div className="container">
                     <div className="row breadcrumbs-container"> 

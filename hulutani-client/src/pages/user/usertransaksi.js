@@ -1,6 +1,8 @@
 import React from 'react'
 import { useHistory, Link } from "react-router-dom";
+
 import '../../assets/css/userpage.css'
+import Navbar from '../../components/organisms/user/navbar';
 
 function UserTransaksi() {
     const history = useHistory()
@@ -12,6 +14,7 @@ function UserTransaksi() {
 
     return (
         <>
+            <Navbar />
             <div className="container-fluid nav-container">
                 <nav class="navbar navbar-expand-lg bg-light">
                     <div class="container">

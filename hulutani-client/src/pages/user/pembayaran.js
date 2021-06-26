@@ -1,12 +1,13 @@
 import React from 'react'
 
 import '../../assets/css/transaksi.css'
-
 import WaitingPayment from '../../assets/images/waiting-payment.svg'
+import Navbar from '../../components/organisms/user/navbar'
 
 function Pembayaran() {
     return (
         <>
+            <Navbar />
             <div className="container-fluid breadcrumbs-container">
                 <div className="container">
                     <div className="row breadcrumbs-container">

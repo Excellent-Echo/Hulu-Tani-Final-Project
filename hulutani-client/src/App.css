@@ -33,19 +33,6 @@
   padding-bottom: 10vh;
 }
 
-.navbar {
-  padding-top: 3vh;
-  padding-bottom: 3vh;
-}
-
-.navbar.bg-light {
-  background-color: white;
-}
-
-.nav-search {
-  width: 100% !important;
-}
-
 .title,
 .primary {
   font-family: "Merriweather", serif;
@@ -208,10 +195,8 @@ button.xsmall {
 button.outline-primary {
   color: #25a18e;
   background-color: transparent;
-  border: 3px solid #25a18e;
+  /* border: 3px solid #25a18e;  */
   border-radius: 10px;
-
-  transition: all 0.2s ease-in-out;
 }
 
 button.outline-primary.hover-no-scale:hover {
@@ -248,6 +233,18 @@ button.outline-primary:hover {
     font-family: "Font Awesome 5 Free"; 
     font-weight: 900; 
     content: "\f004";
+}
+
+.btn-user::before {
+    font-family: "Font Awesome 5 Free"; 
+    font-weight: 900; 
+    content: "\f2bd";
+}
+
+.btn-menu::before {
+    font-family: "Font Awesome 5 Free"; 
+    font-weight: 900; 
+    content: "\f0c9";
 }
 
 input, select {

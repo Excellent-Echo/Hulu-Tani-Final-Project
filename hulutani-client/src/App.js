@@ -19,15 +19,15 @@ import KantongBelanja from "./pages/user/kantongbelanja"
 //Admin
 import AdminLogin from "./pages/admin/AdminLoginPage";
 import AdminHome from "./pages/admin/home/AdminHomeDashPage";
-import AdminProduct from "./pages/admin/product/AdminProductDashPage";
-import AdminAddProduct from "./pages/admin/product/AdminAddProductDashPage";
-import AdminEditProduct from "./pages/admin/product/adminEditProductDashPage";
-import AdminCategory from "./pages/admin/category/AdminCategoryDashPage";
-import AdminAddCategory from "./pages/admin/category/AdminAddCategoryDashPage";
-import AdminEditCategory from "./pages/admin/category/AdminEditCategoryDashPage";
-import AdminTransaction from "./pages/admin/transaction/AdminTransactionDashPage";
-import AdminTransactionDetail from "./pages/admin/transaction/AdminTransactionDetailDashPage";
-import AdminContact from "./pages/admin/contact/AdminContactDashPage";
+// import AdminProduct from "./pages/admin/product/AdminProductDashPage";
+// import AdminAddProduct from "./pages/admin/product/AdminAddProductDashPage";
+// import AdminEditProduct from "./pages/admin/product/adminEditProductDashPage";
+// import AdminCategory from "./pages/admin/category/AdminCategoryDashPage";
+// import AdminAddCategory from "./pages/admin/category/AdminAddCategoryDashPage";
+// import AdminEditCategory from "./pages/admin/category/AdminEditCategoryDashPage";
+// import AdminTransaction from "./pages/admin/transaction/AdminTransactionDashPage";
+// import AdminTransactionDetail from "./pages/admin/transaction/AdminTransactionDetailDashPage";
+// import AdminContact from "./pages/admin/contact/AdminContactDashPage";
 
 //test
 import ImageUploadTest from "./pages/ImageUploadTest"

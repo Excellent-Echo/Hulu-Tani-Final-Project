@@ -1,4 +1,5 @@
 import "./App.css";
+import CartProvider from "./redux/user/cart/cartReducer";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import PrivateRoute from "./components/route/PrivateRoute";
 
@@ -34,6 +35,7 @@ import ImageUploadTest from "./pages/ImageUploadTest"
 
 function App() {
   return (
+    <CartProvider>
     <Router>
       <Switch>
 
@@ -112,6 +114,7 @@ function App() {
         </Route>
       </Switch>
     </Router>
+    </CartProvider>
   );
 }
 

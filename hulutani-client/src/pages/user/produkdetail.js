@@ -1,15 +1,15 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState,useContext } from 'react'
 import { useParams, Link, useHistory } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import NumberFormat from 'react-number-format'
 import detailProductAction from "../../redux/public/detailProduct/detailProductAction";
-import cartAction from '../../redux/user/cart/cartAction';
+import { CartDispatchContext, addToCart } from "../../redux/user/cart/cartReducer";
 
 function ProdukDetail() {
+    const [isAdded, setIsAdded] = useState(false);
     const detailProduct = useSelector(state => state.detailProduct.productDetail)
+    const dispatch2 = useContext(CartDispatchContext);
     const token = localStorage.getItem("accessToken")
-    const qty = useSelector(state => state.addCart.quantity)
-    const cart = useSelector(state => state.addCart)
     const dispatch = useDispatch()
     const history = useHistory()
     const {id} = useParams()
@@ -18,48 +18,15 @@ function ProdukDetail() {
         dispatch(detailProductAction.getDetailProduct(id))
     },[])
 
-    const addToCart = (e) => {
-        e.preventDefault()
-        // let match = cart.cart.filter(item =>{
-        //     if(item.id === id)
-        //         return true;
-        // });
-        // if(match && match[0])
-        //     console.log(match[0])
-        // const idd = false
-        // if(id === cart.idproduct){
-        //     dispatch(cartAction.increaseCart(id,1,cart.cart))
-        // }else {
-            dispatch(cartAction.addCart(id,"BAYAM",1,10000,"INIGAMBAR"))
-            //console.log(cart)
-            dispatch(cartAction.syncCart(cart.cart,cart.key))
-        // }
-    }
-
-    const removeFromCart = (e) => {
-        e.preventDefault()
-        dispatch(cartAction.removeCart(1,cart.cart))
-        dispatch(cartAction.syncCart(cart.cart,cart.key))
-    }
-
-    const increaseQty = (e) => {
-        e.preventDefault()
-        dispatch(cartAction.increaseCart(1,1,cart.cart))
-        dispatch(cartAction.syncCart(cart.cart,cart.key))
-    }
-
-    const decreaseQty = (e) => {
-        e.preventDefault()
-        dispatch(cartAction.reduceCart(1,1,cart.cart))
-        dispatch(cartAction.syncCart(cart.cart,cart.key))
-    }
-
-    const resetCart = (e) => {
-        e.preventDefault()
-        dispatch(cartAction.resetCart())
-        dispatch(cartAction.syncCart(cart.cart,cart.key))
-    }
-
+    const handleAddToCart = () => {
+        const product = { ...detailProduct, quantity: 1 };
+        //console.log(product)
+        addToCart(dispatch, product);
+        setIsAdded(true);
+        setTimeout(() => {
+          setIsAdded(false);
+        }, 3500);
+      };
     
     return (
         <>
@@ -104,16 +71,10 @@ function ProdukDetail() {
                                         type="number" 
                                         className="form-control" 
                                         id="jumlah" placeholder="1" 
-                                        value={qty} 
-                                        onChange={(e)=>dispatch(cartAction.setQuantity(e.target.value))}
                                         />
                                     </div>
                                     <div className="col-sm-7 d-flex align-items-end">
-                                        <button type="submit" className="primary long" onClick={e=>addToCart(e)}>Tambah ke Keranjang</button>
-                                        <button type="submit" className="primary long" onClick={e=>removeFromCart(e)}>Hapus dari Keranjang</button>
-                                        <button type="submit" className="primary long" onClick={e=>increaseQty(e)}>Tambah jumlah ke Keranjang</button>
-                                        <button type="submit" className="primary long" onClick={e=>decreaseQty(e)}>kurangi jumlah ke Keranjang</button>
-                                        <button type="submit" className="primary long" onClick={e=>resetCart(e)}>Reset Keranjang</button>
+                                        <button type="submit" className="primary long" onClick={handleAddToCart}>{!isAdded ? "Tambah ke Keranjang" : "✔ telah ditambah "}</button>
                                     </div>
                                 {/* </form> */}
                                 <div className="row product-desc">

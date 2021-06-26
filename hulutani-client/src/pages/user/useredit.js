@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import '../../assets/css/userpage.css'
 import BlankUser from '../../assets/images/blank-user.png'
 import Navbar from '../../components/organisms/user/navbar';
+import Footer from '../../components/organisms/user/footer'
 
 function UserEdit() {
     return (
@@ -189,6 +190,7 @@ function UserEdit() {
                     </div>
                 </div>
             </div>
+            <Footer />
         </>
     )
 }

@@ -4,6 +4,7 @@ import '../../assets/css/auth.css'
 import AuthShape from '../../assets/images/auth-bg-shape.svg'
 import RegisterIllustration from '../../assets/images/register-img.svg'
 import Navbar from '../../components/organisms/user/navbar'
+import Footer from '../../components/organisms/user/footer'
 
 function RegisterNext() {
     return (
@@ -60,6 +61,7 @@ function RegisterNext() {
                     </div>
                 </div>
             </div>
+            <Footer />
         </>
     )
 }

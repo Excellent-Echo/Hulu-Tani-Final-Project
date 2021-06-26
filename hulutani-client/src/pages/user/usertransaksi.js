@@ -3,6 +3,7 @@ import { useHistory, Link } from "react-router-dom";
 
 import '../../assets/css/userpage.css'
 import Navbar from '../../components/organisms/user/navbar';
+import Footer from '../../components/organisms/user/footer'
 
 function UserTransaksi() {
     const history = useHistory()
@@ -173,6 +174,7 @@ function UserTransaksi() {
                     </div>
                 </div>
             </div>
+            <Footer />
         </>
     )
 }

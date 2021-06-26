@@ -3,8 +3,10 @@ import { useParams, Link, useHistory } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import NumberFormat from 'react-number-format'
 import detailProductAction from "../../redux/public/detailProduct/detailProductAction";
-import addCartAction from '../../redux/user/cart/addCartAction';
-import Navbar from '../../components/organisms/user/navbar';
+import addCartAction from '../../redux/user/cart/addCartAction'
+
+import Navbar from '../../components/organisms/user/navbar'
+import Footer from '../../components/organisms/user/footer'
 
 function ProdukDetail() {
     const detailProduct = useSelector(state => state.detailProduct.productDetail)
@@ -97,6 +99,7 @@ function ProdukDetail() {
                     </div>
                 </div>
             </div>
+            <Footer />
         </>
     )
 }

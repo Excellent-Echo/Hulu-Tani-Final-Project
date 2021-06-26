@@ -1,6 +1,7 @@
 import React from 'react'
 
 import Navbar from '../../../components/organisms/user/navbar'
+import Footer from '../../../components/organisms/user/footer'
 import AuthShape from '../../../assets/images/auth-bg-shape.svg'
 import PaymentSuccess from '../../../assets/images/payment-success.svg'
 import '../../../assets/css/status.css'
@@ -34,6 +35,7 @@ function PembayaranSukses() {
                     </div>
                 </div>
             </div>
+            <Footer />
         </>
     )
 }

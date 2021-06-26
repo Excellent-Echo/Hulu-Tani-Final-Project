@@ -2,6 +2,7 @@ import React from 'react'
 
 import '../../assets/css/transaksi.css'
 import Navbar from '../../components/organisms/user/navbar'
+import Footer from '../../components/organisms/user/footer'
 
 function KantongBelanja() {
     return (
@@ -258,6 +259,7 @@ function KantongBelanja() {
                     </div>
                 </div>
             </div>
+            <Footer />
         </>
     )
 }

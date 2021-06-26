@@ -5,6 +5,7 @@ import catalogAction from '../../redux/public/catalog/catalogAction'
 import '../../assets/css/produk.css'
 import ProductFilter from '../../components/organisms/user/productfilter'
 import Navbar from '../../components/organisms/user/navbar'
+import Footer from '../../components/organisms/user/footer.jsx'
 
 function ProdukList() {
 	const catalogProduct = useSelector(state => state.catalogProduct)
@@ -69,6 +70,7 @@ function ProdukList() {
 							</div>
 						</div>					
 					</div>
+					<Footer />
                 </>
         )
 }

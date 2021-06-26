@@ -7,6 +7,7 @@ import AuthShape from '../../assets/images/auth-bg-shape.svg'
 import LoginIllustration from '../../assets/images/login-img.svg'
 import userLoginAction from "../../redux/user/login/userLoginAction"
 import Navbar from '../../components/organisms/user/navbar'
+import Footer from '../../components/organisms/user/footer'
 
 function Login() {
     const loginData = useSelector(state => state.userLogin)
@@ -78,6 +79,7 @@ function Login() {
                     </div>
                 </div>
             </div>
+            <Footer />
         </>
     )
 }

@@ -5,6 +5,7 @@ import '../../assets/css/auth.css'
 import AuthShape from '../../assets/images/auth-bg-shape.svg'
 import RegisterIllustration from '../../assets/images/register-img.svg'
 import Navbar from '../../components/organisms/user/navbar'
+import Footer from '../../components/organisms/user/footer'
 
 import {useSelector, useDispatch} from "react-redux"
 import userRegisterAction from "../../redux/user/register/userRegisteAction"
@@ -71,6 +72,7 @@ function Register() {
                     </div>
                 </div>
             </div>
+            <Footer />
         </>
     )
 }

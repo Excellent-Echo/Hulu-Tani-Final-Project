@@ -5,16 +5,16 @@ import PrivateRoute from "./components/route/PrivateRoute";
 //Public
 import LandingPage from "./pages/user/landing";
 import ProdukList from "./pages/user/produklist";
-import ProdukDetail from "./pages/user/produkdetail"
+import ProdukDetail from "./pages/user/produkdetail";
 import Login from "./pages/user/login";
 import Register from "./pages/user/register";
-import RegisterNext from "./pages/user/registernext"
+import RegisterNext from "./pages/user/registernext";
 
 //User
 import UserEdit from "./pages/user/useredit";
 import UserTransaksi from "./pages/user/usertransaksi";
 import UserAlamat from "./pages/user/useralamat";
-import KantongBelanja from "./pages/user/kantongbelanja"
+import KantongBelanja from "./pages/user/kantongbelanja";
 
 //Admin
 import AdminLogin from "./pages/admin/AdminLoginPage";
@@ -30,86 +30,69 @@ import AdminTransactionDetail from "./pages/admin/transaction/AdminTransactionDe
 import AdminContact from "./pages/admin/contact/AdminContactDashPage";
 
 //test
-import ImageUploadTest from "./pages/ImageUploadTest"
+import ImageUploadTest from "./pages/ImageUploadTest";
 
 function App() {
   return (
     <Router>
       <Switch>
-
         {/* User Routes */}
-        <Route path="/login">
-          <Login />
-        </Route>
-        <Route path="/register">
-          <Register />
-        </Route>
-        <Route path="/register-2">
-          <RegisterNext />
-        </Route>
-        <Route path="/products">
-          <ProdukList />
-        </Route>
-        <Route path="/product/:id">
-          <ProdukDetail />
-        </Route>
-        <Route path="/cart">
-          <KantongBelanja />
-        </Route>
-        {/* Private */}
-        <PrivateRoute path="/user-edit" component={UserEdit}/>
-        <PrivateRoute path="/user-transaction" component={UserTransaksi}/>
-        <PrivateRoute path="/user-address" component={UserAlamat}/>
-        <PrivateRoute path="/cart" component={KantongBelanja}/>
-        {/* Private */}
+        <Route path="/login" componenct={Login} />
+        <Route path="/register" component={Register} />
+        <Route path="/register-2" component={RegisterNext} />
+        <Route path="/products" component={ProdukList} />
+        <Route path="/product/:id" component={ProdukDetail} />
+        <Route path="/cart" component={KantongBelanja} />
 
+        {/* Private */}
+        <PrivateRoute path="/user-edit" component={UserEdit} />
+        <PrivateRoute path="/user-transaction" component={UserTransaksi} />
+        <PrivateRoute path="/user-address" component={UserAlamat} />
+        <PrivateRoute path="/cart" component={KantongBelanja} />
+        {/* Private */}
         {/* User Routes */}
 
         {/* Admin Routes */}
-        <Route component={AdminLogin} exact path="/admin/login" />
-        <Route component={AdminHome} exact path="/admin/dash" />
-        <Route component={AdminProduct} exact path="/admin/dash/product" />
+        <Route exact path="/admin/login" component={AdminLogin} />
+        <Route exact path="/admin/dash" component={AdminHome} />
+        <Route exact path="/admin/dash/product" component={AdminProduct} />
         <Route
-          component={AdminAddProduct}
           exact
           path="/admin/dash/product/add"
+          component={AdminAddProduct}
         />
         <Route
-          component={AdminEditProduct}
           exact
           path="/admin/dash/product/edit/:id"
+          component={AdminEditProduct}
         />
-        <Route component={AdminCategory} exact path="/admin/dash/category" />
+        <Route exact path="/admin/dash/category" component={AdminCategory} />
         <Route
-          component={AdminAddCategory}
           exact
           path="/admin/dash/category/add"
+          component={AdminAddCategory}
         />
         <Route
-          component={AdminEditCategory}
           exact
           path="/admin/dash/category/edit/:id"
+          component={AdminEditCategory}
         />
         <Route
-          component={AdminTransaction}
           exact
           path="/admin/dash/transaction"
+          component={AdminTransaction}
         />
         <Route
-          component={AdminTransactionDetail}
           exact
           path="/admin/dash/transaction/detail"
+          component={AdminTransactionDetail}
         />
-        <Route component={AdminContact} exact path="/admin/dash/contact" />
+        <Route exact path="/admin/dash/contact" component={AdminContact} />
         {/* Admin Routes */}
 
-        <Route path="/test">
-          <ImageUploadTest />
-        </Route>
+        <Route path="/test" component={ImageUploadTest} />
 
-        <Route path="/">
-          <LandingPage />
-        </Route>
+        <Route path="/" component={LandingPage} />
       </Switch>
     </Router>
   );

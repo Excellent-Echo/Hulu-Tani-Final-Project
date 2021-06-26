@@ -1,65 +1,28 @@
-import React,{useEffect} from "react";
-import HeaderAdmin from "../../../components/organisms/admin/HeaderAdmin/HeaderAdmin";
-import SideAdminNavBar from "../../../components/organisms/admin/SideNavBar/SideAdminNavBar";
+import React from "react";
+import AdminHeader from "../../../components/organisms/admin/AdminHeader";
+import AdminSideNavBar from "../../../components/organisms/admin/AdminSideNavBar";
+import ContactTable from "../../../components/organisms/admin/contact/ContactTable";
 
-import { useSelector, useDispatch } from "react-redux";
-import adminShowContactAction from "../../../redux/admin/contact/show/adminShowContactAction";
-const THs = [
-    { scope: "col", name: "Nama" },
-    { scope: "col", name: "Surel" },
-    { scope: "col", name: "Telepon" },
-    { scope: "col", name: "Jenis Kelamin" },
-    { scope: "col", name: "Tanggal Lahir" },
-  ],
-  AdminContactDashPage = () => {
-    const contactData = useSelector(state => state.adminShowContacts.contacts)
+const AdminContactDashPage = () => {
+  return (
+    <div className="user-select-none w-100 vh-100">
+      <AdminSideNavBar />
 
-    const dispatch = useDispatch()
-    useEffect(()=>{
-      dispatch(adminShowContactAction.getContacts())
-    })
-    
+      <AdminHeader />
 
-    return (
-      <div className="d-flex user-select-none">
-        <SideAdminNavBar />
+      <div className="w-75 h-100 float-end p-2">
+        <nav aria-label="breadcrumb">
+          <ol className="breadcrumb">
+            <li className="breadcrumb-item active" aria-current="page">
+              Kontak
+            </li>
+          </ol>
+        </nav>
 
-        <div className="d-flex flex-column vh-100 vw-100">
-          <HeaderAdmin />
-
-          <div className="h-100 w-100 px-4">
-            <div className="h-75 ahdp_recent">
-              <h3 className="h-25 d-flex align-items-center">Kontak</h3>
-
-              <table className="table table-hover mb-5">
-                <thead>
-                  <tr>
-                    {THs.map((TH) => (
-                      <th scope={TH.scope}>{TH.name}</th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {contactData.map((data,index)=>{
-                    return (
-                    <tr className="">
-                      <td>
-                        <i className="fas fa-address-book"></i> {data.nama}
-                      </td>
-                      <td>{data.email}</td>
-                      <td>{data.nomor_handphone}</td>
-                      <td>{data.jenis_kelamin}</td>
-                      <td>{data.tanggal_lahir}</td>
-                    </tr>
-                    )
-                  })}
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
+        <ContactTable />
       </div>
-    );
-  };
+    </div>
+  );
+};
 
 export default AdminContactDashPage;

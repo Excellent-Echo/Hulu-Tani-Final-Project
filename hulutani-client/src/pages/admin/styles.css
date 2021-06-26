@@ -1,53 +1,30 @@
-.admin-content-container {
-  position: relative;
-  margin-top: 3rem;
-  padding: 0 2rem 0 15rem;
-  /*font-family: var(--body-font);*/
-  /*font-size: var(--normal-font-size);*/
-  transition: 0.5s;
-  height: 100vh;
+.admin-header {
+  z-index: 1;
+  border-radius: 15px 0;
 }
 
-/*----- overview -----*/
-.ahdp_overview_card {
-  padding: 0;
-  border: 3px solid #25a18e;
+.admin-side-navbar {
+  z-index: 2;
+  background-color: #25a18e;
+  border-radius: 0 15px 15px 0;
+}
+
+.admin-side-navbar > .nav > .nav-link {
   border-radius: 15px;
 }
 
-.ahdp_overview_card:nth-child(2) {
-  margin: 0 0.375rem 0 0.75rem;
-}
-
-.ahdp_overview_card:nth-child(3) {
-  margin: 0 0.75rem 0 0.375rem;
-}
-
-.ahdp_overview_card_top {
-  border-top-left-radius: 15px;
-  border-top-right-radius: 15px;
-}
-
-.ahdp_overview_card_top > div > h2 {
-  color: #25a18e;
-}
-
-.ahdp_overview_card_bottom {
-  color: #25a18e !important;
-  border-top: 3px solid #25a18e;
-  background-color: #c4c4c4;
-  border-bottom-left-radius: 15px;
-  border-bottom-right-radius: 15px;
-}
-
-.ahdp_overview_card_bottom:hover {
-  color: #263238 !important;
-}
-/*----- overview -----*/
-
-/*----- overview -----*/
-.ahdp_recent > .table {
+.admin-side-navbar > .nav > .nav-link:hover {
+  background-color: #fff;
   border-radius: 15px;
-  border: 3px solid #25a18e;
 }
-/*----- overview -----*/
+
+.admin-overview-card .card {
+  border-color: #25a18e !important;
+  border-radius: 15px;
+}
+
+.admin-table,
+.admin-form {
+  border-color: #25a18e !important;
+  border-radius: 15px !important;
+}

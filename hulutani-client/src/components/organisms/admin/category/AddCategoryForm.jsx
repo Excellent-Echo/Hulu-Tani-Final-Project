@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useHistory } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import adminAddCategoryAction from "../../../../redux/admin/category/add/adminAddCategoryAction";
 
 const AddCategoryForm = () => {
@@ -15,36 +15,35 @@ const AddCategoryForm = () => {
 
   return (
     <form
-      className="bg-white p-3 border border-3 admin-add-product-form"
+      className="border-3 border p-2 admin-form"
       onSubmit={addCategoryHandler}
     >
-      <div className="mb-3 row">
-        <label htmlFor="inputCategoryName" className="col-sm-2 col-form-label">
-          Nama
+      <div className="row mb-3">
+        <label className="col-sm-2 col-form-label" htmlFor="inputCategoryName">
+          Nama Kategori
         </label>
         <div className="col-sm-10">
           <input
-            type="text"
             className="form-control"
             id="inputCategoryName"
-            placeholder="Masukan nama kategori"
-            value={categoryData.categoryName}
             onChange={(e) =>
               dispatch(adminAddCategoryAction.setCategory(e.target.value))
             }
+            placeholder="Masukan nama kategori"
+            type="text"
+            value={categoryData.categoryName}
           />
         </div>
       </div>
 
       <div className="d-flex justify-content-end">
-        <Link to="/admin/dash/category" className="me-1">
-          <button type="button" className="btn btn-outline-danger">
+        <Link className="me-2" to="/admin/dash/category">
+          <button type="submit" className="btn btn-outline-danger">
             Batal
           </button>
         </Link>
-
-        <button type="button" className="btn btn-primary ms-1">
-          Tambah
+        <button type="submit" className="btn btn-primary ms-2">
+          Simpan
         </button>
       </div>
     </form>

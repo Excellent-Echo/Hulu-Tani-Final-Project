@@ -1,10 +1,13 @@
 import React from 'react'
 
 import '../../assets/css/transaksi.css'
+import Navbar from '../../components/organisms/user/navbar'
+import Footer from '../../components/organisms/user/footer'
 
 function KantongBelanja() {
     return (
         <>
+            <Navbar />
             <div className="container-fluid">
                 <div className="container">
                     <div className="row breadcrumbs-container"> 
@@ -256,6 +259,7 @@ function KantongBelanja() {
                     </div>
                 </div>
             </div>
+            <Footer />
         </>
     )
 }

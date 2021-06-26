@@ -1,5 +1,7 @@
 import React from 'react'
 
+import Navbar from '../../../components/organisms/user/navbar'
+import Footer from '../../../components/organisms/user/footer.jsx'
 import AuthShape from '../../../assets/images/auth-bg-shape.svg'
 import LostImg from '../../../assets/images/no-page.svg'
 import '../../../assets/css/status.css'
@@ -7,6 +9,7 @@ import '../../../assets/css/status.css'
 function NoPage() {
     return (
         <>
+            <Navbar />
             <div className="container-fluid fluid-page status-page-container no-page-container">
                 <img src={AuthShape} alt="" className="img-fluid auth-bg-shape login" />
                 <div className="container">
@@ -34,6 +37,7 @@ function NoPage() {
                     </div>
                 </div>
             </div>
+            <Footer />
         </>
     )
 }

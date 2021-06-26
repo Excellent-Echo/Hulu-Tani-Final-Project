@@ -72,4 +72,4 @@ const navs = [
     );
   };
 
-export default SideNavBar;
+export defaudlt SideNavBar;

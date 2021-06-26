@@ -3,8 +3,8 @@ import { Link, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import adminAddCategoryAction from "../../../redux/admin/category/add/adminAddCategoryAction";
 
-import HeaderAdmin from "../../../components/organisms/admin/HeaderAdmin/HeaderAdmin";
-import SideAdminNavBar from "../../../components/organisms/admin/SideNavBar/SideAdminNavBar";
+import HeaderAdmin from "../../../components/organisms/admin/AdminHeader";
+import SideAdminNavBar from "../../../components/organisms/admin/AdminSideNavBar";
 
 const AdminAddCategoryDashPage = () => {
   const categoryData = useSelector((state) => state.adminAddCategory);

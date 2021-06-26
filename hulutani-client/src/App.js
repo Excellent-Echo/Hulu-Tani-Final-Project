@@ -37,31 +37,19 @@ function App() {
     <Router>
       <Switch>
         {/* User Routes */}
-        <Route path="/login">
-          <Login />
-        </Route>
-        <Route path="/register">
-          <Register />
-        </Route>
-        <Route path="/register-2">
-          <RegisterNext />
-        </Route>
-        <Route path="/products">
-          <ProdukList />
-        </Route>
-        <Route path="/product/:id">
-          <ProdukDetail />
-        </Route>
-        <Route path="/cart">
-          <KantongBelanja />
-        </Route>
+        <Route path="/login" componenct={Login} />
+        <Route path="/register" component={Register} />
+        <Route path="/register-2" component={RegisterNext} />
+        <Route path="/products" component={ProdukList} />
+        <Route path="/product/:id" component={ProdukDetail} />
+        <Route path="/cart" component={KantongBelanja} />
+
         {/* Private */}
         <PrivateRoute path="/user-edit" component={UserEdit} />
         <PrivateRoute path="/user-transaction" component={UserTransaksi} />
         <PrivateRoute path="/user-address" component={UserAlamat} />
         <PrivateRoute path="/cart" component={KantongBelanja} />
         {/* Private */}
-
         {/* User Routes */}
 
         {/* Admin Routes */}
@@ -102,13 +90,9 @@ function App() {
         <Route exact path="/admin/dash/contact" component={AdminContact} />
         {/* Admin Routes */}
 
-        <Route path="/test">
-          <ImageUploadTest />
-        </Route>
+        <Route path="/test" component={ImageUploadTest} />
 
-        <Route path="/">
-          <LandingPage />
-        </Route>
+        <Route path="/" component={LandingPage} />
       </Switch>
     </Router>
   );

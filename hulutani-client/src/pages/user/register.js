@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
+import '../../assets/css/userglobal.css'
 import '../../assets/css/auth.css'
 import AuthShape from '../../assets/images/auth-bg-shape.svg'
 import RegisterIllustration from '../../assets/images/register-img.svg'

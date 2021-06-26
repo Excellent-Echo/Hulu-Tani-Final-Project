@@ -27,16 +27,9 @@ function AdminLoginPage() {
                                 <div className="mb-3">
                                     <label for="exampleInputPassword1" className="form-label">Password</label>
                                     <input type="password" className="form-control" id="exampleInputPassword1"/>
-                                    <p className="subtitle small text-end form-helper-text">Lupa Password</p>
                                 </div>
                                 <button type="submit" className="primary long">Masuk</button>
                             </form>
-                                <p className="small text-center">
-                                    Belum punya akun?&nbsp;
-                                    <b className="form-helper-text">
-                                        Daftar
-                                    </b>
-                                </p>
                             </div>
                         </div>
                         <div className="col-sm img-container">

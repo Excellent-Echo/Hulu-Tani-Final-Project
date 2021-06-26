@@ -1,14 +1,14 @@
-import React, { useEffect, useState,useContext } from 'react'
+import React, { useEffect} from 'react'
 import { useParams, Link, useHistory } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import NumberFormat from 'react-number-format'
 import detailProductAction from "../../redux/public/detailProduct/detailProductAction";
-import { CartDispatchContext, addToCart } from "../../redux/user/cart/cartReducer";
+
+import Navbar from '../../components/organisms/user/navbar'
+import Footer from '../../components/organisms/user/footer'
 
 function ProdukDetail() {
-    const [isAdded, setIsAdded] = useState(false);
     const detailProduct = useSelector(state => state.detailProduct.productDetail)
-    const dispatch2 = useContext(CartDispatchContext);
     const token = localStorage.getItem("accessToken")
     const dispatch = useDispatch()
     const history = useHistory()
@@ -17,19 +17,10 @@ function ProdukDetail() {
     useEffect(()=>{
         dispatch(detailProductAction.getDetailProduct(id))
     },[])
-
-    const handleAddToCart = () => {
-        const product = { ...detailProduct, quantity: 1 };
-        //console.log(product)
-        addToCart(dispatch, product);
-        setIsAdded(true);
-        setTimeout(() => {
-          setIsAdded(false);
-        }, 3500);
-      };
     
     return (
         <>
+            <Navbar />
             <div className="container-fluid">
                 <div className="container">
                     <div className="row breadcrumbs-container">
@@ -74,7 +65,7 @@ function ProdukDetail() {
                                         />
                                     </div>
                                     <div className="col-sm-7 d-flex align-items-end">
-                                        <button type="submit" className="primary long" onClick={handleAddToCart}>{!isAdded ? "Tambah ke Keranjang" : "✔ telah ditambah "}</button>
+                                        <button type="submit" className="primary long" >Belanja Sekarang</button>
                                     </div>
                                 {/* </form> */}
                                 <div className="row product-desc">
@@ -92,6 +83,7 @@ function ProdukDetail() {
                     </div>
                 </div>
             </div>
+            <Footer />
         </>
     )
 }

@@ -1,5 +1,6 @@
 import React from 'react'
 
+import '../../../assets/css/userglobal.css'
 import Navbar from '../../../components/organisms/user/navbar'
 import Footer from '../../../components/organisms/user/footer'
 import AuthShape from '../../../assets/images/auth-bg-shape.svg'

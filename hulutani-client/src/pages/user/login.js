@@ -2,6 +2,7 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router'
 
+import '../../assets/css/userglobal.css'
 import '../../assets/css/auth.css'
 import AuthShape from '../../assets/images/auth-bg-shape.svg'
 import LoginIllustration from '../../assets/images/login-img.svg'

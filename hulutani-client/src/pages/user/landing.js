@@ -1,7 +1,8 @@
 import React from 'react'
 
-import GroceryShopping from '../../assets/images/landing-title.svg'
+import '../../assets/css/userglobal.css'
 import '../../assets/css/landing.css'
+import GroceryShopping from '../../assets/images/landing-title.svg'
 import Navbar from '../../components/organisms/user/navbar'
 import Footer from '../../components/organisms/user/footer'
 

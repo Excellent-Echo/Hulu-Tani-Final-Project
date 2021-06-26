@@ -1,9 +1,11 @@
 import React from 'react'
 import { useHistory, Link } from "react-router-dom";
 
+import '../../assets/css/userglobal.css'
 import '../../assets/css/userpage.css'
 import Navbar from '../../components/organisms/user/navbar';
 import Footer from '../../components/organisms/user/footer'
+import ModalDtlTransaksi from '../../components/organisms/user/modaldtltransaksi';
 
 function UserTransaksi() {
     const history = useHistory()
@@ -16,42 +18,6 @@ function UserTransaksi() {
     return (
         <>
             <Navbar />
-            <div className="container-fluid nav-container">
-                <nav class="navbar navbar-expand-lg bg-light">
-                    <div class="container">
-                        <a class="navbar-brand title accent-text" href="#">HuluTani</a>
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                            <ul class="navbar-nav mx-4 mb-lg-0">
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        Kategori
-                                    </a>
-                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <li><a class="dropdown-item" href="#">Action</a></li>
-                                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                            <form class="ms-4 me-auto">
-                                <input class="form-control nav-search" type="search" placeholder="Cari 'wortel'" aria-label="Search" />
-                            </form>
-                            <div class="navbar-nav ms-2">
-                                <a class="nav-link active" aria-current="page" href="#">Home</a>
-                                <a class="nav-link" href="#">Features</a>
-                                <a class="nav-link" href="#">Pricing</a>
-                                <a 
-                                class="nav-link" 
-                                tabindex="-1"
-                                onClick={logoutUser}
-                                >Logout</a>
-                            </div>
-                        </div>
-                    </div>
-                </nav>
-            </div>
             <div className="container-fluid fluid-page user-page-container">
                 <div className="container">
                     <div className="row breadcrumbs-container">
@@ -126,7 +92,7 @@ function UserTransaksi() {
 
                             {/* CARD TRANSAKSI */}
                             <div className="row justify-content-center">
-                                <div className="col-sm-12 transaction-list">
+                                <div className="col-sm-12 transaction-list" data-bs-toggle="modal" data-bs-target="#modalDtlTransaksi">
                                     <div className="row align-items-center">
                                         <div className="col-sm">
                                             <div className="row align-items-center">
@@ -175,6 +141,9 @@ function UserTransaksi() {
                 </div>
             </div>
             <Footer />
+            {/* MODALS */}
+            <ModalDtlTransaksi />
+            {/* END OF MODALS */}
         </>
     )
 }

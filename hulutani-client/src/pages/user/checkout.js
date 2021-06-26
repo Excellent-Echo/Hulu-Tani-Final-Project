@@ -1,4 +1,6 @@
 import React from 'react'
+
+import '../../assets/css/userglobal.css'
 import '../../assets/css/transaksi.css'
 import Navbar from '../../components/organisms/user/navbar'
 import Footer from '../../components/organisms/user/footer'
@@ -170,7 +172,6 @@ function Checkout() {
                                                 </div>
                                                 <div className="row align-self-end justify-content-end cekot-title">
                                                     <div className="col-sm">
-                                                        {/* Kantong Item */}
                                                         <div className="row kabel-item justify-content-end align-items-center">
                                                             <div className="col-sm-10 item-list">
                                                                 <div className="row align-items-center">
@@ -201,7 +202,7 @@ function Checkout() {
                                                                 <div className="row align-items-center">
                                                                     <div className="col-sm">
                                                                         <h5>
-                                                                            TOT
+                                                                            TOTAL
                                                                         </h5>
                                                                     </div>
                                                                     <div className="col-sm d-flex justify-content-end">

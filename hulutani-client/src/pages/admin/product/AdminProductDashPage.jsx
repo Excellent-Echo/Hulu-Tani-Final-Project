@@ -1,8 +1,8 @@
 import React from "react";
-import AdminSideNavBar from "../../../components/organisms/admin/AdminSideNavBar";
-import AdminHeader from "../../../components/organisms/admin/AdminHeader";
-import ProductTable from "../../../components/organisms/admin/product/ProductTable";
 import { Link } from "react-router-dom";
+import AdminHeader from "../../../components/organisms/admin/AdminHeader";
+import AdminSideNavBar from "../../../components/organisms/admin/AdminSideNavBar";
+import ProductTable from "../../../components/organisms/admin/product/ProductTable";
 
 const AdminProductDashPage = () => {
   return (

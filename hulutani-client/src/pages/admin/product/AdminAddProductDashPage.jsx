@@ -1,7 +1,7 @@
 import React from "react";
-import AdminSideNavBar from "../../../components/organisms/admin/AdminSideNavBar";
-import AdminHeader from "../../../components/organisms/admin/AdminHeader";
 import { Link } from "react-router-dom";
+import AdminHeader from "../../../components/organisms/admin/AdminHeader";
+import AdminSideNavBar from "../../../components/organisms/admin/AdminSideNavBar";
 import AddProductForm from "../../../components/organisms/admin/product/AddProductForm";
 
 const AdminAddProductDashPage = () => {
@@ -15,7 +15,7 @@ const AdminAddProductDashPage = () => {
         <nav aria-label="breadcrumb">
           <ol className="breadcrumb">
             <li className="breadcrumb-item active" aria-current="page">
-              Produk
+              <Link to="/admin/dash/product">Produk</Link>
             </li>
             <li className="breadcrumb-item active" aria-current="page">
               Tambah

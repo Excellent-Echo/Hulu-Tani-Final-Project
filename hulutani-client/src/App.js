@@ -17,6 +17,7 @@ import UserAlamat from "./pages/user/useralamat";
 import KantongBelanja from "./pages/user/kantongbelanja";
 
 //Admin
+import AdminLogin from "./pages/admin/AdminLoginPage";
 import AdminHome from "./pages/admin/home/AdminHomeDashPage";
 import AdminProduct from "./pages/admin/product/AdminProductDashPage";
 import AdminAddProduct from "./pages/admin/product/AdminAddProductDashPage";
@@ -64,6 +65,7 @@ function App() {
         {/* User Routes */}
 
         {/* Admin Routes */}
+        <Route exact path="/admin/login" component={AdminLogin} />
         <Route exact path="/admin/dash" component={AdminHome} />
         <Route exact path="/admin/dash/product" component={AdminProduct} />
         <Route

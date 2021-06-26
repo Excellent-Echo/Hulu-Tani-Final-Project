@@ -49,7 +49,7 @@ func (h *alamatHandler) ShowAlamatByAlamatId(c *gin.Context) {
 }
 
 func (h *alamatHandler) CreateAlamatHandler(c *gin.Context) {
-
+	id := int(c.MustGet("currentUser").(int))
 	var inputAlamat entity.AlamatInput
 
 	if err := c.ShouldBindJSON(&inputAlamat); err != nil {
@@ -59,7 +59,7 @@ func (h *alamatHandler) CreateAlamatHandler(c *gin.Context) {
 		return
 	}
 
-	newAlamat, err := h.alamatService.SaveNewAlamat(inputAlamat)
+	newAlamat, err := h.alamatService.SaveNewAlamat(id, inputAlamat)
 
 	if err != nil {
 		responseErr := helper.APIResponse(500, "internal server error", err.Error())

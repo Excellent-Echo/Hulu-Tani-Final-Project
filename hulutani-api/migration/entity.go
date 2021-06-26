@@ -13,6 +13,7 @@ type Pelanggan struct {
 	Profil         string      `json:"profil"`
 	Email          string      `gorm:"unique" json:"email"`
 	Password       string      `gorm:"password" json:"password"`
+	Role           int         `json:"role"`
 	Transaksi      []Transaksi `gorm:"Foreignkey:IdPelanggan"`
 	Alamat         []Alamat    `gorm:"foreignkey:IdPelanggan"`
 }
@@ -20,6 +21,7 @@ type Pelanggan struct {
 type Admin struct {
 	ID       int    `gorm:"Primarykey" json:"id"`
 	Nama     string `json:"nama"`
+	Role     int    `json:"role"`
 	Email    string `gorm:"unique, email" json:"email"`
 	Password string `gorm:"password" json:"password"`
 }
@@ -61,42 +63,18 @@ type Produk struct {
 	IdKategori int    `json:"id_kategori"`
 }
 
-// type DetailTransaksi struct {
-// 	ID int `gorm:"primarykey" json:"id"`
-
-// 	Transaksi []Transaksi `gorm:"Foreignkey:IdDetailTransaksi"`
-// }
-
 type Transaksi struct {
 	ID               int       `gorm:"primarykey" json:"id"`
 	Status           string    `json:"status"`
 	Tanggal          time.Time `json:"tanggal"`
 	MetodePembayaran string    `json:"metode_pembayaran"`
 	IdPelanggan      int       `grom:"id_pelanggan" json:"id_pelanggan"`
-	IdProduk         int       `json:"id_produk" gorm:"index"`
-	Produk           []Produk  `gorm:"many2many:produk_transaksi"`
+	IdProduk         int       `json:"id_produk"`
 	Quantity         int       `json:"quantity"`
 	Harga            int       `json:"harga"`
-	KodeTransaksi    string    `json:"kode_transaksi"`
+	Produk           []Produk  `gorm:"many2many:produk_transaksi"`
+	KodeTransaksi    string    `gorm:"index, unique" json:"kode_transaksi"`
 }
-
-// type Transaksi struct {
-// 	KodeTransaksi    int             `gorm:"PrimaryKey" json:"kode_transaksi"`
-// 	Status           string          `json:"status"`
-// 	MetodePembayaran string          `json:"metode_pembayaran"`
-// 	TotalPembayaran  int             `json:"total_pembayaran"`
-// 	TanggalTransaksi time.Time       `json:"tanggal_transaksi"`
-// 	IdPelanggan      int             `json:"id_pelanggan"`
-// 	DetailTransaksi  DetailTransaksi `gorm:"foreignkey:KodeTransaksi"`
-// }
-
-// type DetailTransaksi struct {
-// 	KodeDetailTransaksi int              `gorm:"primarykey" json:"kode_detail_transaksi"`
-// 	KodeTransaksi       int              `json:"kode_transaksi"`
-// 	AlamatId            int              `json:"alamat_id"`
-// 	KodeKeranjang       int              `json:"kode_keranjang"`
-// 	KeranjangBelanja    KeranjangBelanja `gorm:"foreignkey:KodeKeranjang"`
-// }
 
 type Provinsi struct {
 	ProvinceId string `json:"province_id"`

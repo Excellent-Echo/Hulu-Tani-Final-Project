@@ -59,6 +59,28 @@ func (h *transaksiHandler) CreateTransaksiHandler(c *gin.Context) {
 	c.JSON(201, response)
 }
 
+func (h *transaksiHandler) CreateProdukTransaksiHandler(c *gin.Context) {
+
+	var inputProdukTransaksi entity.ProdukTransaksi
+
+	if err := c.ShouldBindJSON(&inputProdukTransaksi); err != nil {
+		splitErr := helper.SplitErrorInformation(err)
+		responseErr := helper.APIResponse(400, "input data required", gin.H{"errors": splitErr})
+		c.JSON(400, responseErr)
+		return
+	}
+
+	newTransaksi, err := h.service.SaveNewProdukTransaksi(inputProdukTransaksi)
+
+	if err != nil {
+		responseErr := helper.APIResponse(500, "internal server error", err.Error())
+		c.JSON(500, responseErr)
+		return
+	}
+	response := helper.APIResponse(201, "success create new produk transaksi", newTransaksi)
+	c.JSON(201, response)
+}
+
 func (h *transaksiHandler) ShowTransaksiByKode(c *gin.Context) {
 	kode := c.Param("kode_transaksi")
 

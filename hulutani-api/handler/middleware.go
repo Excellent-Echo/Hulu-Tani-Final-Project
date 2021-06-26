@@ -3,6 +3,7 @@ package handler
 import (
 	"hulutani-api/auth"
 	"hulutani-api/helper"
+	"hulutani-api/layer/admin"
 
 	"github.com/dgrijalva/jwt-go"
 	"github.com/gin-gonic/gin"
@@ -44,7 +45,7 @@ func Middleware(authService auth.Service) gin.HandlerFunc {
 	}
 }
 
-func AdminMiddleware(authService auth.Service) gin.HandlerFunc {
+func AdminMiddleware(authService auth.Service, admin admin.Repository) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		authHeader := c.GetHeader("Authorization")
 
@@ -76,6 +77,13 @@ func AdminMiddleware(authService auth.Service) gin.HandlerFunc {
 
 		ID := int(claim["user_id"].(float64))
 
+		Admin, _ := admin.FindByID(ID)
+
+		if Admin.Role != 2 {
+			responseErr := helper.APIFailure(401, "unauhorize", gin.H{"error": "unauthorize admin"})
+			c.AbortWithStatusJSON(401, responseErr)
+			return
+		}
 		c.Set("currentUser", ID)
 	}
 }

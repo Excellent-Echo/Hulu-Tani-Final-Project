@@ -7,6 +7,7 @@ type Pelanggan struct {
 	NomorHandphone string `json:"nomor_handphone"`
 	JenisKelamin   string `json:"jenis_kelamin"`
 	Profil         string `json:"profil"`
+	Role           int    `json:"role"`
 	Email          string `gorm:"unique, email" json:"email"`
 	Password       string `gorm:"password" json:"-"`
 }

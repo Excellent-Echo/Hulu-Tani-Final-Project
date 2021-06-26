@@ -9,15 +9,14 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-
 type adminHandler struct {
-	service admin.Service
+	service     admin.Service
 	authService auth.Service
 }
 
 func NewAdminHandler(service admin.Service, authService auth.Service) *adminHandler {
 	return &adminHandler{service, authService}
-} 
+}
 
 func (h *adminHandler) LoginAdminHandler(c *gin.Context) {
 	var inputLoginAdmin entity.AdminLogin
@@ -39,7 +38,7 @@ func (h *adminHandler) LoginAdminHandler(c *gin.Context) {
 		return
 	}
 
-	token, err := h.authService.GenerateToken(admin.ID)
+	token, err := h.authService.GenerateToken(admin.ID, admin.Role)
 	if err != nil {
 		responseError := helper.APIFailure(500, "internal server error", gin.H{"errors": err})
 
@@ -48,4 +47,34 @@ func (h *adminHandler) LoginAdminHandler(c *gin.Context) {
 	}
 	response := helper.APIResponse(200, "success login user", gin.H{"Authorization": token})
 	c.JSON(200, response)
+}
+
+func (h *adminHandler) CreateAdminHandler(c *gin.Context) {
+	var input entity.AdminRegister
+
+	if err := c.ShouldBindJSON(&input); err != nil {
+		splitError := helper.SplitErrorInformation(err)
+		responseError := helper.APIFailure(400, "input data required", gin.H{"errors": splitError})
+
+		c.JSON(400, responseError)
+		return
+	}
+
+	newAdmin, err := h.service.SaveNewAdmin(input)
+
+	if err != nil {
+		responseError := helper.APIFailure(500, "internal server error", gin.H{"error": err.Error()})
+
+		c.JSON(500, responseError)
+		return
+	}
+
+	if newAdmin.ID == 0 {
+		c.JSON(400, gin.H{"errors": "email sudah terdaftar!"})
+		return
+
+	}
+
+	response := helper.APIResponse(201, "success create new User", newAdmin)
+	c.JSON(201, response)
 }

@@ -39,9 +39,9 @@ func main() {
 	routes.AlamatRoute(r)
 	routes.KontakRoute(r)
 	routes.RouteCost(r)
-	routes.RoutesKeranjang(r)
+	// routes.RoutesKeranjang(r)
 	routes.RouteTransaksi(r)
-	routes.RouteDetail(r)
+	// routes.RouteDetail(r)
 
 	// kalo udah running sekali jangan lupa di comment ya, masih belom nemu untuk handle validasi nya
 

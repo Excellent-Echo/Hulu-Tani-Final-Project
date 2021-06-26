@@ -3,24 +3,23 @@ package transaksi
 import (
 	"errors"
 	"hulutani-api/entity"
-	"hulutani-api/layer/keranjang"
 	"time"
 )
 
 type Service interface {
 	GetAllTransaksi(idPelanggan string) ([]entity.Transaksi, error)
 	SaveNewTransaksi(idPelanggan int, input entity.TransaksiInput) (entity.Transaksi, error)
+	SaveNewProdukTransaksi(input entity.ProdukTransaksi) (entity.ProdukTransaksi, error)
 	GetTransaksiByKode(kodeTransaksi string) (entity.Transaksi, error)
 	UpdateKategoriByKode(kodeTransaksi string, dataInput entity.TransaksiInput) (entity.Transaksi, error)
 }
 
 type service struct {
-	repo          Repository
-	keranjangRepo keranjang.Repository
+	repo Repository
 }
 
-func NewService(repo Repository, keranjangRepo keranjang.Repository) *service {
-	return &service{repo, keranjangRepo}
+func NewService(repo Repository) *service {
+	return &service{repo}
 }
 
 func (s *service) GetAllTransaksi(idPelanggan string) ([]entity.Transaksi, error) {
@@ -47,17 +46,27 @@ func (s *service) SaveNewTransaksi(idPelanggan int, input entity.TransaksiInput)
 		KodeTransaksi:    input.KodeTransaksi,
 	}
 
-	var produkTransaksi = entity.ProdukTransaksi{
-		IdTransaksi: transaksi.ID,
-		IdProduk:    transaksi.IdProduk,
-	}
-
-	createTransaksi, err := s.repo.Create(produkTransaksi, transaksi)
+	createTransaksi, err := s.repo.Create(transaksi)
 
 	if err != nil {
 		return createTransaksi, err
 	}
 	return createTransaksi, nil
+}
+
+func (s *service) SaveNewProdukTransaksi(input entity.ProdukTransaksi) (entity.ProdukTransaksi, error) {
+
+	var produkTransaksi = entity.ProdukTransaksi{
+		IdTransaksi: input.IdTransaksi,
+		IdProduk:    input.IdProduk,
+	}
+
+	CreateProdukTransaksi, err := s.repo.CreateProdukTransaksi(produkTransaksi)
+
+	if err != nil {
+		return CreateProdukTransaksi, err
+	}
+	return CreateProdukTransaksi, nil
 }
 
 func (s *service) GetTransaksiByKode(kodeTransaksi string) (entity.Transaksi, error) {

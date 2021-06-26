@@ -14,5 +14,6 @@ var (
 )
 
 func AdminRoute(r *gin.Engine) {
-	r.POST("/admin/login", handler.AdminMiddleware(authService), adminHandler.LoginAdminHandler)
+	r.POST("/admin/login", adminHandler.LoginAdminHandler)
+	r.POST("/admin/register", adminHandler.CreateAdminHandler)
 }

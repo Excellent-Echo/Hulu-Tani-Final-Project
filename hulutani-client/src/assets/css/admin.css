@@ -45,7 +45,8 @@
 
 .admin-overview-card .card,
 .admin-transaction-detail,
-.admin-form {
+.admin-form,
+.admin-proof-transaction {
   border-color: #25a18e !important;
   border-radius: 15px;
 }

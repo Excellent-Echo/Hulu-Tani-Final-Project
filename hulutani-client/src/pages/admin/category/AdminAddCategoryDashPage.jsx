@@ -12,14 +12,12 @@ const AdminAddCategoryDashPage = () => {
       <AdminHeaderLarge />
 
       <div className="admin-content-container h-100 float-end p-4">
-        <nav aria-label="breadcrumb">
-          <ol className="breadcrumb">
-            <li className="breadcrumb-item active" aria-current="page">
+        <nav>
+          <ol className="breadcrumb h3">
+            <li className="breadcrumb-item">
               <Link to="/admin/dash/category">Kategori</Link>
             </li>
-            <li className="breadcrumb-item active" aria-current="page">
-              Tambah
-            </li>
+            <li className="breadcrumb-item">Tambah</li>
           </ol>
         </nav>
 

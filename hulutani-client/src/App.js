@@ -52,9 +52,7 @@ function App() {
     <Router>
       <Switch>
         {/* User Routes */}
-        <Route path="/login">
-          <Login />
-        </Route>
+        <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
         <Route path="/register-2" component={RegisterNext} />
         <Route path="/products" component={ProdukList} />

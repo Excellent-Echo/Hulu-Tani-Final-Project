@@ -11,18 +11,16 @@ const AdminProductDashPage = () => {
 
       <AdminHeaderLarge />
 
-      <div className="admin-content-container h-100 float-end p-4">
+      <div className="admin-content-container h-100 float-end p-4 mb-4">
         <div className="d-flex justify-content-between mb-2">
-          <nav aria-label="breadcrumb">
+          <nav>
             <ol className="breadcrumb">
-              <li className="breadcrumb-item active" aria-current="page">
-                Produk
-              </li>
+              <li className="breadcrumb-item h3">Produk</li>
             </ol>
           </nav>
 
           <Link to="/admin/dash/product/add">
-            <button type="button" className="btn btn-primary small">
+            <button type="button" className="btn btn-primary">
               Tambah
             </button>
           </Link>

@@ -108,7 +108,7 @@ const AddProductForm = () => {
 
   return (
     <form
-      className="border-3 border p-2 admin-form"
+      className="border-3 border p-4 admin-form"
       onSubmit={addProductHandler}
     >
       <div className="row mb-3">

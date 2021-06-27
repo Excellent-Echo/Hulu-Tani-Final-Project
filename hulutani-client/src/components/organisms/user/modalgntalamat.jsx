@@ -5,14 +5,13 @@ import userTransactionAction from '../../../redux/user/transaction/userTransacti
 
 const ModalGntAlamat = () => {
     const daftarAlamat = useSelector(state => state.userAddress.daftarAlamat)
-    const cityId = useSelector(state => state.userAddress.cityId)
     const dispatch = useDispatch()
 
     useEffect(() => {
         dispatch(addressAction.setDaftarAlamat())
     }, [])
 
-    const onClickHandler = (id, alamat, nama)=>{
+    const onClickHandler = (id, alamat, nama, cityId)=>{
         dispatch(addressAction.setId(id))
         dispatch(userTransactionAction.getCost(cityId))
         dispatch(addressAction.setAlamatLengkap(alamat))
@@ -33,7 +32,7 @@ const ModalGntAlamat = () => {
                                 <div className="col-sm-12">
                                 {daftarAlamat.map((data,index)=> {
                                     return (
-                                    <button className="long outline-primary" key={index} onClick={()=>onClickHandler(data.id, data.alamat_detail,data.nama_penerima)}>
+                                    <button className="long outline-primary" key={index} onClick={()=>onClickHandler(data.id, data.alamat_detail,data.nama_penerima,data.city_id)}>
                                         <div className="row">
                                             <div className="col-sm-12 d-flex justify-content-start">
                                                 <span className="me-3 accent-title">
@@ -46,7 +45,7 @@ const ModalGntAlamat = () => {
                                                     {data.nomor_handphone_penerima}
                                                 </span>
                                                 <span className="ms-auto accent-title">
-                                                    {data.kota}
+                                                    {data.alamat_detail}
                                                 </span>
                                             </div>
                                         </div>

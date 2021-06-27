@@ -1,7 +1,7 @@
 const initialState = {
     harga: 0,
     id_produk: 0,
-    kode_transaksi: "",
+    kode_transaksi: 0,
     metode_pembayaran: "",
     quantity: 0,
     status: "Menunggu Pembayaran",
@@ -9,7 +9,9 @@ const initialState = {
     cost:0,
     nama:"",
     alamat:"",
-    namaProduk:""
+    namaProduk:"",
+    bukti:"",
+    dataTransaksi:{},
 }
 
 const userTransactionReducer = (state = initialState, action) =>{
@@ -68,6 +70,16 @@ const userTransactionReducer = (state = initialState, action) =>{
                 return {
                     ...state,
                     cost: action.payload
+                }
+            case "USER_TRANSAKSI_SET_BUKTI":
+                return {
+                    ...state,
+                    bukti: action.payload
+                }
+            case "USER_TRANSAKSI_SET_DATA":
+                return {
+                    ...state,
+                    dataTransaksi: action.payload
                 }
         default:
             return state

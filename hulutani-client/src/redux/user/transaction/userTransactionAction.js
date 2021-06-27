@@ -77,7 +77,14 @@ const setTanggal = (tanggal) =>{
     };
 }
 
-const Transaction = (harga,idProduk,metode,qty,status,idAlamat)=> async dispatch =>{
+const setBukti = (bukti) =>{
+    return {
+        type: "USER_TRANSAKSI_SET_BUKTI",
+        payload: bukti
+    };
+}
+
+const Transaction = (harga,idProduk,metode,qty,status,idAlamat,bukti)=> async dispatch =>{
     try {
         console.log("make transaction..")
         const token = localStorage.getItem("accessToken")
@@ -86,10 +93,11 @@ const Transaction = (harga,idProduk,metode,qty,status,idAlamat)=> async dispatch
             id_alamat:idAlamat,
             id_produk:idProduk,
             metode_pembayaran:metode,
-            quantity:qty,
-            status:status
+            quantity:parseInt(qty),
+            status:status,
+            bukti_transfer:bukti
         }
-
+        //console.log(data)
         const res = await hulutaniClient({
             method:"POST",
             url:"/transaksi",
@@ -98,7 +106,9 @@ const Transaction = (harga,idProduk,metode,qty,status,idAlamat)=> async dispatch
                 Authorization: token
             }
         })
+        // console.log(res.data.data)
 
+        dispatch(setKodeTransaksi(res.data.data.kode_transaksi))
         const data2 = {
             id_produk:idProduk,
             id_transaksi:res.data.data.id
@@ -126,9 +136,51 @@ const getCost = (CityID) => async dispatch =>{
             method:"POST",
             url:`/cost/${CityID}`
         })
-        console.log(res.data.data.rajaongkir.results[1].cost.value)
-        dispatch(setCost(res.data.data.rajaongkir.results[1].cost.value))
+        //console.log(res.data.data.rajaongkir.results[0].costs[0].cost[0].value)
+        dispatch(setCost(res.data.data.rajaongkir.results[0].costs[0].cost[0].value))
 
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+const getDataTransaksi = (kode)=>async dispatch => {
+    try {
+        const token = localStorage.getItem("accessToken")
+        const res = await hulutaniClient({
+            method:"GET",
+            url:`/transaksi/${kode}`,
+            headers:{
+                Authorization: token
+            }
+        })
+        
+        dispatch({
+            type: "USER_TRANSAKSI_SET_DATA",
+            payload: res.data.data
+        })
+        
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+const uploadBukti = (kode,bukti) => async dispatch=>{
+    try {
+        const token = localStorage.getItem("accessToken")
+        const data = {
+            bukti_transfer: bukti,
+            status: "Menunggu Konfirmasi"
+        }
+        const res = await hulutaniClient({
+            method:"PUT",
+            url:`/transaksi/${kode}`,
+            data: data,
+            headers:{
+                Authorization: token
+            }
+        })
+        console.log("upload berhasil")
     } catch (error) {
         console.log(error)
     }
@@ -146,7 +198,9 @@ const userTransactionAction = {
     setTanggal,
     getCost,
     Transaction,
-    setNamaProduk
+    setNamaProduk,
+    getDataTransaksi,
+    uploadBukti
 }
 
 export default userTransactionAction;

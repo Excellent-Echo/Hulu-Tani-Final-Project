@@ -119,7 +119,7 @@ const setDaftarProvinsi = () => async dispatch=>{
     }
 }
 
-const addAddress = (nama,telepon,alamat,kota,provinsi) => async dispatch =>{
+const addAddress = (nama,telepon,alamat,provinsi,id) => async dispatch =>{
     try {
         console.log("add address")
         const token = localStorage.getItem("accessToken")
@@ -127,8 +127,8 @@ const addAddress = (nama,telepon,alamat,kota,provinsi) => async dispatch =>{
             nama_penerima:nama,
             nomor_handphone_penerina:telepon,
             alamat_detail:alamat,
-            kota:kota,
-            provinsi:provinsi
+            provinsi:provinsi,
+            city_id:id
         }
 
         const add = await hulutaniClient({
@@ -139,6 +139,8 @@ const addAddress = (nama,telepon,alamat,kota,provinsi) => async dispatch =>{
                 Authorization: token
             }
         })
+
+        dispatch(setCityId(id))
         dispatch(setDaftarAlamat())
         console.log("success")
     } catch (error) {

@@ -5,15 +5,19 @@ import {
     USER_LOGIN_SET_PASSWORD, 
     USER_LOGIN_START_LOADING, 
     USER_REGISTER_STOP_LOADING,
-    USER_LOGIN_SET_ACCESS_TOKEN 
+    USER_LOGIN_SET_ACCESS_TOKEN, 
+    USER_LOGIN_SET_ISLOGIN,
+    USER_LOGIN_SET_LOGIN,
+    USER_LOGIN_SET_LOGOUT
 } from "../actionType";
 
 const initialState = {
     email:"",
     password:"",
-    isLoading:"",
+    isLoading:false,
     errorMessage:"",
-    accessToken:""
+    accessToken:"",
+    isLogin:false
 };
 
 const userLoginReducer = (state = initialState, action) => {
@@ -51,6 +55,16 @@ const userLoginReducer = (state = initialState, action) => {
             return {
                 ...state,
                 accessToken: action.payload.accessToken
+            }
+        case USER_LOGIN_SET_LOGIN:
+            return {
+                ...state,
+                isLogin: true
+            }
+        case USER_LOGIN_SET_LOGOUT:
+            return {
+                ...state,
+                isLogin: false
             }
         default:
             return state

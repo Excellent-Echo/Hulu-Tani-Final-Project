@@ -10,7 +10,7 @@ import Footer from '../../components/organisms/user/footer'
 
 function ProdukDetail() {
     const detailProduct = useSelector(state => state.detailProduct.productDetail)
-    const token = localStorage.getItem("accessToken")
+    
     const dispatch = useDispatch()
     const history = useHistory()
     const {id} = useParams()
@@ -18,6 +18,17 @@ function ProdukDetail() {
     useEffect(()=>{
         dispatch(detailProductAction.getDetailProduct(id))
     },[])
+
+    const buyHandler = (e) =>{
+        e.preventDefault()
+        const token = localStorage.getItem("accessToken")
+        if(token !== null && token !== ""){
+            console.log(detailProduct.nama)
+            history.push("/checkout")
+        }else{
+            history.push("/login")
+        }
+    }
     
     return (
         <>
@@ -66,7 +77,7 @@ function ProdukDetail() {
                                         />
                                     </div>
                                     <div className="col-sm-7 d-flex align-items-end">
-                                        <button type="submit" className="primary long" >Belanja Sekarang</button>
+                                        <button type="submit" className="primary long" onClick={buyHandler}>Belanja Sekarang</button>
                                     </div>
                                 {/* </form> */}
                                 <div className="row product-desc">

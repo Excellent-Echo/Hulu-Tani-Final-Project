@@ -5,8 +5,13 @@ import '../../assets/css/landing.css'
 import GroceryShopping from '../../assets/images/landing-title.svg'
 import Navbar from '../../components/organisms/user/navbar'
 import Footer from '../../components/organisms/user/footer'
+import { useHistory } from 'react-router-dom'
 
 function LandingPage() {
+    const history = useHistory()
+    const toProducts =()=>{
+        history.push("/products")
+    }
     return (
         <>
             <Navbar />
@@ -23,7 +28,7 @@ function LandingPage() {
                                 kalo cuman belanja bahan masak. Tunggu apa lagi?
                             </p>
 
-                            <button className="primary">
+                            <button className="primary" onClick={toProducts}>
                                 Belanja Sekarang
                             </button>
                         </div>
@@ -174,6 +179,7 @@ function LandingPage() {
                             produk di bawah ini.                           
                         </p>
                     </div>
+                    {/* Product with categori 1 */}
                     <div className="row justify-content-center section3-row2">
                         <div className="row justify-content-center">
                             <div className="col-md-12">
@@ -289,6 +295,8 @@ function LandingPage() {
                             </div>
                         </div>
                     </div>
+                    {/* end of Product with categori 1 */}
+                    {/* Product with categori 2 */}
                     <div className="row justify-content-center section3-row3">
                         <div className="row justify-content-center">
                             <div className="col-md-12">
@@ -309,6 +317,7 @@ function LandingPage() {
                         <div className="row justify-content-center">
                             <div className="col-md-12">
                                 <div className="row section3-card-container">
+                                    {/* CARD START */}
                                     <div className="col-sm card-container">
                                         <div className="card product-card card-outline-primary h-100" style={{ width: "11.8rem" }}>
                                             <div className="img-container product-img bg-pattern">
@@ -400,13 +409,15 @@ function LandingPage() {
                                             </div>
                                         </div>
                                     </div>
+                                    {/* CARD END */}
                                 </div>
                             </div>
                         </div>
                     </div>
+                    {/* end of Product with categori 1 */}
                     <div className="row justify-content-center section3-row4">
                         <div className="col-md-3 justify-content-center d-flex">
-                            <button className="primary">
+                            <button className="primary" onClick={toProducts}>
                                 Belanja Sekarang
                             </button>
                         </div>

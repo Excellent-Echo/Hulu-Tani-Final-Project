@@ -32,10 +32,10 @@ const navs = [
       name: "Keluar",
     },
   ],
-  AdminHeaderSmall = () => {
+  AdminHeader = () => {
     return (
       <nav className="navbar navbar-expand-xxl navbar-light bg-light admin-header shadow-sm position-fixed w-100">
-        <div className="container-fluid">
+        <div className="container">
           <button
             className="navbar-toggler admin-navbar-icon"
             type="button"
@@ -72,4 +72,4 @@ const navs = [
     );
   };
 
-export default AdminHeaderSmall;
+export default AdminHeader;

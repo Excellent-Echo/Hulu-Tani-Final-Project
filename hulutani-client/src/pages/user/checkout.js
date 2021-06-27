@@ -5,6 +5,7 @@ import '../../assets/css/transaksi.css'
 import CheckoutImg from '../../assets/images/checkout.svg'
 import Navbar from '../../components/organisms/user/navbar'
 import Footer from '../../components/organisms/user/footer'
+import ModalGntAlamat from '../../components/organisms/user/modalgntalamat'
 
 function Checkout() {
     return (
@@ -50,7 +51,9 @@ function Checkout() {
                                                                 </h5>
                                                             </div>
                                                             <div className="col-sm d-flex justify-content-end">
-                                                                <button className="b-info xsmall btn-edit"></button>
+                                                                <button className="b-info xsmall btn-edit" data-bs-toggle="modal" data-bs-target="#modalGntAlamat">
+
+                                                                </button>
                                                             </div>
                                                         </div>
                                                         <div className="row align-items-center">
@@ -214,6 +217,9 @@ function Checkout() {
                 </div>
             </div>
             <Footer />
+            {/* MODALS */}
+                <ModalGntAlamat />
+            {/* END OF MODALS */}
         </>
     )
 }

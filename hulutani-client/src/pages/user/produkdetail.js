@@ -1,9 +1,8 @@
-import React, { useEffect } from 'react'
+import React, { useEffect} from 'react'
 import { useParams, Link, useHistory } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import NumberFormat from 'react-number-format'
 import detailProductAction from "../../redux/public/detailProduct/detailProductAction";
-import addCartAction from '../../redux/user/cart/addCartAction'
 
 import '../../assets/css/userglobal.css'
 import Navbar from '../../components/organisms/user/navbar'
@@ -11,8 +10,7 @@ import Footer from '../../components/organisms/user/footer'
 
 function ProdukDetail() {
     const detailProduct = useSelector(state => state.detailProduct.productDetail)
-    const token = localStorage.getItem("accessToken")
-    const cart = useSelector(state => state.addCart.quantity)
+    
     const dispatch = useDispatch()
     const history = useHistory()
     const {id} = useParams()
@@ -21,18 +19,17 @@ function ProdukDetail() {
         dispatch(detailProductAction.getDetailProduct(id))
     },[])
 
-    const addCartHandler=(e)=>{
+    const buyHandler = (e) =>{
         e.preventDefault()
-        // if (token === null){ 
-        //     history.push("/login")
-        // } else {
-            dispatch(addCartAction.addCart(
-                String(detailProduct.id),
-                cart
-            ))
-        // }
+        const token = localStorage.getItem("accessToken")
+        if(token !== null && token !== ""){
+            console.log(detailProduct.nama)
+            history.push("/checkout")
+        }else{
+            history.push("/login")
+        }
     }
-
+    
     return (
         <>
             <Navbar />
@@ -70,21 +67,19 @@ function ProdukDetail() {
                                 <h1 className="accent-title accent-text">
                                 <NumberFormat value={detailProduct.harga} displayType={"text"} thousandSeparator={true} prefix={"Rp"}/>
                                 </h1>
-                                <form onSubmit={addCartHandler}>
+                                {/* <form onSubmit={addCartHandler}> */}
                                     <div className="col-sm-3 stock-range mb-3">
                                         <label for="jumlah" className="form-label">Jumlah</label>
                                         <input 
                                         type="number" 
                                         className="form-control small" 
                                         id="jumlah" placeholder="1" 
-                                        value={cart} 
-                                        onChange={(e)=>dispatch(addCartAction.setQuantity(e.target.value))}
                                         />
                                     </div>
                                     <div className="col-sm-7 d-flex align-items-end">
-                                        <button type="submit" className="primary long">Beli Sekarang</button>
+                                        <button type="submit" className="primary long" onClick={buyHandler}>Belanja Sekarang</button>
                                     </div>
-                                </form>
+                                {/* </form> */}
                                 <div className="row product-desc">
                                     <h5>
                                         Informasi Produk

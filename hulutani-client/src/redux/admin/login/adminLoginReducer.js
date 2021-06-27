@@ -1,13 +1,13 @@
 import {
-  USER_LOGIN_RESET_FORM,
-  USER_LOGIN_SET_EMAIL,
-  USER_LOGIN_SET_ERROR_MESSAGE,
-  USER_LOGIN_SET_PASSWORD,
-  USER_LOGIN_START_LOADING,
-  USER_REGISTER_STOP_LOADING,
-  USER_LOGIN_SET_ACCESS_TOKEN,
-  USER_LOGIN_SET_LOGIN,
-  USER_LOGIN_SET_LOGOUT,
+  ADMIN_LOGIN_RESET_FORM,
+  ADMIN_LOGIN_SET_EMAIL,
+  ADMIN_LOGIN_SET_ERROR_MESSAGE,
+  ADMIN_LOGIN_SET_PASSWORD,
+  ADMIN_LOGIN_START_LOADING,
+  ADMIN_LOGIN_STOP_LOADING,
+  ADMIN_LOGIN_SET_ACCESS_TOKEN,
+  ADMIN_LOGIN_SET_LOGIN,
+  ADMIN_LOGIN_SET_LOGOUT,
 } from "../actionType";
 
 const initialState = {
@@ -19,48 +19,48 @@ const initialState = {
   isLogin: false,
 };
 
-const userLoginReducer = (state = initialState, action) => {
+const adminLoginReducer = (state = initialState, action) => {
   switch (action.type) {
-    case USER_LOGIN_RESET_FORM:
+    case ADMIN_LOGIN_RESET_FORM:
       return {
         ...initialState,
       };
-    case USER_LOGIN_SET_EMAIL:
+    case ADMIN_LOGIN_SET_EMAIL:
       return {
         ...state,
         email: action.payload.email,
       };
-    case USER_LOGIN_SET_PASSWORD:
+    case ADMIN_LOGIN_SET_PASSWORD:
       return {
         ...state,
         password: action.payload.password,
       };
-    case USER_LOGIN_SET_ERROR_MESSAGE:
+    case ADMIN_LOGIN_SET_ERROR_MESSAGE:
       return {
         ...state,
         errorMessage: action.payload.errorMessage,
       };
-    case USER_LOGIN_START_LOADING:
+    case ADMIN_LOGIN_START_LOADING:
       return {
         ...state,
         isLoading: true,
       };
-    case USER_REGISTER_STOP_LOADING:
+    case ADMIN_LOGIN_STOP_LOADING:
       return {
         ...state,
         isLoading: false,
       };
-    case USER_LOGIN_SET_ACCESS_TOKEN:
+    case ADMIN_LOGIN_SET_ACCESS_TOKEN:
       return {
         ...state,
         accessToken: action.payload.accessToken,
       };
-    case USER_LOGIN_SET_LOGIN:
+    case ADMIN_LOGIN_SET_LOGIN:
       return {
         ...state,
         isLogin: true,
       };
-    case USER_LOGIN_SET_LOGOUT:
+    case ADMIN_LOGIN_SET_LOGOUT:
       return {
         ...state,
         isLogin: false,
@@ -70,4 +70,4 @@ const userLoginReducer = (state = initialState, action) => {
   }
 };
 
-export default userLoginReducer;
+export default adminLoginReducer;

@@ -39,7 +39,7 @@
 }
 
 .admin-content-container {
-  margin-top: 4.25rem;
+  margin-top: 5.9rem;
   width: 83%;
 }
 
@@ -156,7 +156,7 @@ table tr:last-child td:last-child {
   }
   .admin-navbar-icon,
   .admin-navbar {
-    display: none;
+    display: none !important;
   }
 }
 /* -------------------- xx-large -------------------- */

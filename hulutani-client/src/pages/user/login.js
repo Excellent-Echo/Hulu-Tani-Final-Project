@@ -20,7 +20,6 @@ function Login() {
         dispatch(userLoginAction.userLogin(
             loginData.email,
             loginData.password,
-            //history
         ))
         history.push("/user-transaction")
     }

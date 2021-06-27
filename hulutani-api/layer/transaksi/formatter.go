@@ -11,7 +11,7 @@ func KodeFormat(id int) string {
 	bulan := int(time.Now().Month())
 	unique, _ := rand.Prime(rand.Reader, 10)
 
-	kode := fmt.Sprintf("KT%d%d%d", hari, bulan, unique)
+	kode := fmt.Sprintf("KT%d%d%d%d", id, hari, bulan, unique)
 
 	return kode
 }

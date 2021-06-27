@@ -1,9 +1,10 @@
 import "./App.css";
+import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import PrivateRoute from "./components/route/PrivateRoute";
+import PrivateRoute from "./route/PrivateRoute";
 
 //Public
-import LandingPage from "./pages/user/landing";
+import Landing from "./pages/user/landing";
 import ProdukList from "./pages/user/produklist";
 import ProdukDetail from "./pages/user/produkdetail";
 import Login from "./pages/user/login";
@@ -32,7 +33,7 @@ import AdminContact from "./pages/admin/contact/AdminContactDashPage";
 //test
 import ImageUploadTest from "./pages/ImageUploadTest";
 
-function App() {
+const App = () => {
   return (
     <Router>
       <Switch>
@@ -91,11 +92,10 @@ function App() {
         {/* Admin Routes */}
 
         <Route path="/test" component={ImageUploadTest} />
-
-        <Route path="/" component={LandingPage} />
+        <Route path="/" component={Landing} />
       </Switch>
     </Router>
   );
-}
+};
 
 export default App;

@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import AdminHeader from "../../../components/organisms/admin/AdminHeader";
+import AdminHeaderLarge from "../../../components/organisms/admin/AdminHeader";
 import AdminSideNavBar from "../../../components/organisms/admin/AdminSideNavBar";
 import ProductTable from "../../../components/organisms/admin/product/ProductTable";
 
@@ -9,9 +9,9 @@ const AdminProductDashPage = () => {
     <div className="user-select-none w-100 vh-100">
       <AdminSideNavBar />
 
-      <AdminHeader />
+      <AdminHeaderLarge />
 
-      <div className="w-75 h-100 float-end p-2">
+      <div className="admin-content-container h-100 float-end p-4">
         <div className="d-flex justify-content-between mb-2">
           <nav aria-label="breadcrumb">
             <ol className="breadcrumb">
@@ -22,7 +22,7 @@ const AdminProductDashPage = () => {
           </nav>
 
           <Link to="/admin/dash/product/add">
-            <button type="button" className="btn btn-primary">
+            <button type="button" className="btn btn-primary small">
               Tambah
             </button>
           </Link>

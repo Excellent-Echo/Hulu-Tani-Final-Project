@@ -5,7 +5,11 @@ import { useSelector, useDispatch } from "react-redux";
 import adminShowCategoryAction from "../../../../redux/admin/category/show/adminShowCategoryAction";
 import adminDeleteCategoryAction from "../../../../redux/admin/category/delete/adminDeleteCategoryAction";
 
-const ths = [{ name: "ID" }, { name: "Nama Kategori" }, { name: "Aksi" }],
+const ths = [
+    { name: "ID" },
+    { name: "Nama Kategori" },
+    { name: "Aksi", colspan: "2" },
+  ],
   CategoryTable = () => {
     const adminShowCategory = useSelector(
       (state) => state.adminShowCategory.categories
@@ -37,26 +41,31 @@ const ths = [{ name: "ID" }, { name: "Nama Kategori" }, { name: "Aksi" }],
 
     return (
       <div className="table-responsive">
-        <table className="table table-borderless">
+        <table className="table table-borderless table-hover">
           <thead className="table-light">
             <tr>
               {ths.map((th) => (
-                <th className="text-center">{th.name}</th>
+                <th colSpan={th.colspan} className="text-center">
+                  {th.name}
+                </th>
               ))}
             </tr>
           </thead>
+
           <tbody>
             {adminShowCategory.map((data, index) => {
               return (
                 <tr>
-                  <td scope="row">1</td>
-                  <td>{data.nama}</td>
-                  <td className="d-flex">
+                  <td className="text-center">{index + 1}</td>
+                  <td className="text-center">{data.nama}</td>
+                  <td className="text-center">
                     <Link to={`/admin/dash/category/edit/${data.id}`}>
                       <button type="button" className="btn btn-primary">
                         Ubah
                       </button>
                     </Link>
+                  </td>
+                  <td className="text-center">
                     <button
                       className="btn btn-danger"
                       onClick={() => {

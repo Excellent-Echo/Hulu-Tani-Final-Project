@@ -12,7 +12,7 @@ const ths = [
     { name: "Kategori (Id)" },
     { name: "Jumlah (Pcs)" },
     { name: "Harga (Idr)" },
-    { name: "Aksi", join: "2" },
+    { name: "Aksi", colspan: "2" },
   ],
   ProductTable = () => {
     const adminProductsData = useSelector(
@@ -59,21 +59,22 @@ const ths = [
 
     return (
       <div className="table-responsive">
-        <table className="table table-borderless">
+        <table className="table table-borderless table-hover">
           <thead className="table-light">
             <tr>
               {ths.map((th) => (
-                <th colSpan={th.join} className="text-center">
+                <th colSpan={th.colspan} className="text-center">
                   {th.name}
                 </th>
               ))}
             </tr>
           </thead>
+
           <tbody>
             {adminProductsData.map((data, index) => {
               return (
                 <tr key={index}>
-                  <td className="text-center">1</td>
+                  <td className="text-center">{index}</td>
                   <td>{data.nama}</td>
                   <td>{data.id_kategori}</td>
                   <td>{data.stok}</td>

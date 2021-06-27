@@ -43,19 +43,15 @@ const navs = [
           <div>
             {navs.map((nav) => (
               <Link className="nav-link my-1 row" to={nav.to}>
-                <div>
-                  <i className={nav.icon}></i>
-                  <span className="ms-3 fw-bold">{nav.name}</span>
-                </div>
+                <i className={nav.icon}></i>
+                <span className="ms-3 fw-bold">{nav.name}</span>
               </Link>
             ))}
           </div>
 
           <Link className="nav-link my-1 row">
-            <div>
-              <i className="fas fa-sign-out-alt fs-5 col-2"></i>
-              <span className="ms-3 fw-bold">Keluar</span>
-            </div>
+            <i className="fas fa-sign-out-alt fs-5 col-2"></i>
+            <span className="ms-3 fw-bold">Keluar</span>
           </Link>
         </nav>
       </div>

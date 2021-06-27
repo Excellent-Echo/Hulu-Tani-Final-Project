@@ -12,12 +12,12 @@ const AdminEditProductDashPage = () => {
       <AdminHeaderLarge />
 
       <div className="admin-content-container h-100 float-end p-4">
-        <nav aria-label="breadcrumb">
-          <ol className="breadcrumb">
-            <li className="breadcrumb-item active" aria-current="page">
+        <nav>
+          <ol className="breadcrumb h3">
+            <li className="breadcrumb-item" aria-current="page">
               <Link to="/admin/dash/product">Produk</Link>
             </li>
-            <li className="breadcrumb-item active" aria-current="page">
+            <li className="breadcrumb-item" aria-current="page">
               Ubah
             </li>
           </ol>

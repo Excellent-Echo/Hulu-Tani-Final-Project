@@ -94,7 +94,7 @@ const adminLogin = (email, password, history) => async (dispatch) => {
       data: submitData,
     });
     localStorage.setItem("adminToken", admin.data.data.Authorization);
-    console.log(admin.data.data.Authorization);
+    // console.log(admin.data.data.Authorization);
     dispatch(setAccessToken(admin.response.data.Authorization));
     dispatch(logIn());
     dispatch(stopLoading());

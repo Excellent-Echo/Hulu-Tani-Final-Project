@@ -11,13 +11,11 @@ const AdminCategoryDashPage = () => {
 
       <AdminHeaderLarge />
 
-      <div className="admin-content-container h-100 float-end p-4">
+      <div className="admin-content-container h-100 float-end p-4 mb-4">
         <div className="d-flex justify-content-between mb-2">
-          <nav aria-label="breadcrumb">
-            <ol className="breadcrumb">
-              <li className="breadcrumb-item active" aria-current="page">
-                Kategori
-              </li>
+          <nav>
+            <ol className="breadcrumb h3">
+              <li className="breadcrumb-item">Kategori</li>
             </ol>
           </nav>
 

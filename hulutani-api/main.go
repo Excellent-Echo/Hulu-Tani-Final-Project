@@ -43,7 +43,7 @@ func main() {
 	routes.RouteTransaksi(r)
 	// routes.RouteDetail(r)
 
-	// kalo udah running sekali jangan lupa di comment ya, masih belom nemu untuk handle validasi nya
+	// kalo udah running sekali jangan lupa di comment ya, masih belom nemu untuk handle validasi nyaaa
 
 	// handler.StoreProvinsiDB()
 	// handler.StoreKotaDB()

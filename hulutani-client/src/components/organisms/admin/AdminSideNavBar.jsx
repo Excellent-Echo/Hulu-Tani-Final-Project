@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useHistory, Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import adminLoginAction from "../../../redux/admin/login/adminLoginAction";
@@ -31,8 +31,13 @@ const navs = [
     },
   ],
   AdminSideNavBar = () => {
+    const history = useHistory(),
+      dispatch = useDispatch();
+
     const adminLogOut = () => {
+      dispatch(adminLoginAction.logOut());
       localStorage.removeItem("adminToken");
+      history.push("/admin/login");
     };
 
     return (

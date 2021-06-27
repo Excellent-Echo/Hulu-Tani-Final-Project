@@ -29,7 +29,7 @@ func (h *kategoriHandler) ShowAllKategorisHandler(c *gin.Context) {
 	kategori, err := h.service.GetAllKategori()
 
 	if err != nil {
-		responseErr := helper.APIResponse(500, "internal server error", err.Error())
+		responseErr := helper.APIFailure(500, "internal server error", err.Error())
 		c.JSON(500, responseErr)
 		return
 	}
@@ -55,7 +55,7 @@ func (h *kategoriHandler) ShowKategoriByIDHandler(c *gin.Context) {
 
 	kategori, err := h.service.GetKategoriByID(id)
 	if err != nil {
-		responseErr := helper.APIResponse(500, "internal server error", gin.H{"error": err.Error()})
+		responseErr := helper.APIFailure(500, "internal server error", gin.H{"error": err.Error()})
 
 		c.JSON(500, responseErr)
 		return
@@ -83,7 +83,7 @@ func (h *kategoriHandler) CreateKategoriHandler(c *gin.Context) {
 
 	if err := c.ShouldBindJSON(&inputKategori); err != nil {
 		splitErr := helper.SplitErrorInformation(err)
-		responseErr := helper.APIResponse(400, "input data required", gin.H{"errors": splitErr})
+		responseErr := helper.APIFailure(400, "input data required", gin.H{"errors": splitErr})
 		c.JSON(400, responseErr)
 		return
 	}
@@ -91,7 +91,7 @@ func (h *kategoriHandler) CreateKategoriHandler(c *gin.Context) {
 	newKategori, err := h.service.SaveNewKategori(inputKategori)
 
 	if err != nil {
-		responseErr := helper.APIResponse(500, "internal server error", err.Error())
+		responseErr := helper.APIFailure(500, "internal server error", err.Error())
 		c.JSON(500, responseErr)
 		return
 	}
@@ -120,7 +120,7 @@ func (h *kategoriHandler) UpdateKategoriByIDHandler(c *gin.Context) {
 
 	if err := c.ShouldBindJSON(&updateKategoriInput); err != nil {
 		splitErr := helper.SplitErrorInformation(err)
-		responseErr := helper.APIResponse(400, "input data required", gin.H{"error": splitErr})
+		responseErr := helper.APIFailure(400, "input data required", gin.H{"error": splitErr})
 
 		c.JSON(400, responseErr)
 		return
@@ -129,7 +129,7 @@ func (h *kategoriHandler) UpdateKategoriByIDHandler(c *gin.Context) {
 	kategori, err := h.service.UpdateKategoriByID(id, updateKategoriInput)
 
 	if err != nil {
-		responseErr := helper.APIResponse(500, "internal server error", gin.H{"error": err.Error()})
+		responseErr := helper.APIFailure(500, "internal server error", gin.H{"error": err.Error()})
 
 		c.JSON(500, responseErr)
 		return

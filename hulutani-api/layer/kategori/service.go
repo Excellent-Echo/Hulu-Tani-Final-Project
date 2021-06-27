@@ -60,12 +60,12 @@ func (s *service) SaveNewKategori(input entity.KategoriInput) (entity.Kategori, 
 		Nama: input.Nama,
 	}
 
-	createJob, err := s.repo.Create(kategori)
+	createKategori, err := s.repo.Create(kategori)
 
 	if err != nil {
-		return createJob, err
+		return createKategori, err
 	}
-	return createJob, nil
+	return createKategori, nil
 }
 
 func (s *service) UpdateKategoriByID(id string, dataInput entity.KategoriInput) (entity.Kategori, error) {

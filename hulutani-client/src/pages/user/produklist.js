@@ -21,7 +21,7 @@ function ProdukList() {
         return (
                 <>
 					<Navbar />	
-					<div className="container-fluid">
+					<div className="container-fluid breadcrumbs">
 						<div className="container">
 							<div className="row breadcrumbs-container">
 								<nav aria-label="breadcrumb">
@@ -44,6 +44,33 @@ function ProdukList() {
 										</div>
 										<div className="col-sm promo-banner bg-pattern banner-2">
 
+										</div>
+									</div>
+									<div className="row mt-3 mb-3">
+										<div className="col-sm d-flex align-content-center">
+											<p className="title">
+												Menampilkan hasil dari&nbsp;
+												<span>
+													<i className="accent-text accent-title ">
+														"[Pencarian]"
+													</i>
+												</span>
+											</p>
+										</div>
+										<div className="col-sm urutdrop">
+											<div className="status-filter">
+												<a className="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+													Urut Berdasarkan
+												</a>
+												<ul className="dropdown-menu">
+													<li><a className="dropdown-item" href="#">Menunggu Pembayaran</a></li>
+													<li><a className="dropdown-item" href="#">Diproses</a></li>
+													<li><a className="dropdown-item" href="#">Dikirim</a></li>
+													<li><a className="dropdown-item" href="#">Selesai</a></li>
+													<li><hr className="dropdown-divider" /></li>
+													<li><a className="dropdown-item" href="#">Dibatalkan</a></li>
+												</ul>
+											</div>
 										</div>
 									</div>
 									<div className="row product-card-container">

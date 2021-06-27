@@ -33,7 +33,7 @@ function ProdukDetail() {
     return (
         <>
             <Navbar />
-            <div className="container-fluid">
+            <div className="container-fluid breadcrumbs">
                 <div className="container">
                     <div className="row breadcrumbs-container">
                         <nav aria-label="breadcrumb">
@@ -56,7 +56,7 @@ function ProdukDetail() {
                         </div>
                         <div className="col-sm product-content">
                             <div className="row product-name-container">
-                                <h4 className="text-muted accent-title">
+                                <h4 className="text-muted">
                                     [Kategori]
                                 </h4>
                                 <h1 className="title">
@@ -68,11 +68,11 @@ function ProdukDetail() {
                                 <NumberFormat value={detailProduct.harga} displayType={"text"} thousandSeparator={true} prefix={"Rp"}/>
                                 </h1>
                                 {/* <form onSubmit={addCartHandler}> */}
-                                    <div className="col-sm-3 stock-range">
+                                    <div className="col-sm-3 stock-range mb-3">
                                         <label for="jumlah" className="form-label">Jumlah</label>
                                         <input 
                                         type="number" 
-                                        className="form-control" 
+                                        className="form-control small" 
                                         id="jumlah" placeholder="1" 
                                         />
                                     </div>

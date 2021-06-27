@@ -7,6 +7,7 @@
   min-height: 100vh;
   padding-top: 10vh;
   padding-bottom: 10vh;
+  padding-right: 2vw !important;
 }
 
 .title,
@@ -232,8 +233,15 @@ button.outline-primary:hover {
 }
 
 input, select, textarea {
+  padding: 1vw 1.5vw !important;
+  font-size: larger !important;
   border: 1px solid #263238 !important;
   border-radius: 7px !important;
+}
+
+input.small, select.small, textarea.small {
+  padding: .7vw 1vw !important;
+  font-size: 90% !important;
 }
 
 input[type="date"].outline-primary {

@@ -1,46 +1,19 @@
 import React from 'react'
-
-import '../../assets/css/userpage.css'
-
-import BlankUser from '../../assets/images/blank-user.png'
 import { Link } from "react-router-dom";
+
+import '../../assets/css/userglobal.css'
+import '../../assets/css/userpage.css'
+import BlankUser from '../../assets/images/blank-user.png'
+import UserSidebar from '../../components/organisms/user/usersidebar';
+import Navbar from '../../components/organisms/user/navbar';
+import Footer from '../../components/organisms/user/footer'
+import ModalProfilePic from '../../components/organisms/user/modalprofilepic';
 
 function UserEdit() {
     return (
         <>
-            <div className="container-fluid nav-container">
-                <nav className="navbar navbar-expand-lg bg-light">
-                    <div className="container">
-                        <a className="navbar-brand title accent-text" href="#">HuluTani</a>
-                        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span className="navbar-toggler-icon"></span>
-                        </button>
-                        <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                            <ul className="navbar-nav mx-4 mb-lg-0">
-                                <li className="nav-item dropdown">
-                                    <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        Kategori
-                                    </a>
-                                    <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <li><a className="dropdown-item" href="#">Action</a></li>
-                                        <li><a className="dropdown-item" href="#">Another action</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                            <form className="ms-4 me-auto">
-                                <input className="form-control nav-search" type="search" placeholder="Cari 'wortel'" aria-label="Search"/>
-                            </form>
-                            <div className="navbar-nav ms-2">
-                                    <a className="nav-link active" aria-current="page" href="#">Home</a>
-                                    <a className="nav-link" href="#">Features</a>
-                                    <a className="nav-link" href="#">Pricing</a>
-                                    <a className="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-                            </div>
-                        </div>
-                    </div>
-                </nav>
-            </div>
-            <div className="container-fluid fluid-page user-page-container">
+            <Navbar />
+            <div className="container-fluid breadcrumbs">
                 <div className="container">
                     <div className="row breadcrumbs-container">
                         <nav aria-label="breadcrumb">
@@ -51,43 +24,13 @@ function UserEdit() {
                             </ol>
                         </nav>
                     </div>
-                    <div className="row user-sidebar-container">
-                        <div className="col-sm-3 user-sidebar">
-                            <div className="row user-sidebar-title">
-                                <h2 className="title">Profil Saya</h2>
-                            </div>
-                            <div className="row user-sidebar-content">
-                                <div className="list-group">
-                                <Link to="user-transaction">
-                                    <button className="list-group-item list-group-item-action user-sidebar-button current">
-                                        <span className="sidebar-button">
-                                            <span className="user-sidebar-icon transaksi"></span>
-                                            Transaksi
-                                        </span>
-                                    </button>
-                                    </Link>
-                                    <Link to="user-address">
-                                    <button className="list-group-item list-group-item-action user-sidebar-button">
-                                        <span className="sidebar-button">
-                                            <span className="user-sidebar-icon alamat"></span>
-                                            Alamat Saya
-                                        </span>
-                                    </button>
-                                    </Link>
-                                    <Link to="user-edit">
-                                    <button className="list-group-item list-group-item-action user-sidebar-button">
-                                        <span className="sidebar-button">
-                                            <span className="user-sidebar-icon edit"></span>
-                                            Edit Profil
-                                        </span>
-                                    </button>
-                                    </Link>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                </div>
+            </div>
+            <UserSidebar />
+            <div className="container-fluid fluid-page user-page-container">
+                <div className="container">
                     <div className="row user-content-container">
-                        <div className="col-sm-9 user-content">
+                        <div className="col-sm user-content">
                             <div className="row content-title">
                                 <div className="col-sm">
                                     <h1 className="accent-title accent-text">
@@ -111,7 +54,7 @@ function UserEdit() {
                                                 memasukkan informasi palsu.
                                            </p>
                                        </div>
-                                       <div className="row user-avatar-container">
+                                       <div className="row user-avatar-container" data-bs-toggle="modal" data-bs-target="#modalProfilePic">
                                             <img src={ BlankUser } alt="" className="img-fluid user-avatar" />
                                        </div>
                                     </div>
@@ -120,15 +63,15 @@ function UserEdit() {
                                     <form className="row g-3">
                                         <div className="col-sm-12">
                                             <label for="namaLengkap" className="form-label accent-title">Nama Lengkap</label>
-                                            <input type="name" className="form-control" id="namaLengkap"/>
+                                            <input type="name" className="form-control small" id="namaLengkap"/>
                                         </div>
                                         <div className="col-sm-6">
                                             <label for="tglLahir" className="form-label accent-title">Tanggal Lahir</label>
-                                            <input type="date" className="form-control" id="tglLahir" placeholder="1234 Main St"/>
+                                            <input type="date" className="form-control small" id="tglLahir" placeholder="1234 Main St"/>
                                         </div>
                                         <div className="col-sm-6">
                                             <label for="jnsKelamin" className="form-label accent-title">Jenis Kelamin</label>
-                                            <select id="jnsKelamin" className="form-select">
+                                            <select id="jnsKelamin" className="form-select small">
                                                 <option selected>Pilih salah satu</option>
                                                 <option>Laki-laki</option>
                                                 <option>Perempuan</option>
@@ -136,11 +79,11 @@ function UserEdit() {
                                         </div>
                                         <div className="col-sm-6">
                                             <label for="email" className="form-label accent-title">Email</label>
-                                            <input type="email" className="form-control" id="email"/>
+                                            <input type="email" className="form-control small" id="email"/>
                                         </div>
                                         <div className="col-sm-6">
                                             <label for="noTelp" className="form-label accent-title">No. Telepon</label>
-                                            <input type="text" className="form-control" id="notelp"/>
+                                            <input type="text" className="form-control small" id="notelp"/>
                                         </div>
                                         <div className="col-12">
                                             <br />
@@ -167,15 +110,15 @@ function UserEdit() {
                                     <form className="row g-3">
                                         <div className="col-sm-12">
                                             <label for="passwordLama" className="form-label accent-title">Password Saat Ini</label>
-                                            <input type="password" className="form-control" id="passwordLama"/>
+                                            <input type="password" className="form-control small" id="passwordLama"/>
                                         </div>
                                         <div className="col-sm-6">
                                             <label for="passwordBaru" className="form-label accent-title">Password Baru</label>
-                                            <input type="password" className="form-control" id="passwordBaru"/>
+                                            <input type="password" className="form-control small" id="passwordBaru"/>
                                         </div>
                                         <div className="col-sm-6">
                                             <label for="noTelp" className="form-label accent-title">Ulangi Password Baru</label>
-                                            <input type="password" className="form-control" id="passwordBaruUlang"/>
+                                            <input type="password" className="form-control small" id="passwordBaruUlang"/>
                                         </div>
                                         <div className="col-12">
                                             <br />
@@ -188,6 +131,11 @@ function UserEdit() {
                     </div>
                 </div>
             </div>
+            <Footer />
+
+            {/* MODALS */}
+            <ModalProfilePic />
+            {/* END OF MODALS */}
         </>
     )
 }

@@ -1,12 +1,15 @@
 import React from 'react'
 
+import '../../assets/css/userglobal.css'
 import '../../assets/css/transaksi.css'
-
 import WaitingPayment from '../../assets/images/waiting-payment.svg'
+import Navbar from '../../components/organisms/user/navbar'
+import Footer from '../../components/organisms/user/footer'
 
 function Pembayaran() {
     return (
         <>
+            <Navbar />
             <div className="container-fluid breadcrumbs-container">
                 <div className="container">
                     <div className="row breadcrumbs-container">
@@ -30,7 +33,7 @@ function Pembayaran() {
                                         Pembayaran
                                     </h1>
                                 </div>
-                                <div className="col-sm d-flex justify-content-end">
+                                <div className="col-sm d-flex kdpembayaran">
                                     <h4 className="align-middle text-muted">
                                         #KD010101
                                     </h4>
@@ -38,7 +41,7 @@ function Pembayaran() {
                             </div>
                             <div className="row mb-4">
                                 <div className="col-sm-12">
-                                    STATUS : <span><b className="warning-text">MENUNGGU PEMBAYARAN</b></span>
+                                    STATUS : <span><b className="t-warning">MENUNGGU PEMBAYARAN</b></span>
                                 </div>
                                 <div className="col-sm-12">
                                     <br />
@@ -71,15 +74,20 @@ function Pembayaran() {
                                     </h3>
                                 </div>
                                 <div className="col-sm-6">
-                                    <p className="text-end">
-                                        JANK BAGO
-                                    </p>
-                                    <h2 className="accent-title accent-text text-end">
-                                        023452121345
-                                    </h2>
-                                    <p className="text-end">
-                                        PT. HULU TANI INDONESIA
-                                    </p>
+                                    <div className="row rekening">
+                                        <h1 className="title rekbayar">
+                                            Rekening Pembayaran
+                                        </h1>
+                                        <p className="nmbank">
+                                            JANK BAGO
+                                        </p>
+                                        <h2 className="accent-title accent-text norek">
+                                            023452121345
+                                        </h2>
+                                        <p className="anbank">
+                                            PT. HULU TANI INDONESIA
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                             <div className="row">
@@ -89,8 +97,8 @@ function Pembayaran() {
                                 <div className="col-sm-12">
                                     <form action="">
                                         <div className="row align-items-center">
-                                            <div className="col-sm-7">
-                                                <input className="form-control" type="file" id="formFile" />
+                                            <div className="col-sm-7 mb-2">
+                                                <input className="form-control small" type="file" id="formFile" />
                                             </div>
                                             <div className="col-sm-5">
                                                 <button type="submit" className="primary small long">Konfirmasi Pembayaran</button>
@@ -106,6 +114,7 @@ function Pembayaran() {
                     </div>
                 </div>
             </div>
+            <Footer />
         </>
     )
 }

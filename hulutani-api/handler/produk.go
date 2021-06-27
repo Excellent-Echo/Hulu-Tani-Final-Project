@@ -30,7 +30,7 @@ func (h *produkHandler) ShowAllProduksHandler(c *gin.Context) {
 	produk, err := h.service.GetAllProduk()
 
 	if err != nil {
-		responseErr := helper.APIResponse(500, "internal server error", err.Error())
+		responseErr := helper.APIFailure(500, "internal server error", err.Error())
 		c.JSON(500, responseErr)
 		return
 	}
@@ -56,7 +56,7 @@ func (h *produkHandler) ShowProdukByNameHandler(c *gin.Context) {
 
 	produk, err := h.service.GetProdukByName(nama)
 	if err != nil {
-		responseErr := helper.APIResponse(500, "internal server error", gin.H{"error": err.Error()})
+		responseErr := helper.APIFailure(500, "internal server error", gin.H{"error": err.Error()})
 
 		c.JSON(500, responseErr)
 		return
@@ -81,7 +81,7 @@ func (h *produkHandler) ShowProdukByIdHandler(c *gin.Context) {
 
 	produk, err := h.service.GetProdukById(id)
 	if err != nil {
-		responseErr := helper.APIResponse(500, "internal server error", gin.H{"error": err.Error()})
+		responseErr := helper.APIFailure(500, "internal server error", gin.H{"error": err.Error()})
 
 		c.JSON(500, responseErr)
 		return
@@ -112,7 +112,7 @@ func (h *produkHandler) ShowProdukByHargaHandler(c *gin.Context) {
 
 	produk, err := h.service.GetProdukByHarga(harga)
 	if err != nil {
-		responseErr := helper.APIResponse(500, "internal server error", gin.H{"error": err.Error()})
+		responseErr := helper.APIFailure(500, "internal server error", gin.H{"error": err.Error()})
 
 		c.JSON(500, responseErr)
 		return
@@ -140,7 +140,7 @@ func (h *produkHandler) CreateProdukHandler(c *gin.Context) {
 
 	if err := c.ShouldBindJSON(&inpotProduk); err != nil {
 		splitErr := helper.SplitErrorInformation(err)
-		responseErr := helper.APIResponse(400, "input data required", gin.H{"errors": splitErr})
+		responseErr := helper.APIFailure(400, "input data required", gin.H{"errors": splitErr})
 		c.JSON(400, responseErr)
 		return
 	}
@@ -148,7 +148,7 @@ func (h *produkHandler) CreateProdukHandler(c *gin.Context) {
 	newProduk, err := h.service.SaveNewProduk(inpotProduk)
 
 	if err != nil {
-		responseErr := helper.APIResponse(500, "internal server error", err.Error())
+		responseErr := helper.APIFailure(500, "internal server error", err.Error())
 		c.JSON(500, responseErr)
 		return
 	}
@@ -177,7 +177,7 @@ func (h *produkHandler) UpdateProdukByIDHandler(c *gin.Context) {
 
 	if err := c.ShouldBindJSON(&updateProdukInput); err != nil {
 		splitErr := helper.SplitErrorInformation(err)
-		responseErr := helper.APIResponse(400, "input data required", gin.H{"error": splitErr})
+		responseErr := helper.APIFailure(400, "input data required", gin.H{"error": splitErr})
 
 		c.JSON(400, responseErr)
 		return
@@ -186,7 +186,7 @@ func (h *produkHandler) UpdateProdukByIDHandler(c *gin.Context) {
 	produk, err := h.service.UpdateProdukByID(id, updateProdukInput)
 
 	if err != nil {
-		responseErr := helper.APIResponse(500, "internal server error", gin.H{"error": err.Error()})
+		responseErr := helper.APIFailure(500, "internal server error", gin.H{"error": err.Error()})
 
 		c.JSON(500, responseErr)
 		return

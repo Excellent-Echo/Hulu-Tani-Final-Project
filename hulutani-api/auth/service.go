@@ -10,7 +10,7 @@ import (
 var key = os.Getenv("SECRET")
 
 type Service interface {
-	GenerateToken(userID int) (string, error)
+	GenerateToken(userID int, role int) (string, error)
 	ValidateToken(encodedToken string) (*jwt.Token, error)
 }
 
@@ -21,9 +21,10 @@ func NewService() *jwtService {
 	return &jwtService{}
 }
 
-func (s *jwtService) GenerateToken(userID int) (string, error) {
+func (s *jwtService) GenerateToken(userID int, role int) (string, error) {
 	claim := jwt.MapClaims{
 		"user_id": userID,
+		"role":    role,
 	}
 
 	// generate token using HS256 with claim

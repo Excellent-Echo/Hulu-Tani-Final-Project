@@ -21,7 +21,7 @@ func main() {
 	docs.SwaggerInfo.Title = "HuluTani API documentation"
 	docs.SwaggerInfo.Description = "HuluTani API documentation"
 	docs.SwaggerInfo.Version = "1.0"
-	docs.SwaggerInfo.Host = "https://hulutani.herokuapp.com"
+	docs.SwaggerInfo.Host = "hulutani.herokuapp.com"
 	docs.SwaggerInfo.BasePath = ""
 	docs.SwaggerInfo.Schemes = []string{"https"}
 

@@ -75,10 +75,10 @@ const ths = [
               return (
                 <tr key={index}>
                   <td className="text-center">{index}</td>
-                  <td>{data.nama}</td>
-                  <td>{data.id_kategori}</td>
-                  <td>{data.stok}</td>
-                  <td>{data.harga}</td>
+                  <td className="text-center">{data.nama}</td>
+                  <td className="text-center">{data.id_kategori}</td>
+                  <td className="text-center">{data.stok}</td>
+                  <td className="text-center">{data.harga}</td>
                   <td className="text-center">
                     <Link to={`/admin/dash/product/edit/${data.id}`}>
                       <button type="button" className="btn btn-primary">

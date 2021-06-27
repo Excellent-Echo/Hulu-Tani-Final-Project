@@ -14,6 +14,6 @@ var (
 )
 
 func KontakRoute(r *gin.Engine) {
-	r.GET("/kontak", kontakHandler.ShowAllKontaksHandler)
-	r.POST("/kontak", kontakHandler.CreateKontakHandler)
+	r.GET("/kontak", adminMiddleware, kontakHandler.ShowAllKontaksHandler)
+	r.POST("/kontak", adminMiddleware, kontakHandler.CreateKontakHandler)
 }

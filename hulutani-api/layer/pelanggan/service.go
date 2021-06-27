@@ -52,6 +52,7 @@ func (s *service) SaveNewPelanggan(pelanggan entity.PelangganInput) (entity.Pela
 		Profil:         "-",
 		Email:          pelanggan.Email,
 		Password:       string(genPassword),
+		Role:           1,
 	}
 
 	createPelanggan, err := s.repo.Create(newPelanggan)

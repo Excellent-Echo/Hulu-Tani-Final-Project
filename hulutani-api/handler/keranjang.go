@@ -39,8 +39,7 @@ func (h *keranjangHandler) CreateKeranjangHandler(c *gin.Context) {
 	var inputKeranjang entity.KeranjangInput
 
 	if err := c.ShouldBindJSON(&inputKeranjang); err != nil {
-		splitErr := helper.SplitErrorInformation(err)
-		responseErr := helper.APIResponse(400, "input data required", gin.H{"errors": splitErr})
+		responseErr := helper.APIResponse(400, "input data required", gin.H{"errors": err})
 		c.JSON(400, responseErr)
 		return
 	}

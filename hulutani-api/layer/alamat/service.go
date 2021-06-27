@@ -6,11 +6,10 @@ import (
 	"hulutani-api/entity"
 )
 
-
 type Service interface {
 	GetAlamatByPelangganId(id_pelanggan string) ([]entity.Alamat, error)
 	GetAlamatByAlamatId(id string) (entity.Alamat, error)
-	SaveNewAlamat(input entity.AlamatInput) (entity.Alamat, error)
+	SaveNewAlamat(id int, input entity.AlamatInput) (entity.Alamat, error)
 	UpdateAlamatByAlamatId(id string, dataInput entity.AlamatInput) (entity.Alamat, error)
 	DeleteAlamatByAlamatId(id string) (interface{}, error)
 }
@@ -48,14 +47,14 @@ func (s *service) GetAlamatByAlamatId(id string) (entity.Alamat, error) {
 	return alamat, nil
 }
 
-func (s *service) SaveNewAlamat(input entity.AlamatInput) (entity.Alamat, error) {
+func (s *service) SaveNewAlamat(id int, input entity.AlamatInput) (entity.Alamat, error) {
 
-	var alamat = entity.Alamat{  
-		IdPelanggan:     		input.IdPelanggan,      
-		NamaPenerima:    		input.NamaPenerima,    
-		Provinsi:        		input.Provinsi,   
-		Kota:            		input.Kota,   
-		AlamatDetail:    		input.AlamatDetail,   
+	var alamat = entity.Alamat{
+		IdPelanggan:            id,
+		NamaPenerima:           input.NamaPenerima,
+		Provinsi:               input.Provinsi,
+		Kota:                   input.Kota,
+		AlamatDetail:           input.AlamatDetail,
 		NomorHandphonePenerima: input.NomorHandphonePenerima,
 	}
 
@@ -117,7 +116,7 @@ func (s *service) DeleteAlamatByAlamatId(id string) (interface{}, error) {
 		return nil, errors.New(newError)
 	}
 
-	statusDelete, err :=  s.repo.DeleteByID(id)
+	statusDelete, err := s.repo.DeleteByID(id)
 
 	if statusDelete == "error" {
 		return nil, errors.New("error deleted in internal server")

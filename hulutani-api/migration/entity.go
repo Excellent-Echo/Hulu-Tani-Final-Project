@@ -1,22 +1,27 @@
 package migration
 
+import (
+	"time"
+)
+
 type Pelanggan struct {
-	ID               int              `gorm:"Primarykey" json:"id"`
-	Nama             string           `json:"name"`
-	TanggalLahir     string           `json:"tanggal_lahir"`
-	NomorHandphone   string           `json:"nomor_handphone"`
-	JenisKelamin     string           `json:"jenis_kelamin"`
-	Profil           string           `json:"profil"`
-	Email            string           `gorm:"unique" json:"email"`
-	Password         string           `gorm:"password" json:"password"`
-	KeranjangBelanja KeranjangBelanja `gorm:"foreignkey:IdPelanggan"`
-	Alamat           []Alamat         `gorm:"foreignkey:IdPelanggan"`
-	Transaksi        []Transaksi      `gorm:"foreignkey:IdPelanggan"`
+	ID             int         `gorm:"Primarykey" json:"id"`
+	Nama           string      `json:"name"`
+	TanggalLahir   string      `json:"tanggal_lahir"`
+	NomorHandphone string      `json:"nomor_handphone"`
+	JenisKelamin   string      `json:"jenis_kelamin"`
+	Profil         string      `json:"profil"`
+	Email          string      `gorm:"unique" json:"email"`
+	Password       string      `gorm:"password" json:"password"`
+	Role           int         `json:"role"`
+	Transaksi      []Transaksi `gorm:"Foreignkey:IdPelanggan"`
+	Alamat         []Alamat    `gorm:"foreignkey:IdPelanggan"`
 }
 
 type Admin struct {
 	ID       int    `gorm:"Primarykey" json:"id"`
 	Nama     string `json:"nama"`
+	Role     int    `json:"role"`
 	Email    string `gorm:"unique, email" json:"email"`
 	Password string `gorm:"password" json:"password"`
 }
@@ -58,30 +63,17 @@ type Produk struct {
 	IdKategori int    `json:"id_kategori"`
 }
 
-type KeranjangBelanja struct {
-	IdKeranjang   int `gorm:"Primarykey"`
-	IdProduk      int `json:"id_produk"`
-	Quantity      int `json:"quantity"`
-	IdPelanggan   int `json:"id_pelanggan"`
-	KodeKeranjang int `gorm:"index"`
-}
-
 type Transaksi struct {
-	KodeTransaksi    int    `gorm:"PrimaryKey" json:"kode_transaksi"`
-	Status           string `json:"status"`
-	MetodePembayaran string `json:"metode_pembayaran"`
-	TotalPembayaran  int    `json:"total_pembayaran"`
-	TanggalTransaksi string `json:"tanggal_transaksi"`
-	KodeKeranjang    int    `json:"kode_keranjang"`
-	IdPelanggan      int    `json:"id_pelanggan"`
-}
-
-type DetailTransaksi struct {
-	KodeDetailTransaksi int    `gorm:"primarykey" json:"kode_detail_transaksi"`
-	KodeTransaksi       int    `json:"kode_transaksi"`
-	Alamat              Alamat `gorm:"foreignkey:ID" json:"alamat"`
-	KodeKurir           int    `json:"kode_kurir"`
-	Ongkir              int    `json:"Ongkir"`
+	ID               int       `gorm:"primarykey" json:"id"`
+	Status           string    `json:"status"`
+	Tanggal          time.Time `json:"tanggal"`
+	MetodePembayaran string    `json:"metode_pembayaran"`
+	IdPelanggan      int       `grom:"id_pelanggan" json:"id_pelanggan"`
+	IdProduk         int       `json:"id_produk"`
+	Quantity         int       `json:"quantity"`
+	Harga            int       `json:"harga"`
+	Produk           []Produk  `gorm:"many2many:produk_transaksi"`
+	KodeTransaksi    string    `gorm:"index, unique" json:"kode_transaksi"`
 }
 
 type Provinsi struct {

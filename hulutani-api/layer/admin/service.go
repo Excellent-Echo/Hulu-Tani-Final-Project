@@ -8,9 +8,9 @@ import (
 	"golang.org/x/crypto/bcrypt"
 )
 
-
 type Service interface {
 	LoginAdmin(input entity.AdminLogin) (entity.Admin, error)
+	SaveNewAdmin(input entity.AdminRegister) (entity.Admin, error)
 }
 
 type service struct {
@@ -39,4 +39,23 @@ func (s *service) LoginAdmin(input entity.AdminLogin) (entity.Admin, error) {
 	}
 
 	return admin, nil
+}
+
+func (s *service) SaveNewAdmin(input entity.AdminRegister) (entity.Admin, error) {
+	genPassword, err := bcrypt.GenerateFromPassword([]byte(input.Password), bcrypt.MinCost)
+
+	if err != nil {
+		return entity.Admin{}, err
+	}
+
+	var newAdmin = entity.Admin{
+		Nama:     input.Nama,
+		Email:    input.Email,
+		Password: string(genPassword),
+		Role:     2,
+	}
+
+	createAdmin, err := s.repository.Create(newAdmin)
+
+	return createAdmin, nil
 }

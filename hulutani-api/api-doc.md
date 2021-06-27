@@ -52,7 +52,7 @@
 
 **### Cart**
 
-\- `GET /cart/:cart_id`
+\- `GET /cart`
 
 \- `GET /cart/:cart_code`
 

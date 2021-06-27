@@ -21,9 +21,9 @@ func main() {
 	docs.SwaggerInfo.Title = "HuluTani API documentation"
 	docs.SwaggerInfo.Description = "HuluTani API documentation"
 	docs.SwaggerInfo.Version = "1.0"
-	docs.SwaggerInfo.Host = "localhost:4444"
+	docs.SwaggerInfo.Host = "http://hulutani.herokuapp.com"
 	docs.SwaggerInfo.BasePath = ""
-	docs.SwaggerInfo.Schemes = []string{"http"}
+	docs.SwaggerInfo.Schemes = []string{"https"}
 
 	//CORS ENABLE
 	r.Use(handler.CORSMiddleware())
@@ -39,13 +39,14 @@ func main() {
 	routes.AlamatRoute(r)
 	routes.KontakRoute(r)
 	routes.RouteCost(r)
-	routes.RoutesKeranjang(r)
+	// routes.RoutesKeranjang(r)
 	routes.RouteTransaksi(r)
+	// routes.RouteDetail(r)
 
 	// kalo udah running sekali jangan lupa di comment ya, masih belom nemu untuk handle validasi nya
 
 	// handler.StoreProvinsiDB()
 	// handler.StoreKotaDB()
 
-	r.Run(":4444")
+	r.Run()
 }

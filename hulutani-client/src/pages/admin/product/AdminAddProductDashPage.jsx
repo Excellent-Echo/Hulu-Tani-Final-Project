@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import AdminHeader from "../../../components/organisms/admin/AdminHeader";
+import AdminHeaderLarge from "../../../components/organisms/admin/AdminHeader";
 import AdminSideNavBar from "../../../components/organisms/admin/AdminSideNavBar";
 import AddProductForm from "../../../components/organisms/admin/product/AddProductForm";
 
@@ -9,9 +9,9 @@ const AdminAddProductDashPage = () => {
     <div className="user-select-none w-100 vh-100">
       <AdminSideNavBar />
 
-      <AdminHeader />
+      <AdminHeaderLarge />
 
-      <div className="w-75 h-100 float-end p-2">
+      <div className="admin-content-container h-100 float-end p-4">
         <nav aria-label="breadcrumb">
           <ol className="breadcrumb">
             <li className="breadcrumb-item active" aria-current="page">

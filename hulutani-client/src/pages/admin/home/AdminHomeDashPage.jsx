@@ -1,9 +1,9 @@
 import React from "react";
-import "../styles.css";
+import "../../../assets/css/admin.css";
 import Recent from "../../../components/organisms/admin/home/Recent";
 import Overview from "../../../components/organisms/admin/home/Overview";
-import AdminHeader from "../../../components/organisms/admin/AdminHeader";
 import AdminSideNavBar from "../../../components/organisms/admin/AdminSideNavBar";
+import AdminHeader from "../../../components/organisms/admin/AdminHeader";
 
 const AdminHomeDashPage = () => {
   return (
@@ -12,7 +12,7 @@ const AdminHomeDashPage = () => {
 
       <AdminHeader />
 
-      <div className="w-75 h-100 float-end p-2">
+      <div className="admin-content-container float-end h-100 p-4">
         <Overview />
 
         <Recent />

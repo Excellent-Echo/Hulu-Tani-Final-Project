@@ -61,27 +61,6 @@ definitions:
       password:
         type: string
     type: object
-  entity.Produk:
-    properties:
-      deskripsi:
-        type: string
-      gambar:
-        type: string
-      harga:
-        type: integer
-      id:
-        type: integer
-      id_kategori:
-        type: integer
-      nama:
-        type: string
-      promo:
-        type: string
-      stok:
-        type: integer
-      takaran:
-        type: string
-    type: object
   entity.ProdukInput:
     properties:
       deskripsi:
@@ -110,25 +89,19 @@ definitions:
     type: object
   entity.TransaksiInput:
     properties:
+      bukti_transfer:
+        type: string
       harga:
         type: integer
-      id_pelanggan:
+      id_alamat:
         type: integer
       id_produk:
         type: integer
-      kode_transaksi:
-        type: string
       metode_pembayaran:
         type: string
-      produk:
-        items:
-          $ref: '#/definitions/entity.Produk'
-        type: array
       quantity:
         type: integer
       status:
-        type: string
-      tanggal:
         type: string
     type: object
   entity.UpdateStatus:
@@ -933,7 +906,7 @@ paths:
     get:
       consumes:
       - application/json
-      description: Get All Transaksi
+      description: Get All Transaksi ID User
       produces:
       - application/json
       responses:
@@ -951,7 +924,7 @@ paths:
             $ref: '#/definitions/helper.Failure'
       security:
       - Auth: []
-      summary: Get All Transaksi
+      summary: Get All Transaksi By ID User
       tags:
       - Transaksi
     post:
@@ -1054,6 +1027,31 @@ paths:
       security:
       - Auth: []
       summary: Update status by kode transaksi
+      tags:
+      - Transaksi
+  /transaksi/all:
+    get:
+      consumes:
+      - application/json
+      description: Get All Transaksi
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/helper.Response'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/helper.Failure'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/helper.Failure'
+      security:
+      - Auth: []
+      summary: Get All Transaksi
       tags:
       - Transaksi
   /user:

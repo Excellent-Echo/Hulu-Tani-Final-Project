@@ -29,12 +29,38 @@ func NewTransaksiHandler(service transaksi.Service, keranjangService keranjang.S
 // @Success 200 {object} helper.Response
 // @Failure 401 {object} helper.Failure
 // @Failure 500 {object} helper.Failure
-// @Router /transaksi [get]
+// @Router /transaksi/all [get]
 func (h *transaksiHandler) ShowAllTransaksi(c *gin.Context) {
+
+	transaksi, err := h.service.GetAllTransaki()
+
+	if err != nil {
+		responseErr := helper.APIFailure(500, "internal server error", err.Error())
+		c.JSON(500, responseErr)
+		return
+	}
+
+	response := helper.APIResponse(200, "success get all Transaksi", transaksi)
+
+	c.JSON(200, response)
+}
+
+// GetAllTransaksiByID godoc
+// @Security Auth
+// @Summary Get All Transaksi By ID User
+// @Description Get All Transaksi ID User
+// @Tags Transaksi
+// @Accept json
+// @Produce json
+// @Success 200 {object} helper.Response
+// @Failure 401 {object} helper.Failure
+// @Failure 500 {object} helper.Failure
+// @Router /transaksi [get]
+func (h *transaksiHandler) ShowAllTransaksiByIdUser(c *gin.Context) {
 	id := c.MustGet("currentUser").(int)
 	idPelanggan := strconv.Itoa(id)
 
-	transaksi, err := h.service.GetAllTransaksi(idPelanggan)
+	transaksi, err := h.service.GetAllTransaksiById(idPelanggan)
 
 	if err != nil {
 		responseErr := helper.APIFailure(500, "internal server error", err.Error())

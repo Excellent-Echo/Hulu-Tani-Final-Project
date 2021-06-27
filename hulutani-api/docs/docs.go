@@ -1219,7 +1219,7 @@ var doc = `{
                         "Auth": []
                     }
                 ],
-                "description": "Get All Transaksi",
+                "description": "Get All Transaksi ID User",
                 "consumes": [
                     "application/json"
                 ],
@@ -1229,7 +1229,7 @@ var doc = `{
                 "tags": [
                     "Transaksi"
                 ],
-                "summary": "Get All Transaksi",
+                "summary": "Get All Transaksi By ID User",
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -1290,6 +1290,46 @@ var doc = `{
                         "description": "Bad Request",
                         "schema": {
                             "$ref": "#/definitions/helper.Failure"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Failure"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Failure"
+                        }
+                    }
+                }
+            }
+        },
+        "/transaksi/all": {
+            "get": {
+                "security": [
+                    {
+                        "Auth": []
+                    }
+                ],
+                "description": "Get All Transaksi",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Transaksi"
+                ],
+                "summary": "Get All Transaksi",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
                         }
                     },
                     "401": {
@@ -1649,38 +1689,6 @@ var doc = `{
                 }
             }
         },
-        "entity.Produk": {
-            "type": "object",
-            "properties": {
-                "deskripsi": {
-                    "type": "string"
-                },
-                "gambar": {
-                    "type": "string"
-                },
-                "harga": {
-                    "type": "integer"
-                },
-                "id": {
-                    "type": "integer"
-                },
-                "id_kategori": {
-                    "type": "integer"
-                },
-                "nama": {
-                    "type": "string"
-                },
-                "promo": {
-                    "type": "string"
-                },
-                "stok": {
-                    "type": "integer"
-                },
-                "takaran": {
-                    "type": "string"
-                }
-            }
-        },
         "entity.ProdukInput": {
             "type": "object",
             "properties": {
@@ -1724,34 +1732,25 @@ var doc = `{
         "entity.TransaksiInput": {
             "type": "object",
             "properties": {
+                "bukti_transfer": {
+                    "type": "string"
+                },
                 "harga": {
                     "type": "integer"
                 },
-                "id_pelanggan": {
+                "id_alamat": {
                     "type": "integer"
                 },
                 "id_produk": {
                     "type": "integer"
                 },
-                "kode_transaksi": {
-                    "type": "string"
-                },
                 "metode_pembayaran": {
                     "type": "string"
-                },
-                "produk": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/entity.Produk"
-                    }
                 },
                 "quantity": {
                     "type": "integer"
                 },
                 "status": {
-                    "type": "string"
-                },
-                "tanggal": {
                     "type": "string"
                 }
             }

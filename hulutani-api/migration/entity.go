@@ -70,9 +70,12 @@ type Transaksi struct {
 	MetodePembayaran string    `json:"metode_pembayaran"`
 	IdPelanggan      int       `grom:"id_pelanggan" json:"id_pelanggan"`
 	IdProduk         int       `json:"id_produk"`
+	IdAlamat         int       `json:"id_alamat"`
 	Quantity         int       `json:"quantity"`
 	Harga            int       `json:"harga"`
 	Produk           []Produk  `gorm:"many2many:produk_transaksi"`
+	Alamat           Alamat    `gorm:"foreignkey:IdAlamat" json:"alamat"`
+	BuktiTransfer    string    `json:"bukti_transfer"`
 	KodeTransaksi    string    `gorm:"index, unique" json:"kode_transaksi"`
 }
 

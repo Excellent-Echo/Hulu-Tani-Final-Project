@@ -137,7 +137,30 @@ definitions:
 info:
   contact: {}
 paths:
-  /admin:
+  /admin/login:
+    post:
+      consumes:
+      - application/json
+      description: Login Admin
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/helper.Response'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/helper.Failure'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/helper.Failure'
+      summary: Login Admin
+      tags:
+      - Admin
+  /alamat:
     get:
       consumes:
       - application/json
@@ -197,7 +220,7 @@ paths:
       summary: Create New Alamat
       tags:
       - Alamat
-  /admin/{alamat_id}:
+  /alamat/{alamat_id}:
     delete:
       consumes:
       - application/json
@@ -222,6 +245,36 @@ paths:
       security:
       - Auth: []
       summary: Delete Alamat By ID
+      tags:
+      - Alamat
+    get:
+      consumes:
+      - application/json
+      description: Get Alamat By ID
+      parameters:
+      - description: id alamat
+        in: path
+        name: alamat_id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/helper.Response'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/helper.Failure'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/helper.Failure'
+      security:
+      - Auth: []
+      summary: Get Alamat By ID
       tags:
       - Alamat
     put:
@@ -262,60 +315,6 @@ paths:
       security:
       - Auth: []
       summary: Update Alamat By ID
-      tags:
-      - Alamat
-  /admin/login:
-    post:
-      consumes:
-      - application/json
-      description: Login Admin
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            $ref: '#/definitions/helper.Response'
-        "401":
-          description: Unauthorized
-          schema:
-            $ref: '#/definitions/helper.Failure'
-        "500":
-          description: Internal Server Error
-          schema:
-            $ref: '#/definitions/helper.Failure'
-      summary: Login Admin
-      tags:
-      - Admin
-  /alamat/{alamat_id}:
-    get:
-      consumes:
-      - application/json
-      description: Get Alamat By ID
-      parameters:
-      - description: id alamat
-        in: path
-        name: alamat_id
-        required: true
-        type: string
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            $ref: '#/definitions/helper.Response'
-        "401":
-          description: Unauthorized
-          schema:
-            $ref: '#/definitions/helper.Failure'
-        "500":
-          description: Internal Server Error
-          schema:
-            $ref: '#/definitions/helper.Failure'
-      security:
-      - Auth: []
-      summary: Get Alamat By ID
       tags:
       - Alamat
   /cost/{destination}:

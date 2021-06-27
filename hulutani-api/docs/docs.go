@@ -24,7 +24,42 @@ var doc = `{
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
     "paths": {
-        "/admin": {
+        "/admin/login": {
+            "post": {
+                "description": "Login Admin",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Login Admin",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Failure"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Failure"
+                        }
+                    }
+                }
+            }
+        },
+        "/alamat": {
             "get": {
                 "security": [
                     {
@@ -119,9 +154,14 @@ var doc = `{
                 }
             }
         },
-        "/admin/login": {
-            "post": {
-                "description": "Login Admin",
+        "/alamat/{alamat_id}": {
+            "get": {
+                "security": [
+                    {
+                        "Auth": []
+                    }
+                ],
+                "description": "Get Alamat By ID",
                 "consumes": [
                     "application/json"
                 ],
@@ -129,9 +169,18 @@ var doc = `{
                     "application/json"
                 ],
                 "tags": [
-                    "Admin"
+                    "Alamat"
                 ],
-                "summary": "Login Admin",
+                "summary": "Get Alamat By ID",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "id alamat",
+                        "name": "alamat_id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -152,9 +201,7 @@ var doc = `{
                         }
                     }
                 }
-            }
-        },
-        "/admin/{alamat_id}": {
+            },
             "put": {
                 "security": [
                     {
@@ -248,55 +295,6 @@ var doc = `{
                         "description": "OK",
                         "schema": {
                             "$ref": "#/definitions/helper.Delete"
-                        }
-                    },
-                    "500": {
-                        "description": "Internal Server Error",
-                        "schema": {
-                            "$ref": "#/definitions/helper.Failure"
-                        }
-                    }
-                }
-            }
-        },
-        "/alamat/{alamat_id}": {
-            "get": {
-                "security": [
-                    {
-                        "Auth": []
-                    }
-                ],
-                "description": "Get Alamat By ID",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "Alamat"
-                ],
-                "summary": "Get Alamat By ID",
-                "parameters": [
-                    {
-                        "type": "string",
-                        "description": "id alamat",
-                        "name": "alamat_id",
-                        "in": "path",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "$ref": "#/definitions/helper.Response"
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthorized",
-                        "schema": {
-                            "$ref": "#/definitions/helper.Failure"
                         }
                     },
                     "500": {

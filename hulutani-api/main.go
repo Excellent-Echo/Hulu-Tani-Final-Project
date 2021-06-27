@@ -21,7 +21,7 @@ func main() {
 	docs.SwaggerInfo.Title = "HuluTani API documentation"
 	docs.SwaggerInfo.Description = "HuluTani API documentation"
 	docs.SwaggerInfo.Version = "1.0"
-	docs.SwaggerInfo.Host = "http://hulutani.herokuapp.com"
+	docs.SwaggerInfo.Host = "hulutani.herokuapp.com"
 	docs.SwaggerInfo.BasePath = ""
 	docs.SwaggerInfo.Schemes = []string{"https"}
 
@@ -43,7 +43,7 @@ func main() {
 	routes.RouteTransaksi(r)
 	// routes.RouteDetail(r)
 
-	// kalo udah running sekali jangan lupa di comment ya, masih belom nemu untuk handle validasi nya
+	// kalo udah running sekali jangan lupa di comment ya, masih belom nemu untuk handle validasi nyaaa
 
 	// handler.StoreProvinsiDB()
 	// handler.StoreKotaDB()

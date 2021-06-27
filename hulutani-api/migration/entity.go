@@ -34,6 +34,7 @@ type Alamat struct {
 	AlamatDetail           string `json:"alamat_detail"`
 	NomorHandphonePenerima string `json:"nomor_handphone_penerima"`
 	IdPelanggan            int    `json:"id_pelanggan"`
+	CityId                 string `json:"city_id"`
 }
 
 type Kontak struct {

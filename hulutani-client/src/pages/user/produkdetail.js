@@ -1,8 +1,9 @@
-import React, { useEffect} from 'react'
+import React, { useEffect, useState} from 'react'
 import { useParams, Link, useHistory } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import NumberFormat from 'react-number-format'
 import detailProductAction from "../../redux/public/detailProduct/detailProductAction";
+import userTransactionAction from '../../redux/user/transaction/userTransactionAction';
 
 import '../../assets/css/userglobal.css'
 import Navbar from '../../components/organisms/user/navbar'
@@ -10,7 +11,7 @@ import Footer from '../../components/organisms/user/footer'
 
 function ProdukDetail() {
     const detailProduct = useSelector(state => state.detailProduct.productDetail)
-    
+    const [qty, setqty] = useState(1)
     const dispatch = useDispatch()
     const history = useHistory()
     const {id} = useParams()
@@ -23,7 +24,10 @@ function ProdukDetail() {
         e.preventDefault()
         const token = localStorage.getItem("accessToken")
         if(token !== null && token !== ""){
-            console.log(detailProduct.nama)
+            dispatch(userTransactionAction.setIdProduk(detailProduct.id));
+            dispatch(userTransactionAction.setQty(qty))
+            dispatch(userTransactionAction.setHarga(detailProduct.harga))
+            dispatch(userTransactionAction.setNamaProduk(detailProduct.nama))
             history.push("/checkout")
         }else{
             history.push("/login")
@@ -57,7 +61,7 @@ function ProdukDetail() {
                         <div className="col-sm product-content">
                             <div className="row product-name-container">
                                 <h4 className="text-muted">
-                                    [Kategori]
+                                    
                                 </h4>
                                 <h1 className="title">
                                     {detailProduct.nama}
@@ -74,6 +78,8 @@ function ProdukDetail() {
                                         type="number" 
                                         className="form-control small" 
                                         id="jumlah" placeholder="1" 
+                                        value={qty}
+                                        onChange={(e)=>setqty(e.target.value)}
                                         />
                                     </div>
                                     <div className="col-sm-7 d-flex align-items-end">

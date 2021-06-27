@@ -1,13 +1,40 @@
-import React from 'react'
-
+import React,{useEffect} from 'react'
 import '../../assets/css/userglobal.css'
 import '../../assets/css/transaksi.css'
 import CheckoutImg from '../../assets/images/checkout.svg'
 import Navbar from '../../components/organisms/user/navbar'
 import Footer from '../../components/organisms/user/footer'
 import ModalGntAlamat from '../../components/organisms/user/modalgntalamat'
+import { useDispatch, useSelector } from 'react-redux'
+import addressAction from '../../redux/user/address/adressAction';
+import userTransactionAction from '../../redux/user/transaction/userTransactionAction';
+import NumberFormat from 'react-number-format'
+import { Link, useHistory } from 'react-router-dom'
 
 function Checkout() {
+    const userTransaction = useSelector(state => state.userTransaction)
+    const daftarAlamat = useSelector(state => state.userAddress)
+    const dispatch = useDispatch()
+    const history = useHistory()
+
+    useEffect(() => {
+        dispatch(addressAction.setDaftarAlamat())
+    }, [])
+
+    const checkoutHandler = (e)=>{
+        e.preventDefault()
+        dispatch(userTransactionAction.setTanggal(daftarAlamat.id))
+        dispatch(userTransactionAction.Transaction(
+            userTransaction.harga * userTransaction.quantity + userTransaction.cost,
+            userTransaction.id_produk,
+            userTransaction.metode_pembayaran,
+            userTransaction.quantity,
+            userTransaction.status,
+            daftarAlamat.id,
+            userTransaction.bukti
+        ))
+        history.push("/payment")
+    }
     return (
         <>
             <Navbar />
@@ -16,7 +43,7 @@ function Checkout() {
                     <div className="row breadcrumbs-container"> 
                         <nav aria-label="breadcrumb">
                             <ol className="breadcrumb">
-                                <li className="breadcrumb-item"><a href="#">Home</a></li>
+                                <li className="breadcrumb-item"><Link to="/">Home</Link></li>
                                 <li className="breadcrumb-item active" aria-current="page">Checkout</li>
                             </ol>
                         </nav>
@@ -58,8 +85,8 @@ function Checkout() {
                                                         </div>
                                                         <div className="row align-items-center">
                                                             <div className="col-sm">
-                                                                <p>NAMA PENERIMA - NO TELP</p>
-                                                                <p>Arcu euismod pharetra adipiscing donec. Neque tortor ipsum ac, sed ornare nec tempor dui ut.</p>
+                                                                <p>{daftarAlamat.nama}</p>
+                                                                <p>{daftarAlamat.alamatLengkap}</p>{console.log(daftarAlamat.cityId)}
                                                             </div>
                                                         </div>
                                                     </div>
@@ -69,23 +96,23 @@ function Checkout() {
                                                 <div className="row">
                                                     <div className="col-sm">
                                                         <h4 className="accent-title mb-4">
-                                                            JASA PENGIRIMAN
+                                                            Ongkos Kirim
                                                         </h4>
                                                         <div className="row align-items-center">
                                                             <div className="col-sm">
                                                                 <h5 className="accent-title">
-                                                                    JNE REG
+                                                                    Hulu X
                                                                 </h5>
                                                             </div>
                                                             <div className="col-sm jsharga">
                                                                 <h5 className="">
-                                                                    RP. 12000
+                                                                    <NumberFormat value={userTransaction.cost} displayType={'text'} thousandSeparator={true} prefix={'Rp'}/>
                                                                 </h5>
                                                             </div>
                                                         </div>
                                                         <div className="row align-items-center">
                                                             <div className="col-sm">
-                                                                <p>3-4 Hari</p>
+                                                                <p>1-2 Hari</p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -105,18 +132,18 @@ function Checkout() {
                                                 <div className="col-md cekot-produk-nama">
                                                     <span>
                                                         <b>
-                                                            [Nama Produk]
+                                                            {userTransaction.namaProduk}
                                                         </b>
                                                     </span>
                                                 </div>
                                                 <div className="col-md cekot-produk-qty">
                                                     <span className="text-end">
-                                                        [QTY]
+                                                        {userTransaction.quantity}
                                                     </span>
                                                 </div>
                                                 <div className="col-md cekot-produk-harga">
                                                     <span className="text-end">
-                                                        [Harga]
+                                                        <NumberFormat value={userTransaction.harga} displayType={'text'} thousandSeparator={true} prefix={'Rp'}/>
                                                     </span>
                                                 </div>
                                             </div>
@@ -136,7 +163,7 @@ function Checkout() {
                                                 <div className="col-sm">
                                                     <div className="row">
                                                         <span className="text-end">
-                                                            [SUBTOTAL]
+                                                        <NumberFormat value={userTransaction.harga * userTransaction.quantity} displayType={'text'} thousandSeparator={true} prefix={'Rp'}/>
                                                         </span>
                                                     </div>
                                                 </div>
@@ -154,7 +181,7 @@ function Checkout() {
                                                 <div className="col-sm">
                                                     <div className="row">
                                                         <span className="text-end">
-                                                            [BIAYA PENGIRIMAN]
+                                                        <NumberFormat value={userTransaction.cost} displayType={'text'} thousandSeparator={true} prefix={'Rp'}/>
                                                         </span>
                                                     </div>
                                                 </div>
@@ -172,7 +199,7 @@ function Checkout() {
                                                 <div className="col-sm">
                                                     <div className="row">
                                                         <span className="text-end">
-                                                            [TOTAL PEMBAYARAN]
+                                                        <NumberFormat value={userTransaction.harga * userTransaction.quantity + userTransaction.cost} displayType={'text'} thousandSeparator={true} prefix={'Rp'}/>
                                                         </span>
                                                     </div>
                                                 </div>
@@ -190,15 +217,17 @@ function Checkout() {
                                             </div>
                                             <div className="row">
                                                 <div className="col-sm rekeningselect">
-                                                    <select id="rekening" className="form-select">
+                                                    <select id="rekening" className="form-select" onChange={(e)=>dispatch(userTransactionAction.setMetodePembayaran(e.target.value))}>
                                                         <option selected>Pilih salah satu</option>
-                                                        <option>Jank Bago</option>
+                                                        <option>Bank Jago</option>
+                                                        <option>Bank BCA</option>
+                                                        <option>Bank BRI</option>
                                                     </select>
                                                 </div>
                                                 <div className="col-sm">
                                                     <div className="row">
                                                         <div className="col-sm d-flex align-items-center justify-content-end">
-                                                            <button className="primary text-center">Bayar Sekarang</button>
+                                                            <button className="primary text-center" onClick={checkoutHandler}>Bayar Sekarang</button>
                                                         </div>
                                                     </div>
                                                 </div>

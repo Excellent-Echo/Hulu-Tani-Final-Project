@@ -3,6 +3,7 @@ import { combineReducers } from "redux";
 import userRegisterReducer from "./user/register/userRegisterReducer";
 import userLoginReducer from "./user/login/userLoginReducer";
 import userProfileReducer from "./user/profile/userProfileReducer";
+import adressReducer from "./user/address/adressReducer"
 //public
 import catalogReducer from "./public/catalog/catalogReducer";
 import detailProductReducer from "./public/detailProduct/detailProductReducer";
@@ -20,6 +21,7 @@ const rootReducer = combineReducers({
     userRegister: userRegisterReducer,
     userLogin: userLoginReducer,
     userProfile: userProfileReducer,
+    userAddress: adressReducer,
     catalogProduct: catalogReducer,
     detailProduct: detailProductReducer,
     landingProduct: landingProductReducer,

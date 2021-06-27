@@ -31,3 +31,7 @@ type TransaksiInput struct {
 	Harga            int       `json:"harga"`
 	KodeTransaksi    string    `json:"kode_transaksi"`
 }
+
+type UpdateStatus struct {
+	Status string `json:"status"`
+}

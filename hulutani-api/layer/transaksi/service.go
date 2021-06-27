@@ -11,7 +11,7 @@ type Service interface {
 	SaveNewTransaksi(idPelanggan int, input entity.TransaksiInput) (entity.Transaksi, error)
 	SaveNewProdukTransaksi(input entity.ProdukTransaksi) (entity.ProdukTransaksi, error)
 	GetTransaksiByKode(kodeTransaksi string) (entity.Transaksi, error)
-	UpdateKategoriByKode(kodeTransaksi string, dataInput entity.TransaksiInput) (entity.Transaksi, error)
+	UpdateStatusByKode(kodeTransaksi string, dataInput entity.UpdateStatus) (entity.Transaksi, error)
 }
 
 type service struct {
@@ -83,18 +83,8 @@ func (s *service) GetTransaksiByKode(kodeTransaksi string) (entity.Transaksi, er
 	return transaksi, nil
 }
 
-func (s *service) UpdateKategoriByKode(kodeTransaksi string, dataInput entity.TransaksiInput) (entity.Transaksi, error) {
+func (s *service) UpdateStatusByKode(kodeTransaksi string, dataInput entity.UpdateStatus) (entity.Transaksi, error) {
 	var dataUpdate = map[string]interface{}{}
-
-	// transaksi, err := s.repo.FindByKode(kodeTransaksi)
-
-	// if err != nil {
-	// 	return entity.Transaksi{}, err
-	// }
-
-	// if transaksi.KodeKeranjang == 0 {
-	// 	return entity.Transaksi{}, errors.New("transaksi not found")
-	// }
 
 	if dataInput.Status != "" || len(dataInput.Status) != 0 {
 		dataUpdate["status"] = dataInput.Status

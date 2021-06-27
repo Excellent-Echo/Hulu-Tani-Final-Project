@@ -18,6 +18,16 @@ func NewAdminHandler(service admin.Service, authService auth.Service) *adminHand
 	return &adminHandler{service, authService}
 }
 
+// LoginAdmin godoc
+// @Summary Login Admin
+// @Description Login Admin
+// @Tags Admin
+// @Accept json
+// @Produce json
+// @Success 200 {object} helper.Response
+// @Failure 401 {object} helper.Failure
+// @Failure 500 {object} helper.Failure
+// @Router /admin/login [post]
 func (h *adminHandler) LoginAdminHandler(c *gin.Context) {
 	var inputLoginAdmin entity.AdminLogin
 

@@ -1,5 +1,6 @@
 import React from 'react'
 
+import '../../assets/css/userglobal.css'
 import '../../assets/css/transaksi.css'
 import WaitingPayment from '../../assets/images/waiting-payment.svg'
 import Navbar from '../../components/organisms/user/navbar'

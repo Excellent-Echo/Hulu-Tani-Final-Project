@@ -5,6 +5,7 @@ import NumberFormat from 'react-number-format'
 import detailProductAction from "../../redux/public/detailProduct/detailProductAction";
 import addCartAction from '../../redux/user/cart/addCartAction'
 
+import '../../assets/css/userglobal.css'
 import Navbar from '../../components/organisms/user/navbar'
 import Footer from '../../components/organisms/user/footer'
 

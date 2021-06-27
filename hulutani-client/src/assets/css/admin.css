@@ -1,0 +1,164 @@
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:wght@700&display=swap");
+.admin-header {
+  z-index: 1;
+  border-radius: 0 0 15px 15px;
+}
+
+#AdminNavBar Link:hover {
+  background-color: #25a18e !important;
+}
+
+.navbar-toggler {
+  border-color: #25a18e !important;
+}
+
+.admin-side-navbar {
+  width: 17%;
+  z-index: 2;
+  background-color: #25a18e;
+  border-radius: 0 15px 15px 0;
+}
+
+.admin-side-navbar > .nav {
+  height: 84%;
+}
+.admin-side-navbar > .nav > div > .nav-link,
+.admin-side-navbar > .nav > .nav-link {
+  border-radius: 10px;
+}
+
+.admin-side-navbar > .nav > div > .nav-link:hover,
+.admin-side-navbar > .nav > .nav-link:hover {
+  background-color: #fff;
+  border-radius: 10px;
+}
+
+.admin-brand {
+  color: #263238 !important;
+  font-family: "Merriweather", serif;
+}
+
+.admin-content-container {
+  margin-top: 4.25rem;
+  width: 83%;
+}
+
+.admin-overview-card .card,
+.admin-transaction-detail,
+.admin-form {
+  border-color: #25a18e !important;
+  border-radius: 15px;
+}
+
+table {
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+}
+table tr th,
+table tr td {
+  border-right: 3px solid #25a18e !important;
+  border-bottom: 3px solid #25a18e !important;
+}
+table tr th:first-child,
+table tr td:first-child {
+  border-left: 3px solid #25a18e !important;
+}
+table tr th {
+  border-top: 3px solid #25a18e !important;
+}
+
+/* top-left border-radius */
+table tr:first-child th:first-child {
+  border-top-left-radius: 15px !important;
+}
+
+/* top-right border-radius */
+table tr:first-child th:last-child {
+  border-top-right-radius: 15px !important;
+}
+
+/* bottom-left border-radius */
+table tr:last-child td:first-child {
+  border-bottom-left-radius: 15px !important;
+}
+
+/* bottom-right border-radius */
+table tr:last-child td:last-child {
+  border-bottom-right-radius: 15px !important;
+}
+
+/* ======================================== MEDIA QUERY ======================================== */
+/* -------------------- x-small -------------------- */
+@media screen and (max-width: 575px) {
+  .admin-side-navbar {
+    display: none !important;
+  }
+
+  .admin-content-container {
+    width: 100%;
+  }
+}
+/* -------------------- x-small -------------------- */
+
+/* -------------------- small -------------------- */
+@media screen and (min-width: 576px) and (max-width: 767px) {
+  .admin-side-navbar {
+    display: none !important;
+  }
+
+  .admin-content-container {
+    width: 100%;
+  }
+}
+/* -------------------- small -------------------- */
+
+/* -------------------- medium -------------------- */
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .admin-side-navbar {
+    display: none !important;
+  }
+
+  .admin-content-container {
+    width: 100%;
+  }
+}
+/* -------------------- medium -------------------- */
+
+/* -------------------- large -------------------- */
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+  .admin-side-navbar {
+    display: none !important;
+  }
+
+  .admin-content-container {
+    width: 100%;
+  }
+}
+/* -------------------- large -------------------- */
+
+/* -------------------- extra large -------------------- */
+@media screen and (min-width: 1200px) and (max-width: 1399px) {
+  .admin-avatar {
+    width: 100%;
+  }
+
+  .admin-navbar-icon,
+  .admin-navbar {
+    display: none;
+  }
+}
+/* -------------------- x-large -------------------- */
+
+/* -------------------- xx-large -------------------- */
+@media screen and (min-width: 1400px) {
+  .admin-avatar {
+    width: 100%;
+  }
+  .admin-navbar-icon,
+  .admin-navbar {
+    display: none;
+  }
+}
+/* -------------------- xx-large -------------------- */
+
+/* ======================================== MEDIA QUERY ======================================== */

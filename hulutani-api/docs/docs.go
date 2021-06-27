@@ -855,6 +855,9 @@ var doc = `{
                 "produces": [
                     "application/json"
                 ],
+                "tags": [
+                    "Transaksi"
+                ],
                 "summary": "Create new Produk Transaksi",
                 "parameters": [
                     {

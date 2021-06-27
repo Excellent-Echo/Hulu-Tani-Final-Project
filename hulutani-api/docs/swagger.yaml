@@ -696,6 +696,8 @@ paths:
       security:
       - Auth: []
       summary: Create new Produk Transaksi
+      tags:
+      - Transaksi
   /produk/{produk_id}:
     delete:
       consumes:

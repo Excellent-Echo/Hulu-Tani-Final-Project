@@ -113,7 +113,7 @@ func (h *transaksiHandler) CreateTransaksiHandler(c *gin.Context) {
 // @Security Auth
 // @Summary Create new Produk Transaksi
 // @Description Create New Produk Transaksi
-// Tags Transaksi
+// @Tags Transaksi
 // @Accept json
 // @Produce json
 // @Param produk-transaksi body entity.ProdukTransaksi true "data produk transaksi"

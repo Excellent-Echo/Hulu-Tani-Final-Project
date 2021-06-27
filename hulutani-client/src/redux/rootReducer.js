@@ -3,7 +3,8 @@ import { combineReducers } from "redux";
 import userRegisterReducer from "./user/register/userRegisterReducer";
 import userLoginReducer from "./user/login/userLoginReducer";
 import userProfileReducer from "./user/profile/userProfileReducer";
-import adressReducer from "./user/address/adressReducer"
+import adressReducer from "./user/address/adressReducer";
+import userTransaction from "./user/transaction/userTransactionReducer"
 //public
 import catalogReducer from "./public/catalog/catalogReducer";
 import detailProductReducer from "./public/detailProduct/detailProductReducer";
@@ -31,7 +32,8 @@ const rootReducer = combineReducers({
     adminAddProducts: addProductReducer,
     adminShowProducts: showProductReducer,
     adminEditProducts: editProductReducer,
-    adminShowContacts: showContactReducer,   
+    adminShowContacts: showContactReducer,
+    userTransaction: userTransaction   
 })
 
 export default rootReducer;

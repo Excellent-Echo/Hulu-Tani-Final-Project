@@ -1,6 +1,24 @@
-import React from 'react'
+import React,{useEffect} from 'react'
+import { useSelector, useDispatch } from 'react-redux';
+import addressAction from '../../../redux/user/address/adressAction';
+import userTransactionAction from '../../../redux/user/transaction/userTransactionAction';
 
 const ModalGntAlamat = () => {
+    const daftarAlamat = useSelector(state => state.userAddress.daftarAlamat)
+    const cityId = useSelector(state => state.userAddress.cityId)
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(addressAction.setDaftarAlamat())
+    }, [])
+
+    const onClickHandler = (id, alamat, nama)=>{
+        dispatch(addressAction.setId(id))
+        dispatch(userTransactionAction.getCost(cityId))
+        dispatch(addressAction.setAlamatLengkap(alamat))
+        dispatch(addressAction.setNama(nama))
+    }
+
     return (
         <>
             <div class="modal fade modalGntAlamat" id="modalGntAlamat" tabindex="-1" aria-labelledby="modalGntAlamatLabel" aria-hidden="true">
@@ -13,24 +31,28 @@ const ModalGntAlamat = () => {
                         <div class="modal-body">
                             <div className="row justify-content-center">
                                 <div className="col-sm-12">
-                                    <button className="long outline-primary">
+                                {daftarAlamat.map((data,index)=> {
+                                    return (
+                                    <button className="long outline-primary" key={index} onClick={()=>onClickHandler(data.id, data.alamat_detail,data.nama_penerima)}>
                                         <div className="row">
                                             <div className="col-sm-12 d-flex justify-content-start">
                                                 <span className="me-3 accent-title">
-                                                    1.
+                                                    {index+1}
                                                 </span>
                                                 <span className="me-3 accent-title">
-                                                    Nama
+                                                    {data.nama_penerima}
                                                 </span>
                                                 <span className="mx-auto accent-title">
-                                                    No-Telp
+                                                    {data.nomor_handphone_penerima}
                                                 </span>
                                                 <span className="ms-auto accent-title">
-                                                    Kota
+                                                    {data.kota}
                                                 </span>
                                             </div>
                                         </div>
                                     </button>
+                                    )
+                                })} 
                                 </div>                                
                             </div>
                         </div>

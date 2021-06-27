@@ -8,7 +8,7 @@ const Navbar = () => {
             <div className="container-fluid nav-container">
                 <nav class="navbar navbar-expand-lg navbar-light bg-light">
                     <div class="container">
-                        <a class="navbar-brand  title accent-text" href="#">HuluTani</a>
+                        <a class="navbar-brand  title accent-text" href="/">HuluTani</a>
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
                         </button>
@@ -26,7 +26,7 @@ const Navbar = () => {
                                 </ul>
                             </div>
                             <form class="d-flex justify-content-center">
-                                <input class="form-control w-100" type="search" placeholder="Cari produk" aria-label="Search" />
+                                <input class="form-control w-100 small" type="search" placeholder="Cari produk" aria-label="Search" />
                             </form>
                             <ul class="navbar-nav ms-auto">
                                 <li class="nav-item">

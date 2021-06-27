@@ -40,22 +40,21 @@ function Login() {
                             <div className="row">
                             <form onSubmit={loginHandler}>
                                 <div className="mb-3">
-                                    <label for="exampleInputEmail1" className="form-label">Email</label>
+                                    <label for="email" className="form-label">Email</label>
                                     <input 
                                     type="email" 
                                     className="form-control" 
-                                    id="exampleInputEmail1" 
-                                    aria-describedby="emailHelp"
+                                    id="email"
                                     value={loginData.email}
                                     onChange={(e)=> dispatch(userLoginAction.setEmail(e.target.value))}
                                     />
                                 </div>
                                 <div className="mb-3">
-                                    <label for="exampleInputPassword1" className="form-label">Password</label>
+                                    <label for="password" className="form-label">Password</label>
                                     <input 
                                     type="password" 
                                     className="form-control" 
-                                    id="exampleInputPassword1"
+                                    id="password"
                                     value={loginData.password}
                                     onChange={(e)=> dispatch(userLoginAction.setPassword(e.target.value))}
                                     />
@@ -69,7 +68,9 @@ function Login() {
                                 <p className="small text-center">
                                     Belum punya akun?&nbsp;
                                     <b className="form-helper-text">
-                                        Daftar
+                                        <a href="/register">
+                                            Daftar
+                                        </a>
                                     </b>
                                 </p>
                             </div>

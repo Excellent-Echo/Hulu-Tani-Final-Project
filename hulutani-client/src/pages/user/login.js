@@ -1,11 +1,14 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router'
+
+import '../../assets/css/userglobal.css'
 import '../../assets/css/auth.css'
 import AuthShape from '../../assets/images/auth-bg-shape.svg'
 import LoginIllustration from '../../assets/images/login-img.svg'
-
 import userLoginAction from "../../redux/user/login/userLoginAction"
+import Navbar from '../../components/organisms/user/navbar'
+import Footer from '../../components/organisms/user/footer'
 
 function Login() {
     const loginData = useSelector(state => state.userLogin)
@@ -23,6 +26,7 @@ function Login() {
     }
     return (
         <>
+            <Navbar />
             <div className="container-fluid fluid-page auth-page-container">
                 <img src={ AuthShape } alt="" className="img-fluid auth-bg-shape login" />
                 <div className="container">
@@ -36,22 +40,21 @@ function Login() {
                             <div className="row">
                             <form onSubmit={loginHandler}>
                                 <div className="mb-3">
-                                    <label for="exampleInputEmail1" className="form-label">Email</label>
+                                    <label for="email" className="form-label">Email</label>
                                     <input 
                                     type="email" 
                                     className="form-control" 
-                                    id="exampleInputEmail1" 
-                                    aria-describedby="emailHelp"
+                                    id="email"
                                     value={loginData.email}
                                     onChange={(e)=> dispatch(userLoginAction.setEmail(e.target.value))}
                                     />
                                 </div>
                                 <div className="mb-3">
-                                    <label for="exampleInputPassword1" className="form-label">Password</label>
+                                    <label for="password" className="form-label">Password</label>
                                     <input 
                                     type="password" 
                                     className="form-control" 
-                                    id="exampleInputPassword1"
+                                    id="password"
                                     value={loginData.password}
                                     onChange={(e)=> dispatch(userLoginAction.setPassword(e.target.value))}
                                     />
@@ -65,7 +68,9 @@ function Login() {
                                 <p className="small text-center">
                                     Belum punya akun?&nbsp;
                                     <b className="form-helper-text">
-                                        Daftar
+                                        <a href="/register">
+                                            Daftar
+                                        </a>
                                     </b>
                                 </p>
                             </div>
@@ -76,6 +81,7 @@ function Login() {
                     </div>
                 </div>
             </div>
+            <Footer />
         </>
     )
 }

@@ -1,5 +1,6 @@
 import React from 'react'
 
+import '../../../assets/css/userglobal.css'
 import AuthShape from '../../../assets/images/auth-bg-shape.svg'
 import LostImg from '../../../assets/images/no-page.svg'
 import '../../../assets/css/status.css'
@@ -20,7 +21,7 @@ function NoPage() {
                                     Tersesat, oh tersesat.
                                 </h2>
                                 <h5 className="accent-title mt-4 text-end">
-                                    <a href="" className="btn-lanjut-belanja">
+                                    <a href="/products" className="btn-lanjut-belanja">
                                         Kembali
                                     </a>
                                 </h5>

@@ -1,11 +1,15 @@
 import React from 'react'
 
-import GroceryShopping from '../../assets/images/landing-title.svg'
+import '../../assets/css/userglobal.css'
 import '../../assets/css/landing.css'
+import GroceryShopping from '../../assets/images/landing-title.svg'
+import Navbar from '../../components/organisms/user/navbar'
+import Footer from '../../components/organisms/user/footer'
 
 function LandingPage() {
     return (
         <>
+            <Navbar />
             <div className="container-fluid fluid-page landing-title-container">
                 <div className="container">
                     <div className="row align-items-center">
@@ -190,7 +194,7 @@ function LandingPage() {
                         <div className="row justify-content-center">
                             <div className="col-md-12">
                                 <div className="row section3-card-container">
-                                    <div className="col-sm card-container">
+                                    <div className="col-sm product-card-container">
                                         <div className="card product-card card-outline-primary h-100" style={{ width: "11.8rem" }}>
                                             <div className="img-container product-img bg-pattern">
                                                 <img src=" ... " class="card-img-top img-fluid" alt="..." />
@@ -203,7 +207,7 @@ function LandingPage() {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="col-sm card-container">
+                                    <div className="col-sm product-card-container">
                                         <div className="card product-card card-outline-primary h-100" style={{ width: "11.8rem" }}>
                                             <div className="img-container product-img bg-pattern">
                                                 <img src=" ... " class="card-img-top img-fluid" alt="..." />
@@ -216,7 +220,7 @@ function LandingPage() {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="col-sm card-container">
+                                    <div className="col-sm product-card-container">
                                         <div className="card product-card card-outline-primary h-100" style={{ width: "11.8rem" }}>
                                             <div className="img-container product-img bg-pattern">
                                                 <img src=" ... " class="card-img-top img-fluid" alt="..." />
@@ -229,7 +233,7 @@ function LandingPage() {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="col-sm card-container">
+                                    <div className="col-sm product-card-container">
                                         <div className="card product-card card-outline-primary h-100" style={{ width: "11.8rem" }}>
                                             <div className="img-container product-img bg-pattern">
                                                 <img src=" ... " class="card-img-top img-fluid" alt="..." />
@@ -242,7 +246,7 @@ function LandingPage() {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="col-sm card-container">
+                                    <div className="col-sm product-card-container">
                                         <div className="card product-card card-outline-primary h-100" style={{ width: "11.8rem" }}>
                                             <div className="img-container product-img bg-pattern">
                                                 <img src=" ... " class="card-img-top img-fluid" alt="..." />
@@ -255,7 +259,7 @@ function LandingPage() {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="col-sm card-container">
+                                    <div className="col-sm product-card-container">
                                         <div className="card product-card card-outline-primary h-100" style={{ width: "11.8rem" }}>
                                             <div className="img-container product-img bg-pattern">
                                                 <img src=" ... " class="card-img-top img-fluid" alt="..." />
@@ -268,7 +272,7 @@ function LandingPage() {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="col-sm card-container">
+                                    <div className="col-sm product-card-container">
                                         <div className="card product-card card-outline-primary h-100" style={{ width: "11.8rem" }}>
                                             <div className="img-container product-img bg-pattern">
                                                 <img src=" ... " class="card-img-top img-fluid" alt="..." />
@@ -305,7 +309,7 @@ function LandingPage() {
                         <div className="row justify-content-center">
                             <div className="col-md-12">
                                 <div className="row section3-card-container">
-                                    <div className="col-sm card-container">
+                                    <div className="col-sm product-card-container">
                                         <div className="card product-card card-outline-primary h-100" style={{ width: "11.8rem" }}>
                                             <div className="img-container product-img bg-pattern">
                                                 <img src=" ... " class="card-img-top img-fluid" alt="..." />
@@ -318,7 +322,7 @@ function LandingPage() {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="col-sm card-container">
+                                    <div className="col-sm product-card-container">
                                         <div className="card product-card card-outline-primary h-100" style={{ width: "11.8rem" }}>
                                             <div className="img-container product-img bg-pattern">
                                                 <img src=" ... " class="card-img-top img-fluid" alt="..." />
@@ -331,7 +335,7 @@ function LandingPage() {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="col-sm card-container">
+                                    <div className="col-sm product-card-container">
                                         <div className="card product-card card-outline-primary h-100" style={{ width: "11.8rem" }}>
                                             <div className="img-container product-img bg-pattern">
                                                 <img src=" ... " class="card-img-top img-fluid" alt="..." />
@@ -344,7 +348,7 @@ function LandingPage() {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="col-sm card-container">
+                                    <div className="col-sm product-card-container">
                                         <div className="card product-card card-outline-primary h-100" style={{ width: "11.8rem" }}>
                                             <div className="img-container product-img bg-pattern">
                                                 <img src=" ... " class="card-img-top img-fluid" alt="..." />
@@ -357,7 +361,7 @@ function LandingPage() {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="col-sm card-container">
+                                    <div className="col-sm product-card-container">
                                         <div className="card product-card card-outline-primary h-100" style={{ width: "11.8rem" }}>
                                             <div className="img-container product-img bg-pattern">
                                                 <img src=" ... " class="card-img-top img-fluid" alt="..." />
@@ -370,7 +374,7 @@ function LandingPage() {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="col-sm card-container">
+                                    <div className="col-sm product-card-container">
                                         <div className="card product-card card-outline-primary h-100" style={{ width: "11.8rem" }}>
                                             <div className="img-container product-img bg-pattern">
                                                 <img src=" ... " class="card-img-top img-fluid" alt="..." />
@@ -383,7 +387,7 @@ function LandingPage() {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="col-sm card-container">
+                                    <div className="col-sm product-card-container">
                                         <div className="card product-card card-outline-primary h-100" style={{ width: "11.8rem" }}>
                                             <div className="img-container product-img bg-pattern">
                                                 <img src=" ... " class="card-img-top img-fluid" alt="..." />
@@ -409,6 +413,7 @@ function LandingPage() {
                     </div>
                 </div>
             </div>
+            <Footer />
         </>
     )
 }

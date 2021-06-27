@@ -1,19 +1,37 @@
 package entity
 
+import "time"
+
 type Transaksi struct {
-	KodeTransaksi    int    `gorm:"PrimaryKey" json:"kode_transaksi"`
-	Status           string `json:"status"`
-	MetodePembayaran string `json:"metode_pembayaran"`
-	TotalPembayaran  int    `json:"total_pembayaran"`
-	TanggalTransaksi string `json:"tanggal_transaksi"`
-	KodeKeranjang    int    `json:"kode_keranjang"`
-	IdPelanggan      int    `json:"id_pelanggan"`
+	ID               int       `gorm:"primarykey" json:"id"`
+	Status           string    `json:"status"`
+	Tanggal          time.Time `json:"tanggal"`
+	MetodePembayaran string    `json:"metode_pembayaran"`
+	IdPelanggan      int       `grom:"id_pelanggan" json:"id_pelanggan"`
+	IdProduk         int       `json:"id_produk" gorm:"index"`
+	Produk           []Produk  `gorm:"many2many:produk_transaksi"`
+	Quantity         int       `json:"quantity"`
+	Harga            int       `json:"harga"`
+	KodeTransaksi    string    `json:"kode_transaksi"`
+}
+
+type ProdukTransaksi struct {
+	IdTransaksi int `json:"id_transaksi"`
+	IdProduk    int `json:"id_produk"`
 }
 
 type TransaksiInput struct {
-	Status           string `json:"status"`
-	MetodePembayaran string `json:"metode_pembayaran"`
-	TotalPembayaran  int    `json:"total_pembayaran"`
-	TanggalTransaksi string `json:"tanggal_transaksi"`
-	KodeKeranjang    int    `json:"kode_keranjang"`
+	Status           string    `json:"status"`
+	Tanggal          time.Time `json:"tanggal"`
+	MetodePembayaran string    `json:"metode_pembayaran"`
+	IdPelanggan      int       `grom:"id_pelanggan" json:"id_pelanggan"`
+	IdProduk         int       `json:"id_produk" gorm:"index"`
+	Produk           []Produk  `gorm:"many2many:produk_transaksi"`
+	Quantity         int       `json:"quantity"`
+	Harga            int       `json:"harga"`
+	KodeTransaksi    string    `json:"kode_transaksi"`
+}
+
+type UpdateStatus struct {
+	Status string `json:"status"`
 }

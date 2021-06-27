@@ -1,5 +1,8 @@
 import React from 'react'
 
+import '../../../assets/css/userglobal.css'
+import Navbar from '../../../components/organisms/user/navbar'
+import Footer from '../../../components/organisms/user/footer'
 import AuthShape from '../../../assets/images/auth-bg-shape.svg'
 import PaymentSuccess from '../../../assets/images/payment-success.svg'
 import '../../../assets/css/status.css'
@@ -7,6 +10,7 @@ import '../../../assets/css/status.css'
 function PembayaranSukses() {
     return (
         <>
+            <Navbar />
             <div className="container-fluid fluid-page success-page-container">
                 <img src={AuthShape} alt="" className="img-fluid auth-bg-shape login" />
                 <div className="container">
@@ -32,6 +36,7 @@ function PembayaranSukses() {
                     </div>
                 </div>
             </div>
+            <Footer />
         </>
     )
 }

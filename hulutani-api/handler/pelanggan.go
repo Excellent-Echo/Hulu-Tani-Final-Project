@@ -121,7 +121,7 @@ func (h *pelangganHandler) LoginPelangganHandler(c *gin.Context) {
 		return
 	}
 
-	token, err := h.authService.GenerateToken(pelanggan.ID)
+	token, err := h.authService.GenerateToken(pelanggan.ID, pelanggan.Role)
 	if err != nil {
 		responseError := helper.APIFailure(500, "internal server error", gin.H{"errors": err})
 

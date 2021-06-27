@@ -1,5 +1,7 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect } from "react";
+import { useHistory, Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import adminLoginAction from "../../../redux/admin/login/adminLoginAction";
 
 const navs = [
     {
@@ -29,6 +31,10 @@ const navs = [
     },
   ],
   AdminSideNavBar = () => {
+    const adminLogOut = () => {
+      localStorage.removeItem("adminToken");
+    };
+
     return (
       <div className="h-100 position-fixed admin-side-navbar px-4">
         <header className="navbar navbar-light">
@@ -49,7 +55,7 @@ const navs = [
             ))}
           </div>
 
-          <Link className="nav-link my-1 row">
+          <Link className="nav-link my-1 row" onClick={adminLogOut}>
             <i className="fas fa-sign-out-alt fs-5 col-2"></i>
             <span className="ms-3 fw-bold">Keluar</span>
           </Link>

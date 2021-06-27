@@ -3,6 +3,7 @@ import { combineReducers } from "redux";
 import userRegisterReducer from "./user/register/userRegisterReducer";
 import userLoginReducer from "./user/login/userLoginReducer";
 import userProfileReducer from "./user/profile/userProfileReducer";
+import adressReducer from "./user/address/adressReducer"
 //public
 import catalogReducer from "./public/catalog/catalogReducer";
 import detailProductReducer from "./public/detailProduct/detailProductReducer";
@@ -15,15 +16,14 @@ import addProductReducer from  "./admin/product/add/adminAddProductReducer";
 import showProductReducer from "./admin/product/show/adminShowProductReducer";
 import editProductReducer from "./admin/product/edit/adminEditProductReducer";
 import showContactReducer from "./admin/contact/show/adminShowContactReducer";
-import addCartReducer from "./user/cart/addCartReducer";
 
 const rootReducer = combineReducers({
     userRegister: userRegisterReducer,
     userLogin: userLoginReducer,
     userProfile: userProfileReducer,
+    userAddress: adressReducer,
     catalogProduct: catalogReducer,
     detailProduct: detailProductReducer,
-    addCart: addCartReducer,
     landingProduct: landingProductReducer,
     adminAddCategory: addCategoryReducer,
     adminShowCategory: showCategoryReducer,

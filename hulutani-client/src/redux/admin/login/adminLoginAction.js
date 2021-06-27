@@ -80,7 +80,7 @@ const userLogin = (email, password, history) => async dispatch =>{
         //console.log(submitData)
         const user = await hulutaniClient({
             method: "POST",
-            url: "/user/login",
+            url: "/admin/login",
             data: submitData,
         });
         localStorage.setItem("accessToken", user.data.data.Authorization)
@@ -101,7 +101,7 @@ const validateToken = (token) => async dispatch => {
     try {
         const user = await hulutaniClient({
             method : "GET",
-            url: "/user"
+            url: "/admin"
         })
 
         const userToken = user.data.data.accessToken;
@@ -118,7 +118,7 @@ const validateToken = (token) => async dispatch => {
     }
 }
 
-const userLoginAction = {
+const adminLoginAction = {
     setEmail,
     setPassword,
     resetForm,
@@ -129,4 +129,4 @@ const userLoginAction = {
     logOut
 }
 
-export default userLoginAction;
+export default adminLoginAction;

@@ -1,7 +1,11 @@
+import React,{useEffect} from "react"
+import { useDispatch } from "react-redux";
 import "./App.css";
-import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import PrivateRoute from "./route/PrivateRoute";
+
+// Action 
+import adminShowCategoryAction from "./redux/admin/category/show/adminShowCategoryAction";
 
 //Public
 import Landing from "./pages/user/landing";
@@ -15,8 +19,8 @@ import RegisterNext from "./pages/user/registernext";
 import UserEdit from "./pages/user/useredit";
 import UserTransaksi from "./pages/user/usertransaksi";
 import UserAlamat from "./pages/user/useralamat";
-import KantongBelanja from "./pages/user/kantongbelanja";
-
+// import KantongBelanja from "./pages/user/kantongbelanja";
+import Checkout from "./pages/user/checkout"
 //Admin
 import AdminLogin from "./pages/admin/AdminLoginPage";
 import AdminHome from "./pages/admin/home/AdminHomeDashPage";
@@ -32,24 +36,32 @@ import AdminContact from "./pages/admin/contact/AdminContactDashPage";
 
 //test
 import ImageUploadTest from "./pages/ImageUploadTest";
+import NoPage from "./pages/user/status/nopage";
 
-const App = () => {
+function App() {
+  const dispatch = useDispatch()
+  
+  useEffect(() => {
+    dispatch(adminShowCategoryAction.getCategories());
+  }, []);
+  
   return (
     <Router>
       <Switch>
         {/* User Routes */}
-        <Route path="/login" componenct={Login} />
+        <Route path="/login"><Login/></Route>
         <Route path="/register" component={Register} />
         <Route path="/register-2" component={RegisterNext} />
         <Route path="/products" component={ProdukList} />
         <Route path="/product/:id" component={ProdukDetail} />
-        <Route path="/cart" component={KantongBelanja} />
+        {/* <Route path="/cart" component={KantongBelanja} /> */}
 
         {/* Private */}
         <PrivateRoute path="/user-edit" component={UserEdit} />
         <PrivateRoute path="/user-transaction" component={UserTransaksi} />
         <PrivateRoute path="/user-address" component={UserAlamat} />
-        <PrivateRoute path="/cart" component={KantongBelanja} />
+        <PrivateRoute path="/checkout" component={Checkout}/>
+        {/* <PrivateRoute path="/cart" component={KantongBelanja} /> */}
         {/* Private */}
         {/* User Routes */}
 
@@ -91,8 +103,10 @@ const App = () => {
         <Route exact path="/admin/dash/contact" component={AdminContact} />
         {/* Admin Routes */}
 
-        <Route path="/test" component={ImageUploadTest} />
+        {/* <Route path="/test" component={ImageUploadTest} /> */}
+
         <Route path="/" component={Landing} />
+        <Route component={NoPage} />
       </Switch>
     </Router>
   );

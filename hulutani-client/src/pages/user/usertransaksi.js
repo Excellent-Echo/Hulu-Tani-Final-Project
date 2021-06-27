@@ -9,12 +9,6 @@ import Footer from '../../components/organisms/user/footer'
 import ModalDtlTransaksi from '../../components/organisms/user/modaldtltransaksi';
 
 function UserTransaksi() {
-    const history = useHistory()
-
-    const logoutUser = () => {
-        localStorage.removeItem("accessToken");
-        history.push("/")
-    }
 
     return (
         <>
@@ -24,9 +18,9 @@ function UserTransaksi() {
                     <div className="row breadcrumbs-container">
                         <nav aria-label="breadcrumb">
                             <ol className="breadcrumb">
-                                <li className="breadcrumb-item"><a href="#">Home</a></li>
-                                <li className="breadcrumb-item"><a href="#">Profil Saya</a></li>
-                                <li className="breadcrumb-item active" aria-current="page">Alamat Saya</li>
+                                <li className="breadcrumb-item"><Link to="/">Home</Link></li>
+                                <li className="breadcrumb-item"><Link to="/user-transaction">Profil Saya</Link></li>
+                                <li className="breadcrumb-item active" aria-current="page">Transaksi</li>
                             </ol>
                         </nav>
                     </div>

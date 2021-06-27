@@ -30,15 +30,15 @@
 }
 
 .t-danger {
-  color: #CE2D4F !important;
+  color: #ce2d4f !important;
 }
 
 .t-info {
-  color: #00A5CF !important;
+  color: #00a5cf !important;
 }
 
 .t-dark {
-  color: #004E64 !important;
+  color: #004e64 !important;
 }
 
 .bg-light {
@@ -61,39 +61,39 @@
 }
 
 .b-danger {
-  background-color: #CE2D4F !important;
+  background-color: #ce2d4f !important;
   color: white !important;
 }
 
 .b-info {
-  background-color: #00A5CF !important;
+  background-color: #00a5cf !important;
   color: white !important;
 }
 
 .b-secondary {
   border: 2px solid #25a18e !important;
-  background-color: #9FFFCB !important;
+  background-color: #9fffcb !important;
   color: #25a18e !important;
 }
 
 button.b-warning:hover {
-  background-color: #F85325 !important;
+  background-color: #f85325 !important;
   color: white !important;
-  
+
   transform: scale(1.05);
 }
 
 button.b-danger:hover {
-  background-color: #B82848 !important;
+  background-color: #b82848 !important;
   color: white !important;
-  
+
   transform: scale(1.05);
 }
 
 button.b-info:hover {
-  background-color: #0093B8 !important;
+  background-color: #0093b8 !important;
   color: white !important;
-  
+
   transform: scale(1.05);
 }
 
@@ -101,28 +101,28 @@ button.b-secondary:hover {
   border: 2px solid #25a18e !important;
   background-color: #25a18e !important;
   color: white !important;
-  
+
   transform: scale(1.05);
 }
 
 button.b-warning:active {
-  background-color: #ED3907 !important;
+  background-color: #ed3907 !important;
   color: white !important;
 }
 
 button.b-danger:active {
-  background-color: #97213B !important;
+  background-color: #97213b !important;
   color: white !important;
 }
 
 button.b-info:active {
-  background-color: #00728F !important;
+  background-color: #00728f !important;
   color: white !important;
 }
 
 button.b-secondary:active {
   border: 2px solid #25a18e !important;
-  background-color: #1E8576 !important;
+  background-color: #1e8576 !important;
   color: white !important;
 }
 
@@ -142,7 +142,7 @@ button.b-secondary:active {
 button {
   padding: 1vw 1.5vw !important;
   font-size: larger !important;
-  border: 0px;
+  border: 0;
 
   transition: all 0.2s ease-in-out;
 }
@@ -165,7 +165,7 @@ button.primary:active {
 }
 
 button.small {
-  padding: .7vw 1vw !important;
+  padding: 0.7vw 1vw !important;
   font-size: 90% !important;
   border-radius: 7px !important;
   border-width: 2px !important;
@@ -197,50 +197,54 @@ button.outline-primary:hover {
 }
 
 .btn-add::before {
-    font-family: "Font Awesome 5 Free"; 
-    font-weight: 900; 
-    content: "\f067";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "\f067";
 }
 
 .btn-edit::before {
-    font-family: "Font Awesome 5 Free"; 
-    font-weight: 900; 
-    content: "\f304";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "\f304";
 }
 
 .btn-trash::before {
-    font-family: "Font Awesome 5 Free"; 
-    font-weight: 900; 
-    content: "\f1f8";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "\f1f8";
 }
 
 .btn-love::before {
-    font-family: "Font Awesome 5 Free"; 
-    font-weight: 900; 
-    content: "\f004";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "\f004";
 }
 
 .btn-user::before {
-    font-family: "Font Awesome 5 Free"; 
-    font-weight: 900; 
-    content: "\f2bd";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "\f2bd";
 }
 
 .btn-menu::before {
-    font-family: "Font Awesome 5 Free"; 
-    font-weight: 900; 
-    content: "\f0c9";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "\f0c9";
 }
 
-input, select, textarea {
+input,
+select,
+textarea {
   padding: 1vw 1.5vw !important;
   font-size: larger !important;
   border: 1px solid #263238 !important;
   border-radius: 7px !important;
 }
 
-input.small, select.small, textarea.small {
-  padding: .7vw 1vw !important;
+input.small,
+select.small,
+textarea.small {
+  padding: 0.7vw 1vw !important;
   font-size: 90% !important;
 }
 

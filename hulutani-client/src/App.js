@@ -22,6 +22,7 @@ import UserTransaksi from "./pages/user/usertransaksi";
 import UserAlamat from "./pages/user/useralamat";
 // import KantongBelanja from "./pages/user/kantongbelanja";
 import Checkout from "./pages/user/checkout";
+
 //Admin
 import AdminLogin from "./pages/admin/AdminLoginPage";
 import AdminHome from "./pages/admin/home/AdminHomeDashPage";
@@ -50,9 +51,7 @@ function App() {
     <Router>
       <Switch>
         {/* User Routes */}
-        <Route path="/login">
-          <Login />
-        </Route>
+        <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
         <Route path="/register-2" component={RegisterNext} />
         <Route path="/products" component={ProdukList} />
@@ -70,8 +69,8 @@ function App() {
 
         {/* Admin Routes */}
         <Route path="/admin/login" component={AdminLogin} />
-        <AdminRoute path="/admin/dash" component={AdminHome} />
-        <AdminRoute path="/admin/dash/product" component={AdminProduct} />
+        <AdminRoute exact path="/admin/dash" component={AdminHome} />
+        <AdminRoute exact path="/admin/dash/product" component={AdminProduct} />
         <AdminRoute
           path="/admin/dash/product/add"
           component={AdminAddProduct}
@@ -80,7 +79,11 @@ function App() {
           path="/admin/dash/product/edit/:id"
           component={AdminEditProduct}
         />
-        <AdminRoute path="/admin/dash/category" component={AdminCategory} />
+        <AdminRoute
+          exact
+          path="/admin/dash/category"
+          component={AdminCategory}
+        />
         <AdminRoute
           path="/admin/dash/category/add"
           component={AdminAddCategory}
@@ -90,6 +93,7 @@ function App() {
           component={AdminEditCategory}
         />
         <AdminRoute
+          exact
           path="/admin/dash/transaction"
           component={AdminTransaction}
         />

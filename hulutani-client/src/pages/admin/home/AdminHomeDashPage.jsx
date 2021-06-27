@@ -1,9 +1,9 @@
 import React from "react";
 import "../../../assets/css/admin.css";
 import Recent from "../../../components/organisms/admin/home/Recent";
-import Overview from "../../../components/organisms/admin/home/Overview";
 import AdminSideNavBar from "../../../components/organisms/admin/AdminSideNavBar";
 import AdminHeader from "../../../components/organisms/admin/AdminHeader";
+import Overview from "../../../components/organisms/admin/home/Overview";
 
 const AdminHomeDashPage = () => {
   return (

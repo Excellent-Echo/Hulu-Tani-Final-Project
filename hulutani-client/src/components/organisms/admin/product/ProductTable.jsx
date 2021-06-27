@@ -7,7 +7,7 @@ import adminShowProductAction from "../../../../redux/admin/product/show/adminSh
 import adminDeleteProductAction from "../../../../redux/admin/product/delete/adminDeleteProductAction";
 
 const ths = [
-    { name: "No" },
+    { name: "ID" },
     { name: "Nama Produk" },
     { name: "Kategori (Id)" },
     { name: "Jumlah (Pcs)" },

@@ -19,7 +19,7 @@ const initialState = {
     isLogin:false
 };
 
-const userLoginReducer = (state = initialState, action) => {
+const adminLoginReducer = (state = initialState, action) => {
     switch (action.type) {
         case USER_LOGIN_RESET_FORM:
             return {
@@ -70,4 +70,4 @@ const userLoginReducer = (state = initialState, action) => {
     }
 };
 
-export default userLoginReducer;
+export default adminLoginReducer;

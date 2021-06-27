@@ -5,6 +5,7 @@ import '../../assets/css/transaksi.css'
 import CheckoutImg from '../../assets/images/checkout.svg'
 import Navbar from '../../components/organisms/user/navbar'
 import Footer from '../../components/organisms/user/footer'
+import { Link } from 'react-router-dom'
 
 function Checkout() {
     return (
@@ -15,7 +16,7 @@ function Checkout() {
                     <div className="row breadcrumbs-container"> 
                         <nav aria-label="breadcrumb">
                             <ol className="breadcrumb">
-                                <li className="breadcrumb-item"><a href="#">Home</a></li>
+                                <li className="breadcrumb-item"><Link to="/">Home</Link></li>
                                 <li className="breadcrumb-item active" aria-current="page">Checkout</li>
                             </ol>
                         </nav>
@@ -66,12 +67,12 @@ function Checkout() {
                                                 <div className="row">
                                                     <div className="col-sm">
                                                         <h4 className="accent-title mb-4">
-                                                            JASA PENGIRIMAN
+                                                            Ongkos Kirim
                                                         </h4>
                                                         <div className="row align-items-center">
                                                             <div className="col-sm">
                                                                 <h5 className="accent-title">
-                                                                    JNE REG
+                                                                    HULU EX
                                                                 </h5>
                                                             </div>
                                                             <div className="col-sm jsharga">

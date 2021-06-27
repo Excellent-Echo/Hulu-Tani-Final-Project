@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import adminShowCategoryAction from "../../../../redux/admin/category/show/adminShowCategoryAction";
 import adminDeleteCategoryAction from "../../../../redux/admin/category/delete/adminDeleteCategoryAction";
 
-const ths = [{ name: "No" }, { name: "Nama Kategori" }, { name: "Aksi" }],
+const ths = [{ name: "ID" }, { name: "Nama Kategori" }, { name: "Aksi" }],
   CategoryTable = () => {
     const adminShowCategory = useSelector(
       (state) => state.adminShowCategory.categories

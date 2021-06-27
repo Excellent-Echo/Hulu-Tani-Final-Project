@@ -1,10 +1,11 @@
-import React,{useEffect} from "react"
+import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import "./App.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import PrivateRoute from "./route/PrivateRoute";
+import AdminRoute from "./components/route/AdminRoute";
 
-// Action 
+// Action
 import adminShowCategoryAction from "./redux/admin/category/show/adminShowCategoryAction";
 
 //Public
@@ -20,7 +21,7 @@ import UserEdit from "./pages/user/useredit";
 import UserTransaksi from "./pages/user/usertransaksi";
 import UserAlamat from "./pages/user/useralamat";
 // import KantongBelanja from "./pages/user/kantongbelanja";
-import Checkout from "./pages/user/checkout"
+import Checkout from "./pages/user/checkout";
 //Admin
 import AdminLogin from "./pages/admin/AdminLoginPage";
 import AdminHome from "./pages/admin/home/AdminHomeDashPage";
@@ -39,17 +40,19 @@ import ImageUploadTest from "./pages/ImageUploadTest";
 import NoPage from "./pages/user/status/nopage";
 
 function App() {
-  const dispatch = useDispatch()
-  
+  const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(adminShowCategoryAction.getCategories());
   }, []);
-  
+
   return (
     <Router>
       <Switch>
         {/* User Routes */}
-        <Route path="/login"><Login/></Route>
+        <Route path="/login">
+          <Login />
+        </Route>
         <Route path="/register" component={Register} />
         <Route path="/register-2" component={RegisterNext} />
         <Route path="/products" component={ProdukList} />
@@ -60,47 +63,41 @@ function App() {
         <PrivateRoute path="/user-edit" component={UserEdit} />
         <PrivateRoute path="/user-transaction" component={UserTransaksi} />
         <PrivateRoute path="/user-address" component={UserAlamat} />
-        <PrivateRoute path="/checkout" component={Checkout}/>
+        <PrivateRoute path="/checkout" component={Checkout} />
         {/* <PrivateRoute path="/cart" component={KantongBelanja} /> */}
         {/* Private */}
         {/* User Routes */}
 
         {/* Admin Routes */}
-        <Route exact path="/admin/login" component={AdminLogin} />
-        <Route exact path="/admin/dash" component={AdminHome} />
-        <Route exact path="/admin/dash/product" component={AdminProduct} />
-        <Route
-          exact
+        <Route path="/admin/login" component={AdminLogin} />
+        <AdminRoute path="/admin/dash" component={AdminHome} />
+        <AdminRoute path="/admin/dash/product" component={AdminProduct} />
+        <AdminRoute
           path="/admin/dash/product/add"
           component={AdminAddProduct}
         />
-        <Route
-          exact
+        <AdminRoute
           path="/admin/dash/product/edit/:id"
           component={AdminEditProduct}
         />
-        <Route exact path="/admin/dash/category" component={AdminCategory} />
-        <Route
-          exact
+        <AdminRoute path="/admin/dash/category" component={AdminCategory} />
+        <AdminRoute
           path="/admin/dash/category/add"
           component={AdminAddCategory}
         />
-        <Route
-          exact
+        <AdminRoute
           path="/admin/dash/category/edit/:id"
           component={AdminEditCategory}
         />
-        <Route
-          exact
+        <AdminRoute
           path="/admin/dash/transaction"
           component={AdminTransaction}
         />
-        <Route
-          exact
+        <AdminRoute
           path="/admin/dash/transaction/detail"
           component={AdminTransactionDetail}
         />
-        <Route exact path="/admin/dash/contact" component={AdminContact} />
+        <AdminRoute path="/admin/dash/contact" component={AdminContact} />
         {/* Admin Routes */}
 
         {/* <Route path="/test" component={ImageUploadTest} /> */}
@@ -110,6 +107,6 @@ function App() {
       </Switch>
     </Router>
   );
-};
+}
 
 export default App;

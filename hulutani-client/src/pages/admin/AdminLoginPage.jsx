@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router";
+import { useHistory } from "react-router-dom";
 import AuthShape from "../../assets/images/auth-bg-shape.svg";
 import LoginIllustration from "../../assets/images/login-img.svg";
 import adminLoginAction from "../../redux/admin/login/adminLoginAction";
@@ -30,7 +30,7 @@ function AdminLoginPage() {
               <div className="row">
                 <form onSubmit={handleAdminLogin}>
                   <div className="mb-3">
-                    <label for="inputAdminEmail" className="form-label">
+                    <label htmlFor="inputAdminEmail" className="form-label">
                       Email
                     </label>
                     <input
@@ -45,7 +45,7 @@ function AdminLoginPage() {
                   </div>
 
                   <div className="mb-3">
-                    <label for="inputAdminPassword" className="form-label">
+                    <label htmlFor="inputAdminPassword" className="form-label">
                       Password
                     </label>
                     <input

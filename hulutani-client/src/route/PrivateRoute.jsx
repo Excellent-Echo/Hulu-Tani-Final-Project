@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { Redirect, Route } from "react-router-dom";
-import loginAction from "../../redux/user/login/userLoginAction"
+import loginAction from "../redux/user/login/userLoginAction"
 
 const PrivateRoute = props => {
   const accessToken = localStorage.getItem("accessToken")

@@ -9,9 +9,9 @@ import adminDeleteProductAction from "../../../../redux/admin/product/delete/adm
 const ths = [
     { name: "ID" },
     { name: "Nama Produk" },
-    { name: "Kategori Id" },
-    { name: "Jumlah (PCS)" },
-    { name: "Harga (IDR)" },
+    { name: "Kategori (Id)" },
+    { name: "Jumlah (Pcs)" },
+    { name: "Harga (Idr)" },
     { name: "Aksi", join: "2" },
   ],
   ProductTable = () => {
@@ -58,46 +58,48 @@ const ths = [
     };
 
     return (
-      <table className="table table-bordered border-3 border table-hover admin-table">
-        <thead className="table-light">
-          <tr>
-            {ths.map((th) => (
-              <th scope="col" colSpan={th.join} className="text-center">
-                {th.name}
-              </th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {adminProductsData.map((data, index) => {
-            return (
-              <tr key={index}>
-                <td className="text-center">{data.id}</td>
-                <td>{data.nama}</td>
-                <td>{data.id_kategori}</td>
-                <td>{data.stok}</td>
-                <td>{data.harga}</td>
-                <td className="text-center">
-                  <Link to={`/admin/dash/product/edit/${data.id}`}>
-                    <button type="button" className="btn btn-primary">
-                      Ubah
+      <div className="table-responsive">
+        <table className="table table-borderless">
+          <thead className="table-light">
+            <tr>
+              {ths.map((th) => (
+                <th colSpan={th.join} className="text-center">
+                  {th.name}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {adminProductsData.map((data, index) => {
+              return (
+                <tr key={index}>
+                  <td className="text-center">1</td>
+                  <td>{data.nama}</td>
+                  <td>{data.id_kategori}</td>
+                  <td>{data.stok}</td>
+                  <td>{data.harga}</td>
+                  <td className="text-center">
+                    <Link to={`/admin/dash/product/edit/${data.id}`}>
+                      <button type="button" className="btn btn-primary">
+                        Ubah
+                      </button>
+                    </Link>
+                  </td>
+                  <td className="text-center">
+                    <button
+                      type="button"
+                      className="btn btn-danger"
+                      onClick={() => handleDelete(data.id)}
+                    >
+                      Hapus
                     </button>
-                  </Link>
-                </td>
-                <td className="text-center">
-                  <button
-                    type="button"
-                    className="btn btn-danger"
-                    onClick={() => handleDelete(data.id)}
-                  >
-                    Hapus
-                  </button>
-                </td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
     );
   };
 

@@ -2,13 +2,13 @@ import React,{useEffect} from "react"
 import { useDispatch } from "react-redux";
 import "./App.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import PrivateRoute from "./components/route/PrivateRoute";
+import PrivateRoute from "./route/PrivateRoute";
 
 // Action 
 import adminShowCategoryAction from "./redux/admin/category/show/adminShowCategoryAction";
 
 //Public
-import LandingPage from "./pages/user/landing";
+import Landing from "./pages/user/landing";
 import ProdukList from "./pages/user/produklist";
 import ProdukDetail from "./pages/user/produkdetail";
 import Login from "./pages/user/login";
@@ -105,11 +105,11 @@ function App() {
 
         {/* <Route path="/test" component={ImageUploadTest} /> */}
 
-        <Route path="/" component={LandingPage} />
+        <Route path="/" component={Landing} />
         <Route component={NoPage} />
       </Switch>
     </Router>
   );
-}
+};
 
 export default App;

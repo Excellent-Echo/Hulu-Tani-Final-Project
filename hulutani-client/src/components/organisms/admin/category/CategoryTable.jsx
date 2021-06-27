@@ -36,41 +36,43 @@ const ths = [{ name: "ID" }, { name: "Nama Kategori" }, { name: "Aksi" }],
     };
 
     return (
-      <table className="table table-bordered border-3 border table-hover admin-table">
-        <thead className="table-light">
-          <tr>
-            {ths.map((th) => (
-              <th scope="col">{th.name}</th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {adminShowCategory.map((data, index) => {
-            return (
-              <tr>
-                <td scope="row">{data.id}</td>
-                <td>{data.nama}</td>
-                <td className="d-flex">
-                  <Link to={`/admin/dash/category/edit/${data.id}`}>
-                    <button type="button" className="btn btn-primary">
-                      Ubah
+      <div className="table-responsive">
+        <table className="table table-borderless">
+          <thead className="table-light">
+            <tr>
+              {ths.map((th) => (
+                <th className="text-center">{th.name}</th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {adminShowCategory.map((data, index) => {
+              return (
+                <tr>
+                  <td scope="row">1</td>
+                  <td>{data.nama}</td>
+                  <td className="d-flex">
+                    <Link to={`/admin/dash/category/edit/${data.id}`}>
+                      <button type="button" className="btn btn-primary">
+                        Ubah
+                      </button>
+                    </Link>
+                    <button
+                      className="btn btn-danger"
+                      onClick={() => {
+                        handleClickDelete(data.id);
+                      }}
+                      type="button"
+                    >
+                      Hapus
                     </button>
-                  </Link>
-                  <button
-                    className="btn btn-danger"
-                    onClick={() => {
-                      handleClickDelete(data.id);
-                    }}
-                    type="button"
-                  >
-                    Hapus
-                  </button>
-                </td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
     );
   };
 

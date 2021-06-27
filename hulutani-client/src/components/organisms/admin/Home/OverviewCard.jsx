@@ -29,7 +29,7 @@ const overviews = [
   ],
   OverviewCard = () => {
     return (
-      <div className="row row-cols-1 row-cols-md-4 g-2 admin-overview-card">
+      <div className="row row-cols-1 row-cols-lg-4 row-cols-md-2 row-cols-sm-2 g-4 admin-overview-card">
         {overviews.map((overview) => (
           <div className="col">
             <div className="card h-100 border-3 border">

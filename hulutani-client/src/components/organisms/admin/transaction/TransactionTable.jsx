@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const ths = [
     { name: "No" },
@@ -8,23 +9,27 @@ const ths = [
   ],
   TransactionTable = () => {
     return (
-      <table className="table table-bordered border-3 border table-hover admin-table">
-        <thead className="table-light">
-          <tr>
-            {ths.map((th) => (
-              <th scope="col">{th.name}</th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td scope="row">1</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>Otto</td>
-          </tr>
-        </tbody>
-      </table>
+      <div className="table-responsive">
+        <table className="table table-borderless">
+          <thead className="table-light">
+            <tr>
+              {ths.map((th) => (
+                <th className="text-center">{th.name}</th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Mark</td>
+              <td>Otto</td>
+              <td>
+                <Link to="/admin/dash/transaction/detail">Lihat detail</Link>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     );
   };
 

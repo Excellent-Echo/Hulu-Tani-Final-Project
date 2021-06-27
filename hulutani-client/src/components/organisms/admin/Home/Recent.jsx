@@ -3,7 +3,7 @@ import RecentTable from "./RecentTable";
 
 const Recent = () => {
   return (
-    <div>
+    <div className="pb-2">
       <h3>Aktivitas Terbaru</h3>
 
       <RecentTable />

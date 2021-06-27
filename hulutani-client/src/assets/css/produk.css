@@ -30,6 +30,24 @@
     border-radius: 10px;
 }
 
+.searchtitle {
+    display: flex;
+    /* justify-content: flex-end; */
+    align-items: center !important;
+    vertical-align: middle;
+}
+
+.searchtitle h6 {
+    padding: 0 !important;
+}
+
+.urutdrop {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0 !important;
+}
+
 /* END OF PRODUK LIST */
 
 /* PRODUK DETAIL */
@@ -85,4 +103,22 @@ button.btn-love:hover {
 
 @media (max-width: 992px) { 
     
+}
+
+@media (max-width: 572px) { 
+    .produk-list-container, .breadcrumbs, .product-detail-container {
+        padding: 5vw !important;
+        padding-right: 6vw !important;
+    }
+
+    .banner-1, .banner-2 {
+        margin-bottom: 15px;
+    }
+
+    /* DETAIL */
+    .product-content {
+        margin-top: 5vh;
+    }
+    /* END OF DETAIL */
+
 }

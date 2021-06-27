@@ -46,7 +46,7 @@
 }
 
 @media (min-width: 992px) { 
-    .product-list{
+    .user-content-container {
         padding-left: 30%;
     }
 
@@ -56,7 +56,7 @@
     }       
 
     @media (max-width: 1200px) { 
-        .product-list{
+        .user-content-container {
             padding-left: 38%;
         }
 
@@ -90,6 +90,10 @@
 @media (max-width: 572px) {
     .sidebar-container {
         padding: 5vw !important;
+        padding-right: 6vw !important;
     }
 
+    .sidebar-content {
+        padding: 2vw;
+    }
 }

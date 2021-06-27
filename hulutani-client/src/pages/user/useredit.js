@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import '../../assets/css/userglobal.css'
 import '../../assets/css/userpage.css'
 import BlankUser from '../../assets/images/blank-user.png'
+import UserSidebar from '../../components/organisms/user/usersidebar';
 import Navbar from '../../components/organisms/user/navbar';
 import Footer from '../../components/organisms/user/footer'
 import ModalProfilePic from '../../components/organisms/user/modalprofilepic';
@@ -12,7 +13,7 @@ function UserEdit() {
     return (
         <>
             <Navbar />
-            <div className="container-fluid fluid-page user-page-container">
+            <div className="container-fluid breadcrumbs">
                 <div className="container">
                     <div className="row breadcrumbs-container">
                         <nav aria-label="breadcrumb">
@@ -23,43 +24,13 @@ function UserEdit() {
                             </ol>
                         </nav>
                     </div>
-                    <div className="row user-sidebar-container">
-                        <div className="col-sm-3 user-sidebar">
-                            <div className="row user-sidebar-title">
-                                <h2 className="title">Profil Saya</h2>
-                            </div>
-                            <div className="row user-sidebar-content">
-                                <div className="list-group">
-                                <Link to="user-transaction">
-                                    <button className="list-group-item list-group-item-action user-sidebar-button current">
-                                        <span className="sidebar-button">
-                                            <span className="user-sidebar-icon transaksi"></span>
-                                            Transaksi
-                                        </span>
-                                    </button>
-                                    </Link>
-                                    <Link to="user-address">
-                                    <button className="list-group-item list-group-item-action user-sidebar-button">
-                                        <span className="sidebar-button">
-                                            <span className="user-sidebar-icon alamat"></span>
-                                            Alamat Saya
-                                        </span>
-                                    </button>
-                                    </Link>
-                                    <Link to="user-edit">
-                                    <button className="list-group-item list-group-item-action user-sidebar-button">
-                                        <span className="sidebar-button">
-                                            <span className="user-sidebar-icon edit"></span>
-                                            Edit Profil
-                                        </span>
-                                    </button>
-                                    </Link>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                </div>
+            </div>
+            <UserSidebar />
+            <div className="container-fluid fluid-page user-page-container">
+                <div className="container">
                     <div className="row user-content-container">
-                        <div className="col-sm-9 user-content">
+                        <div className="col-sm user-content">
                             <div className="row content-title">
                                 <div className="col-sm">
                                     <h1 className="accent-title accent-text">
@@ -92,15 +63,15 @@ function UserEdit() {
                                     <form className="row g-3">
                                         <div className="col-sm-12">
                                             <label for="namaLengkap" className="form-label accent-title">Nama Lengkap</label>
-                                            <input type="name" className="form-control" id="namaLengkap"/>
+                                            <input type="name" className="form-control small" id="namaLengkap"/>
                                         </div>
                                         <div className="col-sm-6">
                                             <label for="tglLahir" className="form-label accent-title">Tanggal Lahir</label>
-                                            <input type="date" className="form-control" id="tglLahir" placeholder="1234 Main St"/>
+                                            <input type="date" className="form-control small" id="tglLahir" placeholder="1234 Main St"/>
                                         </div>
                                         <div className="col-sm-6">
                                             <label for="jnsKelamin" className="form-label accent-title">Jenis Kelamin</label>
-                                            <select id="jnsKelamin" className="form-select">
+                                            <select id="jnsKelamin" className="form-select small">
                                                 <option selected>Pilih salah satu</option>
                                                 <option>Laki-laki</option>
                                                 <option>Perempuan</option>
@@ -108,11 +79,11 @@ function UserEdit() {
                                         </div>
                                         <div className="col-sm-6">
                                             <label for="email" className="form-label accent-title">Email</label>
-                                            <input type="email" className="form-control" id="email"/>
+                                            <input type="email" className="form-control small" id="email"/>
                                         </div>
                                         <div className="col-sm-6">
                                             <label for="noTelp" className="form-label accent-title">No. Telepon</label>
-                                            <input type="text" className="form-control" id="notelp"/>
+                                            <input type="text" className="form-control small" id="notelp"/>
                                         </div>
                                         <div className="col-12">
                                             <br />
@@ -139,15 +110,15 @@ function UserEdit() {
                                     <form className="row g-3">
                                         <div className="col-sm-12">
                                             <label for="passwordLama" className="form-label accent-title">Password Saat Ini</label>
-                                            <input type="password" className="form-control" id="passwordLama"/>
+                                            <input type="password" className="form-control small" id="passwordLama"/>
                                         </div>
                                         <div className="col-sm-6">
                                             <label for="passwordBaru" className="form-label accent-title">Password Baru</label>
-                                            <input type="password" className="form-control" id="passwordBaru"/>
+                                            <input type="password" className="form-control small" id="passwordBaru"/>
                                         </div>
                                         <div className="col-sm-6">
                                             <label for="noTelp" className="form-label accent-title">Ulangi Password Baru</label>
-                                            <input type="password" className="form-control" id="passwordBaruUlang"/>
+                                            <input type="password" className="form-control small" id="passwordBaruUlang"/>
                                         </div>
                                         <div className="col-12">
                                             <br />

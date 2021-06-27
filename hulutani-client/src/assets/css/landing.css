@@ -18,8 +18,8 @@ p.subtitle {
 .landing-title-container img.title-image {
     /* min-width: 170% !important; */
     position: absolute;
-    width: 70vw;
-    top: -7vw;
+    width: 60vw;
+    top: 5vw;
     right: -15vw;
     z-index: -1;
     /* min-width: 100px; */
@@ -123,9 +123,15 @@ p.subtitle {
 @media (max-width: 768px) { 
     .card-container {
         margin-bottom: 25px;
+        display: flex;
+        justify-content: center;
     }
 
     .landing-section1-container .card.card-primary {
-        width: 100vw !important;
+        width: 85vw !important;
     }    
+
+    .title-image-container {
+        display: none;
+    }
 }

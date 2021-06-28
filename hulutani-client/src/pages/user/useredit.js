@@ -71,7 +71,7 @@ function UserEdit() {
                                         </div>
                                         <div className="col-sm-6">
                                             <label for="jnsKelamin" className="form-label accent-title">Jenis Kelamin</label>
-                                            <select id="jnsKelamin" className="form-select small">
+                                            <select id="jnsKelamin" className="form-select userpages small">
                                                 <option selected>Pilih salah satu</option>
                                                 <option>Laki-laki</option>
                                                 <option>Perempuan</option>
@@ -110,19 +110,19 @@ function UserEdit() {
                                     <form className="row g-3">
                                         <div className="col-sm-12">
                                             <label for="passwordLama" className="form-label accent-title">Password Saat Ini</label>
-                                            <input type="password" className="form-control small" id="passwordLama" disabled/>
+                                            <input type="password" className="form-control small" id="passwordLama"/>
                                         </div>
                                         <div className="col-sm-6">
                                             <label for="passwordBaru" className="form-label accent-title">Password Baru</label>
-                                            <input type="password" className="form-control small" id="passwordBaru" disabled/>
+                                            <input type="password" className="form-control small" id="passwordBaru"/>
                                         </div>
                                         <div className="col-sm-6">
                                             <label for="noTelp" className="form-label accent-title">Ulangi Password Baru</label>
-                                            <input type="password" className="form-control small" id="passwordBaruUlang"disabled/>
+                                            <input type="password" className="form-control small" id="passwordBaruUlang"/>
                                         </div>
                                         <div className="col-12">
                                             <br />
-                                            <button type="submit" className="button primary long" disabled>Ubah Password</button>
+                                            <button type="submit" className="button primary long">Ubah Password</button>
                                         </div>
                                     </form>
                                 </div>

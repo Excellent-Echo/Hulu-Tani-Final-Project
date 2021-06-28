@@ -5,14 +5,14 @@ import BlankUser from '../../../assets/images/blank-user.png'
 const ModalProfilePic = () => {
     return (
         <>
-            <div class="modal fade" id="modalProfilePic" tabindex="-1" aria-labelledby="modalProfilePicLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h4 class="modal-title title accent-text">Ubah Foto Profil</h4>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div className="modal fade" id="modalProfilePic" tabindex="-1" aria-labelledby="modalProfilePicLabel" aria-hidden="true">
+                <div className="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <h4 className="modal-title title accent-text">Ubah Foto Profil</h4>
+                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div class="modal-body">
+                        <div className="modal-body">
                             <div className="row justify-content-center mb-3">
                                 <div className="row user-avatar-container" >
                                     <img src={BlankUser} alt="" className="img-fluid user-avatar" />
@@ -31,8 +31,8 @@ const ModalProfilePic = () => {
                                 </form>
                             </div>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="b-danger small" data-bs-dismiss="modal">Tutup</button>
+                        <div className="modal-footer">
+                            <button type="button" className="b-danger small" data-bs-dismiss="modal">Tutup</button>
                         </div>
                     </div>
                 </div>

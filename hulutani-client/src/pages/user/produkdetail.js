@@ -76,7 +76,7 @@ function ProdukDetail() {
                                         <label for="jumlah" className="form-label">Jumlah</label>
                                         <input 
                                         type="number" 
-                                        className="form-control small" 
+                                        className="form-control small userpages" 
                                         id="jumlah" placeholder="1" 
                                         value={qty}
                                         onChange={(e)=>setqty(e.target.value)}

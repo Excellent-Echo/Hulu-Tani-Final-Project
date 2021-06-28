@@ -9,7 +9,7 @@ function NoPage() {
     return (
         <>
             <div className="container-fluid fluid-page status-page-container no-page-container">
-                <img src={AuthShape} alt="" className="img-fluid auth-bg-shape login" />
+                <img src={AuthShape} alt="" className="img-fluid bg-shape login" />
                 <div className="container">
                     <div className="row justify-content-center align-items-center img-status-container">
                         <div className="col-sm d-flex justify-content-end d-flex">

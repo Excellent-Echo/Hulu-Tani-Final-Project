@@ -218,7 +218,7 @@ function Checkout() {
                                             </div>
                                             <div className="row">
                                                 <div className="col-sm rekeningselect">
-                                                    <select id="rekening" className="form-select" onChange={(e)=>dispatch(userTransactionAction.setMetodePembayaran(e.target.value))}>
+                                                    <select id="rekening" className="form-select userpages" onChange={(e)=>dispatch(userTransactionAction.setMetodePembayaran(e.target.value))}>
                                                         <option selected>Pilih salah satu</option>
                                                         <option>Bank Jago</option>
                                                         <option>Bank BCA</option>

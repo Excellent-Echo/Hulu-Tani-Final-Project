@@ -13,7 +13,7 @@ const AdminTransactionDashPage = () => {
       <div className="admin-content-container h-100 float-end p-4 mb-4">
         <nav>
           <ol className="breadcrumb h3">
-            <li className="breadcrumb-item active">Transaksi</li>
+            <li className="breadcrumb-item">Transaksi</li>
           </ol>
         </nav>
 

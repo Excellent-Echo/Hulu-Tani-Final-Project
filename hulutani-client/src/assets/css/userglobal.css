@@ -232,9 +232,9 @@ button.outline-primary:hover {
   content: "\f0c9";
 }
 
-input,
-select,
-textarea {
+input.userpages,
+select.userpages,
+textarea.userpages {
   padding: 1vw 1.5vw !important;
   font-size: larger !important;
   border: 1px solid #263238 !important;

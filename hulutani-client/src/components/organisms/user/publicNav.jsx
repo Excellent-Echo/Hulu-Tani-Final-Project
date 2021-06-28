@@ -20,7 +20,7 @@ const PublicNav = () => {
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <CategoryHeader/>
                             <form class="d-flex justify-content-center">
-                                <input class="form-control w-100" type="search" placeholder="Cari produk" aria-label="Search" />
+                                <input class="form-control userpages w-100" type="search" placeholder="Cari produk" aria-label="Search" />
                             </form>
                             <ul class="navbar-nav ms-auto d-flex align-items-center">
                                 <li class="nav-item">

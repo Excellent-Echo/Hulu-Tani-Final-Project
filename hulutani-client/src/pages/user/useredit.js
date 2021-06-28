@@ -63,11 +63,11 @@ function UserEdit() {
                                     <form className="row g-3">
                                         <div className="col-sm-12">
                                             <label for="namaLengkap" className="form-label accent-title">Nama Lengkap</label>
-                                            <input type="name" className="form-control small" id="namaLengkap"/>
+                                            <input type="name" className="form-control userpages small" id="namaLengkap"/>
                                         </div>
                                         <div className="col-sm-6">
                                             <label for="tglLahir" className="form-label accent-title">Tanggal Lahir</label>
-                                            <input type="date" className="form-control small" id="tglLahir" placeholder="1234 Main St"/>
+                                            <input type="date" className="form-control userpages small" id="tglLahir" placeholder="1234 Main St"/>
                                         </div>
                                         <div className="col-sm-6">
                                             <label for="jnsKelamin" className="form-label accent-title">Jenis Kelamin</label>
@@ -79,11 +79,11 @@ function UserEdit() {
                                         </div>
                                         <div className="col-sm-6">
                                             <label for="email" className="form-label accent-title">Email</label>
-                                            <input type="email" className="form-control small" id="email"/>
+                                            <input type="email" className="form-control userpages small" id="email"/>
                                         </div>
                                         <div className="col-sm-6">
                                             <label for="noTelp" className="form-label accent-title">No. Telepon</label>
-                                            <input type="text" className="form-control small" id="notelp"/>
+                                            <input type="text" className="form-control userpages small" id="notelp"/>
                                         </div>
                                         <div className="col-12">
                                             <br />
@@ -110,19 +110,19 @@ function UserEdit() {
                                     <form className="row g-3">
                                         <div className="col-sm-12">
                                             <label for="passwordLama" className="form-label accent-title">Password Saat Ini</label>
-                                            <input type="password" className="form-control small" id="passwordLama"/>
+                                            <input type="password" className="form-control small" id="passwordLama" disabled/>
                                         </div>
                                         <div className="col-sm-6">
                                             <label for="passwordBaru" className="form-label accent-title">Password Baru</label>
-                                            <input type="password" className="form-control small" id="passwordBaru"/>
+                                            <input type="password" className="form-control small" id="passwordBaru" disabled/>
                                         </div>
                                         <div className="col-sm-6">
                                             <label for="noTelp" className="form-label accent-title">Ulangi Password Baru</label>
-                                            <input type="password" className="form-control small" id="passwordBaruUlang"/>
+                                            <input type="password" className="form-control small" id="passwordBaruUlang"disabled/>
                                         </div>
                                         <div className="col-12">
                                             <br />
-                                            <button type="submit" className="button primary long">Ubah Password</button>
+                                            <button type="submit" className="button primary long" disabled>Ubah Password</button>
                                         </div>
                                     </form>
                                 </div>

@@ -12,6 +12,7 @@ const initialState = {
     namaProduk:"",
     bukti:"",
     dataTransaksi:{},
+    daftarTransaksi:[]
 }
 
 const userTransactionReducer = (state = initialState, action) =>{
@@ -80,6 +81,11 @@ const userTransactionReducer = (state = initialState, action) =>{
                 return {
                     ...state,
                     dataTransaksi: action.payload
+                }
+            case "USER_TRANSAKSI_SET_DAFTAR":
+                return {
+                    ...state,
+                    daftarTransaksi: action.payload
                 }
         default:
             return state

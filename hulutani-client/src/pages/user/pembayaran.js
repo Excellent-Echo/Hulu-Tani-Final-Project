@@ -58,23 +58,20 @@ function Pembayaran() {
         () => {
         // gets the functions from storage refences the image storage in firebase by the children
         // gets the download url then sets the image from firebase as the value for the imgUrl key:
-        storage
-            .ref("images")
-            .child(imageAsFile.name)
-            .getDownloadURL()
-            .then((fireBaseUrl) => {
+        storage.ref("images").child(imageAsFile.name).getDownloadURL().then((fireBaseUrl) => {
             setImageAsUrl((prevObject) => ({
                 ...prevObject,
                 imgUrl: fireBaseUrl,
             }));
-            dispatch(userTransactionAction.uploadBukti(dataTransaksi.kode_transaksi,imageAsUrl.imgUrl))
-            window.alert("upload bukti transfer berhasil");
-            history.push("/success")
-            });
+            setTimeout(() => {
+                dispatch(userTransactionAction.uploadBukti(dataTransaksi.kode_transaksi,imageAsUrl.imgUrl))
+                window.alert("upload bukti transfer berhasil");
+                history.push("/success")
+              }, 15000);
+            })
         }
     );
     };
-
 
     return (
         <>
@@ -167,7 +164,7 @@ function Pembayaran() {
                                     <form action="">
                                         <div className="row align-items-center">
                                             <div className="col-sm-7 mb-2">
-                                                <input className="form-control small" type="file" id="formFile" onChange={handleImageAsFile}/>
+                                                <input className="form-control small userpages" type="file" id="formFile" onChange={handleImageAsFile}/>
                                             </div>
                                             <div className="col-sm-5">
                                                 <button type="submit" className="primary small long" onClick={handleImageUpload}>Konfirmasi Pembayaran</button>
@@ -179,6 +176,7 @@ function Pembayaran() {
                         </div>
                         <div className="col-sm img-payment-container">
                             <img src={ WaitingPayment } alt="" className="img-fluid img-payment" />
+                            {/* <img src={ imageAsUrl.imgUrl } alt="" className="img-fluid img-payment" /> */}
                         </div>
                     </div>
                 </div>

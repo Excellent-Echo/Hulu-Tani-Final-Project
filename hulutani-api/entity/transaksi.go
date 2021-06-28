@@ -36,3 +36,7 @@ type TransaksiInput struct {
 type UpdateStatus struct {
 	Status string `json:"status"`
 }
+
+type UploadBuktiTransfer struct {
+	BuktiTransfer string `json:"bukti_transfer"`
+}

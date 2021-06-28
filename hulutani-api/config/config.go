@@ -2,7 +2,6 @@ package config
 
 import (
 	"fmt"
-	"hulutani-api/migration"
 	"os"
 
 	"github.com/joho/godotenv"
@@ -50,7 +49,7 @@ func Connection() *gorm.DB {
 	// db.AutoMigrate(&migration.KeranjangBelanja{})
 	// db.AutoMigrate(&migration.Transaksi{})
 	// db.AutoMigrate(&migration.DetailTransaksi{})
-	db.AutoMigrate(&migration.Alamat{})
+	// db.AutoMigrate(&migration.Alamat{})
 	// db.AutoMigrate(&migration.Kategori{})
 	// db.AutoMigrate(&migration.Provinsi{})
 	// db.AutoMigrate(&migration.Kota{})

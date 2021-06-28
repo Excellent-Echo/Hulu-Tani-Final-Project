@@ -210,3 +210,42 @@ func (h *transaksiHandler) UpdateTransaksiByKodeHandler(c *gin.Context) {
 	response := helper.APIResponse(200, "success update transaksi", transaksi)
 	c.JSON(200, response)
 }
+
+// UpdateBuktiTransferByKode godoc
+// @Security Auth
+// @Summary Update bukti transfer by kode transaksi
+// @Description update bukti transfer by kode transaksi
+// @Tags Transaksi
+// @Accept json
+// @Produce json
+// @Param kode_transaksi path string true "kode transaksi"
+// @Param bukti body entity.UpdateStatus true "update bukti transfer"
+// @Success 200 {object} helper.Response
+// @Failure 401 {object} helper.Failure
+// @Failure 500 {object} helper.Failure
+// @Router /upload-bukti-transfer/{kode_transaksi} [put]
+func (h *transaksiHandler) UpdateBuktiTransferByKodeHandler(c *gin.Context) {
+	kode := c.Param("kode_transaksi")
+
+	var updateTransaksiInput entity.UploadBuktiTransfer
+
+	if err := c.ShouldBindJSON(&updateTransaksiInput); err != nil {
+		splitErr := helper.SplitErrorInformation(err)
+		responseErr := helper.APIFailure(400, "input data required", gin.H{"error": splitErr})
+
+		c.JSON(400, responseErr)
+		return
+	}
+
+	transaksi, err := h.service.UpdateBuktiTransfer(kode, updateTransaksiInput)
+
+	if err != nil {
+		responseErr := helper.APIFailure(500, "internal server error", gin.H{"error": err.Error()})
+
+		c.JSON(500, responseErr)
+		return
+	}
+
+	response := helper.APIResponse(200, "success update transaksi", transaksi)
+	c.JSON(200, response)
+}

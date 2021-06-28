@@ -1453,6 +1453,64 @@ var doc = `{
                 }
             }
         },
+        "/upload-bukti-transfer/{kode_transaksi}": {
+            "put": {
+                "security": [
+                    {
+                        "Auth": []
+                    }
+                ],
+                "description": "update bukti transfer by kode transaksi",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Transaksi"
+                ],
+                "summary": "Update bukti transfer by kode transaksi",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "kode transaksi",
+                        "name": "kode_transaksi",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "update bukti transfer",
+                        "name": "bukti",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/entity.UpdateStatus"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Failure"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Failure"
+                        }
+                    }
+                }
+            }
+        },
         "/user": {
             "get": {
                 "security": [
@@ -1601,6 +1659,9 @@ var doc = `{
             "type": "object",
             "properties": {
                 "alamat_detail": {
+                    "type": "string"
+                },
+                "city_id": {
                     "type": "string"
                 },
                 "id_pelanggan": {

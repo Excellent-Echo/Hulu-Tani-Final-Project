@@ -12,6 +12,7 @@ type Service interface {
 	SaveNewTransaksi(idPelanggan int, input entity.TransaksiInput) (entity.Transaksi, error)
 	SaveNewProdukTransaksi(input entity.ProdukTransaksi) (entity.ProdukTransaksi, error)
 	GetTransaksiByKode(kodeTransaksi string) (entity.Transaksi, error)
+	UpdateBuktiTransfer(kodeTransaksi string, dataInput entity.UploadBuktiTransfer) (entity.Transaksi, error)
 	UpdateStatusByKode(kodeTransaksi string, dataInput entity.UpdateStatus) (entity.Transaksi, error)
 }
 
@@ -92,6 +93,22 @@ func (s *service) GetTransaksiByKode(kodeTransaksi string) (entity.Transaksi, er
 	}
 
 	return transaksi, nil
+}
+
+func (s *service) UpdateBuktiTransfer(kodeTransaksi string, dataInput entity.UploadBuktiTransfer) (entity.Transaksi, error) {
+	var dataUpdate = map[string]interface{}{}
+
+	if dataInput.BuktiTransfer != "" || len(dataInput.BuktiTransfer) != 0 {
+		dataUpdate["bukti_transfer"] = dataInput.BuktiTransfer
+	}
+
+	transaksiUpdated, err := s.repo.UpdateByKode(kodeTransaksi, dataUpdate)
+
+	if err != nil {
+		return entity.Transaksi{}, err
+	}
+
+	return transaksiUpdated, nil
 }
 
 func (s *service) UpdateStatusByKode(kodeTransaksi string, dataInput entity.UpdateStatus) (entity.Transaksi, error) {

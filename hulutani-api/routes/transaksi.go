@@ -20,4 +20,5 @@ func RouteTransaksi(r *gin.Engine) {
 	r.POST("/transaksi", handler.Middleware(authService), transaksiHandler.CreateTransaksiHandler)
 	r.POST("/produk-transaksi", handler.Middleware(authService), transaksiHandler.CreateProdukTransaksiHandler)
 	r.PUT("/transaksi/:kode_transaksi", adminMiddleware, transaksiHandler.UpdateTransaksiByKodeHandler)
+	r.PUT("/upload-bukti-transfer/:kode_transaksi", handler.Middleware(authService), transaksiHandler.UpdateBuktiTransferByKodeHandler)
 }

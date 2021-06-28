@@ -3,6 +3,8 @@ definitions:
     properties:
       alamat_detail:
         type: string
+      city_id:
+        type: string
       id_pelanggan:
         type: integer
       kota:
@@ -1053,6 +1055,43 @@ paths:
       security:
       - Auth: []
       summary: Get All Transaksi
+      tags:
+      - Transaksi
+  /upload-bukti-transfer/{kode_transaksi}:
+    put:
+      consumes:
+      - application/json
+      description: update bukti transfer by kode transaksi
+      parameters:
+      - description: kode transaksi
+        in: path
+        name: kode_transaksi
+        required: true
+        type: string
+      - description: update bukti transfer
+        in: body
+        name: bukti
+        required: true
+        schema:
+          $ref: '#/definitions/entity.UpdateStatus'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/helper.Response'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/helper.Failure'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/helper.Failure'
+      security:
+      - Auth: []
+      summary: Update bukti transfer by kode transaksi
       tags:
       - Transaksi
   /user:

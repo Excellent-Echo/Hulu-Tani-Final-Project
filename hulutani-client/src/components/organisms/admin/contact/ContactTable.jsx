@@ -3,9 +3,9 @@ import { useSelector, useDispatch } from "react-redux";
 import adminShowContactAction from "../../../../redux/admin/contact/show/adminShowContactAction";
 
 const ths = [
-    { name: "No" },
+    { name: "ID" },
     { name: "Nama" },
-    { name: "Surel" },
+    { name: "Alamat" },
     { name: "Jenis Kelamin" },
     { name: "Tanggal Lahir" },
     { name: "Telepon" },
@@ -16,13 +16,14 @@ const ths = [
     );
 
     const dispatch = useDispatch();
+
     useEffect(() => {
       dispatch(adminShowContactAction.getContacts());
     });
 
     return (
       <div className="table-responsive">
-        <table className="table table-borderless">
+        <table className="table table-borderless table-hover">
           <thead className="table-light">
             <tr>
               {ths.map((th) => (
@@ -30,16 +31,17 @@ const ths = [
               ))}
             </tr>
           </thead>
+
           <tbody>
             {contactData.map((data, index) => {
               return (
-                <tr>
-                  <td>{index}</td>
-                  <td>{data.nama}</td>
-                  <td>{data.email}</td>
-                  <td>{data.nomor_handphone}</td>
-                  <td>{data.jenis_kelamin}</td>
-                  <td>{data.tanggal_lahir}</td>
+                <tr key={index}>
+                  <td className="text-center">{index}</td>
+                  <td className="text-center">{data.nama}</td>
+                  <td className="text-center">{data.email}</td>
+                  <td className="text-center">{data.nomor_handphone}</td>
+                  <td className="text-center">{data.jenis_kelamin}</td>
+                  <td className="text-center">{data.tanggal_lahir}</td>
                 </tr>
               );
             })}

@@ -1,4 +1,6 @@
 const initialState =  {
+    id:0,
+    cityId:0,
     nama:"",
     telepon:"",
     alamatLengkap:"",
@@ -50,6 +52,16 @@ const addressReducer = (state = initialState, action)=>{
             return {
                 ...state,
                 daftarProvinsi: action.payload.daftarProvinsi
+            }
+        case "ADDRESS_SET_ID":
+            return {
+                ...state,
+                id: action.payload.id
+            }
+        case "ADDRESS_SET_CITY_ID":
+            return {
+                ...state,
+                cityId: action.payload.cityId
             }
         case "ADDRESS_RESET_FORM":
             return {

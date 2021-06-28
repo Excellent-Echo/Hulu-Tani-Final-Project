@@ -1,102 +1,101 @@
 body {
-    background-color: #EEFBF9;
+  background-color: #eefbf9;
 }
 
 .user-page-container {
-    padding-top: 0 !important;
+  padding-top: 0 !important;
 }
 
 .breadcrumbs-container {
-    margin-top: 15px;
+  margin-top: 15px;
 }
 
 .user-content-container {
-    display: flex;
-    justify-content: flex-end;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .user-sidebar {
-    position: fixed;
+  position: fixed;
 }
 
 .user-sidebar-title {
-    margin-bottom: 25px;
+  margin-bottom: 25px;
 }
 
 button.user-sidebar-button .user-sidebar-icon.transaksi::before {
-    font-family: "Font Awesome 5 Free"; 
-    font-weight: 900; 
-    content: "\f53c";
-    margin-right: 15px;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "\f53c";
+  margin-right: 15px;
 }
 
 button.user-sidebar-button .user-sidebar-icon.alamat::before {
-    font-family: "Font Awesome 5 Free"; 
-    font-weight: 900; 
-    content: "\f3c5";
-    margin-right: 15px;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "\f3c5";
+  margin-right: 15px;
 }
 
 button.user-sidebar-button .user-sidebar-icon.edit::before {
-    font-family: "Font Awesome 5 Free"; 
-    font-weight: 900; 
-    content: "\f4fe";
-    margin-right: 15px;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "\f4fe";
+  margin-right: 15px;
 }
 
 .user-sidebar-button.current span.sidebar-button,
 .user-sidebar-button.current span.sidebar-button .user-sidebar-icon {
-    font-weight: 700 !important;
-    font-size: 1.5rem !important;
-    color: #25A18E !important;
-    background-color: transparent !important;
+  font-weight: 700 !important;
+  font-size: 1.5rem !important;
+  color: #25a18e !important;
+  background-color: transparent !important;
 }
 
 .user-content-container {
-    min-height: 100vh;
+  min-height: 100vh;
 }
 
 .user-content {
-    /* min-width: 100%; */
-    /* min-height: 100%; */
-    background-color: white;
-    border-radius: 15px;
-    padding: 2.5vw;
+  /* min-width: 100%; */
+  /* min-height: 100%; */
+  background-color: white;
+  border-radius: 15px;
+  padding: 2.5vw;
 }
 
 .content-button {
-
 }
 
 .content-button .status-filter {
-    margin-right: 10px;
+  margin-right: 10px;
 }
 
 /* USER PAGE */
 
 .user-avatar-container {
-    /* object-fit: contain; */
-    display: flex;
+  /* object-fit: contain; */
+  display: flex;
 }
 
 .content-edit {
-    margin-bottom: 15vh;
+  margin-bottom: 15vh;
 }
 
 .user-avatar {
-    max-width: 175px;
-    /* border-radius: 100px; */
-    border: solid 3px #25A18E;
-    padding: .5vw;
-    margin: auto;
-    border-radius: 50vw;
-    cursor: pointer;
+  max-width: 175px;
+  /* border-radius: 100px; */
+  border: solid 3px #25a18e;
+  padding: 0.5vw;
+  margin: auto;
+  border-radius: 50vw;
+  cursor: pointer;
 
-    transition: all .2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 
 .user-avatar:hover {
-    background-color: rgba(37, 161, 142, .5);
+  background-color: rgba(37, 161, 142, 0.5);
 }
 
 /* END OF USER PAGE */
@@ -104,18 +103,18 @@ button.user-sidebar-button .user-sidebar-icon.edit::before {
 /* USER TRANSACTION */
 
 .transaction-list {
-    background-color: white;
-    border: 2px solid #25A18E;
-    border-radius: 10px;
-    padding: 1.2vw;
-    margin-top: 20px;
-    cursor: pointer;
+  background-color: white;
+  border: 2px solid #25a18e;
+  border-radius: 10px;
+  padding: 1.2vw;
+  margin-top: 20px;
+  cursor: pointer;
 
-    transition: all .1s ease-in-out;
+  transition: all 0.1s ease-in-out;
 }
 
 .transaction-list:hover {
-    transform: scale(1.01);
+  transform: scale(1.01);
 }
 
 /* .list-product-image {
@@ -125,24 +124,37 @@ button.user-sidebar-button .user-sidebar-icon.edit::before {
 } */
 
 .transaction-list .img-container {
-    width: 100px;
-    height: 100px;
+  width: 100px;
+  height: 100px;
 }
 
 .transaction-status-badge {
-    /* max-width: 5vw; */
-    /* display: flex; */
-    justify-self: flex-end;
-    padding: 2vh;
+  /* max-width: 5vw; */
+  /* display: flex; */
+  justify-self: flex-end;
+  padding: 2vh;
 }
 
 /* END OF USER TRANSACTION */
 
 /* USER ADDRESSES */
 .address-head {
-    /* padding-right: 2vw; */
+  /* padding-right: 2vw; */
 }
 /* END OF USER ADDRESSES */
+
+
+@media (max-width: 572px) {
+  .user-page-container,
+  .breadcrumbs,
+  .sidebar-container {
+    padding: 5vw !important;
+    padding-right: 6vw !important;
+  }
+  .sidebar-container {
+    padding: 50vw !important;
+    padding-right: 60vw !important;
+  }
 
 .alamat-card .product-card {
     width: 18rem !important;
@@ -161,10 +173,10 @@ button.user-sidebar-button .user-sidebar-icon.edit::before {
 
     .sidebar-container {
         padding: 50vw !important;
-        padding-right: 60  vw !important;
+        padding-right: 60vw !important;
     }
     
     .alamat-card .product-card {
         width: 35rem !important;
     }
-}
+}}

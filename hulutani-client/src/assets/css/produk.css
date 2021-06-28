@@ -70,7 +70,7 @@ button.btn-love {
   color: #25a18e;
   background-color: transparent;
   border-radius: 10px;
-  
+
   border: 0 !important;
 
   transition: all 0.2s ease-in-out;
@@ -97,15 +97,15 @@ button.btn-love:hover {
 
 /* END OF PRODUK DETAIL */
 
-@media (min-width: 992px) { 
-    
+@media (min-width: 992px) {
+
 }
 
-@media (max-width: 992px) { 
-    
+@media (max-width: 992px) {
+
 }
 
-@media (max-width: 572px) { 
+@media (max-width: 572px) {
     .produk-list-container, .breadcrumbs, .product-detail-container {
         padding: 5vw !important;
         padding-right: 6vw !important;

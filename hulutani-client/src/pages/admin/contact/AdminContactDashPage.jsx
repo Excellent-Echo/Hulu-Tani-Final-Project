@@ -10,12 +10,10 @@ const AdminContactDashPage = () => {
 
       <AdminHeaderLarge />
 
-      <div className="admin-content-container h-100 float-end p-4">
-        <nav aria-label="breadcrumb">
-          <ol className="breadcrumb">
-            <li className="breadcrumb-item active" aria-current="page">
-              Kontak
-            </li>
+      <div className="admin-content-container h-100 float-end p-4 mb-4">
+        <nav>
+          <ol className="breadcrumb h3">
+            <li className="breadcrumb-item">Kontak</li>
           </ol>
         </nav>
 

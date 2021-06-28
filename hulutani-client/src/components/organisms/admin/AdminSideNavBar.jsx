@@ -1,5 +1,7 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import adminLoginAction from "../../../redux/admin/login/adminLoginAction";
 
 const navs = [
     {
@@ -29,6 +31,15 @@ const navs = [
     },
   ],
   AdminSideNavBar = () => {
+    const history = useHistory(),
+      dispatch = useDispatch();
+
+    const adminLogOut = () => {
+      dispatch(adminLoginAction.logOut());
+      localStorage.removeItem("adminToken");
+      history.push("/admin/login");
+    };
+
     return (
       <div className="h-100 position-fixed admin-side-navbar px-4">
         <header className="navbar navbar-light">
@@ -43,19 +54,15 @@ const navs = [
           <div>
             {navs.map((nav) => (
               <Link className="nav-link my-1 row" to={nav.to}>
-                <div>
-                  <i className={nav.icon}></i>
-                  <span className="ms-3 fw-bold">{nav.name}</span>
-                </div>
+                <i className={nav.icon}></i>
+                <span className="ms-3 fw-bold">{nav.name}</span>
               </Link>
             ))}
           </div>
 
-          <Link className="nav-link my-1 row">
-            <div>
-              <i className="fas fa-sign-out-alt fs-5 col-2"></i>
-              <span className="ms-3 fw-bold">Keluar</span>
-            </div>
+          <Link className="nav-link my-1 row" onClick={adminLogOut}>
+            <i className="fas fa-sign-out-alt fs-5 col-2"></i>
+            <span className="ms-3 fw-bold">Keluar</span>
           </Link>
         </nav>
       </div>

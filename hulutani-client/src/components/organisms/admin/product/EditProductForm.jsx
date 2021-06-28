@@ -56,7 +56,7 @@ const EditProductForm = () => {
 
   return (
     <form
-      className="border-3 border p-2 admin-form"
+      className="border-3 border p-4 admin-form"
       onSubmit={updateProductHandler}
     >
       <div className="row mb-3">

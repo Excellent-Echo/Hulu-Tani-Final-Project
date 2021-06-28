@@ -12,16 +12,22 @@ const AdminTransactionDetailDashPage = () => {
       <AdminHeaderLarge />
 
       <div className="admin-content-container h-100 float-end p-4">
-        <nav aria-label="breadcrumb">
-          <ol className="breadcrumb">
-            <li className="breadcrumb-item" aria-current="page">
-              <Link to="/admin/dash/transaction/detail">Transaksi</Link>
-            </li>
-            <li className="breadcrumb-item active" aria-current="page">
-              Detail
-            </li>
-          </ol>
-        </nav>
+        <div className="d-flex justify-content-between mb-2">
+          <nav>
+            <ol className="breadcrumb h3">
+              <li className="breadcrumb-item">
+                <Link to="/admin/dash/transaction">Transaksi</Link>
+              </li>
+              <li className="breadcrumb-item">Detail</li>
+            </ol>
+          </nav>
+
+          <Link to="/admin/dash/category/add">
+            <button type="button" className="btn btn-success">
+              Konfirmasi
+            </button>
+          </Link>
+        </div>
 
         <TransactionDetailForm />
       </div>

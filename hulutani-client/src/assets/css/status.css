@@ -11,8 +11,21 @@
 }
 /* END OF 404 NOT FOUND */
 
+.bg-shape.login {
+    top: -25vh;
+    right: -10vh;
+}
+
+.bg-shape.register {
+    top: -45vh;
+    left: -10vh;
+}
+
 .bg-shape {
-    z-index: 0 !important;
+    opacity: 15%;
+    transform: rotate(45deg);
+    position: absolute;
+    z-index: -99 !important;
 }
 
 .status-page-container {

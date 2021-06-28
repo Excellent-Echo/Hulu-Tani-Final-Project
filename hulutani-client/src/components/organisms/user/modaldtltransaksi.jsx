@@ -5,38 +5,38 @@ import userTransactionAction from '../../../redux/user/transaction/userTransacti
 import NumberFormat from 'react-number-format'
 import { useHistory } from 'react-router-dom'
 
-const ModalDtlTransaksi = ({code}) => {
+const ModalDtlTransaksi = ({ code }) => {
     const userTransaction = useSelector(state => state.userTransaction.dataTransaksi)
     const dispatch = useDispatch()
     const history = useHistory()
 
-    useEffect(()=>{
+    useEffect(() => {
         // console.log(...code)
         dispatch(userTransactionAction.getDataTransaksi(code))
-    },[code])
+    }, [code])
 
-    const uploadHandler = (e)=>{
+    const uploadHandler = (e) => {
         e.preventDefault()
-        if(userTransaction.bukti_transfer === ""){
+        if (userTransaction.bukti_transfer === "") {
             history.push(`/payment/${userTransaction.kode_transaksi}`)
-        }else{
+        } else {
             history.puus("/products")
         }
     }
     return (
         <>
-            <div class="modal fade" id="modalDtlTransaksi" tabindex="-1" aria-labelledby="modalDtlTransaksiLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h4 class="modal-title title accent-text">
+            <div className="modal fade" id="modalDtlTransaksi" tabindex="-1" aria-labelledby="modalDtlTransaksiLabel" aria-hidden="true">
+                <div className="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <h4 className="modal-title title accent-text">
                                 Transaksi - <span className="accent-title text-muted">
                                     {userTransaction.kode_transaksi}
                                 </span>
                             </h4>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div class="modal-body">
+                        <div className="modal-body">
                             <div className="container-fluid">
                                 <div className="row">
                                     <div className="col-sm">
@@ -56,7 +56,7 @@ const ModalDtlTransaksi = ({code}) => {
                                             </div>
                                             <div className="col-sm text-end">
                                                 <span className="">
-                                                {userTransaction.kode_transaksi}
+                                                    {userTransaction.kode_transaksi}
                                                 </span>
                                             </div>
                                         </div>
@@ -68,7 +68,7 @@ const ModalDtlTransaksi = ({code}) => {
                                             </div>
                                             <div className="col-sm text-end">
                                                 <div className="">
-                                                    <span class="status-badge b-danger">{userTransaction.status}</span>
+                                                    <span className="status-badge b-danger">{userTransaction.status}</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -92,7 +92,7 @@ const ModalDtlTransaksi = ({code}) => {
                                             </div>
                                             <div className="col-sm-6 text-end">
                                                 <span className="">
-                                                <NumberFormat value={userTransaction.harga} displayType={'text'} thousandSeparator={true} prefix={'Rp'}/>
+                                                    <NumberFormat value={userTransaction.harga} displayType={'text'} thousandSeparator={true} prefix={'Rp'} />
                                                 </span>
                                             </div>
                                             {/* <div className="col-sm text-end">
@@ -112,7 +112,6 @@ const ModalDtlTransaksi = ({code}) => {
                                             </div>
                                         </div>
                                         <hr />
-
                                         
                                         <div className="row align-content-center">
                                             <div className="col-sm">
@@ -134,7 +133,6 @@ const ModalDtlTransaksi = ({code}) => {
                                             </div>
                                         </div>
                                        
-
                                         <hr />
                                         <div className="row align-items-center">
                                             <div className="col-sm">
@@ -176,9 +174,9 @@ const ModalDtlTransaksi = ({code}) => {
                                 </div>
                             </div>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="b-danger small" data-bs-dismiss="modal">Tutup</button>
-                            <button type="button" class="b-primary small" data-bs-dismiss="modal" onClick={uploadHandler}>upload bukti</button>
+                        <div className="modal-footer">
+                            <button type="button" className="b-danger small" data-bs-dismiss="modal">Tutup</button>
+                            <button type="button" className="b-primary small" data-bs-dismiss="modal" onClick={uploadHandler}>upload bukti</button>
                         </div>
                     </div>
                 </div>

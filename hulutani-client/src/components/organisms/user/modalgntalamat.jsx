@@ -20,14 +20,14 @@ const ModalGntAlamat = () => {
 
     return (
         <>
-            <div class="modal fade modalGntAlamat" id="modalGntAlamat" tabindex="-1" aria-labelledby="modalGntAlamatLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h4 class="modal-title title accent-text">Pilih Alamat</h4>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div className="modal fade modalGntAlamat" id="modalGntAlamat" tabindex="-1" aria-labelledby="modalGntAlamatLabel" aria-hidden="true">
+                <div className="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <h4 className="modal-title title accent-text">Pilih Alamat</h4>
+                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div class="modal-body">
+                        <div className="modal-body">
                             <div className="row justify-content-center">
                                 <div className="col-sm-12">
                                 {daftarAlamat.map((data,index)=> {
@@ -55,9 +55,9 @@ const ModalGntAlamat = () => {
                                 </div>                                
                             </div>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="b-danger small" data-bs-dismiss="modal">Batal</button>
-                            {/* <button type="button" class="primary small">Simpan</button> */}
+                        <div className="modal-footer">
+                            <button type="button" className="b-danger small" data-bs-dismiss="modal">Batal</button>
+                            {/* <button type="button" className="primary small">Simpan</button> */}
                         </div>
                     </div>
                 </div>

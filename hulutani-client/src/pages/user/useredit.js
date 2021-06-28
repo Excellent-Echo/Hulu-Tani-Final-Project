@@ -110,19 +110,19 @@ function UserEdit() {
                                     <form className="row g-3">
                                         <div className="col-sm-12">
                                             <label for="passwordLama" className="form-label accent-title">Password Saat Ini</label>
-                                            <input type="password" className="form-control small" id="passwordLama"/>
+                                            <input type="password" className="form-control small" id="passwordLama" disabled/>
                                         </div>
                                         <div className="col-sm-6">
                                             <label for="passwordBaru" className="form-label accent-title">Password Baru</label>
-                                            <input type="password" className="form-control small" id="passwordBaru"/>
+                                            <input type="password" className="form-control small" id="passwordBaru" disabled/>
                                         </div>
                                         <div className="col-sm-6">
                                             <label for="noTelp" className="form-label accent-title">Ulangi Password Baru</label>
-                                            <input type="password" className="form-control small" id="passwordBaruUlang"/>
+                                            <input type="password" className="form-control small" id="passwordBaruUlang"disabled/>
                                         </div>
                                         <div className="col-12">
                                             <br />
-                                            <button type="submit" className="button primary long">Ubah Password</button>
+                                            <button type="submit" className="button primary long" disabled>Ubah Password</button>
                                         </div>
                                     </form>
                                 </div>

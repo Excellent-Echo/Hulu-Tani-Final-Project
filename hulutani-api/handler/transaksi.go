@@ -219,7 +219,7 @@ func (h *transaksiHandler) UpdateTransaksiByKodeHandler(c *gin.Context) {
 // @Accept json
 // @Produce json
 // @Param kode_transaksi path string true "kode transaksi"
-// @Param bukti body entity.UpdateStatus true "update bukti transfer"
+// @Param bukti body entity.UploadBuktiTransfer true "update bukti transfer"
 // @Success 200 {object} helper.Response
 // @Failure 401 {object} helper.Failure
 // @Failure 500 {object} helper.Failure

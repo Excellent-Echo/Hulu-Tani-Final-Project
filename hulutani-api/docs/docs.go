@@ -1485,7 +1485,7 @@ var doc = `{
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/entity.UpdateStatus"
+                            "$ref": "#/definitions/entity.UploadBuktiTransfer"
                         }
                     }
                 ],
@@ -1821,6 +1821,14 @@ var doc = `{
             "type": "object",
             "properties": {
                 "status": {
+                    "type": "string"
+                }
+            }
+        },
+        "entity.UploadBuktiTransfer": {
+            "type": "object",
+            "properties": {
+                "bukti_transfer": {
                     "type": "string"
                 }
             }

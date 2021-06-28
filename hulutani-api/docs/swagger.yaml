@@ -111,6 +111,11 @@ definitions:
       status:
         type: string
     type: object
+  entity.UploadBuktiTransfer:
+    properties:
+      bukti_transfer:
+        type: string
+    type: object
   helper.Delete:
     properties:
       code:
@@ -1073,7 +1078,7 @@ paths:
         name: bukti
         required: true
         schema:
-          $ref: '#/definitions/entity.UpdateStatus'
+          $ref: '#/definitions/entity.UploadBuktiTransfer'
       produces:
       - application/json
       responses:

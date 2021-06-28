@@ -13,7 +13,7 @@ const AdminContactDashPage = () => {
       <div className="admin-content-container h-100 float-end p-4 mb-4">
         <nav>
           <ol className="breadcrumb h3">
-            <li className="breadcrumb-item active">Kontak</li>
+            <li className="breadcrumb-item">Kontak</li>
           </ol>
         </nav>
 

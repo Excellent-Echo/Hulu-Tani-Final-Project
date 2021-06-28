@@ -15,7 +15,8 @@ const ModalTbAlamat = () => {
 
     const addHandler = (e) => {
         e.preventDefault()
-        dispatch(addressAction.addAddress(alamatData.nama,alamatData.telepon,alamatData.alamatLengkap,alamatData.kota,alamatData.provinsi))
+        console.log(alamatData.daftarKota)
+        dispatch(addressAction.addAddress(alamatData.nama,alamatData.telepon,alamatData.alamatLengkap,alamatData.provinsi,alamatData.cityId))
         dispatch(addressAction.resetForm())
         history.push("/user-address")
     }
@@ -53,10 +54,13 @@ const ModalTbAlamat = () => {
                                 </div>
                                 <div className="col-sm-6">
                                     <label for="kota" className="form-label accent-title">Kota</label>
-                                    <select type="text" className="form-control" id="kota" onChange={(e) => dispatch(addressAction.setKota(e.target.value))}>
+                                    <select type="text" className="form-control" id="kota" 
+                                    onChange={(e) => {
+                                        dispatch(addressAction.setCityId(e.target.value));
+                                        }}>
                                         {alamatData.daftarKota.map((data,index)=>{
                                             return (
-                                                <option value={data.city_name}>{data.city_name}</option>
+                                                <option value={data.city_id}>{data.city_name}</option>
                                             )
                                         })}
                                     </select>

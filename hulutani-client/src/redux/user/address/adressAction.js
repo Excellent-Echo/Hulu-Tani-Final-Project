@@ -41,6 +41,24 @@ const setProvinsi = provinsi =>{
     }
 }
 
+const setId = id =>{
+    return {
+        type: "ADDRESS_SET_ID",
+        payload: {
+            id:id
+        }
+    }
+}
+
+const setCityId = cityId =>{
+    return {
+        type: "ADDRESS_SET_CITY_ID",
+        payload: {
+            cityId:cityId
+        }
+    }
+}
+
 const setDaftarAlamat = ()=> async dispatch =>{
     try {
         const token = localStorage.getItem("accessToken")
@@ -101,7 +119,7 @@ const setDaftarProvinsi = () => async dispatch=>{
     }
 }
 
-const addAddress = (nama,telepon,alamat,kota,provinsi) => async dispatch =>{
+const addAddress = (nama,telepon,alamat,provinsi,id) => async dispatch =>{
     try {
         console.log("add address")
         const token = localStorage.getItem("accessToken")
@@ -109,8 +127,8 @@ const addAddress = (nama,telepon,alamat,kota,provinsi) => async dispatch =>{
             nama_penerima:nama,
             nomor_handphone_penerina:telepon,
             alamat_detail:alamat,
-            kota:kota,
-            provinsi:provinsi
+            provinsi:provinsi,
+            city_id:id
         }
 
         const add = await hulutaniClient({
@@ -121,6 +139,8 @@ const addAddress = (nama,telepon,alamat,kota,provinsi) => async dispatch =>{
                 Authorization: token
             }
         })
+
+        dispatch(setCityId(id))
         dispatch(setDaftarAlamat())
         console.log("success")
     } catch (error) {
@@ -134,7 +154,7 @@ const updateAddress = (id,nama,telepon,alamat,kota,provinsi)=> async dispatch=>{
         const token = localStorage.getItem("accessToken")
         const data = {
             nama_penerima:nama,
-            nomor_handphone_penerina:telepon,
+            nomor_handphone_penerima:telepon,
             alamat_detail:alamat,
             kota:kota,
             provinsi:provinsi
@@ -191,7 +211,9 @@ const addressAction = {
     addAddress,
     updateAddress,
     deleteAddress,
-    resetForm
+    resetForm,
+    setId,
+    setCityId
 }
 
 export default addressAction;

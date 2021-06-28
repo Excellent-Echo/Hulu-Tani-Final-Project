@@ -159,6 +159,7 @@ const ModalDtlTransaksi = () => {
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="b-danger small" data-bs-dismiss="modal">Tutup</button>
+                            <button type="button" class="b-primary small" data-bs-dismiss="modal">upload bukti</button>
                         </div>
                     </div>
                 </div>

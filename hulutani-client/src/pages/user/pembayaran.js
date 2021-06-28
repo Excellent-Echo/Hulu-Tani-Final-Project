@@ -167,7 +167,7 @@ function Pembayaran() {
                                     <form action="">
                                         <div className="row align-items-center">
                                             <div className="col-sm-7 mb-2">
-                                                <input className="form-control small" type="file" id="formFile" onChange={handleImageAsFile}/>
+                                                <input className="form-control small userpages" type="file" id="formFile" onChange={handleImageAsFile}/>
                                             </div>
                                             <div className="col-sm-5">
                                                 <button type="submit" className="primary small long" onClick={handleImageUpload}>Konfirmasi Pembayaran</button>

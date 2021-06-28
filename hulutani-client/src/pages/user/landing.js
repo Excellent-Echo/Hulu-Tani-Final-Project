@@ -2,6 +2,7 @@ import React from 'react'
 
 import '../../assets/css/userglobal.css'
 import '../../assets/css/landing.css'
+import ContactUs from '../../assets/images/contact-us.svg'
 import GroceryShopping from '../../assets/images/landing-title.svg'
 import Navbar from '../../components/organisms/user/navbar'
 import Footer from '../../components/organisms/user/footer'
@@ -419,6 +420,171 @@ function LandingPage() {
                             <button className="primary" onClick={toProducts}>
                                 Belanja Sekarang
                             </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div className="container-fluid fluid-page testi-container">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-sm">
+                            <h5 className="text-muted">
+                                Testimoni
+                            </h5>
+                            <h1 className="title accent-text">
+                                Apa kata para petani tentang kami.
+                            </h1>
+                            <h1 className="title accent-text">
+                                —
+                            </h1>
+                        </div>
+                        <div className="col-sm">
+                            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <div className="row">
+                                            <div className="col-sm d-flex justify-content-center">
+                                                <div class="card card-outline-primary h-100" style={{ width: "25rem" }}>
+                                                    <div class="card-body">
+                                                        <p className="subtitle">
+                                                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Enim aliquam libero incidunt quis fuga dolorum sed corporis sit quas aspernatur porro, labore provident nihil? Dignissimos non ipsa provident possimus numquam?
+                                                        </p>
+                                                        <hr />
+                                                        <h6 class="card-subtitle mb-2 text-muted">Petani</h6>
+                                                        <h5 class="title">Helmi Yusuf Efendi</h5>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <div className="row">
+                                            <div className="col-sm d-flex justify-content-center">
+                                                <div class="card card-outline-primary h-100" style={{ width: "25rem" }}>
+                                                    <div class="card-body">
+                                                        <p className="subtitle">
+                                                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Enim aliquam libero incidunt quis fuga dolorum sed corporis sit quas aspernatur porro, labore provident nihil? Dignissimos non ipsa provident possimus numquam?
+                                                        </p>
+                                                        <hr />
+                                                        <h6 class="card-subtitle mb-2 text-muted">Pembajak</h6>
+                                                        <h5 class="title">Radika Yudhistira Early</h5>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <div className="row">
+                                            <div className="col-sm d-flex justify-content-center">
+                                                <div class="card card-outline-primary h-100" style={{ width: "25rem" }}>
+                                                    <div class="card-body">
+                                                        <p className="subtitle">
+                                                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Enim aliquam libero incidunt quis fuga dolorum sed corporis sit quas aspernatur porro, labore provident nihil? Dignissimos non ipsa provident possimus numquam?
+                                                        </p>
+                                                        <hr />
+                                                        <h6 class="card-subtitle mb-2 text-muted">Pencocok Tanam</h6>
+                                                        <h5 class="title">Randhika Rizkyaldi</h5>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <div className="row">
+                                            <div className="col-sm d-flex justify-content-center">
+                                                <div class="card card-outline-primary h-100" style={{ width: "25rem" }}>
+                                                    <div class="card-body">
+                                                        <p className="subtitle">
+                                                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Enim aliquam libero incidunt quis fuga dolorum sed corporis sit quas aspernatur porro, labore provident nihil? Dignissimos non ipsa provident possimus numquam?
+                                                        </p>
+                                                        <hr />
+                                                        <h6 class="card-subtitle mb-2 text-muted">Pencangkul</h6>
+                                                        <h5 class="title">Danang Estutomo Aji</h5>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <div className="row">
+                                            <div className="col-sm d-flex justify-content-center">
+                                                <div class="card card-outline-primary h-100" style={{ width: "25rem" }}>
+                                                    <div class="card-body">
+                                                        <p className="subtitle">
+                                                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Enim aliquam libero incidunt quis fuga dolorum sed corporis sit quas aspernatur porro, labore provident nihil? Dignissimos non ipsa provident possimus numquam?
+                                                        </p>
+                                                        <hr />
+                                                        <h6 class="card-subtitle mb-2 text-muted">Penikmat Hasil Panen</h6>
+                                                        <h5 class="title">Muhammad Fauzul Hanif</h5>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                                    <span class="btn-prev" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous</span>
+                                </button>
+                                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                                    <span class="btn-next" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div className="container-fluid fluid-page contactus-container">
+                <div className="container">
+                    <div className="row justify-content-center">
+                        <h1 className="title accent-text">
+                            Kontak Kami
+                        </h1>
+                        <p className="subtitle">
+                            Jika kamu memiliki hal untuk dibicarakan, silakan kontak kami.
+                        </p>
+                    </div>
+                    <div className="row align-items-center">
+                        <div className="col-sm d-flex justify-content-start">
+                            <form className="row g-3">
+                                <div className="col-sm-6">
+                                    <label for="namaLengkap" className="form-label accent-title">Nama Lengkap</label>
+                                    <input type="text" className="form-control small userpages" id="namaLengkap" />
+                                </div>
+                                <div className="col-sm-6">
+                                    <label for="noTelp" className="form-label accent-title">No. Telepon</label>
+                                    <input type="text" className="form-control small userpages" id="notelp" />
+                                </div>
+                                <div className="col-sm-6">
+                                    <label for="email" className="form-label accent-title">Email</label>
+                                    <input type="text" className="form-control small userpages" id="email" />
+                                </div>
+                                <div className="col-sm-6">
+                                    <label for="provinsi" className="form-label accent-title">Jenis Pesan</label>
+                                    <select id="jnsPesan" className="form-select userpages small">
+                                        <option selected>Pilih salah satu</option>
+                                        <option>Kritik</option>
+                                        <option>Saran</option>
+                                        <option>Penilaian</option>
+                                        <option>Undangan Kemitraan</option>
+                                        <option>Lainnya</option>
+                                    </select>
+                                </div>
+                                <div className="col-sm-12">
+                                    <label for="pesan" class="form-label accent-title">Pesan</label>
+                                    <textarea class="form-control small userpages" id="pesan" rows="3"></textarea>
+                                </div>
+                                <div className="col-12">
+                                    <br />
+                                    <button type="submit" className="button primary long">Kirim</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div className="col-sm">
+                            <div className="col-sm img-container">
+                                <img src={ContactUs} alt="" className="img-fluid" />
+                            </div>
                         </div>
                     </div>
                 </div>

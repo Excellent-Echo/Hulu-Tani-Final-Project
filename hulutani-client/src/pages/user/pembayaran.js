@@ -175,8 +175,8 @@ function Pembayaran() {
                             </div>
                         </div>
                         <div className="col-sm img-payment-container">
-                            {/* <img src={ WaitingPayment } alt="" className="img-fluid img-payment" /> */}
-                            <img src={ imageAsUrl.imgUrl } alt="" className="img-fluid img-payment" />
+                            <img src={ WaitingPayment } alt="" className="img-fluid img-payment" />
+                            {/* <img src={ imageAsUrl.imgUrl } alt="" className="img-fluid img-payment" /> */}
                         </div>
                     </div>
                 </div>

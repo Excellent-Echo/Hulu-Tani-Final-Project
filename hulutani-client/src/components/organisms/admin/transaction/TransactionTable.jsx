@@ -1,13 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import adminShowTransactionAction from "../../../../redux/admin/transaction/show/adminShowTransactionAction";
 
 const ths = [
     { name: "ID" },
     { name: "Kode Transaksi" },
+    { name: "Jumlah Pembayaran" },
     { name: "Status" },
     { name: "Aksi" },
   ],
   TransactionTable = () => {
+    const adminTransactionsData = useSelector(
+      (state) => state.adminShowTransactions.transactions
+    );
+
+    const dispatch = useDispatch();
+    useEffect(() => {
+      dispatch(adminShowTransactionAction.getTransactions());
+    }, []);
+
     return (
       <div className="table-responsive">
         <table className="table table-borderless table-hover">
@@ -20,14 +32,23 @@ const ths = [
           </thead>
 
           <tbody>
-            <tr>
-              <td className="text-center">1</td>
-              <td className="text-center">Mark</td>
-              <td className="text-center">Otto</td>
-              <td className="text-center">
-                <Link to="/admin/dash/transaction/detail">Lihat detail</Link>
-              </td>
-            </tr>
+            {adminTransactionsData.map((data, index) => {
+              return (
+                <tr>
+                  <td className="text-center">{index}</td>
+                  <td className="text-center">{data.kode_transaksi}</td>
+                  <td className="text-center">{data.harga}</td>
+                  <td className="text-center">{data.status}</td>
+                  <td className="text-center">
+                    <Link
+                      to={`/admin/dash/transaction/detail/${data.kode_transaksi}`}
+                    >
+                      Lihat detail
+                    </Link>
+                  </td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </div>

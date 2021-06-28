@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useHistory } from 'react-router'
+import { useHistory } from 'react-router-dom'
 
 import '../../assets/css/userglobal.css'
 import '../../assets/css/auth.css'
@@ -17,11 +17,13 @@ function Login() {
 
     const loginHandler = (e)=> {
         e.preventDefault()
+        //console.log(history)
         dispatch(userLoginAction.userLogin(
             loginData.email,
             loginData.password,
+            history
         ))
-        history.push("/user-transaction")
+        
     }
     return (
         <>

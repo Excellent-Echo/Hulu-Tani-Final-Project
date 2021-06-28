@@ -46,7 +46,7 @@ function ProdukList() {
 
 										</div>
 									</div>
-									<div className="row mt-3 mb-3">
+									{/* <div className="row mt-3 mb-3">
 										<div className="col-sm d-flex align-content-center">
 											<p className="title">
 												Menampilkan hasil dari&nbsp;
@@ -72,7 +72,7 @@ function ProdukList() {
 												</ul>
 											</div>
 										</div>
-									</div>
+									</div> */}
 									<div className="row product-card-container">
 										{catalogProduct.allProduct.map((data,index)=>{
 											return (

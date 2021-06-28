@@ -95,9 +95,12 @@ const userLogin = (email, password, history) => async (dispatch) => {
     });
     localStorage.setItem("accessToken", user.data.data.Authorization);
     //console.log(user)
-    dispatch(setAccessToken(user.response.data.Authorization));
+    dispatch(setAccessToken(user.data.data.Authorization));
     dispatch(logIn());
     dispatch(stopLoading());
+    dispatch(resetForm())
+    console.log(history)
+    history.push("/user-transaction")
   } catch (error) {
     console.log(error.response);
     dispatch(setErrorMessage(error.response));

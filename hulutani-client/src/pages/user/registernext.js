@@ -54,7 +54,7 @@ function RegisterNext() {
                                         <label for="namaLengkap" className="form-label accent-title">Nama Lengkap</label>
                                         <input 
                                         type="name" 
-                                        className="form-control" 
+                                        className=" userpages" 
                                         id="namaLengkap" 
                                         value={registerData.name}
                                         onChange={(e)=> dispatch(userRegisterAction.setName(e.target.value))}
@@ -64,7 +64,7 @@ function RegisterNext() {
                                         <label for="tglLahir" className="form-label accent-title">Tanggal Lahir</label>
                                         <input 
                                         type="date" 
-                                        className="form-control" 
+                                        className="form-control userpages" 
                                         id="tglLahir" 
                                         placeholder="1234 Main St" 
                                         value={registerData.dateBirth}
@@ -75,7 +75,7 @@ function RegisterNext() {
                                         <label for="jnsKelamin" className="form-label accent-title">Jenis Kelamin</label>
                                         <select 
                                         id="jnsKelamin" 
-                                        className="form-select"
+                                        className="form-select userpages"
                                         onChange={(e)=> dispatch(userRegisterAction.setGender(e.target.value))}
                                         >
                                             <option selected>Pilih salah satu</option>
@@ -87,7 +87,7 @@ function RegisterNext() {
                                         <label for="noTelp" className="form-label accent-title">No. Telepon</label>
                                         <input 
                                         type="text" 
-                                        className="form-control" 
+                                        className="form-control userpages" 
                                         id="notelp" 
                                         value={registerData.handphoneNumber}
                                         onChange={(e)=> dispatch(userRegisterAction.setHandphoneNumber(e.target.value))}

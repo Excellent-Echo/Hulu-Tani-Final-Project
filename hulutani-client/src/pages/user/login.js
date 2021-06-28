@@ -44,7 +44,7 @@ function Login() {
                                     <label for="email" className="form-label">Email</label>
                                     <input 
                                     type="email" 
-                                    className="form-control" 
+                                    className="form-control userpages" 
                                     id="email"
                                     value={loginData.email}
                                     onChange={(e)=> dispatch(userLoginAction.setEmail(e.target.value))}
@@ -54,7 +54,7 @@ function Login() {
                                     <label for="password" className="form-label">Password</label>
                                     <input 
                                     type="password" 
-                                    className="form-control" 
+                                    className="form-control userpages" 
                                     id="password"
                                     value={loginData.password}
                                     onChange={(e)=> dispatch(userLoginAction.setPassword(e.target.value))}

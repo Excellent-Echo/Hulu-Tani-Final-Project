@@ -143,6 +143,7 @@ button.user-sidebar-button .user-sidebar-icon.edit::before {
 }
 /* END OF USER ADDRESSES */
 
+
 @media (max-width: 572px) {
   .user-page-container,
   .breadcrumbs,
@@ -154,4 +155,28 @@ button.user-sidebar-button .user-sidebar-icon.edit::before {
     padding: 50vw !important;
     padding-right: 60vw !important;
   }
+
+.alamat-card .product-card {
+    width: 18rem !important;
+}
+
+.alamat-card .card-modalalamat-buttons {
+    display: flex;
+    justify-content: flex-end;
+}
+
+@media (max-width: 572px) { 
+    .user-page-container, .breadcrumbs, .sidebar-container {
+        padding: 5vw !important;
+        padding-right: 6vw !important;
+    }
+
+    .sidebar-container {
+        padding: 50vw !important;
+        padding-right: 60  vw !important;
+    }
+    
+    .alamat-card .product-card {
+        width: 35rem !important;
+    }
 }

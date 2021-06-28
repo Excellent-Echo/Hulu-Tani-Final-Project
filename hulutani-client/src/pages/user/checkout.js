@@ -5,7 +5,7 @@ import '../../assets/css/transaksi.css'
 import CheckoutImg from '../../assets/images/checkout.svg'
 import Navbar from '../../components/organisms/user/navbar'
 import Footer from '../../components/organisms/user/footer'
-import { Link } from 'react-router-dom'
+import ModalGntAlamat from '../../components/organisms/user/modalgntalamat'
 
 function Checkout() {
     return (
@@ -16,7 +16,7 @@ function Checkout() {
                     <div className="row breadcrumbs-container"> 
                         <nav aria-label="breadcrumb">
                             <ol className="breadcrumb">
-                                <li className="breadcrumb-item"><Link to="/">Home</Link></li>
+                                <li className="breadcrumb-item"><a href="#">Home</a></li>
                                 <li className="breadcrumb-item active" aria-current="page">Checkout</li>
                             </ol>
                         </nav>
@@ -51,7 +51,9 @@ function Checkout() {
                                                                 </h5>
                                                             </div>
                                                             <div className="col-sm d-flex justify-content-end">
-                                                                <button className="b-info xsmall btn-edit"></button>
+                                                                <button className="b-info xsmall btn-edit" data-bs-toggle="modal" data-bs-target="#modalGntAlamat">
+
+                                                                </button>
                                                             </div>
                                                         </div>
                                                         <div className="row align-items-center">
@@ -67,12 +69,12 @@ function Checkout() {
                                                 <div className="row">
                                                     <div className="col-sm">
                                                         <h4 className="accent-title mb-4">
-                                                            Ongkos Kirim
+                                                            JASA PENGIRIMAN
                                                         </h4>
                                                         <div className="row align-items-center">
                                                             <div className="col-sm">
                                                                 <h5 className="accent-title">
-                                                                    HULU EX
+                                                                    JNE REG
                                                                 </h5>
                                                             </div>
                                                             <div className="col-sm jsharga">
@@ -215,6 +217,9 @@ function Checkout() {
                 </div>
             </div>
             <Footer />
+            {/* MODALS */}
+                <ModalGntAlamat />
+            {/* END OF MODALS */}
         </>
     )
 }

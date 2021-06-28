@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
-import adminEditCategoryAction from "../../../redux/admin/category/edit/adminEditCategoryAction";
+import adminEditCategoryAction from "../../../../redux/admin/category/edit/adminEditCategoryAction";
 
 const EditCategoryForm = () => {
   const adminEditCategory = useSelector((state) => state.adminEditCategory);

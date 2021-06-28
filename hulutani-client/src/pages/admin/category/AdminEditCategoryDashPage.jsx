@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import AdminHeaderLarge from "../../../components/organisms/admin/AdminHeader";
 import AdminSideNavBar from "../../../components/organisms/admin/AdminSideNavBar";
-import AddCategoryForm from "../../../components/organisms/admin/category/AddCategoryForm";
+import AddCategoryForm from "../../../components/organisms/admin/category/EditCategoryForm";
 
 const AdminEditCategoryDashPage = () => {
   return (

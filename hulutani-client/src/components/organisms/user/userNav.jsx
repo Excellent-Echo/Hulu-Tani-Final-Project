@@ -33,6 +33,9 @@ const UserNav = () => {
                                 <input class="form-control w-100" type="search" placeholder="Cari produk" aria-label="Search" />
                             </form>
                             <ul class="navbar-nav ms-auto">
+                                <li class="nav-item">
+                                    <Link class="nav-link" to="/products">Produk</Link>
+                                </li>
                                 <li class="nav-item dropdown me-1">
                                     <a class="nav-link btn-user" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
                                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">

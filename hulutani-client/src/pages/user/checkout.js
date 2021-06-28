@@ -16,6 +16,7 @@ function Checkout() {
     const daftarAlamat = useSelector(state => state.userAddress)
     const dispatch = useDispatch()
     const history = useHistory()
+    //const {code} = useParams()
 
     useEffect(() => {
         dispatch(addressAction.setDaftarAlamat())
@@ -33,7 +34,7 @@ function Checkout() {
             daftarAlamat.id,
             userTransaction.bukti
         ))
-        history.push("/payment")
+        history.push(`/payment/${userTransaction.kode_transaksi}`)
     }
     return (
         <>

@@ -7,18 +7,18 @@ import Navbar from '../../components/organisms/user/navbar'
 import Footer from '../../components/organisms/user/footer'
 import NumberFormat from 'react-number-format'
 import Countdown from 'react-countdown';
-import {Link, useHistory} from "react-router-dom"
+import {Link, useHistory, useParams} from "react-router-dom"
 import { useDispatch, useSelector } from 'react-redux'
 import userTransactionAction from '../../redux/user/transaction/userTransactionAction';
 
 function Pembayaran() {
     const dataTransaksi = useSelector(state => state.userTransaction.dataTransaksi)
-    const kode = useSelector(state => state.userTransaction.kode_transaksi)
+    const {code} = useParams()
     const dispatch = useDispatch()
     const history = useHistory()
 
     useEffect(() => {   
-        dispatch(userTransactionAction.getDataTransaksi("KT3276823"))
+        dispatch(userTransactionAction.getDataTransaksi(code))
     }, [])
 
      //image Upload to Clound

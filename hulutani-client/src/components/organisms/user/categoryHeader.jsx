@@ -16,7 +16,7 @@ const CategoryHeader = ()=> {
         {adminShowCategory.map((data, index) => {
             return (
             <li key={index}>
-                <Link class="dropdown-item" to={`/product/${data.id}`}>{data.nama}</Link>
+                <Link class="dropdown-item" to={`/products`}>{data.nama}</Link>
             </li>
             );
         })}

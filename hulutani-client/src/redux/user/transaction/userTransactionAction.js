@@ -165,16 +165,35 @@ const getDataTransaksi = (kode)=>async dispatch => {
     }
 }
 
+const getDaftarTransaksi = () => async dispatch => {
+    try {
+        const token = localStorage.getItem("accessToken")
+        const res = await hulutaniClient({
+            method:"GET",
+            url:`/transaksi`,
+            headers:{
+                Authorization: token
+            }
+        })
+        dispatch({
+            type:"USER_TRANSAKSI_SET_DAFTAR",
+            payload:res.data.data
+        })
+    } catch (error) {
+        
+    }
+}
+
 const uploadBukti = (kode,bukti) => async dispatch=>{
     try {
         const token = localStorage.getItem("accessToken")
         const data = {
             bukti_transfer: bukti,
-            status: "Menunggu Konfirmasi"
         }
+        console.log(data)
         const res = await hulutaniClient({
             method:"PUT",
-            url:`/transaksi/${kode}`,
+            url:`/upload-bukti-transfer/${kode}`,
             data: data,
             headers:{
                 Authorization: token
@@ -200,7 +219,8 @@ const userTransactionAction = {
     Transaction,
     setNamaProduk,
     getDataTransaksi,
-    uploadBukti
+    uploadBukti,
+    getDaftarTransaksi
 }
 
 export default userTransactionAction;

@@ -1,14 +1,23 @@
-import React from 'react'
+import React,{useEffect, useState} from 'react'
 import { useHistory, Link } from "react-router-dom";
-
+import { useDispatch,useSelector } from 'react-redux';
 import '../../assets/css/userglobal.css'
 import '../../assets/css/userpage.css'
 import UserSidebar from '../../components/organisms/user/usersidebar';
 import Navbar from '../../components/organisms/user/navbar';
 import Footer from '../../components/organisms/user/footer'
 import ModalDtlTransaksi from '../../components/organisms/user/modaldtltransaksi';
+import userTransactionAction from '../../redux/user/transaction/userTransactionAction';
+import NumberFormat from 'react-number-format'
 
 function UserTransaksi() {
+    const userTransaction = useSelector(state => state.userTransaction.daftarTransaksi)
+    const dispatch = useDispatch()
+    const [code, setCode] = useState("")
+    useEffect(() => {
+        dispatch(userTransactionAction.getDaftarTransaksi())
+        //dispatch(userTransactionAction.getDataTransaksi(code))
+    }, [])
 
     return (
         <>
@@ -54,29 +63,29 @@ function UserTransaksi() {
                                     <input type="date" className="small outline-primary hover-no-scale dropdown-toggle" />
                                 </div>
                             </div>
-
-                            {/* CARD TRANSAKSI */}
+                            {userTransaction.map((data,index)=>{
+                                return (
                             <div className="row justify-content-center">
-                                <div className="col-sm-12 transaction-list" data-bs-toggle="modal" data-bs-target="#modalDtlTransaksi">
+                                <div className="col-sm-12 transaction-list" data-bs-toggle="modal" data-bs-target="#modalDtlTransaksi" onClick={()=>{setCode(data.kode_transaksi);dispatch(userTransactionAction.getDataTransaksi(data.kode_transaksi))}}>
                                     <div className="row align-items-center">
                                         <div className="col-sm">
                                             <div className="row align-items-center">
                                                 <div className="col-sm-4">
                                                     <div className="img-container bg-pattern img-loading">
-                                                        <img src="" alt="" className="img-fluid rounded" />
+                                                        <img src={data.Produk[0].gambar} alt="" className="img-fluid rounded" />
                                                     </div>
                                                 </div>
                                                 <div className="col-sm">
                                                     <span className="text-muted lh-lg">
-                                                        [Tanggal]
+                                                        {/* {data.tanggal} */}
                                                     </span>
                                                     <h4 className="accent-title">
                                                         <a href="">
-                                                            [Kode]
+                                                            {data.kode_transaksi}
                                                         </a>
                                                     </h4>
                                                     <span className="lh-lg">
-                                                        [Jml Item]
+                                                        {data.quantity}
                                                     </span>
                                                 </div>
                                             </div>
@@ -87,27 +96,27 @@ function UserTransaksi() {
                                                    Total Belanja
                                                </span>
                                                <h4 className="accent-title accent-text text-end">
-                                                   [Total Belanja]
+                                               <NumberFormat value={data.harga} displayType={'text'} thousandSeparator={true} prefix={'Rp'}/>
                                                </h4>
                                            </div>
                                         </div>
-                                        <div className="col-sm-2">
+                                        <div className="col-sm-3">
                                             <div className="row align-items-center justify-content-end transaction-status-badge">
-                                                <span class="status-badge b-danger">Dibatalkan</span>
+                                                <span class="status-badge b-warning">{data.status}</span>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            {/* END OF CARD TRANSAKSI */}
-                            
+                            )
+                        })}
                         </div>
                     </div>
                 </div>
             </div>
             <Footer />
             {/* MODALS */}
-            <ModalDtlTransaksi />
+            <ModalDtlTransaksi code={code}/>
             {/* END OF MODALS */}
         </>
     )

@@ -98,6 +98,7 @@ const adminLogin = (email, password, history) => async (dispatch) => {
     dispatch(setAccessToken(admin.data.data.Authorization));
     dispatch(logIn());
     dispatch(stopLoading());
+    dispatch(resetForm())
     history.push("/admin/dash");
   } catch (error) {
     console.log(error.response);

@@ -64,7 +64,7 @@ function App() {
         <PrivateRoute path="/user-transaction" component={UserTransaksi} />
         <PrivateRoute path="/user-address" component={UserAlamat} />
         <PrivateRoute path="/checkout" component={Checkout} />
-        <PrivateRoute path="/pembayaran" component={Pembayaran} />
+        <PrivateRoute path="/payment/:code" component={Pembayaran} />
         <PrivateRoute path="/success" component={Success}/>
         {/* <PrivateRoute path="/cart" component={KantongBelanja} /> */}
         {/* Private */}

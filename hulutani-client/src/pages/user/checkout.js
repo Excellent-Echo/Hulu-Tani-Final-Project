@@ -33,7 +33,7 @@ function Checkout() {
             daftarAlamat.id,
             userTransaction.bukti
         ))
-        history.push("/payment")
+        history.push("/pembayaran")
     }
     return (
         <>

@@ -95,9 +95,10 @@ const adminLogin = (email, password, history) => async (dispatch) => {
     });
     localStorage.setItem("adminToken", admin.data.data.Authorization);
     // console.log(admin.data.data.Authorization);
-    dispatch(setAccessToken(admin.response.data.Authorization));
+    dispatch(setAccessToken(admin.data.data.Authorization));
     dispatch(logIn());
     dispatch(stopLoading());
+    history.push("/admin/dash");
   } catch (error) {
     console.log(error.response);
     dispatch(setErrorMessage(error.response));

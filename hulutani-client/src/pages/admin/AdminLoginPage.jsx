@@ -12,9 +12,9 @@ function AdminLoginPage() {
     handleAdminLogin = (e) => {
       e.preventDefault();
       dispatch(
-        adminLoginAction.adminLogin(loginData.email, loginData.password)
+        adminLoginAction.adminLogin(loginData.email, loginData.password, history)
       );
-      history.push("/admin/dash");
+      // history.push("/admin/dash");
     };
 
   return (

@@ -7,8 +7,6 @@ import AuthShape from '../../../assets/images/auth-bg-shape.svg'
 import PaymentSuccess from '../../../assets/images/payment-success.svg'
 import '../../../assets/css/status.css'
 
-import {Link} from "react-router-dom"
-
 function PembayaranSukses() {
     return (
         <>
@@ -23,12 +21,12 @@ function PembayaranSukses() {
                                     Selamat!
                                 </h1>
                                 <h2 className="title accent-text text-end">
-                                    Pembayaran kamu sedang di verifikasi!
+                                    Pembayaran kamu berhasil diverifikasi!
                                 </h2>
                                 <h5 className="accent-title mt-4 text-end">
-                                    <Link to="/products" className="btn-lanjut-belanja">
+                                    <a href="" className="btn-lanjut-belanja">
                                         Lanjut Belanja
-                                    </Link>
+                                    </a>
                                 </h5>
                             </div>
                         </div>

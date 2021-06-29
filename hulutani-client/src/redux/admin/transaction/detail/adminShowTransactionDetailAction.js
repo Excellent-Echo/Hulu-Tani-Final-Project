@@ -119,7 +119,7 @@ const konfirmStatus = (kode) => async dispatch =>{
     const token = localStorage.getItem("adminToken")
 
     const data = {
-      status:"Telah Dikonfirmasi"
+      status:"Di Proses"
     }
     
     const res = await hulutaniClient({
@@ -129,16 +129,39 @@ const konfirmStatus = (kode) => async dispatch =>{
       headers:{ Authorization: token },
     })
     dispatch(adminShowTransactionAction.getTransactions())
-    console.log("Berhasil konfirmasi")
-    //window.alert("Berhasil Konfirmasi!")
+    //console.log("Berhasil konfirmasi")
+    window.alert("Berhasil Konfirmasi!")
   } catch (error) {
     console.log(error)
   }
 }
 
+const cancelStatus = (kode) => async dispatch => {
+  try {
+    //console.log("Mengkonfirmasi")
+    const token = localStorage.getItem("adminToken")
+
+    const data = {
+      status:"Di Batalkan"
+    }
+    
+    const res = await hulutaniClient({
+      method:"PUT",
+      url:`/transaksi/${kode}`,
+      data:data,
+      headers:{ Authorization: token },
+    })
+    dispatch(adminShowTransactionAction.getTransactions())
+    //console.log("Berhasil konfirmasi")
+    window.alert("Berhasil dibatalkan!")
+  } catch (error) {
+    console.log(error)
+  }
+}
 const adminShowTransactionDetailAction = {
   getTransactionDetail,
-  konfirmStatus
+  konfirmStatus,
+  cancelStatus
 };
 
 export default adminShowTransactionDetailAction;

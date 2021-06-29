@@ -1,6 +1,6 @@
 const initialState = {
-    namalengkap:"",
-    telepon:"",
+    namaLengkap:"",
+    noTelepon:"",
     email:"",
     jenis:"",
     pesan:""
@@ -8,15 +8,15 @@ const initialState = {
 
 const adminAddContactReducer = (state =initialState, action) =>{
     switch(action.type){
-        case "CONTACT_ADD_NAMA":
+        case "CONTACT_ADD_NAMA_LENGKAP":
             return {
                 ...state,
-                namalengkap:action.payload
+                namaLengkap: action.payload
             }
-        case "CONTACT_ADD_TELEPON":
+        case "CONTACT_ADD_NO_TELEPON":
             return {
                 ...state,
-                telepon:action.payload
+                noTelepon:action.payload
             }
         case "CONTACT_ADD_EMAIL":
             return {

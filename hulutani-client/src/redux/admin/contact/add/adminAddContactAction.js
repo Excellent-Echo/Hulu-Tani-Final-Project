@@ -1,16 +1,17 @@
 import hulutaniClient from "../../../../APIs/hulutaniClient"
+import admiShowContactAction from "../show/adminShowContactAction"
 
 const setNama = (nama)=>{
     return {
-        type:"CONTACT_ADD_NAMA",
-        payload:nama
+        type:"CONTACT_ADD_NAMA_LENGKAP",
+        payload: nama
     }
 }
 
 const setTelepon = (telepon)=>{
     return {
-        type:"CONTACT_ADD_TELEPON",
-        payload:telepon
+        type:"CONTACT_ADD_NO_TELEPON",
+        payload: telepon
     }
 }
 
@@ -51,9 +52,10 @@ const addContact = (nama,telepon,email,jenis,pesan) => async dispatch =>{
             url:"/kontak",
             data:data
         })
-        console.log("berhasil add contact")
+        //console.log(add)
         window.alert("Berhasil mengirim pesan")
         dispatch(resetForm())
+        dispatch(admiShowContactAction.getContacts())
     } catch (error) {
         console.log(error)
     }

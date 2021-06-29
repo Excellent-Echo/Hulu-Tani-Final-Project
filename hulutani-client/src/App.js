@@ -42,6 +42,7 @@ import AdminContact from "./pages/admin/contact/AdminContactDashPage";
 //test
 import ImageUploadTest from "./pages/ImageUploadTest";
 import NoPage from "./pages/user/status/nopage";
+import catalogAction from "./redux/public/catalog/catalogAction";
 
 function App() {
   const dispatch = useDispatch();
@@ -51,6 +52,7 @@ function App() {
     dispatch(adminShowTransactionAction.getTransactions());
     dispatch(adminShowProductAction.getProducts());
     dispatch(adminShowContactAction.getContacts());
+    dispatch(catalogAction.getAllProducts())
   }, []);
 
   return (

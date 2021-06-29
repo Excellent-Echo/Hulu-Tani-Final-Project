@@ -16,7 +16,6 @@ function UserTransaksi() {
     const [code, setCode] = useState("")
     useEffect(() => {
         dispatch(userTransactionAction.getDaftarTransaksi())
-        //dispatch(userTransactionAction.getDataTransaksi(code))
     }, [])
 
     return (
@@ -52,12 +51,12 @@ function UserTransaksi() {
                                             Semua Status
                                         </button>
                                         <ul className="dropdown-menu">
-                                            <li><a className="dropdown-item" href="#">Menunggu Pembayaran</a></li>
-                                            <li><a className="dropdown-item" href="#">Diproses</a></li>
-                                            <li><a className="dropdown-item" href="#">Dikirim</a></li>
-                                            <li><a className="dropdown-item" href="#">Selesai</a></li>
+                                            <li className="dropdown-item">Menunggu Pembayaran</li>
+                                            <li className="dropdown-item">Diproses</li>
+                                            <li className="dropdown-item">Dikirim</li>
+                                            <li className="dropdown-item">Selesai</li>
                                             <li><hr className="dropdown-divider" /></li>
-                                            <li><a className="dropdown-item" href="#">Dibatalkan</a></li>
+                                            <li className="dropdown-item">Dibatalkan</li>
                                         </ul>
                                     </div>
                                     <input type="date" className="small outline-primary hover-no-scale dropdown-toggle" />

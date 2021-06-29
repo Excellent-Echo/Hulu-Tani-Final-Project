@@ -29,7 +29,7 @@ const getProductCategory1 = () => async dispatch => {
 
         const res = await hulutaniClient({
             method: "GET",
-            url:"/kategori/1"
+            url:"/kategori/6"
             //set hardcode category sesuai pilihan
         })
 
@@ -54,7 +54,7 @@ const getProductCategory2 = () => async dispatch => {
 
         const res = await hulutaniClient({
             method: "GET",
-            url:"/kategori/2"
+            url:"/kategori/7"
             //set hardcode category sesuai pilihan
         })
 

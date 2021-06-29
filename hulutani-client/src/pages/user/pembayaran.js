@@ -63,15 +63,16 @@ function Pembayaran() {
                 ...prevObject,
                 imgUrl: fireBaseUrl,
             }));
-            setTimeout(() => {
-                dispatch(userTransactionAction.uploadBukti(dataTransaksi.kode_transaksi,imageAsUrl.imgUrl))
-                window.alert("upload bukti transfer berhasil");
-                history.push("/success")
-              }, 15000);
-            })
-        }
-    );
-    };
+            window.alert("upload bukti transfer berhasil");
+        });
+    })}
+
+    const konfirmHandler = (e) =>{
+        e.preventDefault()
+        dispatch(userTransactionAction.uploadBukti(dataTransaksi.kode_transaksi,imageAsUrl.imgUrl))
+        window.alert("Pembayaran sedang diproses");
+        history.push("/success")
+    }
 
     return (
         <>
@@ -111,11 +112,11 @@ function Pembayaran() {
                                 </div>
                                 <div className="col-sm-12">
                                     <br />
-                                    SELESAIKAN PEMBAYARAN 
+                                    SELESAIKAN PEMBAYARAN DALAM
                                 </div>
                                 <div className="col-sm-12">
                                     <h1 className="accent-text accent-title">
-                                        Pembayaran Maksimal 3 Jam
+                                        3 Jam
                                     </h1>
                                     <p className="text-muted">
                                         Silakan lakukan pembayaran sebelum batas waktu 
@@ -163,11 +164,14 @@ function Pembayaran() {
                                 <div className="col-sm-12">
                                     <form action="">
                                         <div className="row align-items-center">
-                                            <div className="col-sm-7 mb-2">
+                                            <div className="col-sm-6 mb-2">
                                                 <input className="form-control small userpages" type="file" id="formFile" onChange={handleImageAsFile}/>
                                             </div>
-                                            <div className="col-sm-5">
-                                                <button type="submit" className="primary small long" onClick={handleImageUpload}>Konfirmasi Pembayaran</button>
+                                            <div className="col-sm-3">
+                                                <button type="submit" className="primary small long" onClick={handleImageUpload}>Upload</button>
+                                            </div>
+                                            <div className="col-sm-3">
+                                                <button type="submit" className="primary small long" onClick={konfirmHandler}>Konfirmasi</button>
                                             </div>
                                         </div>
                                     </form>

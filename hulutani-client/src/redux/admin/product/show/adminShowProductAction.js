@@ -16,7 +16,7 @@ const getProducts = () => async (dispatch) => {
       type: ADMIN_SHOW_SET_PRODUCTS,
       payload: res.data.data,
     });
-    console.log(res.data.data.length)
+    //console.log(res.data.data.length)
     dispatch(setAmount(res.data.data.length))
 
     console.log("completed");

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 
 import '../../../assets/css/navbar.css'
 import CategoryHeader from './categoryHeader'
+import SearchBar from './SearchBar'
 
 const PublicNav = () => {
 
@@ -19,9 +20,7 @@ const PublicNav = () => {
 
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <CategoryHeader/>
-                            <form class="d-flex justify-content-center">
-                                <input class="form-control small userpages w-100" type="search" placeholder="Cari produk" aria-label="Search" />
-                            </form>
+                            <SearchBar/>
                             <ul class="navbar-nav ms-auto d-flex align-items-center">
                                 <li class="nav-item">
                                     <Link class="nav-link" to="/">Home</Link>

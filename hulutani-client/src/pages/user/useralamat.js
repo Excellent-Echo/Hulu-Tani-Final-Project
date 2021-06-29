@@ -74,8 +74,8 @@ function UserAlamat() {
                                 {/* CARD ALAMAT */}
                                 {daftarAlamat.map((data,index)=> {
                                     return (
-                                        <div className="col-sm card-container">
-                                            <div className="card product-card card-outline-primary h-80" style={{ width: "15rem" }}>
+                                        <div className="col-sm card-alamat-user card-container">
+                                            <div className="card card-outline-primary h-100">
                                                 <div className="card-body">
                                                     <div className="row badge-container align-items-start">
                                                         <div className="col-sm">
@@ -83,7 +83,6 @@ function UserAlamat() {
                                                         </div>
                                                         <div className="col-sm d-flex justify-content-end">
                                                             <button className="b-danger xsmall btn-trash me-2" onClick={()=>handleClickDelete(data.id)}></button>
-                                                            <button className="b-info xsmall btn-edit" data-bs-toggle="modal" data-bs-target="#modalEdAlamat"></button>
                                                         </div>
                                                     </div>
                                                     <br />

@@ -115,6 +115,10 @@ button.btn-love:hover {
         margin-bottom: 15px;
     }
 
+    .card-product {
+        /* width: 100vw; */
+    }
+
     /* DETAIL */
     .product-content {
         margin-top: 5vh;

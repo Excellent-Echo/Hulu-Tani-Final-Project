@@ -27,7 +27,7 @@ const UserSidebar = () => {
                                                         <div className="row filter">
                                                             <div className="list-group">
                                                                 <Link to="user-transaction">
-                                                                    <button className="list-group-item list-group-item-action user-sidebar-button current">
+                                                                    <button className="list-group-item list-group-item-action user-sidebar-button">
                                                                         <span className="sidebar-button">
                                                                             <span className="user-sidebar-icon transaksi"></span>
                                                                             Transaksi Saya

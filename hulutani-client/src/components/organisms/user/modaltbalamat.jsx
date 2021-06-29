@@ -33,28 +33,28 @@ const ModalTbAlamat = () => {
                             <form className="row g-3">
                                 <div className="col-sm-6">
                                     <label for="namaLengkap" className="form-label accent-title">Nama Lengkap</label>
-                                    <input type="text" className="form-control userpages" id="namaLengkap" 
+                                    <input type="text" className="form-control small userpages" id="namaLengkap" 
                                     value={alamatData.nama}
                                     onChange={(e) => dispatch(addressAction.setNama(e.target.value))}
                                     />
                                 </div>
                                 <div className="col-sm-6">
                                     <label for="noTelp" className="form-label accent-title">No. Telepon</label>
-                                    <input type="text" className="form-control userpages" id="notelp" 
+                                    <input type="text" className="form-control small userpages" id="notelp" 
                                     value={alamatData.telepon}
                                     onChange={(e) => dispatch(addressAction.setTelepon(e.target.value))}
                                     />
                                 </div>
                                 <div className="col-sm-12">
                                     <label for="alamat" className="form-label accent-title">Alamat Lengkap</label>
-                                    <textarea className="form-control userpages" id="alamat" rows="3"
+                                    <textarea className="form-control small userpages" id="alamat" rows="3"
                                     value={alamatData.alamatLengkap}
                                     onChange={(e) => dispatch(addressAction.setAlamatLengkap(e.target.value))}
                                     ></textarea>
                                 </div>
                                 <div className="col-sm-6">
                                     <label for="kota" className="form-label accent-title">Kota</label>
-                                    <select type="text" className="form-control userpages" id="kota" 
+                                    <select type="text" className="form-control small userpages" id="kota" 
                                     onChange={(e) => {
                                         dispatch(addressAction.setCityId(e.target.value));
                                         }}>
@@ -67,7 +67,7 @@ const ModalTbAlamat = () => {
                                 </div>
                                 <div className="col-sm-6">
                                     <label for="provinsi" className="form-label accent-title">Provinsi</label>
-                                    <select type="text" className="form-control userpages" id="provinsi" onChange={(e) => dispatch(addressAction.setProvinsi(e.target.value))}>
+                                    <select type="text" className="form-control small userpages" id="provinsi" onChange={(e) => dispatch(addressAction.setProvinsi(e.target.value))}>
                                     {alamatData.daftarProvinsi.map((data,index)=>{
                                             return (
                                                 <option value={data.province}>{data.province}</option>

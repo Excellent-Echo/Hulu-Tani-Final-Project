@@ -38,36 +38,45 @@ const ProductFilter = () => {
                                                                 <ul className="list-unstyled">
                                                                     {categories.map((data,index)=>{
                                                                         return (
-                                                                            <li key={index} onClick={()=>dispatch(catalogAction.getFilterdProductsByCategory(data.id))}>
-                                                                                {data.nama}
+                                                                            <li key={index}>
+                                                                                <a onClick={() => dispatch(catalogAction.getFilterdProductsByCategory(data.id))}>
+                                                                                    {data.nama}
+                                                                                </a>
                                                                             </li>
                                                                         )
                                                                     })}
                                                                     
                                                                 </ul>
                                                             </div>
-                                                            <div className="col-sm">
+                                                        </div>
+                                                        <div className="row filter">
+                                                           <div className="col-sm">
                                                                 <h6 className="accent-text accent-title">
                                                                     HARGA
                                                                 </h6>
                                                                 <ul className="list-unstyled">
-                                                                    <li onClick={()=> dispatch(catalogAction.getFilterdProductsByPrice(0,50000))}>
-                                                                       Rp 0 - Rp 50.000
+                                                                    <li>
+                                                                       <a  onClick={()=> dispatch(catalogAction.getFilterdProductsByPrice(0,50000))}>
+                                                                            Rp 0 - Rp 50.000
+                                                                       </a>
                                                                     </li>
-                                                                    <li onClick={()=> dispatch(catalogAction.getFilterdProductsByPrice(50000,100000))}>
-                                                                        Rp 50.000 - Rp 100.000
+                                                                    <li>
+                                                                        <a onClick={() => dispatch(catalogAction.getFilterdProductsByPrice(50000, 100000))}>
+                                                                            Rp 50.000 - Rp 100.000
+                                                                        </a>
                                                                     </li>
-                                                                    <li onClick={()=> dispatch(catalogAction.getFilterdProductsByPrice(100000,500000))}>
-                                                                        Rp 100.000 - Rp 500.000
+                                                                    <li>
+                                                                        <a onClick={() => dispatch(catalogAction.getFilterdProductsByPrice(100000, 500000))}>
+                                                                            Rp 100.000 - Rp 500.000
+                                                                        </a>
                                                                     </li>
-                                                                    <li onClick={()=> dispatch(catalogAction.getFilterdProductsByPrice(500000,1000000))}>
-                                                                        Rp 500.000 - Rp 1.000.000
+                                                                    <li>
+                                                                        <a onClick={() => dispatch(catalogAction.getFilterdProductsByPrice(500000, 1000000))}>
+                                                                            Rp 500.000 - Rp 1.000.000
+                                                                        </a>
                                                                     </li>
                                                                 </ul>
-                                                            </div>
-                                                        </div>
-                                                        <div className="row filter">
-
+                                                            </div>                     
                                                         </div>
                                                     </div>
                                                 </div>

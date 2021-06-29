@@ -87,7 +87,7 @@ function Checkout() {
                                                         <div className="row align-items-center">
                                                             <div className="col-sm">
                                                                 <p>{daftarAlamat.nama}</p>
-                                                                <p>{daftarAlamat.alamatLengkap}</p>{console.log(daftarAlamat.cityId)}
+                                                                <p>{daftarAlamat.alamatLengkap}</p>
                                                             </div>
                                                         </div>
                                                     </div>

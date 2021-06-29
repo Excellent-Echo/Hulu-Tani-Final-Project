@@ -12,7 +12,7 @@ import {
 
 const initialState = {
     id:0,
-    name:"",
+    name:[],
     dateBirth:"",
     handphoneNumber:"",
     gender:"",

@@ -17,7 +17,7 @@ const ModalDtlTransaksi = ({ code }) => {
 
     const uploadHandler = (e) => {
         e.preventDefault()
-        if(userTransaction.status === "Di Proses"){
+        if(userTransaction.status !== "Di Proses"){
             if (userTransaction.bukti_transfer === "") {
                 history.push(`/payment/${userTransaction.kode_transaksi}`)
             } else {

@@ -6,7 +6,7 @@ import IsLoggedIn from "./isLoggedIn";
 const NavBar = ()=> {
     const isLogin = useSelector(state => state.userLogin.isLogin)
 
-    console.log(isLogin)
+    //console.log(isLogin)
 
     return (
         <>

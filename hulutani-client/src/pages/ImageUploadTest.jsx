@@ -6,7 +6,7 @@ function ImageUploadTest() {
     const [imageAsFile, setImageAsFile] = useState('')
     const [imageAsUrl, setImageAsUrl] = useState(allInputs)
 
-    console.log(imageAsFile)
+    //console.log(imageAsFile)
 
     const handleImageAsFile = (e) => {
       const image = e.target.files[0]

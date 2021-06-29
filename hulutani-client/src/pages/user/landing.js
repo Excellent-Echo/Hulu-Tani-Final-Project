@@ -230,7 +230,7 @@ function LandingPage() {
                                 <div className="row section3-card-container">
                                     {landingProduct.productByCategory1.map((data,index)=>{
                                 return (
-                                    <div className="col-sm product-card-container">
+                                    <div className="col-sm product-card-container" key={index}>
                                         <Link to={`/product/${data.id}`}>
                                         <div className="card product-card card-outline-primary h-100" style={{ width: "11.8rem" }}>
                                             <div className="img-container product-img bg-pattern">
@@ -275,7 +275,7 @@ function LandingPage() {
                                 <div className="row section3-card-container">
                                 {landingProduct.productByCategory2.map((data,index)=>{
                                 return (
-                                    <div className="col-sm product-card-container">
+                                    <div className="col-sm product-card-container" key={index}>
                                          <Link to={`/product/${data.id}`}>
                                         <div className="card product-card card-outline-primary h-100" style={{ width: "11.8rem" }}>
                                             <div className="img-container product-img bg-pattern">

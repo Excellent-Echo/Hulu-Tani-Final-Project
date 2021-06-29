@@ -9,6 +9,7 @@ import '../../assets/css/produk.css'
 import ProductFilter from '../../components/organisms/user/productfilter'
 import Navbar from '../../components/organisms/user/navbar'
 import Footer from '../../components/organisms/user/footer.jsx'
+// import PromoBanner from '../../assets/images/7937.jpg'
 
 function ProdukList() {
 	const catalogProduct = useSelector(state => state.catalogProduct)
@@ -38,14 +39,14 @@ function ProdukList() {
 						<div className="container">
 							<div className="row product-list justify-content-end">								
 								<div className="col-sm content-container x">
-									<div className="row banner-container">
+									{/* <div className="row banner-container">
 										<div className="col-sm-8 promo-banner bg-pattern banner-1">
-
+											<image  src={PromoBanner} alt="promo banner" srcset=""/>
 										</div>
 										<div className="col-sm promo-banner bg-pattern banner-2">
 
 										</div>
-									</div>
+									</div> */}
 									{/* <div className="row mt-3 mb-3">
 										<div className="col-sm d-flex align-content-center">
 											<p className="title">

@@ -24,7 +24,7 @@ const AddProductForm = () => {
     [imageAsUrl, setImageAsUrl] = useState(allInputs),
     [categoryId, setCategoryId] = useState(0);
 
-  console.log(imageAsFile);
+  //console.log(imageAsFile);
 
   const handleImageAsFile = (e) => {
     const image = e.target.files[0];

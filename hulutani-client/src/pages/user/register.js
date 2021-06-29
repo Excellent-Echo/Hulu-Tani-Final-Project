@@ -37,7 +37,7 @@ function Register() {
                                     <label for="exampleInputEmail1" className="form-label">Email</label>
                                     <input 
                                     type="email" 
-                                    className=" userpages" 
+                                    className="form-control small userpages" 
                                     id="exampleInputEmail1" 
                                     aria-describedby="emailHelp"
                                     value={registerData.email}
@@ -48,7 +48,7 @@ function Register() {
                                     <label for="exampleInputPassword1" className="form-label">Password</label>
                                     <input 
                                     type="password" 
-                                    className="form-control userpages" 
+                                    className="form-control small userpages" 
                                     id="exampleInputPassword1"
                                     value={registerData.password}
                                     onChange={(e)=> dispatch(userRegisterAction.setPassword(e.target.value))}

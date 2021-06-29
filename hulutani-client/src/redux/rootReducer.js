@@ -20,6 +20,7 @@ import editProductReducer from "./admin/product/edit/adminEditProductReducer";
 import showContactReducer from "./admin/contact/show/adminShowContactReducer";
 import ShowTransactionReducer from "./admin/transaction/show/adminShowTransactionReducer";
 import ShowTransactionDetailReducer from "./admin/transaction/detail/adminShowTransactionDetailReducer";
+import adminAddContactReducer from "./admin/contact/add/adminAddContactReducer";
 
 const rootReducer = combineReducers({
   userRegister: userRegisterReducer,
@@ -40,6 +41,7 @@ const rootReducer = combineReducers({
   adminLogin: adminLoginReducer,
   adminShowTransactions: ShowTransactionReducer,
   adminShowTransactionDetail: ShowTransactionDetailReducer,
+  addContact: adminAddContactReducer
 });
 
 export default rootReducer;

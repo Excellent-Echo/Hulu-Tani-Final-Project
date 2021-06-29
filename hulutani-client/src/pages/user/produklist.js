@@ -76,13 +76,13 @@ function ProdukList() {
 									<div className="row product-card-container">
 										{catalogProduct.allProduct.map((data,index)=>{
 											return (
-											<div className="col-sm card-container" key={index}>
+											<div className="col-4 card-container" key={index}>
 												<Link to={`/product/${data.id}`}>
-												<div className="card product-card card-outline-primary h-100" style={{ width: "11.8rem" }}>
+												<div className="card product-card card-product card-outline-primary h-100">
 													<span className="badge product-btn-wl b-transparent">
 														{/* <i class="far fa-heart fa-2x"></i> */}
 													</span>
-													<div className="img-container product-img bg-pattern">
+													<div className="card-img-container product-img bg-pattern">
 														<img src={data.gambar} class="card-img-top img-fluid" alt="..." />
 													</div>
 													<div className="card-body">

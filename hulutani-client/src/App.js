@@ -7,7 +7,9 @@ import AdminRoute from "./components/route/AdminRoute";
 
 // Action
 import adminShowCategoryAction from "./redux/admin/category/show/adminShowCategoryAction";
-
+import adminShowTransactionAction from "./redux/admin/transaction/show/adminShowTransactionAction";
+import adminShowProductAction from "./redux/admin/product/show/adminShowProductAction";
+import adminShowContactAction from "./redux/admin/contact/show/adminShowContactAction";
 //Public
 import Landing from "./pages/user/landing";
 import ProdukList from "./pages/user/produklist";
@@ -40,12 +42,17 @@ import AdminContact from "./pages/admin/contact/AdminContactDashPage";
 //test
 import ImageUploadTest from "./pages/ImageUploadTest";
 import NoPage from "./pages/user/status/nopage";
+import catalogAction from "./redux/public/catalog/catalogAction";
 
 function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(adminShowCategoryAction.getCategories());
+    dispatch(adminShowTransactionAction.getTransactions());
+    dispatch(adminShowProductAction.getProducts());
+    dispatch(adminShowContactAction.getContacts());
+    dispatch(catalogAction.getAllProducts())
   }, []);
 
   return (

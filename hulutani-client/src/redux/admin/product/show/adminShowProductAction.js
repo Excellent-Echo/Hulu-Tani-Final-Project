@@ -16,12 +16,21 @@ const getProducts = () => async (dispatch) => {
       type: ADMIN_SHOW_SET_PRODUCTS,
       payload: res.data.data,
     });
+    console.log(res.data.data.length)
+    dispatch(setAmount(res.data.data.length))
 
     console.log("completed");
   } catch (error) {
     console.log(error);
   }
 };
+
+const setAmount=(amount)=>{
+  return {
+    type:"ADMIN_SHOW_PRODUCT_SET_AMOUNT",
+    payload:amount
+  }
+}
 
 const adminShowProductAction = {
   getProducts,

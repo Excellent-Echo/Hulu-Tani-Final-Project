@@ -1,5 +1,6 @@
 const initialState = {
-    contacts:[]
+    contacts:[],
+    amount:0
 }
 
 const adminShowContactReducer = (state= initialState, action) => {
@@ -8,6 +9,11 @@ const adminShowContactReducer = (state= initialState, action) => {
             return {
                 ...state,
                 contacts: action.payload
+            }
+        case "ADMIN_SHOW_CONTACT_SET_AMOUNT":
+            return {
+                ...state,
+                amount: action.payload
             }
         default:
             return state

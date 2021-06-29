@@ -5,10 +5,11 @@ import adminShowProductAction from "../show/adminShowProductAction";
 const deleteProduct = (id) => async dispatch => {
     try {
         console.log("Deleting Product...")
-
+        const token = localStorage.getItem("adminToken");
         const deletedProduct = await hulutaniClient({
             method : "DELETE",
-            url: `/produk/${id}`
+            url: `/produk/${id}`,
+            headers: { Authorization: token },
         })
         dispatch(adminShowProductAction.getProducts())
         console.log("Success Delete Product")

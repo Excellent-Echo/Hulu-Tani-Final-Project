@@ -19,11 +19,27 @@ const getTransactions = () => async (dispatch) => {
       payload: res.data.data,
     });
 
+    for(let x=0; x<10;x++){
+      dispatch({
+        type: "ADMIN_SHOW_RECENT",
+        payload: res.data.data[x]
+      })
+   } 
+    //console.log(res.data.data.length)
+    dispatch(setAmount(res.data.data.length))
+
     console.log("completed");
   } catch (error) {
     console.log(error);
   }
 };
+
+const setAmount=(amount)=>{
+  return {
+    type:"ADMIN_SHOW_SET_AMOUNT",
+    payload:amount
+  }
+}
 
 const adminShowTransactionAction = {
   getTransactions,

@@ -1,8 +1,15 @@
 import React from 'react'
 
 import '../../../assets/css/productfilter.css'
+import { useDispatch, useSelector } from 'react-redux';
+import catalogAction from '../../../redux/public/catalog/catalogAction';
 
 const ProductFilter = () => {
+    const categories = useSelector(
+        (state) => state.adminShowCategory.categories
+      );
+    const dispatch = useDispatch()
+
     return (
         <>
             <div className="container-fluid sidebar-container">
@@ -29,42 +36,47 @@ const ProductFilter = () => {
                                                                     KATEGORI
                                                                 </h6>
                                                                 <ul className="list-unstyled">
-                                                                    <li>
-                                                                        <a href="">Sayuran</a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="">Buah</a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="">Olahan Pangan</a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="">Ikan</a>
-                                                                    </li>
+                                                                    {categories.map((data,index)=>{
+                                                                        return (
+                                                                            <li key={index}>
+                                                                                <a onClick={() => dispatch(catalogAction.getFilterdProductsByCategory(data.id))}>
+                                                                                    {data.nama}
+                                                                                </a>
+                                                                            </li>
+                                                                        )
+                                                                    })}
+                                                                    
                                                                 </ul>
                                                             </div>
-                                                            <div className="col-sm">
+                                                        </div>
+                                                        <div className="row filter">
+                                                           <div className="col-sm">
                                                                 <h6 className="accent-text accent-title">
                                                                     HARGA
                                                                 </h6>
                                                                 <ul className="list-unstyled">
                                                                     <li>
-                                                                        <a href="">dibawah Rp 50k</a>
+                                                                       <a  onClick={()=> dispatch(catalogAction.getFilterdProductsByPrice(0,50000))}>
+                                                                            Rp 0 - Rp 50.000
+                                                                       </a>
                                                                     </li>
                                                                     <li>
-                                                                        <a href="">diatas Rp 50k</a>
+                                                                        <a onClick={() => dispatch(catalogAction.getFilterdProductsByPrice(50000, 100000))}>
+                                                                            Rp 50.000 - Rp 100.000
+                                                                        </a>
                                                                     </li>
                                                                     <li>
-                                                                        <a href="">dibawah Rp 100k</a>
+                                                                        <a onClick={() => dispatch(catalogAction.getFilterdProductsByPrice(100000, 500000))}>
+                                                                            Rp 100.000 - Rp 500.000
+                                                                        </a>
                                                                     </li>
                                                                     <li>
-                                                                        <a href="">diatas Rp 100k</a>
+                                                                        <a onClick={() => dispatch(catalogAction.getFilterdProductsByPrice(500000, 1000000))}>
+                                                                            Rp 500.000 - Rp 1.000.000
+                                                                        </a>
                                                                     </li>
                                                                 </ul>
-                                                            </div>
-                                                        </div>
-                                                        <div className="row filter">
-
+                                                            </div>                     
                                                         </div>
                                                     </div>
                                                 </div>

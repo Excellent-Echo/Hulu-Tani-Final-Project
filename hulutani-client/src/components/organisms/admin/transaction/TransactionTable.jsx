@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import adminShowTransactionAction from "../../../../redux/admin/transaction/show/adminShowTransactionAction";
+import NumberFormat from "react-number-format";
 
 const ths = [
     { name: "ID" },
@@ -37,7 +38,7 @@ const ths = [
                 <tr>
                   <td className="text-center">{index}</td>
                   <td className="text-center">{data.kode_transaksi}</td>
-                  <td className="text-center">{data.harga}</td>
+                  <td className="text-center"><NumberFormat value={data.harga} displayType={'text'} thousandSeparator={true} prefix={'Rp'}/></td>
                   <td className="text-center">{data.status}</td>
                   <td className="text-center">
                     <Link

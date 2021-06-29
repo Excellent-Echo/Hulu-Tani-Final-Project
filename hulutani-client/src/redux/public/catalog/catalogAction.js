@@ -118,23 +118,23 @@ const getFilterdProductsByPrice = (data) => async dispatch => {
     }
 }
 
-const getSearchedProducts = (searchKey) => async dispatch =>{
+const getSearchedProducts = (searchKey,history) => async dispatch =>{
     try {
         dispatch(startLoading())
 
         const res = await hulutaniClient({
             method: "GET",
-            url:`/products?search=${searchKey}`
+            url:`/produk/nama/${searchKey}`
         })
 
         dispatch({
-            type: CATALOG_SET_SEARCHED_PRODUCTS,
-            payload: {
-                searchedProduct: res.data
-            }
+            type: CATALOG_SET_FILTERED_PRODUCTS,
+            payload: res.data.data
         })
 
+        dispatch(getAllProducts)
         dispatch(stopLoading())
+        history.push("/products")
     } catch (error) {
         console.log(error)
         dispatch(setErrorMessage(error.response));

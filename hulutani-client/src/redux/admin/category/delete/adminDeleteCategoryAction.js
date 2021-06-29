@@ -5,10 +5,11 @@ import adminShowCategoryAction from "../show/adminShowCategoryAction";
 const deleteCategory = (id) => async dispatch => {
     try {
         console.log("Deleting Category...")
-
+        const token = localStorage.getItem("adminToken");
         const deletedCategory = await hulutaniClient({
             method : "DELETE",
-            url: `/kategori/${id}`
+            url: `/kategori/${id}`,
+            headers: { Authorization: token },
         })
 
         dispatch(adminShowCategoryAction.getCategories())

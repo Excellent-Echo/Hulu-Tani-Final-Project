@@ -83,7 +83,7 @@ const resetForm = ()=>{
 const addProduct = (nama,description,price,promo,stock,measure,image,categoryId) => async dispatch =>{
     try {
         console.log("Adding Product..")
-
+        const token = localStorage.getItem("adminToken");
         const dataProduct = {
             nama:nama,
             deskripsi:description,
@@ -100,7 +100,8 @@ const addProduct = (nama,description,price,promo,stock,measure,image,categoryId)
         const addData = await hulutaniClient({
             method: "POST",
             url: "/produk",
-            data: dataProduct
+            data: dataProduct,
+            headers: { Authorization: token },
         })
         
         console.log("add product success")

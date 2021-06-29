@@ -76,7 +76,7 @@ const setCategoryId = categoryId => {
 const updateProduct = (id,nama,description,price,promo,stock,measure,image,categoryId) => async dispatch =>{
     try {
         console.log("updating Product..")
-
+        const token = localStorage.getItem("adminToken");
         const dataProduct = {
             nama:nama,
             deskripsi:description,
@@ -93,7 +93,8 @@ const updateProduct = (id,nama,description,price,promo,stock,measure,image,categ
         const updateData = await hulutaniClient({
             method: "PUT",
             url: `/produk/${id}`,
-            data: dataProduct
+            data: dataProduct,
+            headers: { Authorization: token },
         })
         
         console.log("update product success")

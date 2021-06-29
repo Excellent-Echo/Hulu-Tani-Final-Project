@@ -1,22 +1,29 @@
 import React from "react"
-import { Link } from "react-router-dom";
-import { useSelector } from 'react-redux'
+import { Link, useHistory } from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux'
+import catalogAction from "../../../redux/public/catalog/catalogAction";
 
 const CategoryHeader = ()=> {
     const adminShowCategory = useSelector(
         (state) => state.adminShowCategory.categories
       );
+    const dispatch= useDispatch()
+    const history = useHistory()
+    const clickHanlder =(id)=>{
+        dispatch(catalogAction.getFilterdProductsByCategory(id))
+        history.push(`/products`)
+    }
 
     return(
-        <div class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <div className="nav-item dropdown">
+        <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Kategori
         </a>
-        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
         {adminShowCategory.map((data, index) => {
             return (
-            <li key={index}>
-                <Link class="dropdown-item" to={`/products`}>{data.nama}</Link>
+            <li key={index} className="dropdown-item" onClick={()=>clickHanlder(data.id)}>
+                {data.nama}
             </li>
             );
         })}

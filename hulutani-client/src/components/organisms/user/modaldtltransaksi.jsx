@@ -17,11 +17,16 @@ const ModalDtlTransaksi = ({ code }) => {
 
     const uploadHandler = (e) => {
         e.preventDefault()
-        if (userTransaction.bukti_transfer === "") {
-            history.push(`/payment/${userTransaction.kode_transaksi}`)
-        } else {
-            history.puus("/products")
+        if(userTransaction.status === "Telah Dikonfirmasi"){
+            if (userTransaction.bukti_transfer === "") {
+                history.push(`/payment/${userTransaction.kode_transaksi}`)
+            } else {
+                history.push("/products")
+            }
+        }else{
+            window.alert("Transaksi Telah dikonfirmasi")
         }
+
     }
     return (
         <>

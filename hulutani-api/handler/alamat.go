@@ -27,7 +27,7 @@ func NewAlamatHandler(alamatService alamat.Service) *alamatHandler {
 // @Success 200 {object} helper.Response
 // @Failure 401 {object} helper.Failure
 // @Failure 500 {object} helper.Failure
-// @Router /admin [get]
+// @Router /alamat [get]
 func (h *alamatHandler) ShowAlamatByPelangganId(c *gin.Context) {
 	id := int(c.MustGet("currentUser").(int))
 	idPelanggan := strconv.Itoa(id)
@@ -83,7 +83,7 @@ func (h *alamatHandler) ShowAlamatByAlamatId(c *gin.Context) {
 // @Success 400 {object} helper.Failure
 // @Failure 401 {object} helper.Failure
 // @Failure 500 {object} helper.Failure
-// @Router /admin [post]
+// @Router /alamat [post]
 func (h *alamatHandler) CreateAlamatHandler(c *gin.Context) {
 	id := int(c.MustGet("currentUser").(int))
 	var inputAlamat entity.AlamatInput
@@ -119,7 +119,7 @@ func (h *alamatHandler) CreateAlamatHandler(c *gin.Context) {
 // @Failure 400 {object} helper.Failure
 // @Failure 401 {object} helper.Failure
 // @Failure 500 {object} helper.Failure
-// @Router /admin/{alamat_id} [put]
+// @Router /alamat/{alamat_id} [put]
 func (h *alamatHandler) UpdateAlamatByIdHandler(c *gin.Context) {
 	id := c.Param("alamat_id")
 
@@ -156,7 +156,7 @@ func (h *alamatHandler) UpdateAlamatByIdHandler(c *gin.Context) {
 // @Param alamat_id path string true "id alamat"
 // @Success 200 {object} helper.Delete
 // @Failure 500 {object} helper.Failure
-// @Router /admin/{alamat_id} [delete]
+// @Router /alamat/{alamat_id} [delete]
 func (h *alamatHandler) DeleteAlamatByIdHandler(c *gin.Context) {
 
 	id := c.Param("alamat_id")

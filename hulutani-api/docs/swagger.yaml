@@ -3,6 +3,8 @@ definitions:
     properties:
       alamat_detail:
         type: string
+      city_id:
+        type: string
       id_pelanggan:
         type: integer
       kota:
@@ -61,27 +63,6 @@ definitions:
       password:
         type: string
     type: object
-  entity.Produk:
-    properties:
-      deskripsi:
-        type: string
-      gambar:
-        type: string
-      harga:
-        type: integer
-      id:
-        type: integer
-      id_kategori:
-        type: integer
-      nama:
-        type: string
-      promo:
-        type: string
-      stok:
-        type: integer
-      takaran:
-        type: string
-    type: object
   entity.ProdukInput:
     properties:
       deskripsi:
@@ -110,30 +91,29 @@ definitions:
     type: object
   entity.TransaksiInput:
     properties:
+      bukti_transfer:
+        type: string
       harga:
         type: integer
-      id_pelanggan:
+      id_alamat:
         type: integer
       id_produk:
         type: integer
-      kode_transaksi:
-        type: string
       metode_pembayaran:
         type: string
-      produk:
-        items:
-          $ref: '#/definitions/entity.Produk'
-        type: array
       quantity:
         type: integer
       status:
-        type: string
-      tanggal:
         type: string
     type: object
   entity.UpdateStatus:
     properties:
       status:
+        type: string
+    type: object
+  entity.UploadBuktiTransfer:
+    properties:
+      bukti_transfer:
         type: string
     type: object
   helper.Delete:
@@ -164,7 +144,30 @@ definitions:
 info:
   contact: {}
 paths:
-  /admin:
+  /admin/login:
+    post:
+      consumes:
+      - application/json
+      description: Login Admin
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/helper.Response'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/helper.Failure'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/helper.Failure'
+      summary: Login Admin
+      tags:
+      - Admin
+  /alamat:
     get:
       consumes:
       - application/json
@@ -224,7 +227,7 @@ paths:
       summary: Create New Alamat
       tags:
       - Alamat
-  /admin/{alamat_id}:
+  /alamat/{alamat_id}:
     delete:
       consumes:
       - application/json
@@ -249,6 +252,36 @@ paths:
       security:
       - Auth: []
       summary: Delete Alamat By ID
+      tags:
+      - Alamat
+    get:
+      consumes:
+      - application/json
+      description: Get Alamat By ID
+      parameters:
+      - description: id alamat
+        in: path
+        name: alamat_id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/helper.Response'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/helper.Failure'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/helper.Failure'
+      security:
+      - Auth: []
+      summary: Get Alamat By ID
       tags:
       - Alamat
     put:
@@ -289,60 +322,6 @@ paths:
       security:
       - Auth: []
       summary: Update Alamat By ID
-      tags:
-      - Alamat
-  /admin/login:
-    post:
-      consumes:
-      - application/json
-      description: Login Admin
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            $ref: '#/definitions/helper.Response'
-        "401":
-          description: Unauthorized
-          schema:
-            $ref: '#/definitions/helper.Failure'
-        "500":
-          description: Internal Server Error
-          schema:
-            $ref: '#/definitions/helper.Failure'
-      summary: Login Admin
-      tags:
-      - Admin
-  /alamat/{alamat_id}:
-    get:
-      consumes:
-      - application/json
-      description: Get Alamat By ID
-      parameters:
-      - description: id alamat
-        in: path
-        name: alamat_id
-        required: true
-        type: string
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            $ref: '#/definitions/helper.Response'
-        "401":
-          description: Unauthorized
-          schema:
-            $ref: '#/definitions/helper.Failure'
-        "500":
-          description: Internal Server Error
-          schema:
-            $ref: '#/definitions/helper.Failure'
-      security:
-      - Auth: []
-      summary: Get Alamat By ID
       tags:
       - Alamat
   /cost/{destination}:
@@ -723,6 +702,8 @@ paths:
       security:
       - Auth: []
       summary: Create new Produk Transaksi
+      tags:
+      - Transaksi
   /produk/{produk_id}:
     delete:
       consumes:
@@ -933,7 +914,7 @@ paths:
     get:
       consumes:
       - application/json
-      description: Get All Transaksi
+      description: Get All Transaksi ID User
       produces:
       - application/json
       responses:
@@ -951,7 +932,7 @@ paths:
             $ref: '#/definitions/helper.Failure'
       security:
       - Auth: []
-      summary: Get All Transaksi
+      summary: Get All Transaksi By ID User
       tags:
       - Transaksi
     post:
@@ -1054,6 +1035,68 @@ paths:
       security:
       - Auth: []
       summary: Update status by kode transaksi
+      tags:
+      - Transaksi
+  /transaksi/all:
+    get:
+      consumes:
+      - application/json
+      description: Get All Transaksi
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/helper.Response'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/helper.Failure'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/helper.Failure'
+      security:
+      - Auth: []
+      summary: Get All Transaksi
+      tags:
+      - Transaksi
+  /upload-bukti-transfer/{kode_transaksi}:
+    put:
+      consumes:
+      - application/json
+      description: update bukti transfer by kode transaksi
+      parameters:
+      - description: kode transaksi
+        in: path
+        name: kode_transaksi
+        required: true
+        type: string
+      - description: update bukti transfer
+        in: body
+        name: bukti
+        required: true
+        schema:
+          $ref: '#/definitions/entity.UploadBuktiTransfer'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/helper.Response'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/helper.Failure'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/helper.Failure'
+      security:
+      - Auth: []
+      summary: Update bukti transfer by kode transaksi
       tags:
       - Transaksi
   /user:

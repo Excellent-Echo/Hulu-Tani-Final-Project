@@ -21,6 +21,7 @@ type Transaksi struct {
 }
 
 type Repository interface {
+	FindAllTransaksi() ([]entity.Transaksi, error)
 	FindAll(idPelanggan string) ([]entity.Transaksi, error)
 	Create(transaksi entity.Transaksi) (entity.Transaksi, error)
 	CreateProdukTransaksi(produkTransaksi entity.ProdukTransaksi) (entity.ProdukTransaksi, error)
@@ -36,10 +37,20 @@ func NewRepository(db *gorm.DB) *repository {
 	return &repository{db}
 }
 
+func (r *repository) FindAllTransaksi() ([]entity.Transaksi, error) {
+	var transaksi []entity.Transaksi
+
+	if err := r.db.Preload("Produk").Preload("Alamat").Find(&transaksi).Error; err != nil {
+		return transaksi, err
+	}
+
+	return transaksi, nil
+}
+
 func (r *repository) FindAll(idPelanggan string) ([]entity.Transaksi, error) {
 	var transaksi []entity.Transaksi
 
-	if err := r.db.Where("id_pelanggan = ?", idPelanggan).Preload("Produk").Find(&transaksi).Error; err != nil {
+	if err := r.db.Where("id_pelanggan = ?", idPelanggan).Preload("Produk").Preload("Alamat").Find(&transaksi).Error; err != nil {
 		return transaksi, err
 	}
 
@@ -65,7 +76,7 @@ func (r *repository) CreateProdukTransaksi(produkTransaksi entity.ProdukTransaks
 func (r *repository) FindByKode(kodeTransaksi string) (entity.Transaksi, error) {
 	var transaksi entity.Transaksi
 
-	if err := r.db.Where("kode_transaksi = ?", kodeTransaksi).Preload("Produk").Find(&transaksi).Error; err != nil {
+	if err := r.db.Where("kode_transaksi = ?", kodeTransaksi).Preload("Produk").Preload("Alamat").Find(&transaksi).Error; err != nil {
 		return transaksi, err
 	}
 
@@ -75,7 +86,7 @@ func (r *repository) FindByKode(kodeTransaksi string) (entity.Transaksi, error) 
 func (r *repository) UpdateByKode(kodeTransaksi string, dataUpdate map[string]interface{}) (entity.Transaksi, error) {
 	var transaksi entity.Transaksi
 
-	if err := r.db.Where("kode_transaksi = ?", kodeTransaksi).Preload("Produk").Find(&transaksi).Error; err != nil {
+	if err := r.db.Where("kode_transaksi = ?", kodeTransaksi).Preload("Produk").Preload("Alamat").Find(&transaksi).Error; err != nil {
 		return transaksi, err
 	}
 

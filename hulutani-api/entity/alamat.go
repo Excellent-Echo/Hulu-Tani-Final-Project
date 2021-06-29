@@ -8,6 +8,7 @@ type Alamat struct {
 	Kota                   string `json:"kota"`
 	AlamatDetail           string `json:"alamat_detail"`
 	NomorHandphonePenerima string `json:"nomor_handphone_penerima"`
+	CityId                 string `json:"city_id"`
 }
 
 type AlamatInput struct {
@@ -17,4 +18,5 @@ type AlamatInput struct {
 	Kota                   string `json:"kota"`
 	AlamatDetail           string `json:"alamat_detail"`
 	NomorHandphonePenerima string `json:"nomor_handphone_penerima"`
+	CityId                 string `json:"city_id"`
 }

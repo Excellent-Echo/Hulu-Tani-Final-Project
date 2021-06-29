@@ -23,7 +23,7 @@ import UserAlamat from "./pages/user/useralamat";
 // import KantongBelanja from "./pages/user/kantongbelanja";
 import Checkout from "./pages/user/checkout";
 import Pembayaran from "./pages/user/pembayaran";
-import Success from "./pages/user/status/pembayaransukses"
+import Success from "./pages/user/status/pembayaransukses";
 //Admin
 import AdminLogin from "./pages/admin/AdminLoginPage";
 import AdminHome from "./pages/admin/home/AdminHomeDashPage";
@@ -65,7 +65,7 @@ function App() {
         <PrivateRoute path="/user-address" component={UserAlamat} />
         <PrivateRoute path="/checkout" component={Checkout} />
         <PrivateRoute path="/payment/:code" component={Pembayaran} />
-        <PrivateRoute path="/success" component={Success}/>
+        <PrivateRoute path="/success" component={Success} />
         {/* <PrivateRoute path="/cart" component={KantongBelanja} /> */}
         {/* Private */}
         {/* User Routes */}
@@ -84,25 +84,29 @@ function App() {
           path="/admin/dash/product/edit/:id"
           component={AdminEditProduct}
         />
-        <AdminRoute exact path="/admin/dash/category" component={AdminCategory} />
         <AdminRoute
-        exact
+          exact
+          path="/admin/dash/category"
+          component={AdminCategory}
+        />
+        <AdminRoute
+          exact
           path="/admin/dash/category/add"
           component={AdminAddCategory}
         />
         <AdminRoute
-        exact
+          exact
           path="/admin/dash/category/edit/:id"
           component={AdminEditCategory}
         />
         <AdminRoute
-        exact
+          exact
           path="/admin/dash/transaction"
           component={AdminTransaction}
         />
         <AdminRoute
-        exact
-          path="/admin/dash/transaction/detail"
+          exact
+          path="/admin/dash/transaction/detail/:code"
           component={AdminTransactionDetail}
         />
         <AdminRoute exact path="/admin/dash/contact" component={AdminContact} />

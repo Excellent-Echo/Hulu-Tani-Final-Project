@@ -5,13 +5,14 @@ import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import adminShowProductAction from "../../../../redux/admin/product/show/adminShowProductAction";
 import adminDeleteProductAction from "../../../../redux/admin/product/delete/adminDeleteProductAction";
+import NumberFormat from "react-number-format";
 
 const ths = [
     { name: "ID" },
     { name: "Nama Produk" },
     { name: "Kategori (Id)" },
     { name: "Jumlah (Pcs)" },
-    { name: "Harga (Idr)" },
+    { name: "Harga" },
     { name: "Aksi", colspan: "2" },
   ],
   ProductTable = () => {
@@ -21,7 +22,7 @@ const ths = [
     const dispatch = useDispatch();
 
     useEffect(() => {
-      dispatch(adminShowProductAction.getProducts());
+      // dispatch(adminShowProductAction.getProducts());
     }, []);
 
     const handleDelete = (id) => {
@@ -78,7 +79,7 @@ const ths = [
                   <td className="text-center">{data.nama}</td>
                   <td className="text-center">{data.id_kategori}</td>
                   <td className="text-center">{data.stok}</td>
-                  <td className="text-center">{data.harga}</td>
+                  <td className="text-center"><NumberFormat value={data.harga} displayType={'text'} thousandSeparator={true} prefix={'Rp'}/></td>
                   <td className="text-center">
                     <Link to={`/admin/dash/product/edit/${data.id}`}>
                       <button type="button" className="btn btn-primary">

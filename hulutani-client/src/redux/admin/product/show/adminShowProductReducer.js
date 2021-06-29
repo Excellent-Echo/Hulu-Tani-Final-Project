@@ -2,6 +2,7 @@ import { ADMIN_SHOW_SET_PRODUCTS } from "../../actionType"
 
 const initialState = {
     products: [],
+    amount:0
 }
 
 const adminShowProductsReducer = (state = initialState, action) => {
@@ -10,6 +11,11 @@ const adminShowProductsReducer = (state = initialState, action) => {
             return {
                 ...state,
                 products: action.payload
+            }
+        case "ADMIN_SHOW_PRODUCT_SET_AMOUNT":
+            return {
+                ...state,
+                amount: action.payload
             }
         default:
             return state

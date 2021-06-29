@@ -1,8 +1,8 @@
 import { LANDING_PRODUCT_SET_ERROR_MESSAGE, LANDING_PRODUCT_SET_PRODUCTS_1, LANDING_PRODUCT_SET_PRODUCTS_2, LANDING_PRODUCT_START_LOADING, LANDING_PRODUCT_STOP_LOADING } from "../actionType";
 
 const initialState = {
-    productByCategory1: {},
-    productByCategory2: {},
+    productByCategory1: [],
+    productByCategory2: [],
     isLoading:false,
     errorMessage:"",
 };

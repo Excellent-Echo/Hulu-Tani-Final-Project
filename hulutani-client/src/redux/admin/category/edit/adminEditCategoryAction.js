@@ -80,7 +80,7 @@ const editCategory = (id, categoryName) => async (dispatch) => {
   try {
     console.log("updating category..");
     dispatch(startLoading());
-
+    const token = localStorage.getItem("adminToken");
     const updateData = {
       nama: categoryName,
     };
@@ -89,6 +89,7 @@ const editCategory = (id, categoryName) => async (dispatch) => {
       method: "PUT",
       url: `/kategori/${id}`,
       data: updateData,
+      headers: { Authorization: token },
     });
 
     dispatch(stopLoading());

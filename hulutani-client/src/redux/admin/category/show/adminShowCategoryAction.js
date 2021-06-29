@@ -29,6 +29,13 @@ const setCategories = categories =>{
     }
 }
 
+const setAmount = (amount) =>{
+    return {
+        type:"ADMIN_SHOW_CATEGORY_SET_AMOUNT",
+        payload: amount
+    }
+}
+
 const getCategories = () => async dispatch =>{
     try {
         dispatch(startLoading())
@@ -40,7 +47,7 @@ const getCategories = () => async dispatch =>{
         })
 
         dispatch(setCategories(res.data.data))
-
+        dispatch(setAmount(res.data.data.length))
     } catch (error) {
         console.log(error);
         dispatch(setErrorMessage(error.response));

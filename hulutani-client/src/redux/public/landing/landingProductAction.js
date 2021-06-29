@@ -1,4 +1,5 @@
 import dummyClient from "../../../APIs/dummy";
+import hulutaniClient from "../../../APIs/hulutaniClient";
 import { LANDING_PRODUCT_SET_ERROR_MESSAGE, LANDING_PRODUCT_SET_PRODUCTS_1, LANDING_PRODUCT_SET_PRODUCTS_2, LANDING_PRODUCT_START_LOADING, LANDING_PRODUCT_STOP_LOADING } from "../actionType";
 
 const startLoading = () => {
@@ -26,16 +27,16 @@ const getProductCategory1 = () => async dispatch => {
     try {
         dispatch(startLoading())
 
-        const res = await dummyClient({
+        const res = await hulutaniClient({
             method: "GET",
-            url:"/products/sayur"
+            url:"/kategori/1"
             //set hardcode category sesuai pilihan
         })
 
         dispatch({
             type: LANDING_PRODUCT_SET_PRODUCTS_1,
             payload: {
-                productByCategory1: res.data
+                productByCategory1: res.data.data.produks
             }
         })
 
@@ -51,16 +52,16 @@ const getProductCategory2 = () => async dispatch => {
     try {
         dispatch(startLoading())
 
-        const res = await dummyClient({
+        const res = await hulutaniClient({
             method: "GET",
-            url:"/products/buah"
+            url:"/kategori/2"
             //set hardcode category sesuai pilihan
         })
 
         dispatch({
             type: LANDING_PRODUCT_SET_PRODUCTS_2,
             payload: {
-                productByCategory2: res.data
+                productByCategory2: res.data.data.produks
             }
         })
 

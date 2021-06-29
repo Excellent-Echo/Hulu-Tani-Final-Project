@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import '../../assets/css/userglobal.css'
 import '../../assets/css/landing.css'
@@ -6,13 +6,39 @@ import ContactUs from '../../assets/images/contact-us.svg'
 import GroceryShopping from '../../assets/images/landing-title.svg'
 import Navbar from '../../components/organisms/user/navbar'
 import Footer from '../../components/organisms/user/footer'
-import { useHistory } from 'react-router-dom'
+import { useHistory, Link } from 'react-router-dom'
+import landingProductAction from '../../redux/public/landing/landingProductAction'
+import {useSelector, useDispatch} from "react-redux"
+import NumberFormat from 'react-number-format'
+import adminAddContactAction from '../../redux/admin/contact/add/adminAddContactAction'
 
 function LandingPage() {
     const history = useHistory()
+    const landingProduct = useSelector(state => state.landingProduct)
+    const dispatch = useDispatch()
+    const contactData =  useSelector(state => state.addContact)
+
+    useEffect(() => {
+        dispatch(landingProductAction.getProductCategory1())
+        dispatch(landingProductAction.getProductCategory2())
+    }, [])
+
     const toProducts =()=>{
         history.push("/products")
     }
+
+    const addContactHandler = (e)=>{
+        e.preventDefault()
+        //console.log("add contact")
+        dispatch(adminAddContactAction.addContact(
+            contactData.namaLengkap,
+            contactData.telepon,
+            contactData.email,
+            contactData.setJenis,
+            contactData.setPesan
+        ))
+    }
+
     return (
         <>
             <Navbar />
@@ -191,9 +217,9 @@ function LandingPage() {
                                         </h4>
                                     </div>
                                     <div className="col-sm-3 section3-btntitle-container">
-                                        <button className="primary xsmall accent-title">
+                                        {/* <button className="primary xsmall accent-title">
                                             Lihat Semua
-                                        </button>
+                                        </button> */}
                                     </div>
                                 </div>
                             </div>
@@ -201,98 +227,26 @@ function LandingPage() {
                         <div className="row justify-content-center">
                             <div className="col-md-12">
                                 <div className="row section3-card-container">
+                                    {landingProduct.productByCategory1.map((data,index)=>{
+                                return (
                                     <div className="col-sm product-card-container">
+                                        <Link to={`/product/${data.id}`}>
                                         <div className="card product-card card-outline-primary h-100" style={{ width: "11.8rem" }}>
                                             <div className="img-container product-img bg-pattern">
-                                                <img src=" ... " class="card-img-top img-fluid" alt="..." />
+                                                <img src={data.gambar} class="card-img-top img-fluid" alt="..." />
                                             </div>
                                             <div className="card-body">
                                                 <div className="row">
-                                                    <span className="name-tag small-text mb-2">[Nama]</span>
-                                                    <h4 className="card-title accent-title"><sup>Rp</sup>[Harga]</h4>
+                                                    <span className="name-tag small-text mb-2">{data.nama}</span>
+                                                    <h4 className="card-title accent-title"><NumberFormat value={data.harga} displayType={'text'} thousandSeparator={true} prefix={'Rp'}/></h4>
                                                 </div>
                                             </div>
                                         </div>
+                                        </Link>
                                     </div>
-                                    <div className="col-sm product-card-container">
-                                        <div className="card product-card card-outline-primary h-100" style={{ width: "11.8rem" }}>
-                                            <div className="img-container product-img bg-pattern">
-                                                <img src=" ... " class="card-img-top img-fluid" alt="..." />
-                                            </div>
-                                            <div className="card-body">
-                                                <div className="row">
-                                                    <span className="name-tag small-text mb-2">[Nama]</span>
-                                                    <h4 className="card-title accent-title"><sup>Rp</sup>[Harga]</h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="col-sm product-card-container">
-                                        <div className="card product-card card-outline-primary h-100" style={{ width: "11.8rem" }}>
-                                            <div className="img-container product-img bg-pattern">
-                                                <img src=" ... " class="card-img-top img-fluid" alt="..." />
-                                            </div>
-                                            <div className="card-body">
-                                                <div className="row">
-                                                    <span className="name-tag small-text mb-2">[Nama]</span>
-                                                    <h4 className="card-title accent-title"><sup>Rp</sup>[Harga]</h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="col-sm product-card-container">
-                                        <div className="card product-card card-outline-primary h-100" style={{ width: "11.8rem" }}>
-                                            <div className="img-container product-img bg-pattern">
-                                                <img src=" ... " class="card-img-top img-fluid" alt="..." />
-                                            </div>
-                                            <div className="card-body">
-                                                <div className="row">
-                                                    <span className="name-tag small-text mb-2">[Nama]</span>
-                                                    <h4 className="card-title accent-title"><sup>Rp</sup>[Harga]</h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="col-sm product-card-container">
-                                        <div className="card product-card card-outline-primary h-100" style={{ width: "11.8rem" }}>
-                                            <div className="img-container product-img bg-pattern">
-                                                <img src=" ... " class="card-img-top img-fluid" alt="..." />
-                                            </div>
-                                            <div className="card-body">
-                                                <div className="row">
-                                                    <span className="name-tag small-text mb-2">[Nama]</span>
-                                                    <h4 className="card-title accent-title"><sup>Rp</sup>[Harga]</h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="col-sm product-card-container">
-                                        <div className="card product-card card-outline-primary h-100" style={{ width: "11.8rem" }}>
-                                            <div className="img-container product-img bg-pattern">
-                                                <img src=" ... " class="card-img-top img-fluid" alt="..." />
-                                            </div>
-                                            <div className="card-body">
-                                                <div className="row">
-                                                    <span className="name-tag small-text mb-2">[Nama]</span>
-                                                    <h4 className="card-title accent-title"><sup>Rp</sup>[Harga]</h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="col-sm product-card-container">
-                                        <div className="card product-card card-outline-primary h-100" style={{ width: "11.8rem" }}>
-                                            <div className="img-container product-img bg-pattern">
-                                                <img src=" ... " class="card-img-top img-fluid" alt="..." />
-                                            </div>
-                                            <div className="card-body">
-                                                <div className="row">
-                                                    <span className="name-tag small-text mb-2">[Nama]</span>
-                                                    <h4 className="card-title accent-title"><sup>Rp</sup>[Harga]</h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                    )
+                                })}
+                                 </div>
                             </div>
                         </div>
                     </div>
@@ -308,9 +262,9 @@ function LandingPage() {
                                         </h4>
                                     </div>
                                     <div className="col-sm-3 section3-btntitle-container">
-                                        <button className="primary xsmall accent-title">
+                                        {/* <button className="primary xsmall accent-title">
                                             Lihat Semua
-                                        </button>
+                                        </button> */}
                                     </div>
                                 </div>
                             </div>
@@ -318,97 +272,25 @@ function LandingPage() {
                         <div className="row justify-content-center">
                             <div className="col-md-12">
                                 <div className="row section3-card-container">
+                                {landingProduct.productByCategory2.map((data,index)=>{
+                                return (
                                     <div className="col-sm product-card-container">
+                                         <Link to={`/product/${data.id}`}>
                                         <div className="card product-card card-outline-primary h-100" style={{ width: "11.8rem" }}>
                                             <div className="img-container product-img bg-pattern">
-                                                <img src=" ... " class="card-img-top img-fluid" alt="..." />
+                                                <img src={data.gambar} class="card-img-top img-fluid" alt="..." />
                                             </div>
                                             <div className="card-body">
                                                 <div className="row">
-                                                    <span className="name-tag small-text mb-2">[Nama]</span>
-                                                    <h4 className="card-title accent-title"><sup>Rp</sup>[Harga]</h4>
+                                                    <span className="name-tag small-text mb-2">{data.nama}</span>
+                                                    <h4 className="card-title accent-title"><NumberFormat value={data.harga} displayType={'text'} thousandSeparator={true} prefix={'Rp'}/></h4>
                                                 </div>
                                             </div>
                                         </div>
+                                        </Link>
                                     </div>
-                                    <div className="col-sm product-card-container">
-                                        <div className="card product-card card-outline-primary h-100" style={{ width: "11.8rem" }}>
-                                            <div className="img-container product-img bg-pattern">
-                                                <img src=" ... " class="card-img-top img-fluid" alt="..." />
-                                            </div>
-                                            <div className="card-body">
-                                                <div className="row">
-                                                    <span className="name-tag small-text mb-2">[Nama]</span>
-                                                    <h4 className="card-title accent-title"><sup>Rp</sup>[Harga]</h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="col-sm product-card-container">
-                                        <div className="card product-card card-outline-primary h-100" style={{ width: "11.8rem" }}>
-                                            <div className="img-container product-img bg-pattern">
-                                                <img src=" ... " class="card-img-top img-fluid" alt="..." />
-                                            </div>
-                                            <div className="card-body">
-                                                <div className="row">
-                                                    <span className="name-tag small-text mb-2">[Nama]</span>
-                                                    <h4 className="card-title accent-title"><sup>Rp</sup>[Harga]</h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="col-sm product-card-container">
-                                        <div className="card product-card card-outline-primary h-100" style={{ width: "11.8rem" }}>
-                                            <div className="img-container product-img bg-pattern">
-                                                <img src=" ... " class="card-img-top img-fluid" alt="..." />
-                                            </div>
-                                            <div className="card-body">
-                                                <div className="row">
-                                                    <span className="name-tag small-text mb-2">[Nama]</span>
-                                                    <h4 className="card-title accent-title"><sup>Rp</sup>[Harga]</h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="col-sm product-card-container">
-                                        <div className="card product-card card-outline-primary h-100" style={{ width: "11.8rem" }}>
-                                            <div className="img-container product-img bg-pattern">
-                                                <img src=" ... " class="card-img-top img-fluid" alt="..." />
-                                            </div>
-                                            <div className="card-body">
-                                                <div className="row">
-                                                    <span className="name-tag small-text mb-2">[Nama]</span>
-                                                    <h4 className="card-title accent-title"><sup>Rp</sup>[Harga]</h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="col-sm product-card-container">
-                                        <div className="card product-card card-outline-primary h-100" style={{ width: "11.8rem" }}>
-                                            <div className="img-container product-img bg-pattern">
-                                                <img src=" ... " class="card-img-top img-fluid" alt="..." />
-                                            </div>
-                                            <div className="card-body">
-                                                <div className="row">
-                                                    <span className="name-tag small-text mb-2">[Nama]</span>
-                                                    <h4 className="card-title accent-title"><sup>Rp</sup>[Harga]</h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="col-sm product-card-container">
-                                        <div className="card product-card card-outline-primary h-100" style={{ width: "11.8rem" }}>
-                                            <div className="img-container product-img bg-pattern">
-                                                <img src=" ... " class="card-img-top img-fluid" alt="..." />
-                                            </div>
-                                            <div className="card-body">
-                                                <div className="row">
-                                                    <span className="name-tag small-text mb-2">[Nama]</span>
-                                                    <h4 className="card-title accent-title"><sup>Rp</sup>[Harga]</h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    )
+                                })}
                                     {/* CARD END */}
                                 </div>
                             </div>
@@ -545,39 +427,54 @@ function LandingPage() {
                             Jika kamu memiliki hal untuk dibicarakan, silakan kontak kami.
                         </p>
                     </div>
+                    {/* CONTACT FORM */}
                     <div className="row align-items-center">
                         <div className="col-sm d-flex justify-content-start">
-                            <form className="row g-3">
+                            <form className="row g-3" onSubmit={addContactHandler}>
                                 <div className="col-sm-6">
                                     <label for="namaLengkap" className="form-label accent-title">Nama Lengkap</label>
-                                    <input type="text" className="form-control small userpages" id="namaLengkap" />
+                                    <input type="text" className="form-control small userpages" id="namaLengkap" 
+                                    value={contactData.namaLengkap}
+                                    onChange={(e)=>dispatch(adminAddContactAction.setNama(e.target.value))}
+                                    />
                                 </div>
                                 <div className="col-sm-6">
                                     <label for="noTelp" className="form-label accent-title">No. Telepon</label>
-                                    <input type="text" className="form-control small userpages" id="notelp" />
+                                    <input type="text" className="form-control small userpages" id="notelp" 
+                                    value={contactData.telepon}
+                                    onChange={(e)=>dispatch(adminAddContactAction.setTelepon(e.target.value))}
+                                     />
                                 </div>
                                 <div className="col-sm-6">
                                     <label for="email" className="form-label accent-title">Email</label>
-                                    <input type="text" className="form-control small userpages" id="email" />
+                                    <input type="text" className="form-control small userpages" id="email" 
+                                    value={contactData.email}
+                                    onChange={(e)=>dispatch(adminAddContactAction.setEmail(e.target.value))}
+                                     />
                                 </div>
                                 <div className="col-sm-6">
                                     <label for="provinsi" className="form-label accent-title">Jenis Pesan</label>
-                                    <select id="jnsPesan" className="form-select userpages small">
+                                    <select id="jnsPesan" className="form-select userpages small" 
+                                    onChange={(e)=>dispatch(adminAddContactAction.setJenis(e.target.value))}
+                                    >
                                         <option selected>Pilih salah satu</option>
-                                        <option>Kritik</option>
-                                        <option>Saran</option>
-                                        <option>Penilaian</option>
-                                        <option>Undangan Kemitraan</option>
-                                        <option>Lainnya</option>
+                                        <option value={"Kritik"}>Kritik</option>
+                                        <option value={"Saran"}>Saran</option>
+                                        <option value={"Penilaian"}>Penilaian</option>
+                                        <option value={"Undangan Kemitraan"}>Undangan Kemitraan</option>
+                                        <option value={"Lainya"}>Lainnya</option>
                                     </select>
                                 </div>
                                 <div className="col-sm-12">
                                     <label for="pesan" class="form-label accent-title">Pesan</label>
-                                    <textarea class="form-control small userpages" id="pesan" rows="3"></textarea>
+                                    <textarea class="form-control small userpages" id="pesan" rows="3"
+                                    value={contactData.pesan}
+                                    onChange={(e)=>dispatch(adminAddContactAction.setPesan(e.target.value))}
+                                    ></textarea>
                                 </div>
                                 <div className="col-12">
                                     <br />
-                                    <button type="submit" className="button primary long">Kirim</button>
+                                    <button type="submit" className="button primary long" >Kirim</button>
                                 </div>
                             </form>
                         </div>
@@ -587,6 +484,7 @@ function LandingPage() {
                             </div>
                         </div>
                     </div>
+                    {/* CONTACT FORM */}
                 </div>
             </div>
             <Footer />

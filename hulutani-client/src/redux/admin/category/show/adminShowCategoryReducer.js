@@ -4,6 +4,7 @@ const initialState = {
     categories:[],
     errorMessage:"",
     isLoading:false,
+    amount:0
 }
 
 const adminShowCategoryReducer = (state = initialState, action) => {
@@ -27,6 +28,11 @@ const adminShowCategoryReducer = (state = initialState, action) => {
             return {
                 ...state,
                 isLoading: false
+            }
+        case "ADMIN_SHOW_CATEGORY_SET_AMOUNT":
+            return {
+                ...state,
+                amount: action.payload
             }
         default:
             return state

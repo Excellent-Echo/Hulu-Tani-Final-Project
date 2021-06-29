@@ -18,7 +18,7 @@ const ths = [
     const dispatch = useDispatch();
 
     useEffect(() => {
-      dispatch(adminShowContactAction.getContacts());
+      // dispatch(adminShowContactAction.getContacts());
     });
 
     return (

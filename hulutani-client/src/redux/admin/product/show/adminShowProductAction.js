@@ -1,30 +1,30 @@
-import hulutaniClient from '../../../../APIs/hulutaniClient'
-import { ADMIN_SHOW_SET_PRODUCTS } from '../../actionType'
+import hulutaniClient from "../../../../APIs/hulutaniClient";
+import { ADMIN_SHOW_SET_PRODUCTS } from "../../actionType";
 
-const getProducts = () => async dispatch => {
-    try {
-        console.log("showing product..")
+const getProducts = () => async (dispatch) => {
+  try {
+    console.log("showing product..");
 
-        const res = await hulutaniClient({
-            method: "GET",
-            url: "/produk"
-        })
+    const res = await hulutaniClient({
+      method: "GET",
+      url: "/produk",
+    });
 
-        //console.log(res)
+    //console.log(res)
 
-        dispatch({
-            type: ADMIN_SHOW_SET_PRODUCTS,
-            payload: res.data.data
-        })
+    dispatch({
+      type: ADMIN_SHOW_SET_PRODUCTS,
+      payload: res.data.data,
+    });
 
-        console.log("completed")
-    } catch (error) {
-        console.log(error)
-    }
-}
+    console.log("completed");
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 const adminShowProductAction = {
-    getProducts
-}
+  getProducts,
+};
 
-export default adminShowProductAction
+export default adminShowProductAction;

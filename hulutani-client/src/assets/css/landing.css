@@ -120,6 +120,18 @@ p.subtitle {
     margin-bottom: 25px;
 }
 
+.testi-container {
+    display: flex;
+    align-items: center;
+}
+
+.contactus-container {
+    display: flex;
+    align-items: center;
+
+    text-align: center;
+}
+
 @media (max-width: 768px) { 
     .card-container {
         margin-bottom: 25px;
@@ -132,6 +144,10 @@ p.subtitle {
     }    
 
     .title-image-container {
+        display: none;
+    }
+
+    .img-container {
         display: none;
     }
 }

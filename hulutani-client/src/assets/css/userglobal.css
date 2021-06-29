@@ -220,6 +220,18 @@ button.outline-primary:hover {
   content: "\f004";
 }
 
+.btn-prev::before {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "\f053";
+}
+
+.btn-next::before {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "\f054";
+}
+
 .btn-user::before {
   font-family: "Font Awesome 5 Free";
   font-weight: 900;

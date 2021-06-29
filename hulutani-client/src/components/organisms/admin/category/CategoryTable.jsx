@@ -17,7 +17,7 @@ const ths = [
     const dispatch = useDispatch();
 
     useEffect(() => {
-      dispatch(adminShowCategoryAction.getCategories());
+      // dispatch(adminShowCategoryAction.getCategories());
     }, []);
 
     const handleClickDelete = (id) => {

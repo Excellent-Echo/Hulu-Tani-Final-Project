@@ -10,19 +10,19 @@ const ths = [
     { name: "Status" },
   ],
   RecentTable = () => {
-    const adminTransactionsData = useSelector(
-      (state) => state.adminShowTransactions.transactions
+    const recentsData = useSelector(
+      (state) => state.adminShowTransactions.recents
     );
-    const [recentsData, setRecentsData] = useState([])
+    // const [recentsData, setRecentsData] = useState([])
 
     const dispatch = useDispatch();
     useEffect(() => {
-      dispatch(adminShowTransactionAction.getTransactions());
-      for(let x=0; x<10;x++){
-        recentsData.push(adminTransactionsData[x])
-          // setRecentsData(...recentsData,adminTransactionsData[x])
-          console.log(recentsData)
-      }
+      // dispatch(adminShowTransactionAction.getTransactions());
+      // for(let x=0; x<10;x++){
+      //   recentsData.push(adminTransactionsData[x])
+      //     // setRecentsData(...recentsData,adminTransactionsData[x])
+      //     //console.log(recentsData)
+      // }
     }, []);
 
 

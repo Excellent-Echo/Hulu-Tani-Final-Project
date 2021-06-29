@@ -1,34 +1,39 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
-const overviews = [
+const OverviewCard = () => {
+  const transactionAmout  = useSelector(state => state.adminShowTransactions.amount)
+  const productAmount= useSelector((state) => state.adminShowProducts.amount);
+  const categoryAmount = useSelector((state)=> state.adminShowCategory.amount)
+  const contactAmount = useSelector(state => state.adminShowContacts.amount)
+
+  const overviews = [
     {
-      amount: "[Jumlah]",
+      amount: `${productAmount}`,
       icon: "fas fa-shopping-basket",
       name: "Produk",
       to: "/admin/dash/product",
     },
     {
-      amount: "[Jumlah]",
+      amount: `${categoryAmount}`,
       icon: "fas fa-list",
       name: "Kategori",
       to: "/admin/dash/category",
     },
     {
-      amount: "[Jumlah]",
+      amount: `${transactionAmout}`,
       icon: "fas fa-money-check",
       name: "Transaksi",
       to: "/admin/dash/transaction",
     },
     {
-      amount: "[Jumlah]",
+      amount: `${contactAmount}`,
       icon: "fas fa-address-book",
       name: "Kontak",
       to: "/admin/dash/contact",
     },
-  ],
-  OverviewCard = () => {
-        
+  ]
 
     return (
       <div className="row row-cols-1 row-cols-lg-4 row-cols-md-2 row-cols-sm-2 g-4 admin-overview-card">

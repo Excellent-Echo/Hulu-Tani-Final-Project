@@ -113,7 +113,7 @@ function App() {
         />
         <AdminRoute
           exact
-          path="/admin/dash/transaction/detail/:code"
+          path="/admin/dash/transaction/detail"
           component={AdminTransactionDetail}
         />
         <AdminRoute exact path="/admin/dash/contact" component={AdminContact} />

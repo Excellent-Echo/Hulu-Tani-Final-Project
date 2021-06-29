@@ -55,7 +55,7 @@ const OverviewCard = () => {
               </div>
 
               <Link className="card-footer" to={overview.to}>
-                <small className="text-muted">Lihat semua</small>
+                <small>Lihat semua</small>
               </Link>
             </div>
           </div>

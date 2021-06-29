@@ -111,11 +111,11 @@ function Pembayaran() {
                                 </div>
                                 <div className="col-sm-12">
                                     <br />
-                                    SELESAIKAN PEMBAYARAN SEBELUM :
+                                    SELESAIKAN PEMBAYARAN 
                                 </div>
                                 <div className="col-sm-12">
                                     <h1 className="accent-text accent-title">
-                                        <Countdown date={Date.now() + 7200000} daysInHours={true}/>
+                                        Pembayaran Maksimal 3 Jam
                                     </h1>
                                     <p className="text-muted">
                                         Silakan lakukan pembayaran sebelum batas waktu 

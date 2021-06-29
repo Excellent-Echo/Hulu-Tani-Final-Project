@@ -1,27 +1,22 @@
 import React, { useEffect } from "react";
-import { useParams } from "react-router-dom";
+// import { useHistory, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import adminShowTransactionDetailAction from "../../../../redux/admin/transaction/detail/adminShowTransactionDetailAction";
-
+// import adminShowTransactionDetailAction from "../../../../redux/admin/transaction/detail/adminShowTransactionDetailAction";
+import NumberFormat from "react-number-format";
 const cartThs = [
-    { name: "No" },
     { name: "Nama Produk" },
     { name: "Jumlah" },
     { name: "Harga" },
   ],
   TransactionDetailForm = () => {
-    const { code } = useParams(),
-      dispatch = useDispatch(),
-      adminTransactionDetailData = useSelector(
-        (state) => state.adminShowTransactionDetail.transactionDetails
+    const adminTransactionDetailData = useSelector(
+        (state) => state.adminShowTransactionDetail
       );
 
-    console.log(adminTransactionDetailData);
+    // useEffect(() => {
+    //   dispatch(adminShowTransactionDetailAction.getTransactionDetail(code));
+    // }, []);
 
-    useEffect(() => {
-      console.log(adminTransactionDetailData);
-      dispatch(adminShowTransactionDetailAction.getTransactionDetail(code));
-    }, []);
 
     return (
       <div className="pb-4">
@@ -29,28 +24,28 @@ const cartThs = [
           <div className="row row-cols-lg-3 row-cols-sm-1 border-bottom border-3">
             <div className="mb-4">
               <h5>Nama Penerima</h5>
-              {/*<p>{adminTransactionDetailData.alamat.nama_penerima}</p>*/}
+              <p>{adminTransactionDetailData.nama}</p>
             </div>
             <div className="mb-4">
               <h5>Nomor Telepon</h5>
               <p>
-                {/*{adminTransactionDetailData.alamat.nomor_handphone_penerina}*/}
+                {adminTransactionDetailData.telepon}
               </p>
             </div>
             <div className="mb-4">
               <h5>Kode Transaksi</h5>
-              <p>{adminTransactionDetailData.kode_transaksi}</p>
+              <p>{adminTransactionDetailData.kode}</p>
             </div>
           </div>
 
           <div className="row row-cols-lg-3 row-cols-sm-1 border-bottom border-3 pt-4">
             <div className="mb-4">
               <h5>Metode Pembayaran</h5>
-              <p>{adminTransactionDetailData.metode_pembayaran}</p>
+              <p>{adminTransactionDetailData.metode}</p>
             </div>
             <div className="mb-4">
               <h5>Alamat Pengiriman</h5>
-              <p>{adminTransactionDetailData.alamat.alamat_detail}</p>
+              <p>{adminTransactionDetailData.alamat}</p>
             </div>
             <div className="mb-4">
               <h5>Status Transaksi</h5>
@@ -72,16 +67,21 @@ const cartThs = [
                   </thead>
                   <tbody>
                     <tr>
-                      <td className="text-center">[No]</td>
-                      <td className="text-center">[Nama Barang]</td>
-                      <td className="text-center">[Jumlah]</td>
-                      <td className="text-center">[Harga]</td>
+                      <td className="text-center">{adminTransactionDetailData.produk}</td>
+                      <td className="text-center">{adminTransactionDetailData.qty}</td>
+                      <td className="text-center"><NumberFormat value={adminTransactionDetailData.hargaProduk * adminTransactionDetailData.qty} displayType={'text'} thousandSeparator={true} prefix={'Rp'}/></td>
                     </tr>
                   </tbody>
                 </table>
                 <div className="d-flex justify-content-between">
-                  <p>SubTotal</p>
-                  <p>[Subtotal]</p>
+                  <p>Ongkir</p>
+                  <p>
+                  <NumberFormat value={adminTransactionDetailData.harga - adminTransactionDetailData.hargaProduk * adminTransactionDetailData.qty} displayType={'text'} thousandSeparator={true} prefix={'Rp'}/>
+                  </p>
+                </div>
+                <div className="d-flex justify-content-between">
+                  <p>Total</p>
+                  <p><NumberFormat value={adminTransactionDetailData.harga} displayType={'text'} thousandSeparator={true} prefix={'Rp'}/></p>
                 </div>
               </div>
             </div>
@@ -92,7 +92,7 @@ const cartThs = [
             <img
               className="border border-3 admin-proof-transaction"
               width="100%"
-              src="https://cdn1-production-images-kly.akamaized.net/RS-TgnbQ0FawEgkDQCEGeQMRmYk=/640x480/smart/filters:quality(75):strip_icc():format(jpeg)/kly-media-production/medias/2788283/original/058257500_1556184725-iStock-910127132.jpg"
+              src={adminTransactionDetailData.bukti}
               alt="Proof transaction"
             />
           </div>

@@ -3,10 +3,11 @@ import hulutaniClient from "../../../../APIs/hulutaniClient"
 const getContacts = () => async dispatch => {
     try {
         console.log("getting contact")
-
+        const token = localStorage.getItem("adminToken");
         const user = await hulutaniClient({
             method:"GET",
-            url:"/kontak"
+            url:"/kontak",
+            headers: { Authorization: token },
         })
 
         dispatch({

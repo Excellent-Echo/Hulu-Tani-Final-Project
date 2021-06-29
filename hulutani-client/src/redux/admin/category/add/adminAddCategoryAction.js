@@ -53,7 +53,7 @@ const addCategory = (categoryName) => async dispatch => {
         dispatch(startLoading());
         dispatch(setSuccessMessage(""));
         dispatch(setErrorMessage(""));
-
+        const token = localStorage.getItem("adminToken");
         const submitData = {
             nama:categoryName
         }
@@ -61,7 +61,8 @@ const addCategory = (categoryName) => async dispatch => {
         const addCategory = await hulutaniClient({
                 method: "POST",
                 url: "/kategori",
-                data:submitData
+                data:submitData,
+                headers: { Authorization: token },
         });
 
         dispatch(setSuccessMessage("add category success"));

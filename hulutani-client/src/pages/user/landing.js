@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import '../../assets/css/userglobal.css'
 import '../../assets/css/landing.css'
@@ -7,9 +7,19 @@ import GroceryShopping from '../../assets/images/landing-title.svg'
 import Navbar from '../../components/organisms/user/navbar'
 import Footer from '../../components/organisms/user/footer'
 import { useHistory } from 'react-router-dom'
+import landingProductAction from '../../redux/public/landing/landingProductAction'
+import {useSelector, useDispatch} from "react-redux"
+import NumberFormat from 'react-number-format'
 
 function LandingPage() {
     const history = useHistory()
+    const landingProduct = useSelector(state => state.landingProduct)
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(landingProductAction.getProductCategory1())
+        dispatch(landingProductAction.getProductCategory2())
+    }, [])
     const toProducts =()=>{
         history.push("/products")
     }
@@ -201,98 +211,24 @@ function LandingPage() {
                         <div className="row justify-content-center">
                             <div className="col-md-12">
                                 <div className="row section3-card-container">
+                                    {landingProduct.productByCategory1.map((data,index)=>{
+                                return (
                                     <div className="col-sm product-card-container">
                                         <div className="card product-card card-outline-primary h-100" style={{ width: "11.8rem" }}>
                                             <div className="img-container product-img bg-pattern">
-                                                <img src=" ... " class="card-img-top img-fluid" alt="..." />
+                                                <img src={data.gambar} class="card-img-top img-fluid" alt="..." />
                                             </div>
                                             <div className="card-body">
                                                 <div className="row">
-                                                    <span className="name-tag small-text mb-2">[Nama]</span>
-                                                    <h4 className="card-title accent-title"><sup>Rp</sup>[Harga]</h4>
+                                                    <span className="name-tag small-text mb-2">{data.nama}</span>
+                                                    <h4 className="card-title accent-title"><NumberFormat value={data.harga} displayType={'text'} thousandSeparator={true} prefix={'Rp'}/></h4>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="col-sm product-card-container">
-                                        <div className="card product-card card-outline-primary h-100" style={{ width: "11.8rem" }}>
-                                            <div className="img-container product-img bg-pattern">
-                                                <img src=" ... " class="card-img-top img-fluid" alt="..." />
-                                            </div>
-                                            <div className="card-body">
-                                                <div className="row">
-                                                    <span className="name-tag small-text mb-2">[Nama]</span>
-                                                    <h4 className="card-title accent-title"><sup>Rp</sup>[Harga]</h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="col-sm product-card-container">
-                                        <div className="card product-card card-outline-primary h-100" style={{ width: "11.8rem" }}>
-                                            <div className="img-container product-img bg-pattern">
-                                                <img src=" ... " class="card-img-top img-fluid" alt="..." />
-                                            </div>
-                                            <div className="card-body">
-                                                <div className="row">
-                                                    <span className="name-tag small-text mb-2">[Nama]</span>
-                                                    <h4 className="card-title accent-title"><sup>Rp</sup>[Harga]</h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="col-sm product-card-container">
-                                        <div className="card product-card card-outline-primary h-100" style={{ width: "11.8rem" }}>
-                                            <div className="img-container product-img bg-pattern">
-                                                <img src=" ... " class="card-img-top img-fluid" alt="..." />
-                                            </div>
-                                            <div className="card-body">
-                                                <div className="row">
-                                                    <span className="name-tag small-text mb-2">[Nama]</span>
-                                                    <h4 className="card-title accent-title"><sup>Rp</sup>[Harga]</h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="col-sm product-card-container">
-                                        <div className="card product-card card-outline-primary h-100" style={{ width: "11.8rem" }}>
-                                            <div className="img-container product-img bg-pattern">
-                                                <img src=" ... " class="card-img-top img-fluid" alt="..." />
-                                            </div>
-                                            <div className="card-body">
-                                                <div className="row">
-                                                    <span className="name-tag small-text mb-2">[Nama]</span>
-                                                    <h4 className="card-title accent-title"><sup>Rp</sup>[Harga]</h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="col-sm product-card-container">
-                                        <div className="card product-card card-outline-primary h-100" style={{ width: "11.8rem" }}>
-                                            <div className="img-container product-img bg-pattern">
-                                                <img src=" ... " class="card-img-top img-fluid" alt="..." />
-                                            </div>
-                                            <div className="card-body">
-                                                <div className="row">
-                                                    <span className="name-tag small-text mb-2">[Nama]</span>
-                                                    <h4 className="card-title accent-title"><sup>Rp</sup>[Harga]</h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="col-sm product-card-container">
-                                        <div className="card product-card card-outline-primary h-100" style={{ width: "11.8rem" }}>
-                                            <div className="img-container product-img bg-pattern">
-                                                <img src=" ... " class="card-img-top img-fluid" alt="..." />
-                                            </div>
-                                            <div className="card-body">
-                                                <div className="row">
-                                                    <span className="name-tag small-text mb-2">[Nama]</span>
-                                                    <h4 className="card-title accent-title"><sup>Rp</sup>[Harga]</h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                    )
+                                })}
+                                 </div>
                             </div>
                         </div>
                     </div>
@@ -318,6 +254,8 @@ function LandingPage() {
                         <div className="row justify-content-center">
                             <div className="col-md-12">
                                 <div className="row section3-card-container">
+                                {landingProduct.productByCategory2.map((data,index)=>{
+                                return (
                                     <div className="col-sm product-card-container">
                                         <div className="card product-card card-outline-primary h-100" style={{ width: "11.8rem" }}>
                                             <div className="img-container product-img bg-pattern">
@@ -331,84 +269,8 @@ function LandingPage() {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="col-sm product-card-container">
-                                        <div className="card product-card card-outline-primary h-100" style={{ width: "11.8rem" }}>
-                                            <div className="img-container product-img bg-pattern">
-                                                <img src=" ... " class="card-img-top img-fluid" alt="..." />
-                                            </div>
-                                            <div className="card-body">
-                                                <div className="row">
-                                                    <span className="name-tag small-text mb-2">[Nama]</span>
-                                                    <h4 className="card-title accent-title"><sup>Rp</sup>[Harga]</h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="col-sm product-card-container">
-                                        <div className="card product-card card-outline-primary h-100" style={{ width: "11.8rem" }}>
-                                            <div className="img-container product-img bg-pattern">
-                                                <img src=" ... " class="card-img-top img-fluid" alt="..." />
-                                            </div>
-                                            <div className="card-body">
-                                                <div className="row">
-                                                    <span className="name-tag small-text mb-2">[Nama]</span>
-                                                    <h4 className="card-title accent-title"><sup>Rp</sup>[Harga]</h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="col-sm product-card-container">
-                                        <div className="card product-card card-outline-primary h-100" style={{ width: "11.8rem" }}>
-                                            <div className="img-container product-img bg-pattern">
-                                                <img src=" ... " class="card-img-top img-fluid" alt="..." />
-                                            </div>
-                                            <div className="card-body">
-                                                <div className="row">
-                                                    <span className="name-tag small-text mb-2">[Nama]</span>
-                                                    <h4 className="card-title accent-title"><sup>Rp</sup>[Harga]</h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="col-sm product-card-container">
-                                        <div className="card product-card card-outline-primary h-100" style={{ width: "11.8rem" }}>
-                                            <div className="img-container product-img bg-pattern">
-                                                <img src=" ... " class="card-img-top img-fluid" alt="..." />
-                                            </div>
-                                            <div className="card-body">
-                                                <div className="row">
-                                                    <span className="name-tag small-text mb-2">[Nama]</span>
-                                                    <h4 className="card-title accent-title"><sup>Rp</sup>[Harga]</h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="col-sm product-card-container">
-                                        <div className="card product-card card-outline-primary h-100" style={{ width: "11.8rem" }}>
-                                            <div className="img-container product-img bg-pattern">
-                                                <img src=" ... " class="card-img-top img-fluid" alt="..." />
-                                            </div>
-                                            <div className="card-body">
-                                                <div className="row">
-                                                    <span className="name-tag small-text mb-2">[Nama]</span>
-                                                    <h4 className="card-title accent-title"><sup>Rp</sup>[Harga]</h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="col-sm product-card-container">
-                                        <div className="card product-card card-outline-primary h-100" style={{ width: "11.8rem" }}>
-                                            <div className="img-container product-img bg-pattern">
-                                                <img src=" ... " class="card-img-top img-fluid" alt="..." />
-                                            </div>
-                                            <div className="card-body">
-                                                <div className="row">
-                                                    <span className="name-tag small-text mb-2">[Nama]</span>
-                                                    <h4 className="card-title accent-title"><sup>Rp</sup>[Harga]</h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    )
+                                })}
                                     {/* CARD END */}
                                 </div>
                             </div>

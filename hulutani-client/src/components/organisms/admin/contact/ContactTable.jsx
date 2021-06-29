@@ -3,12 +3,12 @@ import { useSelector, useDispatch } from "react-redux";
 import adminShowContactAction from "../../../../redux/admin/contact/show/adminShowContactAction";
 
 const ths = [
-    { name: "ID" },
+    { name: "No" },
     { name: "Nama" },
-    { name: "Alamat" },
-    { name: "Jenis Kelamin" },
-    { name: "Tanggal Lahir" },
-    { name: "Telepon" },
+    { name: "Email" },
+    { name: "No Telepon" },
+    { name: "Tipe Pesan" },
+    { name: "Pesan" },
   ],
   ContactTable = () => {
     const contactData = useSelector(
@@ -36,12 +36,12 @@ const ths = [
             {contactData.map((data, index) => {
               return (
                 <tr key={index}>
-                  <td className="text-center">{index}</td>
+                  <td className="text-center">{index+1}</td>
                   <td className="text-center">{data.nama}</td>
-                  <td className="text-center">{data.email}</td>
-                  <td className="text-center">{data.nomor_handphone}</td>
                   <td className="text-center">{data.jenis_kelamin}</td>
+                  <td className="text-center">{data.nomor_handphone}</td>
                   <td className="text-center">{data.tanggal_lahir}</td>
+                  <td className="text-center">{data.alamat}</td>
                 </tr>
               );
             })}

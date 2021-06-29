@@ -31,6 +31,16 @@ const AdminTransactionDetailDashPage = () => {
       }
     }
   }
+
+  const batalkanHandler = (e) =>{
+    e.preventDefault()
+    if(adminTransactionDetailData.bukti === ""){
+      dispatch(adminShowTransactionDetailAction.cancelStatus(code))
+      history.push("/admin/dash/transaction")
+    }else{
+      window.alert("Bukti Transafer sudah ada silakah di cek !")
+    }
+  }
   
   return (
     <div className="user-select-none w-100 vh-100">
@@ -48,7 +58,9 @@ const AdminTransactionDetailDashPage = () => {
               <li className="breadcrumb-item">Detail</li>
             </ol>
           </nav>
-          {}
+            <button type="button" className="btn btn-success" onClick={batalkanHandler}>
+              Batalkan
+            </button>
             <button type="button" className="btn btn-success" onClick={confirmHandler}>
               Konfirmasi
             </button>

@@ -23,19 +23,20 @@ function LandingPage() {
         dispatch(landingProductAction.getProductCategory2())
     }, [])
 
+
     const toProducts =()=>{
         history.push("/products")
     }
 
     const addContactHandler = (e)=>{
         e.preventDefault()
-        //console.log("add contact")
+        //console.log(contactData)
         dispatch(adminAddContactAction.addContact(
             contactData.namaLengkap,
-            contactData.telepon,
+            contactData.noTelepon,
             contactData.email,
-            contactData.setJenis,
-            contactData.setPesan
+            contactData.jenis,
+            contactData.pesan
         ))
     }
 
@@ -441,14 +442,14 @@ function LandingPage() {
                                 <div className="col-sm-6">
                                     <label for="noTelp" className="form-label accent-title">No. Telepon</label>
                                     <input type="text" className="form-control small userpages" id="notelp" 
-                                    value={contactData.telepon}
+                                    value={contactData.noTelepon} 
                                     onChange={(e)=>dispatch(adminAddContactAction.setTelepon(e.target.value))}
                                      />
                                 </div>
                                 <div className="col-sm-6">
                                     <label for="email" className="form-label accent-title">Email</label>
                                     <input type="text" className="form-control small userpages" id="email" 
-                                    value={contactData.email}
+                                    value={contactData.email} 
                                     onChange={(e)=>dispatch(adminAddContactAction.setEmail(e.target.value))}
                                      />
                                 </div>
@@ -457,7 +458,7 @@ function LandingPage() {
                                     <select id="jnsPesan" className="form-select userpages small" 
                                     onChange={(e)=>dispatch(adminAddContactAction.setJenis(e.target.value))}
                                     >
-                                        <option selected>Pilih salah satu</option>
+                                        <option >Pilih salah satu</option>
                                         <option value={"Kritik"}>Kritik</option>
                                         <option value={"Saran"}>Saran</option>
                                         <option value={"Penilaian"}>Penilaian</option>
@@ -468,8 +469,8 @@ function LandingPage() {
                                 <div className="col-sm-12">
                                     <label for="pesan" class="form-label accent-title">Pesan</label>
                                     <textarea class="form-control small userpages" id="pesan" rows="3"
-                                    value={contactData.pesan}
-                                    onChange={(e)=>dispatch(adminAddContactAction.setPesan(e.target.value))}
+                                    value={contactData.pesan} 
+                                    onChange={(e)=> dispatch(adminAddContactAction.setPesan(e.target.value))}
                                     ></textarea>
                                 </div>
                                 <div className="col-12">

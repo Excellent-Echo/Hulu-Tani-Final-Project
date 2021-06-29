@@ -119,7 +119,7 @@ const konfirmStatus = (kode) => async dispatch =>{
     const token = localStorage.getItem("adminToken")
 
     const data = {
-      status:"Telah Dikonfirmasi"
+      status:"Di Proses"
     }
     
     const res = await hulutaniClient({

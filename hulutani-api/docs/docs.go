@@ -24,7 +24,42 @@ var doc = `{
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
     "paths": {
-        "/admin": {
+        "/admin/login": {
+            "post": {
+                "description": "Login Admin",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Login Admin",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Failure"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Failure"
+                        }
+                    }
+                }
+            }
+        },
+        "/alamat": {
             "get": {
                 "security": [
                     {
@@ -119,9 +154,14 @@ var doc = `{
                 }
             }
         },
-        "/admin/login": {
-            "post": {
-                "description": "Login Admin",
+        "/alamat/{alamat_id}": {
+            "get": {
+                "security": [
+                    {
+                        "Auth": []
+                    }
+                ],
+                "description": "Get Alamat By ID",
                 "consumes": [
                     "application/json"
                 ],
@@ -129,9 +169,18 @@ var doc = `{
                     "application/json"
                 ],
                 "tags": [
-                    "Admin"
+                    "Alamat"
                 ],
-                "summary": "Login Admin",
+                "summary": "Get Alamat By ID",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "id alamat",
+                        "name": "alamat_id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -152,9 +201,7 @@ var doc = `{
                         }
                     }
                 }
-            }
-        },
-        "/admin/{alamat_id}": {
+            },
             "put": {
                 "security": [
                     {
@@ -248,55 +295,6 @@ var doc = `{
                         "description": "OK",
                         "schema": {
                             "$ref": "#/definitions/helper.Delete"
-                        }
-                    },
-                    "500": {
-                        "description": "Internal Server Error",
-                        "schema": {
-                            "$ref": "#/definitions/helper.Failure"
-                        }
-                    }
-                }
-            }
-        },
-        "/alamat/{alamat_id}": {
-            "get": {
-                "security": [
-                    {
-                        "Auth": []
-                    }
-                ],
-                "description": "Get Alamat By ID",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "Alamat"
-                ],
-                "summary": "Get Alamat By ID",
-                "parameters": [
-                    {
-                        "type": "string",
-                        "description": "id alamat",
-                        "name": "alamat_id",
-                        "in": "path",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "$ref": "#/definitions/helper.Response"
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthorized",
-                        "schema": {
-                            "$ref": "#/definitions/helper.Failure"
                         }
                     },
                     "500": {
@@ -855,6 +853,9 @@ var doc = `{
                 "produces": [
                     "application/json"
                 ],
+                "tags": [
+                    "Transaksi"
+                ],
                 "summary": "Create new Produk Transaksi",
                 "parameters": [
                     {
@@ -1219,7 +1220,7 @@ var doc = `{
                         "Auth": []
                     }
                 ],
-                "description": "Get All Transaksi",
+                "description": "Get All Transaksi ID User",
                 "consumes": [
                     "application/json"
                 ],
@@ -1229,7 +1230,7 @@ var doc = `{
                 "tags": [
                     "Transaksi"
                 ],
-                "summary": "Get All Transaksi",
+                "summary": "Get All Transaksi By ID User",
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -1290,6 +1291,46 @@ var doc = `{
                         "description": "Bad Request",
                         "schema": {
                             "$ref": "#/definitions/helper.Failure"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Failure"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Failure"
+                        }
+                    }
+                }
+            }
+        },
+        "/transaksi/all": {
+            "get": {
+                "security": [
+                    {
+                        "Auth": []
+                    }
+                ],
+                "description": "Get All Transaksi",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Transaksi"
+                ],
+                "summary": "Get All Transaksi",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
                         }
                     },
                     "401": {
@@ -1387,6 +1428,64 @@ var doc = `{
                         "required": true,
                         "schema": {
                             "$ref": "#/definitions/entity.UpdateStatus"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Failure"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Failure"
+                        }
+                    }
+                }
+            }
+        },
+        "/upload-bukti-transfer/{kode_transaksi}": {
+            "put": {
+                "security": [
+                    {
+                        "Auth": []
+                    }
+                ],
+                "description": "update bukti transfer by kode transaksi",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Transaksi"
+                ],
+                "summary": "Update bukti transfer by kode transaksi",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "kode transaksi",
+                        "name": "kode_transaksi",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "update bukti transfer",
+                        "name": "bukti",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/entity.UploadBuktiTransfer"
                         }
                     }
                 ],
@@ -1562,6 +1661,9 @@ var doc = `{
                 "alamat_detail": {
                     "type": "string"
                 },
+                "city_id": {
+                    "type": "string"
+                },
                 "id_pelanggan": {
                     "type": "integer"
                 },
@@ -1649,38 +1751,6 @@ var doc = `{
                 }
             }
         },
-        "entity.Produk": {
-            "type": "object",
-            "properties": {
-                "deskripsi": {
-                    "type": "string"
-                },
-                "gambar": {
-                    "type": "string"
-                },
-                "harga": {
-                    "type": "integer"
-                },
-                "id": {
-                    "type": "integer"
-                },
-                "id_kategori": {
-                    "type": "integer"
-                },
-                "nama": {
-                    "type": "string"
-                },
-                "promo": {
-                    "type": "string"
-                },
-                "stok": {
-                    "type": "integer"
-                },
-                "takaran": {
-                    "type": "string"
-                }
-            }
-        },
         "entity.ProdukInput": {
             "type": "object",
             "properties": {
@@ -1724,34 +1794,25 @@ var doc = `{
         "entity.TransaksiInput": {
             "type": "object",
             "properties": {
+                "bukti_transfer": {
+                    "type": "string"
+                },
                 "harga": {
                     "type": "integer"
                 },
-                "id_pelanggan": {
+                "id_alamat": {
                     "type": "integer"
                 },
                 "id_produk": {
                     "type": "integer"
                 },
-                "kode_transaksi": {
-                    "type": "string"
-                },
                 "metode_pembayaran": {
                     "type": "string"
-                },
-                "produk": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/entity.Produk"
-                    }
                 },
                 "quantity": {
                     "type": "integer"
                 },
                 "status": {
-                    "type": "string"
-                },
-                "tanggal": {
                     "type": "string"
                 }
             }
@@ -1760,6 +1821,14 @@ var doc = `{
             "type": "object",
             "properties": {
                 "status": {
+                    "type": "string"
+                }
+            }
+        },
+        "entity.UploadBuktiTransfer": {
+            "type": "object",
+            "properties": {
+                "bukti_transfer": {
                     "type": "string"
                 }
             }

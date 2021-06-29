@@ -56,6 +56,7 @@ func (s *service) SaveNewAlamat(id int, input entity.AlamatInput) (entity.Alamat
 		Kota:                   input.Kota,
 		AlamatDetail:           input.AlamatDetail,
 		NomorHandphonePenerima: input.NomorHandphonePenerima,
+		CityId:                 input.CityId,
 	}
 
 	createAlamat, err := s.repo.Create(alamat)
@@ -93,6 +94,10 @@ func (s *service) UpdateAlamatByAlamatId(id string, dataInputUpdate entity.Alama
 
 	if dataInputUpdate.NamaPenerima != "" || len(dataInputUpdate.NamaPenerima) <= 0 {
 		dataUpdate["nama_penerima"] = dataInputUpdate.NomorHandphonePenerima
+	}
+
+	if dataInputUpdate.CityId != "" || len(dataInputUpdate.CityId) <= 0 {
+		dataUpdate["nama_penerima"] = dataInputUpdate.CityId
 	}
 
 	alamatUpdated, err := s.repo.UpdateByID(id, dataUpdate)

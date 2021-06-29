@@ -29,12 +29,38 @@ func NewTransaksiHandler(service transaksi.Service, keranjangService keranjang.S
 // @Success 200 {object} helper.Response
 // @Failure 401 {object} helper.Failure
 // @Failure 500 {object} helper.Failure
-// @Router /transaksi [get]
+// @Router /transaksi/all [get]
 func (h *transaksiHandler) ShowAllTransaksi(c *gin.Context) {
+
+	transaksi, err := h.service.GetAllTransaki()
+
+	if err != nil {
+		responseErr := helper.APIFailure(500, "internal server error", err.Error())
+		c.JSON(500, responseErr)
+		return
+	}
+
+	response := helper.APIResponse(200, "success get all Transaksi", transaksi)
+
+	c.JSON(200, response)
+}
+
+// GetAllTransaksiByID godoc
+// @Security Auth
+// @Summary Get All Transaksi By ID User
+// @Description Get All Transaksi ID User
+// @Tags Transaksi
+// @Accept json
+// @Produce json
+// @Success 200 {object} helper.Response
+// @Failure 401 {object} helper.Failure
+// @Failure 500 {object} helper.Failure
+// @Router /transaksi [get]
+func (h *transaksiHandler) ShowAllTransaksiByIdUser(c *gin.Context) {
 	id := c.MustGet("currentUser").(int)
 	idPelanggan := strconv.Itoa(id)
 
-	transaksi, err := h.service.GetAllTransaksi(idPelanggan)
+	transaksi, err := h.service.GetAllTransaksiById(idPelanggan)
 
 	if err != nil {
 		responseErr := helper.APIFailure(500, "internal server error", err.Error())
@@ -87,7 +113,7 @@ func (h *transaksiHandler) CreateTransaksiHandler(c *gin.Context) {
 // @Security Auth
 // @Summary Create new Produk Transaksi
 // @Description Create New Produk Transaksi
-// Tags Transaksi
+// @Tags Transaksi
 // @Accept json
 // @Produce json
 // @Param produk-transaksi body entity.ProdukTransaksi true "data produk transaksi"
@@ -173,6 +199,45 @@ func (h *transaksiHandler) UpdateTransaksiByKodeHandler(c *gin.Context) {
 	}
 
 	transaksi, err := h.service.UpdateStatusByKode(kode, updateTransaksiInput)
+
+	if err != nil {
+		responseErr := helper.APIFailure(500, "internal server error", gin.H{"error": err.Error()})
+
+		c.JSON(500, responseErr)
+		return
+	}
+
+	response := helper.APIResponse(200, "success update transaksi", transaksi)
+	c.JSON(200, response)
+}
+
+// UpdateBuktiTransferByKode godoc
+// @Security Auth
+// @Summary Update bukti transfer by kode transaksi
+// @Description update bukti transfer by kode transaksi
+// @Tags Transaksi
+// @Accept json
+// @Produce json
+// @Param kode_transaksi path string true "kode transaksi"
+// @Param bukti body entity.UploadBuktiTransfer true "update bukti transfer"
+// @Success 200 {object} helper.Response
+// @Failure 401 {object} helper.Failure
+// @Failure 500 {object} helper.Failure
+// @Router /upload-bukti-transfer/{kode_transaksi} [put]
+func (h *transaksiHandler) UpdateBuktiTransferByKodeHandler(c *gin.Context) {
+	kode := c.Param("kode_transaksi")
+
+	var updateTransaksiInput entity.UploadBuktiTransfer
+
+	if err := c.ShouldBindJSON(&updateTransaksiInput); err != nil {
+		splitErr := helper.SplitErrorInformation(err)
+		responseErr := helper.APIFailure(400, "input data required", gin.H{"error": splitErr})
+
+		c.JSON(400, responseErr)
+		return
+	}
+
+	transaksi, err := h.service.UpdateBuktiTransfer(kode, updateTransaksiInput)
 
 	if err != nil {
 		responseErr := helper.APIFailure(500, "internal server error", gin.H{"error": err.Error()})

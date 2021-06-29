@@ -7,10 +7,12 @@ import (
 )
 
 type Service interface {
-	GetAllTransaksi(idPelanggan string) ([]entity.Transaksi, error)
+	GetAllTransaki() ([]entity.Transaksi, error)
+	GetAllTransaksiById(idPelanggan string) ([]entity.Transaksi, error)
 	SaveNewTransaksi(idPelanggan int, input entity.TransaksiInput) (entity.Transaksi, error)
 	SaveNewProdukTransaksi(input entity.ProdukTransaksi) (entity.ProdukTransaksi, error)
 	GetTransaksiByKode(kodeTransaksi string) (entity.Transaksi, error)
+	UpdateBuktiTransfer(kodeTransaksi string, dataInput entity.UploadBuktiTransfer) (entity.Transaksi, error)
 	UpdateStatusByKode(kodeTransaksi string, dataInput entity.UpdateStatus) (entity.Transaksi, error)
 }
 
@@ -22,7 +24,17 @@ func NewService(repo Repository) *service {
 	return &service{repo}
 }
 
-func (s *service) GetAllTransaksi(idPelanggan string) ([]entity.Transaksi, error) {
+func (s *service) GetAllTransaki() ([]entity.Transaksi, error) {
+	transaksi, err := s.repo.FindAllTransaksi()
+
+	if err != nil {
+		return transaksi, err
+	}
+
+	return transaksi, nil
+}
+
+func (s *service) GetAllTransaksiById(idPelanggan string) ([]entity.Transaksi, error) {
 	transaksi, err := s.repo.FindAll(idPelanggan)
 
 	if err != nil {
@@ -39,11 +51,11 @@ func (s *service) SaveNewTransaksi(idPelanggan int, input entity.TransaksiInput)
 		Tanggal:          time.Now(),
 		MetodePembayaran: input.MetodePembayaran,
 		IdProduk:         input.IdProduk,
-		Produk:           input.Produk,
+		IdAlamat:         input.IdAlamat,
 		IdPelanggan:      idPelanggan,
 		Harga:            input.Harga,
 		Quantity:         input.Quantity,
-		KodeTransaksi:    input.KodeTransaksi,
+		KodeTransaksi:    KodeFormat(idPelanggan),
 	}
 
 	createTransaksi, err := s.repo.Create(transaksi)
@@ -81,6 +93,22 @@ func (s *service) GetTransaksiByKode(kodeTransaksi string) (entity.Transaksi, er
 	}
 
 	return transaksi, nil
+}
+
+func (s *service) UpdateBuktiTransfer(kodeTransaksi string, dataInput entity.UploadBuktiTransfer) (entity.Transaksi, error) {
+	var dataUpdate = map[string]interface{}{}
+
+	if dataInput.BuktiTransfer != "" || len(dataInput.BuktiTransfer) != 0 {
+		dataUpdate["bukti_transfer"] = dataInput.BuktiTransfer
+	}
+
+	transaksiUpdated, err := s.repo.UpdateByKode(kodeTransaksi, dataUpdate)
+
+	if err != nil {
+		return entity.Transaksi{}, err
+	}
+
+	return transaksiUpdated, nil
 }
 
 func (s *service) UpdateStatusByKode(kodeTransaksi string, dataInput entity.UpdateStatus) (entity.Transaksi, error) {

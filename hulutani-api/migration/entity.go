@@ -34,6 +34,7 @@ type Alamat struct {
 	AlamatDetail           string `json:"alamat_detail"`
 	NomorHandphonePenerima string `json:"nomor_handphone_penerima"`
 	IdPelanggan            int    `json:"id_pelanggan"`
+	CityId                 string `json:"city_id"`
 }
 
 type Kontak struct {
@@ -70,9 +71,12 @@ type Transaksi struct {
 	MetodePembayaran string    `json:"metode_pembayaran"`
 	IdPelanggan      int       `grom:"id_pelanggan" json:"id_pelanggan"`
 	IdProduk         int       `json:"id_produk"`
+	IdAlamat         int       `json:"id_alamat"`
 	Quantity         int       `json:"quantity"`
 	Harga            int       `json:"harga"`
 	Produk           []Produk  `gorm:"many2many:produk_transaksi"`
+	Alamat           Alamat    `gorm:"foreignkey:IdAlamat" json:"alamat"`
+	BuktiTransfer    string    `json:"bukti_transfer"`
 	KodeTransaksi    string    `gorm:"index, unique" json:"kode_transaksi"`
 }
 

@@ -16,8 +16,7 @@ const SearchBar = ()=>{
     return (
         <form class="d-flex justify-content-center" onSubmit={searchHandler}>
             <input 
-            class="form-control 
-            userpages w-100" 
+            class="form-control small userpages w-100" 
             type="search" 
             placeholder="Cari produk" 
             aria-label="Search" 

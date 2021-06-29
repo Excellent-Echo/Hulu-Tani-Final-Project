@@ -5,6 +5,7 @@ import { Link,useHistory } from 'react-router-dom'
 import '../../../assets/css/navbar.css'
 import userLoginAction from '../../../redux/user/login/userLoginAction'
 import CategoryHeader from './categoryHeader'
+import SearchBar from './SearchBar'
 
 const UserNav = () => {
     const history = useHistory()
@@ -29,9 +30,7 @@ const UserNav = () => {
                         {/* KALO UDAH LOGIN */}
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <CategoryHeader/>
-                            <form class="d-flex justify-content-center">
-                                <input class="form-control small userpages w-100" type="search" placeholder="Cari produk" aria-label="Search" />
-                            </form>
+                            <SearchBar/>
                             <ul class="navbar-nav ms-auto d-flex align-items-center">
                                 <li class="nav-item">
                                     <Link class="nav-link active" to="/products">Produk</Link>

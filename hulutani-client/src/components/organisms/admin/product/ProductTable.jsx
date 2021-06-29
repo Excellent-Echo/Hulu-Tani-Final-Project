@@ -22,7 +22,7 @@ const ths = [
     const dispatch = useDispatch();
 
     useEffect(() => {
-      // dispatch(adminShowProductAction.getProducts());
+      dispatch(adminShowProductAction.getProducts());
     }, []);
 
     const handleDelete = (id) => {

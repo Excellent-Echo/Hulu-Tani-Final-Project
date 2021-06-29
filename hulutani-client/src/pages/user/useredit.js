@@ -54,40 +54,36 @@ function UserEdit() {
                                                 memasukkan informasi palsu.
                                            </p>
                                        </div>
-                                       <div className="row user-avatar-container" data-bs-toggle="modal" data-bs-target="#modalProfilePic">
+                                       {/* <div className="row user-avatar-container" data-bs-toggle="modal" data-bs-target="#modalProfilePic">
                                             <img src={ BlankUser } alt="" className="img-fluid user-avatar" />
-                                       </div>
+                                       </div> */}
                                     </div>
                                 </div>
                                 <div className="col-sm">
                                     <form className="row g-3">
                                         <div className="col-sm-12">
                                             <label for="namaLengkap" className="form-label accent-title">Nama Lengkap</label>
-                                            <input type="name" className="form-control userpages small" id="namaLengkap"/>
+                                            <input type="name" className="form-control userpages small" value="[Nama Lengkap]" id="namaLengkap" disabled/>
                                         </div>
                                         <div className="col-sm-6">
                                             <label for="tglLahir" className="form-label accent-title">Tanggal Lahir</label>
-                                            <input type="date" className="form-control userpages small" id="tglLahir" placeholder="1234 Main St"/>
+                                            <input type="date" className="form-control userpages small" value="[2001-05-18]" id="tglLahir" disabled/>
                                         </div>
                                         <div className="col-sm-6">
                                             <label for="jnsKelamin" className="form-label accent-title">Jenis Kelamin</label>
-                                            <select id="jnsKelamin" className="form-select userpages small">
-                                                <option selected>Pilih salah satu</option>
+                                            <select id="jnsKelamin" className="form-select userpages small" disabled>
+                                                <option selected>Laki-Laki</option>
                                                 <option>Laki-laki</option>
                                                 <option>Perempuan</option>
                                             </select>                                        
                                         </div>
                                         <div className="col-sm-6">
                                             <label for="email" className="form-label accent-title">Email</label>
-                                            <input type="email" className="form-control userpages small" id="email"/>
+                                            <input type="email" className="form-control userpages small" value="[Email User]" id="email" disabled/>
                                         </div>
                                         <div className="col-sm-6">
                                             <label for="noTelp" className="form-label accent-title">No. Telepon</label>
-                                            <input type="text" className="form-control userpages small" id="notelp"/>
-                                        </div>
-                                        <div className="col-12">
-                                            <br />
-                                            <button type="submit" className="button primary long">Simpan Perubahan</button>
+                                            <input type="text" className="form-control userpages small" value="[No. Telepon]" id="notelp" disabled/>
                                         </div>
                                     </form>
                                 </div>
@@ -110,15 +106,15 @@ function UserEdit() {
                                     <form className="row g-3">
                                         <div className="col-sm-12">
                                             <label for="passwordLama" className="form-label accent-title">Password Saat Ini</label>
-                                            <input type="password" className="form-control small" id="passwordLama"/>
+                                            <input type="password" className="form-control userpages small" id="passwordLama"/>
                                         </div>
                                         <div className="col-sm-6">
                                             <label for="passwordBaru" className="form-label accent-title">Password Baru</label>
-                                            <input type="password" className="form-control small" id="passwordBaru"/>
+                                            <input type="password" className="form-control userpages  small" id="passwordBaru"/>
                                         </div>
                                         <div className="col-sm-6">
                                             <label for="noTelp" className="form-label accent-title">Ulangi Password Baru</label>
-                                            <input type="password" className="form-control small" id="passwordBaruUlang"/>
+                                            <input type="password" className="form-control userpages  small" id="passwordBaruUlang"/>
                                         </div>
                                         <div className="col-12">
                                             <br />

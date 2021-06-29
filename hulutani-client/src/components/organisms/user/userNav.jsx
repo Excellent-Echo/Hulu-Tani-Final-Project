@@ -30,22 +30,18 @@ const UserNav = () => {
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <CategoryHeader/>
                             <form class="d-flex justify-content-center">
-                                <input class="form-control userpages w-100" type="search" placeholder="Cari produk" aria-label="Search" />
+                                <input class="form-control small userpages w-100" type="search" placeholder="Cari produk" aria-label="Search" />
                             </form>
-                            <ul class="navbar-nav ms-auto">
+                            <ul class="navbar-nav ms-auto d-flex align-items-center">
                                 <li class="nav-item">
-                                    <Link class="nav-link" to="/products">Produk</Link>
+                                    <Link class="nav-link active" to="/products">Produk</Link>
                                 </li>
                                 <li class="nav-item dropdown me-1">
                                     <a class="nav-link btn-user" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
                                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                         <li class="dropdown-item"><Link to="/user-profile">User Profile</Link></li>
                                         <li class="dropdown-item"><Link to="/user-transaction">Daftar Transaksi</Link></li>
-                                    </ul>
-                                </li>
-                                <li class="nav-item dropdown me-5">
-                                    <a class="nav-link btn-menu" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
-                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <li><hr className="dropdown-divider" /></li>
                                         <li class="dropdown-item" onClick={logoutUser}>Log Out</li>
                                     </ul>
                                 </li>

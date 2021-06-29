@@ -8,7 +8,7 @@ import (
 
 type Repository interface {
 	FindAll() ([]entity.Produk, error)
-	FindByName(nama string) (entity.Produk, error)
+	FindByName(nama string) ([]entity.Produk, error)
 	FindByID(id string) (entity.Produk, error)
 	FindByIDKategori(id string) ([]entity.Produk, error)
 	FindByHarga(harga entity.Harga) ([]entity.Produk, error)
@@ -34,10 +34,10 @@ func (r *repository) FindAll() ([]entity.Produk, error) {
 	return produk, nil
 }
 
-func (r *repository) FindByName(nama string) (entity.Produk, error) {
-	var produk entity.Produk
+func (r *repository) FindByName(nama string) ([]entity.Produk, error) {
+	var produk []entity.Produk
 
-	if err := r.db.Where("nama = ?", nama).Find(&produk).Error; err != nil {
+	if err := r.db.Where("nama like ?", "%"+nama+"%").Find(&produk).Error; err != nil {
 		return produk, err
 	}
 

@@ -9,7 +9,7 @@ import (
 
 type Service interface {
 	GetAllProduk() ([]entity.Produk, error)
-	GetProdukByName(nama string) (entity.Produk, error)
+	GetProdukByName(nama string) ([]entity.Produk, error)
 	GetProdukById(id string) (entity.Produk, error)
 	GetProdukByHarga(harga entity.Harga) ([]entity.Produk, error)
 	SaveNewProduk(input entity.ProdukInput) (entity.Produk, error)
@@ -35,15 +35,11 @@ func (s *service) GetAllProduk() ([]entity.Produk, error) {
 	return produk, nil
 }
 
-func (s *service) GetProdukByName(nama string) (entity.Produk, error) {
+func (s *service) GetProdukByName(nama string) ([]entity.Produk, error) {
 	produk, err := s.repo.FindByName(nama)
 
 	if err != nil {
-		return entity.Produk{}, err
-	}
-
-	if produk.ID == 0 {
-		return entity.Produk{}, errors.New("produk not found")
+		return []entity.Produk{}, err
 	}
 
 	return produk, nil

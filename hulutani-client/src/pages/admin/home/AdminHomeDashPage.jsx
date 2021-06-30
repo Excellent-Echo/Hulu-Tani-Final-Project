@@ -15,7 +15,7 @@ const AdminHomeDashPage = () => {
       <div className="admin-content-container float-end h-100 p-4">
         <Overview />
 
-        <Recent />
+        {/*<Recent />*/}
       </div>
     </div>
   );

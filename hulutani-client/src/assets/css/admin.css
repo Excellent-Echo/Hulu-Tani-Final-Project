@@ -53,8 +53,8 @@
   border-radius: 15px;
 }
 
-.admin-overview-card Link:hover{
-  color: #25a18e !important;
+.admin-overview-card .card {
+  height: 100% !important;
 }
 
 table {

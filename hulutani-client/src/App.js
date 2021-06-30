@@ -52,7 +52,7 @@ function App() {
     dispatch(adminShowTransactionAction.getTransactions());
     dispatch(adminShowProductAction.getProducts());
     dispatch(adminShowContactAction.getContacts());
-    dispatch(catalogAction.getAllProducts())
+    dispatch(catalogAction.getAllProducts());
   }, []);
 
   return (

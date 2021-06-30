@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Merriweather:wght@700&display=swap");
 .admin-header {
+  padding: .25rem;
   z-index: 1;
   border-radius: 0 0 15px 15px;
 }
@@ -20,8 +21,9 @@
 }
 
 .admin-side-navbar > .nav {
-  height: 84%;
+  height: 82%;
 }
+
 .admin-side-navbar > .nav > div > .nav-link,
 .admin-side-navbar > .nav > .nav-link {
   border-radius: 10px;
@@ -39,7 +41,7 @@
 }
 
 .admin-content-container {
-  margin-top: 5.9rem;
+  margin-top: 3.8rem;
   width: 83%;
 }
 
@@ -49,6 +51,10 @@
 .admin-proof-transaction {
   border-color: #25a18e !important;
   border-radius: 15px;
+}
+
+.admin-overview-card .card {
+  height: 100% !important;
 }
 
 table {

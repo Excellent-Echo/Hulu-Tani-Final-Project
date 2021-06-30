@@ -1,0 +1,41 @@
+.auth-page-container {
+    display: flex;
+    align-items: center;
+}
+
+.auth-bg-shape {
+    opacity: 15%;
+    transform: rotate(45deg);
+    position: absolute;
+    z-index: -99 !important;
+}
+
+.auth-bg-shape.login {
+    top: -45vh;
+    right: -20vh;
+}
+
+.auth-bg-shape.register {
+    top: -45vh;
+    left: -10vh;
+}
+
+.content-container {
+    align-self: center;
+}
+
+.content-container .title {
+    margin-bottom: 25px;
+}
+
+@media (max-width: 768px) { 
+    .auth-container {
+        display: flex;
+        align-items: center;
+        flex-direction: column-reverse;
+    }
+
+    .content-container {
+        margin-top: 25px;
+    }
+}

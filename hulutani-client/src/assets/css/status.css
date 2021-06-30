@@ -1,0 +1,41 @@
+/* PAYMENT SUCCESS */
+.success-page-container {
+    /* padding-top: 2vw; */
+    overflow-y: hidden !important;
+}
+/* END OF PAYMENT SUCCESS */
+
+/* 404 NOT FOUND */
+.no-page-container {
+    background-color: #CEF3FF !important;
+}
+/* END OF 404 NOT FOUND */
+
+.bg-shape.login {
+    top: -25vh;
+    right: -10vh;
+}
+
+.bg-shape.register {
+    top: -45vh;
+    left: -10vh;
+}
+
+.bg-shape {
+    opacity: 15%;
+    transform: rotate(45deg);
+    position: absolute;
+    z-index: -99 !important;
+}
+
+.status-page-container {
+    padding-top: 0 !important;
+    z-index: -2 !important;
+}
+
+.img-status-container {
+}
+
+.img-status {
+    max-width: 50vw;
+}

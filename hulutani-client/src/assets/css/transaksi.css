@@ -1,0 +1,211 @@
+/* KANTONG BELANJA */
+
+.kabel-container {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+.kabel-content-container {
+    background-color: white;
+    border-radius: 15px;
+    height: 100vh;
+}
+
+.kabel {
+    min-height: 85vh;
+}
+
+.item-list {
+    background-color: white;
+    margin-top: 20px;
+}
+
+.item-list .img-container {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+}
+
+.btn-lanjut-belanja::before {
+    font-family: "Font Awesome 5 Free"; 
+    font-weight: 900; 
+    content: "\f053";
+    margin-right: 15px;
+}
+
+.btn-checkout::before {
+    font-family: "Font Awesome 5 Free"; 
+    font-size: larger;
+    font-weight: 900; 
+    content: "\f788";
+    margin-right: 15px;
+}
+
+.btn-checkout::after {
+    font-family: "Font Awesome 5 Free"; 
+    font-size: larger;
+    font-weight: 900; 
+    content: "\f054";
+}
+
+.kabel-footer {
+    padding-bottom: 0 !important;
+}
+
+/* END OF KANTONG BELANJA */
+
+/* CHECKOUT */
+
+.cekot-container {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    background-color: white;
+    display: flex !important;
+    align-items: center !important;
+}
+
+.cekot-content-container {
+    /* height: 100vh; */
+    padding: 3vw;
+}
+
+.cekot {
+    /* min-height: 75vh; */
+}
+
+.cekot-kabel-container {
+    
+}
+
+.jspengiriman {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.cekot-produk-subtotal, .cekot-produk-bykirim, .cekot-produk-total {
+    display: flex;
+    justify-content: flex-end !important;
+
+}
+
+.cekot-produk-harga, .cekot-produk-qty {
+    display: flex;
+    justify-content: flex-end !important;
+
+}
+
+.cekot-footer button {
+    width: 100% !important;
+}
+
+.modalGntAlamat .modal-body {
+    padding: 2.5vw;
+}
+
+@media (max-width: 768px) { 
+    .white-space {
+        display: none;
+    }
+
+    .cekot {
+        margin-bottom: 20px;
+    }
+
+    .jspengiriman {
+        justify-content: flex-start;
+        width: fit-content;
+    }
+
+    .cekot-footer .rekeningselect {
+        margin-bottom: 10px;
+    }
+
+    .cekot-footer button {
+        width: 100% !important;
+    }
+
+    .jsharga {
+        display: flex;
+        justify-content: flex-start;
+    }
+
+    .cekot-produk {
+        margin-bottom: 20px;
+    }
+
+    .cekot-produk-harga, .cekot-produk-qty {
+        display: flex;
+        justify-content: flex-end !important;
+    }
+
+    .modalGntAlamat .modal-body {
+        padding: 3.5vw;
+    }
+ }
+
+/* END OF CHECKOUT */
+
+/* PAYMENT */
+.payment-page-container {
+    background-color: white !important;
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;  
+    padding: 2.5vw;
+}
+
+.payment-content-container {
+    align-items: center;
+}
+
+.img-payment-container {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.img-payment {
+    padding: 0;
+    align-self: center;
+    min-width: 125%;
+}
+
+.kdpembayaran {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.rekbayar {
+    display: none;
+}
+
+.nmbank, .norek, .anbank {
+    text-align: end;
+}
+/* END OF PAYMENT */
+
+@media (max-width: 572px) { 
+    .img-payment-container {
+        display: none;
+    }
+
+    .kdpembayaran {
+        display: flex;
+        justify-content: flex-start;
+    }
+
+    .rekbayar {
+        display: flex;
+    }
+
+    .rekening {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    .nmbank, .norek, .anbank {
+        text-align: start;
+    }
+
+}
+

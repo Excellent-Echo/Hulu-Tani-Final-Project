@@ -52,7 +52,7 @@ function App() {
     dispatch(adminShowTransactionAction.getTransactions());
     dispatch(adminShowProductAction.getProducts());
     dispatch(adminShowContactAction.getContacts());
-    dispatch(catalogAction.getAllProducts())
+    dispatch(catalogAction.getAllProducts());
   }, []);
 
   return (
@@ -113,7 +113,7 @@ function App() {
         />
         <AdminRoute
           exact
-          path="/admin/dash/transaction/detail"
+          path="/admin/dash/transaction/detail/:code"
           component={AdminTransactionDetail}
         />
         <AdminRoute exact path="/admin/dash/contact" component={AdminContact} />

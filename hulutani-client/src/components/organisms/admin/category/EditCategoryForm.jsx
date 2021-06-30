@@ -1,6 +1,6 @@
 import Swal from "sweetalert2";
 import React, { useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useHistory, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import adminEditCategoryAction from "../../../../redux/admin/category/edit/adminEditCategoryAction";
@@ -9,6 +9,7 @@ const EditCategoryForm = () => {
   const adminEditCategory = useSelector((state) => state.adminEditCategory);
   const dispatch = useDispatch();
   const { id } = useParams();
+  const history = useHistory();
 
   useEffect(() => {
     dispatch(adminEditCategoryAction.getCategory(id));
@@ -19,6 +20,8 @@ const EditCategoryForm = () => {
     dispatch(
       adminEditCategoryAction.editCategory(id, adminEditCategory.categoryName)
     );
+    handleSave()
+    history.push("/admin/dash/category")
   };
 
   const handleSave = () => {
@@ -27,7 +30,7 @@ const EditCategoryForm = () => {
       icon: "success",
       title: "Your work has been saved",
       showConfirmButton: false,
-      timer: 1500,
+      timer: 5000,
     });
   };
 
@@ -63,7 +66,6 @@ const EditCategoryForm = () => {
         <button
           type="submit"
           className="btn btn-primary ms-2"
-          onClick={handleSave}
         >
           Simpan
         </button>

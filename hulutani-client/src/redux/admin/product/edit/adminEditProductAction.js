@@ -1,6 +1,6 @@
 import hulutaniClient from "../../../../APIs/hulutaniClient"
-import { ADMIN_ADD_PRODUCT_RESET_FORM, ADMIN_UPDATE_PRODUCT_SET_PRODUCT_CATEGORY_ID, ADMIN_UPDATE_PRODUCT_SET_PRODUCT_DESCRIPTION, ADMIN_UPDATE_PRODUCT_SET_PRODUCT_IMAGE, ADMIN_UPDATE_PRODUCT_SET_PRODUCT_MEASURE, ADMIN_UPDATE_PRODUCT_SET_PRODUCT_NAME, ADMIN_UPDATE_PRODUCT_SET_PRODUCT_PRICE, ADMIN_UPDATE_PRODUCT_SET_PRODUCT_PROMO, ADMIN_UPDATE_PRODUCT_SET_PRODUCT_STOCK } from "../../actionType"
-
+import { ADMIN_UPDATE_PRODUCT_SET_PRODUCT_CATEGORY_ID, ADMIN_UPDATE_PRODUCT_SET_PRODUCT_DESCRIPTION, ADMIN_UPDATE_PRODUCT_SET_PRODUCT_IMAGE, ADMIN_UPDATE_PRODUCT_SET_PRODUCT_MEASURE, ADMIN_UPDATE_PRODUCT_SET_PRODUCT_NAME, ADMIN_UPDATE_PRODUCT_SET_PRODUCT_PRICE, ADMIN_UPDATE_PRODUCT_SET_PRODUCT_PROMO, ADMIN_UPDATE_PRODUCT_SET_PRODUCT_STOCK } from "../../actionType"
+import adminShowProductAction from "../show/adminShowProductAction"
 const setName = name => {
     return {
         type: ADMIN_UPDATE_PRODUCT_SET_PRODUCT_NAME,
@@ -96,7 +96,7 @@ const updateProduct = (id,nama,description,price,promo,stock,measure,image,categ
             data: dataProduct,
             headers: { Authorization: token },
         })
-        
+        dispatch(adminShowProductAction.getProducts())
         console.log("update product success")
     } catch (error) {
         console.log(error)

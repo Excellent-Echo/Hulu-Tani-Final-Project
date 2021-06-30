@@ -10,7 +10,7 @@ const AddCategoryForm = () => {
     addCategoryHandler = (e) => {
       e.preventDefault();
       dispatch(adminAddCategoryAction.addCategory(categoryData.categoryName));
-      history.push("/admin/dash");
+      history.push("/admin/dash/category");
     };
 
   return (

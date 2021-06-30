@@ -68,7 +68,6 @@ const getCategory = (id, categoryName) => async (dispatch) => {
     });
 
     dispatch(setCategory(res.data.data.nama));
-    dispatch(adminShowCategoryAction.getCategories());
     dispatch(stopLoading());
     console.log("success updating data");
   } catch (error) {
@@ -92,6 +91,7 @@ const editCategory = (id, categoryName) => async (dispatch) => {
       headers: { Authorization: token },
     });
 
+    dispatch(adminShowCategoryAction.getCategories());
     dispatch(stopLoading());
     console.log("success updating data");
   } catch (error) {

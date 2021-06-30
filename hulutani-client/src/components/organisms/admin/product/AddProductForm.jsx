@@ -147,7 +147,6 @@ const AddProductForm = () => {
               return (
                 <option value={data.id}>
                   {data.nama}
-                  {data.id}
                 </option>
               );
             })}

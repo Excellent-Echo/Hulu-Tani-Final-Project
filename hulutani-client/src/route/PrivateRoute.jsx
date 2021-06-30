@@ -7,7 +7,7 @@ const PrivateRoute = props => {
   const accessToken = localStorage.getItem("accessToken")
   const dispatch = useDispatch()
 
-  console.log(accessToken)
+  //console.log(accessToken)
   if(accessToken !== null || accessToken !== ""){
     dispatch(loginAction.logIn())
   }

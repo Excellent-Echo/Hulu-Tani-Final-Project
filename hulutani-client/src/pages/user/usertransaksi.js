@@ -27,7 +27,7 @@ function UserTransaksi() {
                         <nav aria-label="breadcrumb">
                             <ol className="breadcrumb">
                                 <li className="breadcrumb-item"><Link to="/">Home</Link></li>
-                                <li className="breadcrumb-item"><Link to="/user-transaction">Profil Saya</Link></li>
+                                <li className="breadcrumb-item"><Link to="/user-profile">Profil Saya</Link></li>
                                 <li className="breadcrumb-item active" aria-current="page">Transaksi</li>
                             </ol>
                         </nav>
@@ -64,7 +64,7 @@ function UserTransaksi() {
                             </div>
                             {userTransaction.map((data,index)=>{
                                 return (
-                            <div className="row justify-content-center">
+                            <div className="row justify-content-center" key={index}>
                                 <div className="col-sm-12 transaction-list" data-bs-toggle="modal" data-bs-target="#modalDtlTransaksi" onClick={()=>{setCode(data.kode_transaksi);dispatch(userTransactionAction.getDataTransaksi(data.kode_transaksi))}}>
                                     <div className="row align-items-center">
                                         <div className="col-sm">

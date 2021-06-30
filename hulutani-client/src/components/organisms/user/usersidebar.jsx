@@ -42,11 +42,11 @@ const UserSidebar = () => {
                                                                         </span>
                                                                     </button>
                                                                 </Link>
-                                                                <Link to="user-edit">
+                                                                <Link to="user-profile">
                                                                     <button className="list-group-item list-group-item-action user-sidebar-button">
                                                                         <span className="sidebar-button">
                                                                             <span className="user-sidebar-icon edit"></span>
-                                                                            Edit Profil
+                                                                            User Profil
                                                                         </span>
                                                                     </button>
                                                                 </Link>

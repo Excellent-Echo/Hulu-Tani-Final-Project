@@ -67,7 +67,7 @@ function App() {
         {/* <Route path="/cart" component={KantongBelanja} /> */}
 
         {/* Private */}
-        <PrivateRoute path="/user-edit" component={UserEdit} />
+        <PrivateRoute path="/user-profile" component={UserEdit} />
         <PrivateRoute path="/user-transaction" component={UserTransaksi} />
         <PrivateRoute path="/user-address" component={UserAlamat} />
         <PrivateRoute path="/checkout" component={Checkout} />

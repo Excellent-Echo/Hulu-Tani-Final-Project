@@ -84,7 +84,7 @@ function ProdukList() {
 														{/* <i class="far fa-heart fa-2x"></i> */}
 													</span>
 													<div className="card-img-container product-img bg-pattern">
-														<img src={data.gambar} class="card-img-top img-fluid" alt="..." />
+														<img src={data.gambar} class="card-img-top img-fluid" alt="..." style={{width:"300px",height:"190px"}} />
 													</div>
 													<div className="card-body">
 														<div className="row">

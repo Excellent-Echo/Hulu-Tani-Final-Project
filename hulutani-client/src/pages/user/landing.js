@@ -234,7 +234,7 @@ function LandingPage() {
                                         <Link to={`/product/${data.id}`}>
                                         <div className="card product-card card-outline-primary h-100" style={{ width: "11.8rem" }}>
                                             <div className="img-container product-img bg-pattern">
-                                                <img src={data.gambar} class="card-img-top img-fluid" alt="..." />
+                                                <img src={data.gambar} class="card-img-top img-fluid" alt="..." style={{width:"200px",height:"150px"}} />
                                             </div>
                                             <div className="card-body">
                                                 <div className="row">
@@ -253,13 +253,13 @@ function LandingPage() {
                     </div>
                     {/* end of Product with categori 1 */}
                     {/* Product with categori 2 */}
-                    <div className="row justify-content-center section3-row3">
+                    <div className="row justify-content-center section3-row2">
                         <div className="row justify-content-center">
                             <div className="col-md-12">
                                 <div className="row justify-content-center align-items-center">
                                     <div className="col-sm">
                                         <h4 className="accent-title">
-                                            Aneka Buah
+                                            Buah Segar
                                         </h4>
                                     </div>
                                     <div className="col-sm-3 section3-btntitle-container">
@@ -276,10 +276,10 @@ function LandingPage() {
                                 {landingProduct.productByCategory2.map((data,index)=>{
                                 return (
                                     <div className="col-sm product-card-container" key={index}>
-                                         <Link to={`/product/${data.id}`}>
+                                        <Link to={`/product/${data.id}`}>
                                         <div className="card product-card card-outline-primary h-100" style={{ width: "11.8rem" }}>
                                             <div className="img-container product-img bg-pattern">
-                                                <img src={data.gambar} class="card-img-top img-fluid" alt="..." />
+                                                <img src={data.gambar} class="card-img-top img-fluid" alt="..." style={{width:"200px",height:"150px"}} />
                                             </div>
                                             <div className="card-body">
                                                 <div className="row">

@@ -63,7 +63,7 @@ function ProdukDetail() {
           <div className="row content-container justify-content-center">
             <div className="col-sm product-img-container justify-content-start">
               <div className="row">
-                <img src={detailProduct.gambar} alt="" className="img-fluid" />
+                <img src={detailProduct.gambar} alt="" className="imgproduk-detail img-fluid" />
               </div>
             </div>
             <div className="col-sm product-content">
@@ -81,28 +81,35 @@ function ProdukDetail() {
                   />
                 </h1>
                 {/* <form onSubmit={addCartHandler}> */}
-                <div className="col-sm-3 stock-range mb-3">
+                <div className="col-sm stock-range mt-3">
                   <label for="jumlah" className="form-label">
                     Jumlah
                   </label>
-                  <input
-                    type="number"
-                    className="form-control small userpages"
-                    id="jumlah"
-                    placeholder="1"
-                    value={qty}
-                    onChange={(e) => setqty(e.target.value)}
-                  />
+                  <div className="row align-items-center">
+                    <div className="col-sm-3">
+                        <input
+                            type="number"
+                            className="form-control small userpages"
+                            id="jumlah"
+                            placeholder="1"
+                            value={qty}
+                            onChange={(e) => setqty(e.target.value)}
+                        />
+                    </div>
+                    <div className="col-sm">
+                        <button
+                            type="submit"
+                            className="primary btnbeli-detail small long"
+                            OnClick={buyHandler}
+                        >
+                            Belanja Sekarang
+                        </button> 
+                    </div>
+                  </div>
+                </div>
                 </div>
                 <div className="col-sm-7 d-flex align-items-end">
-                  <button
-                    type="submit"
-                    className="primary long"
-                    onClick={buyHandler}
-                  >
-                    Belanja Sekarang
-                  </button>
-                </div>
+                  
                 {/* </form> */}
                 <div className="row product-desc">
                   <h5>Informasi Produk</h5>

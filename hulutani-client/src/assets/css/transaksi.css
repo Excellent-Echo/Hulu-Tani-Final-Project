@@ -184,7 +184,7 @@
 }
 /* END OF PAYMENT */
 
-@media (max-width: 572px) { 
+@media (max-width: 576px) { 
     .img-payment-container {
         display: none;
     }

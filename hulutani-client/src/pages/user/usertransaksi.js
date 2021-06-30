@@ -71,7 +71,7 @@ function UserTransaksi() {
                                             <div className="row align-items-center">
                                                 <div className="col-sm-4">
                                                     <div className="img-container bg-pattern img-loading">
-                                                        <img src={data.Produk[0].gambar} alt="" className="img-fluid rounded" />
+                                                        <img src={data.Produk[0].gambar} alt="" className="img-fluid imguser-trans rounded" />
                                                     </div>
                                                 </div>
                                                 <div className="col-sm">

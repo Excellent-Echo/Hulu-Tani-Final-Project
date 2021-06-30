@@ -56,7 +56,6 @@ const navs = [
             className="collapse navbar-collapse admin-navbar"
             id="AdminNavBar"
           >
-            {/*<div className="navbar-nav me-auto bg-success">*/}
             {navs.map((nav) => (
               <Link className="nav-link my-1 row" to={nav.to}>
                 <div>
@@ -65,7 +64,6 @@ const navs = [
                 </div>
               </Link>
             ))}
-            {/*</div>*/}
           </div>
         </div>
       </nav>

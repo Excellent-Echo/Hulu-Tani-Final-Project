@@ -87,7 +87,7 @@
     }
 }
 
-@media (max-width: 572px) {
+@media (max-width: 576px) {
     .sidebar-container {
         padding: 5vw !important;
         padding-right: 6vw !important;

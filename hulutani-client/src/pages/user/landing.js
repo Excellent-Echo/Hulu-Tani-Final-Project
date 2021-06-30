@@ -279,11 +279,11 @@ function LandingPage() {
                                         <Link to={`/product/${data.id}`}>
                                         <div className="card product-card card-outline-primary h-100" style={{ width: "11.8rem" }}>
                                             <div className="img-container product-img bg-pattern">
-                                                <img src={data.gambar} class="card-img-top img-fluid" alt="..." style={{width:"200px",height:"150px"}} />
+                                                    <img src={data.gambar} class="card-img-top productlist-img-card img-fluid" alt="..." style={{width:"200px",height:"150px"}} />
                                             </div>
                                             <div className="card-body">
                                                 <div className="row">
-                                                    <span className="name-tag small-text mb-2">{data.nama}</span>
+                                                        <span className="name-tag product-name small-text mb-2">{data.nama}</span>
                                                     <h4 className="card-title accent-title"><NumberFormat value={data.harga} displayType={'text'} thousandSeparator={true} prefix={'Rp'}/></h4>
                                                 </div>
                                             </div>

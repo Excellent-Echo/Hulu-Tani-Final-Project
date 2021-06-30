@@ -9,7 +9,6 @@ import '../../assets/css/produk.css'
 import ProductFilter from '../../components/organisms/user/productfilter'
 import Navbar from '../../components/organisms/user/navbar'
 import Footer from '../../components/organisms/user/footer.jsx'
-// import PromoBanner from '../../assets/images/7937.jpg'
 
 function ProdukList() {
 	const catalogProduct = useSelector(state => state.catalogProduct)
@@ -39,14 +38,14 @@ function ProdukList() {
 						<div className="container">
 							<div className="row product-list justify-content-end">								
 								<div className="col-sm content-container x">
-									{/* <div className="row banner-container">
+									<div className="row banner-container">
 										<div className="col-sm-8 promo-banner bg-pattern banner-1">
-											<image  src={PromoBanner} alt="promo banner" srcset=""/>
+
 										</div>
 										<div className="col-sm promo-banner bg-pattern banner-2">
 
 										</div>
-									</div> */}
+									</div>
 									{/* <div className="row mt-3 mb-3">
 										<div className="col-sm d-flex align-content-center">
 											<p className="title">
@@ -77,18 +76,15 @@ function ProdukList() {
 									<div className="row product-card-container">
 										{catalogProduct.allProduct.map((data,index)=>{
 											return (
-											<div className="col-4 card-container" key={index}>
+											<div className="col-sm-4 card-container" key={index}>
 												<Link to={`/product/${data.id}`}>
 												<div className="card product-card card-product card-outline-primary h-100">
-													<span className="badge product-btn-wl b-transparent">
-														{/* <i class="far fa-heart fa-2x"></i> */}
-													</span>
 													<div className="card-img-container product-img bg-pattern">
-														<img src={data.gambar} class="card-img-top img-fluid" alt="..." style={{width:"300px",height:"190px"}} />
+														<img src={data.gambar} class="card-img-top productlist-img-card img-fluid" alt="..." />
 													</div>
 													<div className="card-body">
 														<div className="row">
-															<span className="name-tag small-text mb-2">{data.nama}</span>
+															<span className="name-tag product-name small-text mb-2">{data.nama}</span>
 															<h4 className="card-title accent-title"><NumberFormat value={data.harga} displayType={"text"} thousandSeparator={true} prefix={'Rp'}/></h4>
 														</div>
 													</div>

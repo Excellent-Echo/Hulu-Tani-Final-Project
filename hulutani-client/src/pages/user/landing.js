@@ -230,11 +230,11 @@ function LandingPage() {
                                 <div className="row section3-card-container">
                                     {landingProduct.productByCategory1.map((data,index)=>{
                                 return (
-                                    <div className="col-sm product-card-container">
+                                    <div className="col-sm product-card-container" key={index}>
                                         <Link to={`/product/${data.id}`}>
                                         <div className="card product-card card-outline-primary h-100" style={{ width: "11.8rem" }}>
                                             <div className="img-container product-img bg-pattern">
-                                                <img src={data.gambar} class="card-img-top img-fluid" alt="..." />
+                                                <img src={data.gambar} class="card-img-top img-fluid" alt="..." style={{width:"200px",height:"150px"}} />
                                             </div>
                                             <div className="card-body">
                                                 <div className="row">
@@ -253,13 +253,13 @@ function LandingPage() {
                     </div>
                     {/* end of Product with categori 1 */}
                     {/* Product with categori 2 */}
-                    <div className="row justify-content-center section3-row3">
+                    <div className="row justify-content-center section3-row2">
                         <div className="row justify-content-center">
                             <div className="col-md-12">
                                 <div className="row justify-content-center align-items-center">
                                     <div className="col-sm">
                                         <h4 className="accent-title">
-                                            Aneka Buah
+                                            Buah Segar
                                         </h4>
                                     </div>
                                     <div className="col-sm-3 section3-btntitle-container">
@@ -275,15 +275,15 @@ function LandingPage() {
                                 <div className="row section3-card-container">
                                 {landingProduct.productByCategory2.map((data,index)=>{
                                 return (
-                                    <div className="col-sm product-card-container">
-                                         <Link to={`/product/${data.id}`}>
+                                    <div className="col-sm product-card-container" key={index}>
+                                        <Link to={`/product/${data.id}`}>
                                         <div className="card product-card card-outline-primary h-100" style={{ width: "11.8rem" }}>
                                             <div className="img-container product-img bg-pattern">
-                                                <img src={data.gambar} class="card-img-top img-fluid" alt="..." />
+                                                    <img src={data.gambar} class="card-img-top productlist-img-card img-fluid" alt="..." style={{width:"200px",height:"150px"}} />
                                             </div>
                                             <div className="card-body">
                                                 <div className="row">
-                                                    <span className="name-tag small-text mb-2">{data.nama}</span>
+                                                        <span className="name-tag product-name small-text mb-2">{data.nama}</span>
                                                     <h4 className="card-title accent-title"><NumberFormat value={data.harga} displayType={'text'} thousandSeparator={true} prefix={'Rp'}/></h4>
                                                 </div>
                                             </div>

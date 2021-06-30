@@ -15,7 +15,7 @@ const ModalTbAlamat = () => {
 
     const addHandler = (e) => {
         e.preventDefault()
-        console.log(alamatData.daftarKota)
+        //console.log(alamatData.daftarKota)
         dispatch(addressAction.addAddress(alamatData.nama,alamatData.telepon,alamatData.alamatLengkap,alamatData.provinsi,alamatData.cityId))
         dispatch(addressAction.resetForm())
         history.push("/user-address")

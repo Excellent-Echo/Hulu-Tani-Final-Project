@@ -1,4 +1,5 @@
 import dummyClient from "../../../APIs/dummy";
+import hulutaniClient from "../../../APIs/hulutaniClient";
 import { USER_PROFILE_SET_DATE_BIRTH, USER_PROFILE_SET_EMAIL, USER_PROFILE_SET_ERROR_MESSAGE, USER_PROFILE_SET_GENDER, USER_PROFILE_SET_HANDPHONE_NUMBER, USER_PROFILE_SET_NAME, USER_PROFILE_START_LOADING, USER_PROFILE_STOP_LOADING } from "../actionType";
 
 const setName = name => {
@@ -67,26 +68,21 @@ const stopLoading = () => {
     };
 };
 
-const updateUser= (name, dateBirth, handphoneNumber, gender, email) => async dispatch => {
+const updateUser= () => async dispatch => {
     try{
         console.log("updateting user data...");
         dispatch(startLoading());
 
-        const submitData2 = {
-            name: name,
-            date_birth: dateBirth,
-            handphone_number: handphoneNumber,
-            Gender: gender,
-            email: email,
-        };
-
+        const token = localStorage.getItem("accessToken")
         const userUpdated = await dummyClient({
-            method: "PUT",
+            method: "GET",
             url: "/users",
-            data: submitData2,
+            headers:{
+                Authorization: token
+            }
         });
 
-        console.log(userUpdated)
+        //console.log(userUpdated)
 
         dispatch(setName(userUpdated.response.data.nama))
         dispatch(setDateBirth(userUpdated.response.data.tanggal_lahir))
@@ -106,17 +102,16 @@ const showUserDetail = () => async dispatch =>{
     try {
         console.log("fetch user data...");
         dispatch(startLoading());
-
-        const userDetailData = await dummyClient({
+        const token = localStorage.getItem("accessToken")
+        const userDetailData = await hulutaniClient({
             method: "GET",
-            url: "/users",
+            url: "/user",
+            headers:{
+                Authorization: token
+            }
         });
            
-        dispatch(setName(userDetailData.response.data.nama))
-        dispatch(setDateBirth(userDetailData.response.data.tanggal_lahir))
-        dispatch(setHandphoneNumber(userDetailData.response.data.nomor_handphone))
-        dispatch(setGender(userDetailData.response.data.jenis_kelamin))
-        dispatch(setEmail(userDetailData.response.data.email))
+        dispatch(setName(userDetailData.data.data))
 
         dispatch(stopLoading());
     } catch (error) {

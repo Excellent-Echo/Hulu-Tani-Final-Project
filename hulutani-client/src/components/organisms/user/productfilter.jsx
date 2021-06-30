@@ -10,6 +10,20 @@ const ProductFilter = () => {
       );
     const dispatch = useDispatch()
 
+    const formData1 = new FormData()
+    const formData2 = new FormData()
+    // const formData3 = new FormData()
+    const formData4 = new FormData()
+
+    formData1.set("dari",0)
+    formData1.set("sampai",50000)
+    formData2.set("dari",50000)
+    formData2.set("sampai",100000)
+    // formData3.set("dari",100000)
+    // formData3.set("sampai",500000)
+    formData4.set("dari",500000)
+    formData4.set("sampai",10000000)
+
     return (
         <>
             <div className="container-fluid sidebar-container">
@@ -56,23 +70,23 @@ const ProductFilter = () => {
                                                                 </h6>
                                                                 <ul className="list-unstyled">
                                                                     <li>
-                                                                       <a  onClick={()=> dispatch(catalogAction.getFilterdProductsByPrice(0,50000))}>
+                                                                       <a  onClick={()=> dispatch(catalogAction.getFilterdProductsByPrice(formData1))}>
                                                                             Rp 0 - Rp 50.000
                                                                        </a>
                                                                     </li>
                                                                     <li>
-                                                                        <a onClick={() => dispatch(catalogAction.getFilterdProductsByPrice(50000, 100000))}>
+                                                                        <a onClick={() => dispatch(catalogAction.getFilterdProductsByPrice(formData2))}>
                                                                             Rp 50.000 - Rp 100.000
                                                                         </a>
                                                                     </li>
-                                                                    <li>
-                                                                        <a onClick={() => dispatch(catalogAction.getFilterdProductsByPrice(100000, 500000))}>
+                                                                    {/* <li>
+                                                                        <a onClick={() => dispatch(catalogAction.getFilterdProductsByPrice(formData3))}>
                                                                             Rp 100.000 - Rp 500.000
                                                                         </a>
-                                                                    </li>
+                                                                    </li> */}
                                                                     <li>
-                                                                        <a onClick={() => dispatch(catalogAction.getFilterdProductsByPrice(500000, 1000000))}>
-                                                                            Rp 500.000 - Rp 1.000.000
+                                                                        <a onClick={() => dispatch(catalogAction.getFilterdProductsByPrice(formData4))}>
+                                                                            Rp 500.000 +
                                                                         </a>
                                                                     </li>
                                                                 </ul>

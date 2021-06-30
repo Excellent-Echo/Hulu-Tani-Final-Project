@@ -99,7 +99,7 @@ const userLogin = (email, password, history) => async (dispatch) => {
     dispatch(logIn());
     dispatch(stopLoading());
     dispatch(resetForm())
-    console.log(history)
+    //console.log(history)
     history.push("/user-transaction")
   } catch (error) {
     console.log(error.response);

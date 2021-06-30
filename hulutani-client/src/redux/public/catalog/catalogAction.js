@@ -58,7 +58,7 @@ const getAllProducts = () => async dispatch =>{
             url:"/produk"
         })
         
-        console.log(res.data.data)
+        //console.log(res.data.data)
         dispatch({
             type: CATALOG_SET_ALL_PRODUCT,
             payload: res.data.data

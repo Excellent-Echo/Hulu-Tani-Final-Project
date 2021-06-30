@@ -38,14 +38,14 @@ function ProdukList() {
 						<div className="container">
 							<div className="row product-list justify-content-end">								
 								<div className="col-sm content-container x">
-									<div className="row banner-container">
+									{/* <div className="row banner-container">
 										<div className="col-sm-8 promo-banner bg-pattern banner-1">
 
 										</div>
 										<div className="col-sm promo-banner bg-pattern banner-2">
 
 										</div>
-									</div>
+									</div> */}
 									{/* <div className="row mt-3 mb-3">
 										<div className="col-sm d-flex align-content-center">
 											<p className="title">

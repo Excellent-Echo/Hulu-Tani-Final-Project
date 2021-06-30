@@ -100,7 +100,7 @@ function ProdukDetail() {
                         <button
                             type="submit"
                             className="primary btnbeli-detail small long"
-                            OnClick={buyHandler}
+                            onClick={buyHandler}
                         >
                             Belanja Sekarang
                         </button> 
